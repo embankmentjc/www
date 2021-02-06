@@ -1,0 +1,414 @@
+/**
+ * @file
+ * Views Styling
+ */
+
+.epc-view-standard-1 h2 {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.epc-view-standard-1 h2.title a {
+	text-decoration: none;
+	color: #4B4946;
+}
+
+.epc-view-standard-1 h2.title a:hover {
+	text-decoration: underline;
+}
+
+.epc-view-standard-1 .date {
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+
+.epc-view-standard-1 .teaser {
+	margin-bottom: 5px;
+}
+
+.epc-view-standard-1 .more-link-node {
+	font-size: 11px;
+	margin-bottom: 5px;
+	text-align: right;
+}
+
+.epc-view-standard-1.epc-view-list-no-padding ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.epc-view-standard-1.epc-view-list-no-padding li {
+	margin-bottom: 18px;
+}
+
+
+/**
+ * Banner
+ */
+
+.epc-view-banner-single {
+	position: relative;
+	height: 160px;
+	width: 960px;
+	margin-bottom: 14px;
+}
+
+.epc-view-banner-single .image {
+	position: absolute;
+	top: 0px; left: 0px;
+}
+
+.epc-view-banner-single .teaser {
+	position: absolute;
+	top: 16px; left: 26px;
+	color: #fff;
+	font-size: 16px;
+	line-height: 1.2em;
+	font-family: TradeGothic, Helvetica, sans-serif;
+}
+
+.epc-view-banner-single .teaser p {
+	margin-top: 0px;
+}
+
+
+/**
+ * Standard views table
+ */
+
+.epc-view-table-1 table {
+	width: 100%;
+}
+
+.epc-view-table-1 table caption {
+	color: #ff6600;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: left;
+	margin-bottom: 14px;
+}
+
+.epc-view-table-1 table tr {
+	background-color: transparent;
+	border: 0;
+}
+
+.epc-view-table-1 table td {
+	vertical-align: top;
+	padding-bottom: 10px;
+}
+
+
+/**
+ * Standard view table - timeline 
+ */
+
+
+.epc-view-table-1.timeline table thead {
+	display: none;
+}
+
+.epc-view-table-1.timeline table .date {
+	width: 120px;
+	text-align: right;
+	padding-right: 20px;
+}
+
+
+/**
+ * Standard view table - recognitions 
+ */
+
+.epc-view-table-1.recognitions table thead {
+	display: none;
+}
+
+.epc-view-table-1.recognitions table .year {
+	width: 50px;
+}
+
+/**
+ * Standard view table - endorsements 
+ */
+
+.epc-view-table-1.endorsements table thead {
+	display: none;
+}
+
+.epc-view-table-1.endorsements table .year {
+	width: 50px;
+}
+
+
+/**
+ * Photo Gallery 1 - Thubms
+ */
+
+.photo-gallery-1.thumbs .thumb {
+	margin-right: 7px;
+}
+
+.photo-gallery-1.thumbs td {
+	padding-bottom: 5px;
+}
+
+
+/**
+ * Photo Gallery 2 - Node
+ */
+
+.photo-gallery-1.node {}
+	.photo-gallery-1.node ul {
+		padding: 0;
+		list-style: none;
+	}
+		.photo-gallery-1.node ul li {
+			border-top: 1px solid #efefef;
+			padding: 20px 0 0 0;
+			margin: 20px 0 0 0;
+		}
+			.photo-gallery-1.node ul li .image {
+				margin-bottom: 10px;
+			}
+
+			.photo-gallery-1.node ul li .description {
+			}
+
+
+/**
+ * Photo Gallery 2 - Thumbs
+ */
+ 
+.photo-gallery-2.thumbs ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.photo-gallery-2.thumbs li {
+	background-color: #ebebeb;
+	margin-bottom: 15px;
+	padding: 15px;
+}
+
+.pane-epc-your-vision-gallery-thumbs .photo-gallery-2.thumbs table {
+	background-color: #ebebeb;
+}
+
+.pane-epc-your-vision-gallery-thumbs .photo-gallery-2.thumbs table td {
+	padding: 18px 10px 0 10px;
+}
+
+.pane-epc-your-vision-gallery-thumbs .photo-gallery-2.thumbs table td.col-first {
+	padding-left: 18px;;
+}
+
+.pane-epc-your-vision-gallery-thumbs .photo-gallery-2.thumbs table td.col-last {
+	padding-right: 18px;;
+}
+
+.pane-epc-your-vision-gallery-thumbs .photo-gallery-2.thumbs table tr.row-last td {
+	padding-bottom: 18px;
+}
+
+.photo-gallery-2.thumbs h2.title,
+.photo-gallery-2.thumbs .artist {
+	margin-bottom: 5px;
+}
+
+.photo-gallery-2.thumbs h2.title a,
+.photo-gallery-2.thumbs .artist {
+	text-decoration: none;
+	color: #ff6600;
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.photo-gallery-2.thumbs .teaser {
+	margin: 1em 0;
+}
+
+.photo-gallery-2.thumbs .node-more-link {
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.photo-gallery-2.thumbs .trigger-thumb ul {
+	margin: 0; padding: 0;
+	clear: both;
+	overflow: hidden;
+	width: 100%;
+}
+
+.photo-gallery-2.thumbs .trigger-thumb ul li {
+	float: left;
+	padding: 0;
+	padding-right: 23px;
+}
+.photo-gallery-2.thumbs .trigger-thumb ul li.last {
+	padding-right: 0px;
+}
+
+
+/**
+ * Photo Gallery 2 - Node
+ */
+
+.photo-gallery-2.node {}
+	.photo-gallery-2.node ul {
+		padding: 0;
+		list-style: none;
+	}
+		.photo-gallery-2.node ul li {
+			border-top: 1px solid #efefef;
+			padding: 20px 0 0 0;
+			margin: 20px 0 0 0;
+		}
+			.photo-gallery-2.node ul li .image {
+				margin-bottom: 10px;
+			}
+
+			.photo-gallery-2.node ul li .description {
+			}
+
+
+/**
+ * Events list 
+ */
+ 
+.epc-view-standard-1.epc-view-list-no-padding.epc-events-page li.views-row-odd,
+.epc-view-standard-1.epc-view-list-no-padding.epc-news-page li.views-row-odd {
+	padding: 16px 12px;
+ 	background-color: #ACE2A9;
+ 	margin-bottom: 10px;
+}
+
+.epc-view-standard-1.epc-view-list-no-padding.epc-events-page li.views-row-even,
+.epc-view-standard-1.epc-view-list-no-padding.epc-news-page li.views-row-even {
+	padding: 16px 12px;
+ 	background-color: #e8fdcf;
+ 	margin-bottom: 10px;
+}
+
+.epc-view-standard-1.epc-view-list-no-padding.epc-events-page .view-footer,
+.epc-view-standard-1.epc-view-list-no-padding.epc-news-page .view-footer{
+	margin-top: 20px;
+}
+
+
+/**
+ * Home page slideshow
+ */
+.hp-feature-slideshow {
+	background: url(../images/hp_slide_text_bg.png) no-repeat right top;
+	position: relative;
+	width: 960px;
+	height: 340px;
+	overflow: hidden;
+}
+.hp-feature-slideshow .content-area {
+	width: 260px;
+	height: 260px;
+	position: absolute;
+	right: 35px;
+	top: 25px;
+	color: #fff;
+}
+
+.hp-feature-slideshow .content-area .date {
+	text-transform: uppercase;
+	margin-bottom: 1em;
+}
+
+.hp-feature-slideshow .content-area h2 {
+	color: #fff;
+	text-transform: none;
+	font-weight: normal;
+	font-size: 34px;
+	line-height: 1.2em;
+	font-family: TradeGothic;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+.hp-feature-slideshow .content-area .more-link {
+	text-align: left;
+}
+
+.hp-feature-slideshow .content-area .more-link a {
+	font-size: 11px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+.hp-feature-slideshow .slide-img {
+	width: 960px;
+	height: 340px
+}
+
+.hp-feature-slideshow .views-slideshow-controls-bottom {
+	position: absolute;
+	right: 10px;
+	bottom: 5px;
+}
+.hp-feature-slideshow .views-slideshow-controls-bottom,
+.hp-feature-slideshow .views-slideshow-controls-bottom a {
+	font-size: 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #fff;
+}
+
+
+/**
+ * Sponsors list 
+ */
+ 
+.v-sponsors table {
+	width: 100%;
+}
+
+.v-sponsors .title {
+	width: 260px;
+	padding-right: 20px;
+}
+
+.v-sponsors h3 {
+	width: 260px;
+	padding-right: 20px;
+	margin-bottom: 4px;
+}
+
+.v-sponsors .address {
+	width: 160px;
+	padding-right: 20px;
+}
+
+.v-sponsors .phone-number {
+	width: 100px;
+	padding-right: 20px;
+}
+
+.v-sponsors .website-link {
+	width: 50px;
+	text-align: right;
+}
+ 
+.v-sponsors caption {
+	color: #ff6600;
+	text-transform: uppercase;
+	font-size: 15px;
+	font-weight: bold;
+	text-align: left;
+	margin: 1.5em 0 0.4em 0;
+}
+
+.v-sponsors tr.even, .v-sponsors tr.odd {
+	background: transparent;
+	border: none;
+}

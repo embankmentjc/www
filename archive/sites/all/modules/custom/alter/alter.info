@@ -1,0 +1,5 @@
+name = Alter
+description = "General alter module."
+core = 7.x
+project = "alter"
+files[] = alter.module

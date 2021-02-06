@@ -1,0 +1,8 @@
+name = Webform Paypal - CUSTOM
+description = Takes care of creating the PayPal link and forwarding the user to that link after the membership form is submitted. Created by Stephen Musgrave. This module was created bofore this [http://drupal.org/project/webform_paypal] contrib module was created and there is a namespace collission.
+package = Custom Modules
+version = 7.x-all
+core = 7.x
+project = "webform_paypal"
+dependencies[] = webform
+dependencies[] = webform_validation

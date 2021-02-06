@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * Imeplements hook_init
+ */
+function horizontal_forms_init() {
+	drupal_add_css(drupal_get_path('module', 'horizontal_forms') . '/horizontal_forms.css', array('group' => CSS_DEFAULT, 'every_page' => TRUE));
+}
+
+/**
+ * Imeplements hook_form_alter
+ */
+function horizontal_forms_form_alter(&$form, $form_state, $form_id) {
+	if (horizontal_forms_determine($form_id)) {
+		horizontal_forms_make_form_elements_horizontal($form);
+
+		// Add a class to the form element
+		$form['#attributes']['class'][] = 'horizontal-form-form';
+	}
+}
+
+/**
+ * Determine whether or not to thme a form
+ */
+function horizontal_forms_determine($form_id) {
+
+	// Never theme these forms.
+	$excluded_form_ids = array('views_exposed_form', 'views_content_views_panes_content_type_edit_form', 'ctools_custom_content_type_edit_form');
+	if (in_array($form_id, $excluded_form_ids)) {
+		return FALSE;
+	}
+
+	// All admin or non-admin forms
+	$horizontal_forms_all_admin = variable_get('horizontal_forms_all_admin', 0);
+	$horizontal_forms_all_public = variable_get('horizontal_forms_all_public', 0);
+	if ($horizontal_forms_all_admin && (arg(0) == 'admin')) {
+		return TRUE;
+	} else if ($horizontal_forms_all_public && (arg(0) != 'admin') && (arg(0) != 'user')) {
+		return TRUE;
+	}
+
+	// Specific forms that need to be themed
+	$horizontal_form_ids = explode("\n", variable_get('horizontal_forms_ids', ''));
+	$horizontal_form_ids = array_filter(array_map('trim', $horizontal_form_ids));
+	if (!empty($horizontal_form_ids)) {
+		if (in_array($form_id, $horizontal_form_ids)) {
+			return TRUE;
+		}
+	}
+}
+
+
+function horizontal_forms_make_form_elements_horizontal(&$form) {
+	$horizontal_types = array('captcha', 'textfield', 'textarea', 'submit', 'password', 'item', 'select', 'checkboxes', 'checkbox', 'radios', 'container');  // the #type attribute
+	$field_exceptions = array('field_date_time', 'field_date');
+	horizontal_forms_apply_attribute($form, $horizontal_types, $field_exceptions);
+}
+
+
+function horizontal_forms_apply_attribute(&$tree, $horizontal_types, $field_exceptions) {
+	foreach (element_children($tree) as $key) {
+		if ((isset($tree[$key]['#type']) && in_array($tree[$key]['#type'], $horizontal_types))) {
+			if (isset($tree[$key]['und'][0]['#field_name']) && in_array($tree[$key]['und'][0]['#field_name'], $field_exceptions)) {
+				if (($key == 'title') || (substr($key, 0, 5) == 'field')) {
+					$tree[$key]['#prefix'] = '<div class="horizontal-form-special-container">';
+					$tree[$key]['#suffix'] = '</div>';
+				}
+			} else {
+				if (($key == 'title') || ($key == 'name') || (substr($key, 0, 5) == 'field')) {
+					$tree[$key]['#prefix'] = '<div class="horizontal-form">';
+					$tree[$key]['#suffix'] = '</div>';
+				}
+			}
+		} else if (is_array($tree[$key])) {
+			horizontal_forms_apply_attribute($tree[$key], $horizontal_types, $field_exceptions);
+		}
+	}
+}
+
+
+/**
+ * Implements hook_permission().
+ */
+function horizontal_forms_permission() {
+  return array(
+    'administer horizontal forms' => array(
+      'title' => t('Administer Horizontal Forms'),
+      'description' => t('Configure forms to display horizontally.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function horizontal_forms_menu() {
+  $items['admin/config/user-interface/horizontal-forms'] = array(
+    'title' => 'Horizontal Forms',
+    'description' => 'Configure Horizontal Forms settings.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('horizontal_forms_admin_form'),
+    'access arguments' => array('administer horizontal forms'),
+    'file' => 'horizontal_forms.admin.inc',
+  );
+  return $items;
+}

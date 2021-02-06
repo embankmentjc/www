@@ -1,0 +1,188 @@
+/**
+ * Next buttons
+ */
+
+.pane-next a {
+	display: block;
+	float: right;
+	background-color: #ace2a9;
+	font-weight: bold;
+	font-size: 11px;
+	text-transform: uppercase;
+	text-decoration: none;
+	padding: 3px 20px 2px 10px;
+}
+
+/**
+ * EPC region content
+ */
+
+.epc-region-content .inside {
+	margin-left: 12px;
+}
+
+
+
+/**
+ * EPC pane standard
+ */
+
+.epc-pane-standard a {
+}
+
+.epc-pane-standard .pane-content,
+.epc-pane-standard.nr .field-name-field-body,
+.epc-pane-standard.nr .field-name-field-link,
+.epc-pane-standard.nr .field-type-image,
+.epc-pane-standard.nr .view-content {
+	padding: 18px 14px;
+}
+.epc-pane-standard.nr .pane-content {
+	padding: 0;
+}
+.epc-pane-standard.nr .field-name-field-body,
+.epc-pane-standard.nr .field-type-image {
+	padding-bottom: 1px;
+}
+.epc-pane-standard.nr .field-name-field-link {
+	padding-top: 0;
+}
+.epc-pane-standard.nr .field-type-image {
+	float: left;
+	margin-bottom: 6px;
+}
+
+.epc-pane-standard .pane-content li {
+	margin-bottom: 18px;
+}
+
+.epc-pane-standard .pane-content h3.title {
+	margin-bottom: 5px;
+}
+
+.epc-pane-standard h2.pane-title,
+.epc-pane-standard.nr h2.node-title {
+	text-transform: none;
+	font-weight: normal;
+	margin: 0;
+	padding: 11px;
+	font-size: 20px;
+	line-height: 0.9em;
+}
+
+#home-page .epc-pane-standard h2.pane-title {
+	text-transform: lowercase;
+}
+
+.epc-pane-standard .pane-content h3.title {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.epc-pane-standard .pane-content h3.title a {
+	text-decoration: none;
+	color: #4B4946;
+}
+
+.epc-pane-standard .pane-content h3.title a:hover {
+	text-decoration: underline;
+}
+
+.epc-pane-standard .pane-content .date {
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+
+.epc-pane-standard .pane-content .teaser {
+	margin-bottom: 5px;
+}
+
+.epc-pane-standard .pane-content p,
+.epc-pane-standard .node p {
+	margin-top: 0;
+}
+
+.epc-pane-standard .pane-content .more-link-node {
+	text-align: right;
+}
+
+.epc-pane-standard .pane-content .more-link-node {
+	font-size: 11px;
+	margin-bottom: 5px;
+}
+
+.epc-pane-standard .view-footer .more-link-view,
+.epc-pane-standard .field-name-field-link {
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.epc-pane-standard.nr .node {
+	margin-bottom: 1em;
+}
+
+
+/**
+ * EPC pane standard - yellow
+ */
+
+.epc-pane-standard.yellow h2.pane-title,
+.epc-pane-standard.yellow h2.node-title {
+	background-color: #F4F7A2;
+	color: #4B4946;
+}
+
+.epc-pane-standard.yellow .pane-content,
+.epc-pane-standard.nr.yellow .field-name-field-body,
+.epc-pane-standard.nr.yellow .field-name-field-link,
+.epc-pane-standard.nr.yellow .field-type-image,
+.epc-pane-standard.nr.yellow .view-content {
+	background-color: #FBFCDA;
+}
+.epc-pane-standard.nr.yellow .pane-content {
+	background-color: transparent;
+}
+
+
+/**
+ * EPC pane standard - green
+ */
+
+.epc-pane-standard.green h2.pane-title,
+.epc-pane-standard.green h2.node-title {
+	background-color: #339900;
+	color: #fff;
+}
+
+
+
+.epc-view-list-no-padding .item-list ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+
+
+/**
+ * EPC pane social media right column
+ */
+
+.epc-pane-share #widgets-element-social-media-epc {
+	margin-left: 55px;
+	margin-top: 5px;
+}
+
+.epc-pane-share #widgets-element-socialmedia_facebook-like-button {
+	width: 88px;
+}
+
+.epc-pane-share #widgets-element-socialmedia_twitter-tweet-horizontal-count {
+	width: 90px;
+}
+
+.epc-pane-share #widgets-element-socialmedia_addthis-google-plusone {
+	width: 72px;
+}

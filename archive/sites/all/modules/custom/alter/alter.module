@@ -1,0 +1,134 @@
+<?php
+
+/**
+ * Impelments hook_form_alter
+ */
+function alter_form_alter(&$form, &$form_state, $form_id) {
+	//dsm($form_id);
+	
+
+	// Changes for all node forms
+	if (substr($form_id, -9, 9) == 'node_form') {
+
+		if (isset($form['options']['promote'])) {
+			$form['options']['promote']['#access'] = FALSE;
+		}
+		
+		if (isset($form['options']['sticky'])) {
+			$form['options']['sticky']['#access'] = FALSE;
+		}	
+	}
+
+	// Remove meta tags from nodes that don't need them.
+	$form_ids = array('user_profile_form','home_page_feature_slide_node_form','banner_node_form','milestone_node_form','partner_node_form');
+	if (in_array($form_id, $form_ids)) {
+		if (isset($form['metatags'])) {
+			$form['metatags']['#access'] = FALSE;
+		}
+	}
+}
+
+ 
+/**
+* Implements hook_og_tag_render_alter().
+*
+* @param $node the node whose tag is being rendered.
+* @param $name the name of the OG tag being rendered, e.g. title, image.
+* @param $value the value of the OG tag being rendered.
+*
+* @return the altered value to render for the given tag.
+*/
+function alter_og_tag_render_alter($node, $name, $value) {
+
+  // Fix the URL for the front page.
+  if (drupal_is_front_page()) {
+    if ($name == 'url') {
+      $value = url('<front>', array('absolute' => TRUE));
+    }
+  }
+  return $value;
+}
+
+
+/**
+ * Defining the summary-or-trimmed token for use with Meta Tags module
+ * All thos token stuff can likely be updated/removed/migrated over once the
+ * core bug is fixed. http://drupal.org/node/1300920
+ */
+
+/**
+ * Implements hook_token_info().
+ * Based on example from drupal.org/node/1308488.
+ */
+function alter_token_info() {
+  $info['tokens']['node']['summary-or-trimmed'] = array(
+    'name' => t('Summary or trimmed'),
+    'description' => t('The summary or body of a node trimmed to the given number of characters.'),
+    'dynamic' => TRUE,
+  );
+
+  $info['tokens']['term']['summary-or-trimmed'] = array(
+    'name' => t('Summary or trimmed'),
+    'description' => t('The summary or body of a term trimmed to the given number of characters.'),
+    'dynamic' => TRUE,
+  );
+
+  return $info;
+} 
+
+/**
+ * Implements hook_tokens().
+ * Based on example from drupal.org/node/1308488.
+ */
+function alter_tokens($type, $tokens, array $data = array(), array $options = array()) {
+  $replacements = array();
+  $sanitize = !empty($options['sanitize']);
+	$parse = FALSE;
+	
+	if ($type == 'term' && !empty($data['term'])) {
+		$parse = TRUE;
+		$term = $data['term'];
+
+		// Get content.  Try for abstract first.
+    $body_field_items = field_get_items('taxonomy_term', $term, 'field_teaser');
+		if (!isset($body_field_items[0]['value']) || ($body_field_items[0]['value'] == '')) {
+	    $body_field_items = field_get_items('taxonomy_term', $term, 'field_body');
+	  }
+	}
+
+  else if ($type == 'node' && !empty($data['node'])) {
+		$parse = TRUE;
+    $node = $data['node'];
+
+		// Get content.  Try for abstract first.
+    $body_field_items = field_get_items('node', $node, 'field_teaser');
+		if (!isset($body_field_items[0]['value']) || ($body_field_items[0]['value'] == '')) {
+	    $body_field_items = field_get_items('node', $node, 'field_body');
+	  }
+	}
+		
+	if ($parse) {
+		foreach ($tokens as $name => $original) {
+			$trimmed_or_summary = '';
+			$split_name = explode(':', $name);
+			if ($split_name[0] == 'summary-or-trimmed') {
+				if (isset($body_field_items[0]['summary']) && $body_field_items[0]['summary'] != '') {
+					$trimmed_or_summary = $body_field_items[0]['summary'];
+				}
+				else {
+					$teaser_length = 300;
+					if (isset($split_name[1])) {
+						$teaser_length = (int) $split_name[1];
+					}
+					$text = check_markup($body_field_items[0]["value"], $body_field_items[0]["format"]);
+					// When a html closing tag is immediately followed by an openening tag, put a space in between.
+					$text = preg_replace('/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2', $text);
+					$trimmed_or_summary = truncate_utf8(strip_tags($text), $teaser_length, TRUE, FALSE);
+				}
+				$replacements[$original] = $sanitize ? filter_xss($trimmed_or_summary) : $trimmed_or_summary;
+			}
+		}
+	}
+	
+  return $replacements;
+}

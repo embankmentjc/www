@@ -58,10 +58,10 @@
     }
     </style>
   </head>
-  <body id="body-layout" style="background: #406c8d;">
+  <body id="body-layout" style="background: #354a21;">
     <table width="100%" align="center" cellpadding="0" cellspacing="0" border="0">
       <tr>
-        <td align="center" valign="top" style="padding: 0 15px;background: #406c8d;">
+        <td align="center" valign="top" style="padding: 0 15px;background: #354a21;">
           <table align="center" cellpadding="0" cellspacing="0" border="0">
             <tr>
               <td height="15" style="height: 15px; line-height:15px;"></td>
@@ -76,7 +76,7 @@
                           <td height="30" style="height: 30px; line-height:30px;"></td>
                         </tr>
                         <tr>
-                          <td align="left" valign="top" style="font-family: Arial, sans-serif; font-size: 32px; mso-line-height-rule: exactly; line-height: 32px; font-weight: 400; letter-spacing: 1px;color: #ffffff;">Notification</td>
+                          <td align="left" valign="top" style="font-family: Arial, sans-serif; font-size: 32px; mso-line-height-rule: exactly; line-height: 32px; font-weight: 400; letter-spacing: 1px;color: #ffffff;">Newsletter / Volunteer Request</td>
                         </tr>
                         <tr>
                           <td height="30" style="height: 30px; line-height:30px;"></td>
@@ -91,7 +91,7 @@
                           <td height="30" style="height: 30px; line-height:30px;"></td>
                         </tr> 
                         <tr> 
-                          <td align="left" valign="top" style="font-family: Arial, sans-serif; font-size: 14px; mso-line-height-rule: exactly; line-height: 22px; font-weight: 400;color: #302f35;">Hi, someone left a message for you at <!-- #{SiteName} --></td> 
+                          <td align="left" valign="top" style="font-family: Arial, sans-serif; font-size: 14px; mso-line-height-rule: exactly; line-height: 22px; font-weight: 400;color: #302f35;">The below person would like to recieve the newsletter if email only. If they would like to volunteer their name, phone number, and message will be included below. <!-- #{SiteName} --></td> 
                         </tr>
                         <tr> 
                           <td height="20" style="height: 20px; line-height:20px;"></td>

@@ -1,0 +1,195 @@
+<?php
+
+/**
+ * hook_menu
+ *
+ * These paths are the paths for the webform to refer to for the respective
+ * transaction forms
+ */
+function webform_paypal_menu() {
+  $items = array();
+
+  $items['donation-forward'] = array(
+    'title' => 'Donation Confirmation', 
+    'description' => 'Page is never displayed to the end user, only to forward the uesr to PayPal.', 
+    'page callback' => 'webform_paypal_send_to_paypal_donation', 
+    'access arguments' => array('access content'), 
+    'type' => MENU_CALLBACK,
+  );
+
+  $items['membership-forward'] = array(
+    'title' => 'Membership Confirmation', 
+    'description' => 'Page is never displayed to the end user, only to forward the uesr to PayPal.', 
+    'page callback' => 'webform_paypal_send_to_paypal_membership',
+    'access arguments' => array('access content'), 
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+
+
+/**
+ * Implementation of hook_webform_validation_validators().
+ */
+function webform_paypal_webform_validation_validators() {
+  return array(
+    'unique_membership' => array(
+      'name' => "Validate Unique Membership Level",
+      'component_types' => array(
+        'select',
+      ),
+      'description' => t("Validates that the user has only selected one of the EPC membership levels"),
+    )
+  );
+}
+
+
+/**
+ * Implementation of hook_webform_validation_validate().
+ */
+function webform_paypal_webform_validation_validate($validator_name, $items, $components, $rule) {
+  if ($items) {
+    switch ($validator_name) {
+      case 'unique_membership':
+      
+				$counter = 0;
+				
+				foreach ($items as $item => $value) {
+					if ($value != '') {
+						$counter++;
+					}
+					if ($counter > 1) {
+						$errors[$key] = t('You can only select one membership level');
+					}
+				}
+
+        return $errors;
+        break;
+    }
+  }
+}
+
+
+/**
+ * This function gets the values of the submisssion compiles them into a URL
+ * suitable for PayPal and then sends the user to PayPal
+ */
+function webform_paypal_send_to_paypal_donation() {
+
+	global $base_url;
+
+	include_once(drupal_get_path('module', 'webform') ."/includes/webform.submissions.inc");
+	$sid = intval($_REQUEST['sid']);
+	
+	// Get the NID associated with the SID
+	$query = "SELECT nid FROM {webform_submissions} WHERE sid = :sid";
+	$nid = db_query($query, array(':sid' => $sid))->fetchField();
+	$node = node_load($nid);
+
+	if (function_exists('webform_get_submission')) {
+		$submission = webform_get_submission($nid, $sid);
+	}
+
+	/*
+	// The value of the donation select must be as such:  5-student_senior|Students & Seniors
+	list($amount, $item_number) = explode('-', $submission->data[7]['value'][0]);
+	*/
+	// Straight textfield donation amount
+	$amount = $submission->data[7]['value'][0];
+	
+	$args = array(
+		'business' => 'info@embankment.org',
+		'cmd' => '_xclick',
+		'amount' => $amount,
+		'item_name' => 'Donation',
+		'item_number' => 'donation',
+		'first_name' => $submission->data[1]['value'][0],
+		'last_name' => $submission->data[2]['value'][0],
+		'email' => $submission->data[3]['value'][0],
+		'return' => $base_url . '/node/108',
+	);
+	
+	foreach ($args as $k => $v) {
+		$args_combined[] = $k . '=' . urlencode($v);
+	}
+	
+	$paypal_url = 'https://www.paypal.com/cgi-bin/webscr?' . implode('&', $args_combined);
+	
+	watchdog('webform_paypal', 'Redirect URL: ' . $paypal_url);
+
+	/*
+	echo "<pre>" . print_r($submission, true) . "</pre>";	
+	echo "paypal_url: " . $paypal_url;
+	die('<p>die');
+	*/
+
+	drupal_goto($paypal_url);
+	exit();
+}
+
+
+/**
+ * This function gets the values of the submisssion compiles them into a URL
+ * suitable for PayPal and then sends the user to PayPal
+ */
+function webform_paypal_send_to_paypal_membership() {
+
+	global $base_url;
+
+	include_once(drupal_get_path('module', 'webform') ."/includes/webform.submissions.inc");
+	$sid = intval($_REQUEST['sid']);
+	
+	// Get the NID associated with the SID
+	$query = "SELECT nid FROM {webform_submissions} WHERE sid = :sid";
+	$nid = db_query($query, array(':sid' => $sid))->fetchField();
+	$node = node_load($nid);
+
+	if (function_exists('webform_get_submission')) {
+		$submission = webform_get_submission($nid, $sid);
+	}
+
+	// The value of the donation select must be as such:  5-student_senior|Students & Seniors
+	if ($submission->data[10]['value'][0] != '') {
+		$string = $submission->data[10]['value'][0];
+	} else if ($submission->data[11]['value'][0] != '') {
+		$string = $submission->data[11]['value'][0];
+	} else if ($submission->data[12]['value'][0] != '') {
+		$string = $submission->data[12]['value'][0];
+	}
+	list($amount, $item_number) = explode('-', $string);
+	
+	$args = array(
+		'business' => 'info@embankment.org',
+		'cmd' => '_xclick',
+		'amount' => $amount,
+		'item_name' => 'Membership',
+		'item_number' => $item_number,
+		'first_name' => $submission->data[1]['value'][0],
+		'last_name' => $submission->data[2]['value'][0],
+		'address1' => '',
+		'city' => $submission->data[6]['value'][0],
+		'state' => $submission->data[7]['value'][0],
+		'zip' => $submission->data[8]['value'][0],
+		'email' => $submission->data[3]['value'][0],
+		'return' => $base_url . '/node/109',
+	);
+	
+	foreach ($args as $k => $v) {
+		$args_combined[] = $k . '=' . urlencode($v);
+	}
+	
+	$paypal_url = 'https://www.paypal.com/cgi-bin/webscr?' . implode('&', $args_combined);
+	
+	watchdog('webform_paypal', 'Redirect URL: ' . $paypal_url);
+
+	/*
+	echo "<pre>" . print_r($submission, true) . "</pre>";	
+	echo "paypal_url: " . $paypal_url;
+	die('<p>die');
+	*/
+
+	drupal_goto($paypal_url);
+	exit();
+}

@@ -1,0 +1,299 @@
+.horizontal-form div.form-radios,
+.horizontal-form div.form-checkboxes,
+.horizontal-form div.form-item,
+.horizontal-form div.form-textarea-wrapper,
+.horizontal-form div.form-managed-file,
+.horizontal-form div.description,
+.horizontal-form div.link-field-subrow,
+.horizontal-form label {
+  display: inline-block;
+	vertical-align: top;
+}
+
+.horizontal-form .form-wrapper {
+	margin-top: 12px;
+}
+
+.horizontal-form div.form-type-radio,
+.horizontal-form div.form-type-checkbox,
+.horizontal-form div.form-type-textfield {
+	margin: 0;
+}
+
+.horizontal-form .form-item label,
+.horizontal-form .location .form-item label,
+form.horizontal-form-form .form-item-language label {
+  display: inline-block;
+  font-weight: bold;
+	width: 140px;
+	text-align: right;
+	padding-right: 6px;
+	padding-top: 2px;
+}
+
+.horizontal-form th.field-label label {
+	text-align: left;
+	font-size: 1.2em;
+	width: auto;
+}
+
+.horizontal-form fieldset.form-wrapper label,
+.horizontal-form .location .form-item label {
+	width: 137px;
+}
+
+/* Remove horizontal layout from the radios and checkboxes layouts */
+.horizontal-form .form-radios div.form-item,
+.horizontal-form .form-wrapper div.form-item,
+.horizontal-form .form-checkboxes div.form-item {
+	display: block;
+}
+
+.horizontal-form .form-radios,
+.horizontal-form .form-checkboxes {
+	width: 500px;
+}
+
+.section-control-panel .horizontal-form input.form-submit,
+.horizontal-form input.form-submit {
+	margin-left: 158px;
+}
+
+.horizontal-form .captcha img {
+	margin-top: 20px;
+	margin-left: 150px;
+}
+
+.horizontal-form .field-type-list-boolean {
+	margin-left: 150px;
+}
+
+.horizontal-form .description {
+	width: 300px;
+	font-size: 11px;
+	line-height: 1.1em;
+	margin-left: 8px;
+}
+
+.horizontal-form .media-widget .description {
+	width: 700px;
+	margin-left: 0px;
+}
+
+.horizontal-form .media-widget .preview.launcher {
+	margin-left: 150px;
+	display: inline-block;
+	min-width: 200px;
+}
+
+.horizontal-form .media-widget a.button {
+	display: inline-block;
+	margin-right: 10px;
+	background: #efefef;
+	padding: 4px 8px;
+	border-radius: 5px; 
+	-moz-border-radius: 5px; 
+	-webkit-border-radius: 5px; 	
+}
+
+.horizontal-form .field-type-entityreference-form .description {
+	width: 100%;
+	margin: 3px 0 0 0;
+}
+
+.horizontal-form .counter {
+	font-size: 11px;
+}
+
+.horizontal-form .grippie {
+	display: none;
+}
+
+/* .horizontal-form .form-item {
+	margin: 4px 0px;
+} */
+
+
+.horizontal-form .form-text,
+.horizontal-form .form-select,
+.horizontal-form .location .form-item input,
+.horizontal-form .form-textarea {
+	width: 485px;
+	border: 1px solid #999;
+	padding: 4px;
+}
+.horizontal-form tr.draggable .delta-order .form-select {
+	width: auto;
+}
+.tabledrag-processed {
+	width: 100%;
+}
+.horizontal-form tr.draggable .description {
+	width: 200px;
+}
+
+.horizontal-form .field-widget-link-field .description {
+	width: 100%;
+	margin-top: 
+}
+
+.horizontal-form .form-textarea {
+	width: 410px;
+}
+
+.horizontal-form select.filter-list {
+	width: auto;
+}
+
+.horizontal-form fieldset {
+	border: 1px #ccc solid;
+}
+
+.horizontal-form fieldset legend {
+	font-weight: bold;
+}
+
+.horizontal-form fieldset.filter-wrapper {
+	width: 500px;
+	margin-left: 150px;
+	border-top: none;
+	font-size: 11px;
+	line-height: 1.1em;
+	color: #666;
+}
+
+.filter-wrapper.form-wrapper {
+	margin-top: 0;
+}
+
+.horizontal-form .filter-help a {
+	width: 160px;
+	padding: 0;
+	background: none;
+}
+
+.horizontal-form .image-widget {
+	width: 500px;
+}
+
+.horizontal-form .image-widget .form-item {
+	margin: 1em 0;
+}
+
+.horizontal-form .image-widget-data {
+	width: 385px;	
+	display: inline-block;
+}
+
+.horizontal-form .image-widget-data label {
+	width: auto;
+	text-align: right;
+	width: 100px;
+}
+
+.horizontal-form .image-widget-data .file a {
+	width: 295px;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.horizontal-form .image-widget-data input.form-submit {
+	margin-left: 0px;
+}
+
+.horizontal-form .image-widget-data input[id*='upload-button'].form-submit {
+	margin-left: 4px;
+	padding: 6px 8px;
+}
+
+.horizontal-form .image-widget-data input[id*='-remove-button'] {
+	margin-left: 4px;
+	padding: 6px 8px;
+}
+
+.horizontal-form .file-size {
+	display: none;
+}
+
+.horizontal-form .image-widget-data input.form-text {
+	width: 260px;
+}
+
+.horizontal-form .description {
+	white-space: normal;
+}
+
+.horizontal-form .image-widget-data .description {
+	margin: 3px 0 0 110px;
+	width: 260px;
+}
+
+.horizontal-form div.link-field-subrow div.link-field-column {
+	float: none;
+	margin-bottom: 6px;
+	width: 100%;
+}
+
+.horizontal-form div.link-field-subrow div.link-field-column .form-item {
+}
+
+.horizontal-form div.link-field-subrow div.link-field-column .form-item input.form-text {
+	width: 306px;
+}
+
+.horizontal-form div.link-field-subrow label {
+	width: 80px;
+}
+
+.horizontal-form-special-container {
+	margin-left: 140px;
+}
+
+.horizontal-form-special-container fieldset {
+	border: 0;
+}
+
+.horizontal-form-special-container .form-item {
+	margin: 1em 0;
+}
+
+.horizontal-form-special-container .date-float .form-item {
+	margin: 0;
+}
+
+.horizontal-form-special-container .container-inline-date .date-padding {
+	padding: 0;
+	margin-left: 30px;
+}
+
+.horizontal-form-special-container fieldset {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+.horizontal-form-special-container legend {
+	margin-left: -140px;
+	width: 130px;
+	font-weight: bold;
+	position: relative;
+}
+
+.horizontal-form-special-container legend .fieldset-legend {
+	float: right;
+}
+
+/* Adjustments for field collections */
+.horizontal-form .field-widget-field-collection-embed .form-managed-file .description {
+	margin: 3px 0 0 16px;
+}
+
+.horizontal-form .field-type-field-collection .form-text,
+.horizontal-form .field-type-field-collection .form-select,
+.horizontal-form .field-type-field-collection .location .form-item input,
+.horizontal-form .field-type-field-collection .form-textarea {
+	width: 340px;
+}

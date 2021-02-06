@@ -1,0 +1,4 @@
+name = Horizontal Forms (horizontal_forms)
+description = Displays forms with the field label to the left of the field and the description to the right of the field. The form ID of the form needing this layout needs to be added via the configuration form.
+package = Custom Modules
+core = 7.x

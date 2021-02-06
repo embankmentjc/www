@@ -1,0 +1,108 @@
+<?php
+function wysiwyg_extras_wysiwyg_plugin($editor, $version) {
+  switch ($editor) {
+    case 'ckeditor':
+      return array(
+        'MediaEmbed' => array(
+        	'url' => 'http://www.fluidbyte.net/index.php?view=embed-youtube-vimeo-etc-into-ckeditor',
+          'path' => 'sites/all/libraries/ckeditor_mediaembed',
+          'filename' => 'plugin.js', 
+          'buttons' => array(
+            'MediaEmbed' => t('Embed Media'),
+          ),
+          'load' => TRUE,
+        ),
+      );
+     break;
+  }
+}
+
+
+function wysiwyg_extras_wysiwyg_editor_settings_alter(&$settings, $context) {
+  if ($context['editor']['name'] != 'ckeditor' || !isset($settings['toolbar'][0])) {
+    return;
+  }
+
+	// The $settings variable contains all the config options ckeditor uses. 
+	// The array keys correspond directly with any setting that can be applied 
+	// to CKEditor - as outlined in the CKEditor docs: 
+	// http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html 
+	// Another way to override configuration is to use your own configuration javascript
+	// file. In this case, we're going to add our own configuration file that will
+	// Hold our stylesSet customizations... 
+	$settings['customConfig'] = base_path() . drupal_get_path('module', 'wysiwyg_extras') . '/ckeditor_custom_config.js';
+
+	// We are also going to specify a custom body id and class
+	$settings['bodyId'] = 'ckeditor_body';
+
+  // Set language
+  global $language;
+  $settings['language'] = $language->language;
+
+  $tools = array_flip($settings['toolbar'][0]);
+  $tools2 = $tools;
+
+  $tools['-'] = 42;
+  $map = _wysiwyg_ckeditor_nice_plugin_map();
+  $items = 0;
+
+  foreach ($map as $key => $toolgroup) {
+    if ($toolgroup == '/') {
+      // When there have been no items in this row
+      // remove the seperator
+      if ($items == 0) {
+        unset($map[$key]);
+      }
+
+      $items = 0;
+      continue;
+    }
+
+    if (!is_array($toolgroup)) {
+      continue;
+    }
+
+    foreach ($toolgroup as $k => $tool) {
+      if (!isset($tools[$tool])) {
+        unset($map[$key][$k]);
+      }
+      else {
+        unset($tools2[$tool]);
+        $items++;
+      }
+    }
+
+    if (count($map[$key]) == 0) {
+      unset($map[$key]);
+    }
+    else {
+      $map[$key] = array_values($map[$key]);
+    }
+  }
+  // Renumber
+  $map[] = array_values(array_flip($tools2));
+  $map = array_values($map);
+
+	// Set toolbar
+  $settings['toolbar'] = $map;
+}
+
+function _wysiwyg_ckeditor_nice_plugin_map() {
+  $map = array(
+    array('Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Print', 'SpellChecker', 'Scayt'),
+    array('Undo', 'Redo', '-', 'Find', 'Replace', '-', 'SelectAll', 'RemoveFormat'),
+    array('Form', 'Checkbox', 'Radio', 'TextField', 'Textarea', 'Select', 'Button', 'ImageButton', 'HiddenField'),
+    '/',
+    array('Bold', 'Italic', 'Underline', 'Strike', '-', 'Subscript', 'Superscript'),
+    array('NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', 'Blockquote', 'CreateDiv'),
+    array('JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'),
+    array('Link', 'Unlink', 'Anchor'),
+    array('Image', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'),
+    '/',
+    array('Styles', 'Format', 'Font', 'FontSize'),
+    array('TextColor', 'BGColor'),
+    array('Maximize', 'ShowBlocks', '-', 'About'),
+  );
+
+  return $map;
+}

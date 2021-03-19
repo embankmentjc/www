@@ -20,13 +20,57 @@ else:
     path = None
 
 
-files_to_update = lines('git','diff','--name-only',f'{branch}..{ref}')
-if files_to_update:
-    print(f'Checking contents of {len(files_to_update)} files from ref {branch} vs. remote {remote}')
+def parse_name_status_line(ln):
+    m = fullmatch('(?P<status>[ACDMRBX])\s+(?P<name>.*)', ln)
+    if not m:
+        raise RuntimeError(f'Unrecognized --name-status output line: {ln}')
+    return m['status'], m['name']
 
+
+SUPPORTED_STATUSES = 'AMD'
+def changed_paths(start, end):
+    status_names = [ parse_name_status_line(ln) for ln in  lines('git','diff','--name-status',f'{start}..{end}') ]
+    status_map = {}
+    for status, name in status_names:
+        if status not in SUPPORTED_STATUSES:
+            raise RuntimeError(f'Found unsupported diff status {status} for file {name}')
+        if status not in status_map:
+            status_map[status] = []
+        names = status_map[status]
+        names.append(name)
+    return status_map
+
+
+changed_paths_map = changed_paths(branch, ref)
+added_files = changed_paths_map.get('A', [])
+deleted_files = changed_paths_map.get('D', [])
+changed_files = changed_paths_map.get('M', [])
 
 mismatched_files = []
-for file in files_to_update:
+
+remote_files = changed_files + deleted_files
+if remote_files:
+    msg = 'Checking contents of '
+    if changed_files:
+        msg += f'{len(changed_files)} changed files'
+        if deleted_files:
+            msg += f' and {len(deleted_files)} deleted files' 
+    else:
+        msg += f'{len(deleted_files)} deleted files' 
+    msg += f' from ref {branch} vs. remote {remote}'
+    print(msg)
+    if changed_files:
+        print('Changed:')
+        print('\t%s' % '\n\t'.join(changed_files))
+    if deleted_files:
+        print('Deleted:')
+        print('\t%s' % '\n\t'.join(changed_files))
+
+
+class Continue(Exception): pass
+
+
+def verify_file(file, expect_missing=False):
     if path:
         rpath = f'{path}/{file}'
     else:
@@ -34,17 +78,29 @@ for file in files_to_update:
     
     if dry_run == 2:
         print(f'Would check file: {file}')
-        continue
+        raise Continue
+
+    def err(*lines):
+        mismatched_files.append(file)
+        [ stderr.write('%s\n' % ln for ln in lines) ]
+        raise Continue
 
     print(f'Checking file: {file}')
     # Verify that this file's contents in Git (at `branch`) match what's on the FTP `remote` (before overwriting anything on the FTP `remote`, we want to know the current contents are what we expect!)
     with TemporaryDirectory() as dir:
-        # Write out the version of the file in Git from `branch` to a temp location
-        local_dir = f'{dir}/local'
-        local_path = f'{local_dir}/{file}'
-        mkpar(local_path)
-        with cd(local_dir):
-            with open(file, 'wb') as f:
+        if expect_missing:
+            try:
+                run('git','show',f'{branch}:{file}', stderr=DEVNULL)
+                err(f'File {file} appears to exist in ref {branch}')
+            except CalledProcessError as e:
+                if e.returncode != 128:
+                    err(f'git show {branch}:{file} exited with unexpected code {e.returncode} (expected 128)')
+        else:
+            # Write out the version of the file in Git from `branch` to a temp location
+            local_dir = f'{dir}/local'
+            local_path = f'{local_dir}/{file}'
+            mkpar(local_path)
+            with open(local_path, 'wb') as f:
                 run('git','show',f'{branch}:{file}', stdout=f)
 
         # Pull down the version from the FTP `remote`
@@ -56,11 +112,32 @@ for file in files_to_update:
             print(f'FTP: {cmd}')
             subprocess.run(['sftp',remote], stdout=PIPE, stderr=PIPE, input=cmd.encode(), check=True)
         
-        diff_lines = lines('diff', local_path, remote_path, err_ok=True)
-        if diff_lines:
-            stderr.write('%s\n' % 'Found different contents:')
-            [ stderr.write('%s\n' % line) for line in diff_lines ]
-            mismatched_files.append(file)
+        if expect_missing:
+            if exists(remote_path):
+                err(f'git show {branch}:{file} exited with unexpected code {e.returncode} (expected 128)')
+        else:
+            if not exists(remote_path):
+                err(f'File {file} not found on FTP remote {remote}')
+            diff_lines = lines('diff', local_path, remote_path, err_ok=True)
+            if diff_lines:
+                err(
+                    'Found different contents:',
+                    *diff_lines,
+                )
+
+
+for file in remote_files:
+    try:
+        verify_file(file)
+    except Continue:
+        pass
+
+
+for file in added_files:
+    try:
+        verify_file(file, expect_missing=True)
+    except Continue:
+        pass
 
 
 if mismatched_files:
@@ -81,13 +158,12 @@ def md5sum(file, BUF_SIZE=2**16):
     return md5.hexdigest()
 
 
-for file in files_to_update:
+for file in (changed_files + added_files):
     if path:
         dst = f'{path}/{file}'
     else:
         dst = file
     
-    print('Uploading file: {file}')
     with TemporaryDirectory() as dir:
         src = f'{dir}/{file}'
         mkpar(src)
@@ -99,4 +175,19 @@ for file in files_to_update:
             print(f'Would put file: {src} → {dst} (SHA256: {md5sum(src)})')
             continue
 
+        print(f'Uploading file: {file} to {dst}')
         subprocess.run(['sftp',remote], stdout=PIPE, stderr=PIPE, input=cmd.encode(), check=True)
+
+
+for file in deleted_files:
+    if path:
+        dst = f'{path}/{file}'
+    else:
+        dst = file
+    
+    cmd = f'rm {dst}'
+    if dry_run == 1:
+        print(f'Would rm file: {dst}')
+        continue
+
+    subprocess.run(['sftp',remote], stdout=PIPE, stderr=PIPE, input=cmd.encode(), check=True)

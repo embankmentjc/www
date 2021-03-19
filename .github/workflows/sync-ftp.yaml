@@ -38,22 +38,6 @@ jobs:
         SSH_PRIVKEY: ${{ secrets.SSH_PRIVKEY }}
         SSH_HOST: ${{ secrets.SSH_HOST }} 
       run: |
-        mkdir -p "$HOME/.ssh"
-        echo "$SSH_PRIVKEY" > "$HOME/.ssh/${FTP_HOST}"
-        chmod 600 "$HOME/.ssh/${FTP_HOST}"
-        echo "$SSH_PUBKEY" > "$HOME/.ssh/${FTP_HOST}.pub"
-        chmod 644 "$HOME/.ssh/${FTP_HOST}.pub"
-        cat >>"$HOME/.ssh/config" <<EOF
-Host $SSH_HOST
-  HostName $FTP_HOST
-  User $FTP_USER
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh/$FTP_HOST
-EOF
-        cat "$HOME/.ssh/config"
-    - name:
-      env:
-        SSH_HOST: ${{ secrets.SSH_HOST }} 
-      run: |
+        ./set_ssh_config.sh
         ./sync-ftp.py -n -b origin/ftp "$SSH_HOST:public_html"
         git push origin HEAD:ftp

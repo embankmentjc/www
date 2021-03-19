@@ -13,7 +13,7 @@ jobs:
         ref: ${{ github.head_ref }}
     - name: Fetch FTP branch
       run: |
-        git fetch origin ftp
+        git fetch --unshallow origin
         git log -n1 --format=%h origin/ftp
         git log -n1 --format=%h HEAD
         git log -n1 --format=%h $GITHUB_REF
@@ -46,4 +46,6 @@ jobs:
         cat known_hosts >> ~/.ssh/known_hosts
         echo version | sftp "${SSH_HOST}"
         ./sync-ftp.py -n -b origin/ftp "$SSH_HOST:public_html"
+    - name: Push to FTP branch
+      run: |
         git push origin HEAD:ftp

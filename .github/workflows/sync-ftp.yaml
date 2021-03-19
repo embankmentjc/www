@@ -14,6 +14,9 @@ jobs:
     - name: Fetch FTP branch
       run: |
         git fetch origin ftp
+        git log -n1 --format=%h origin/ftp
+        git log -n1 --format=%h HEAD
+        git log -n1 --format=%h $GITHUB_REF
     - name: Set up Python
       uses: actions/setup-python@v2
       with:

@@ -34,7 +34,7 @@ jobs:
     - name: Verify SFTP install
       run: |
         which sftp
-    - name: Setup SSH Config
+    - name: Setup SSH configs, sync to FTP remote
       env:
         FTP_HOST: ${{ secrets.FTP_HOST }}
         FTP_USER: ${{ secrets.FTP_USER }}
@@ -45,7 +45,7 @@ jobs:
         ./set_ssh_config.sh
         cat known_hosts >> ~/.ssh/known_hosts
         echo version | sftp "${SSH_HOST}"
-        ./sync-ftp.py -n -b origin/ftp "$SSH_HOST:public_html"
+        ./sync-ftp.py -b origin/ftp "$SSH_HOST:public_html"
     - name: Push to FTP branch
       run: |
         git push origin HEAD:ftp

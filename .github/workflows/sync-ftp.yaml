@@ -40,5 +40,6 @@ jobs:
         SSH_HOST: ${{ secrets.SSH_HOST }} 
       run: |
         ./set_ssh_config.sh
+        echo version | sftp "${SSH_HOST}"
         ./sync-ftp.py -n -b origin/ftp "$SSH_HOST:public_html"
         git push origin HEAD:ftp

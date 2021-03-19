@@ -9,7 +9,8 @@ jobs:
     steps:
     - name: Check out repo
       uses: actions/checkout@v2
-      ref: ${{ github.head_ref }}
+      with:
+        ref: ${{ github.head_ref }}
     - name: Fetch FTP branch
       run: |
         git fetch --unshallow origin ftp

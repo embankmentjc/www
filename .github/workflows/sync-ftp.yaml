@@ -2,13 +2,17 @@ name: CI
 on:
   push:
     branches:
-      - ftp
+      - dev
 jobs:
   sync_ftp:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repo
       uses: actions/checkout@v2
+      ref: ${{ github.head_ref }}
+    - name: Fetch FTP branch
+      run: |
+        git fetch --unshallow origin ftp
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -50,4 +54,6 @@ EOF
     - name:
       env:
         SSH_HOST: ${{ secrets.SSH_HOST }} 
-      run: ./sync-ftp.py -n "$SSH_HOST:public_html"
+      run: |
+        ./sync-ftp.py -n -b origin/ftp "$SSH_HOST:public_html"
+        git push origin HEAD:ftp

@@ -1,0 +1,50 @@
+name: CI
+on:
+  push:
+    branches:
+      - ftp
+jobs:
+  sync_ftp:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out repo
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - uses: actions/cache@v2
+      name: Configure pip caching
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - name: Install Python dependencies
+      run: |
+        pip install -r requirements.txt
+    - name: Setup SSH Config
+      env:
+        FTP_HOST: ${{ secrets.FTP_HOST }} 
+        FTP_USER: ${{ secrets.FTP_USER }}
+        SSH_PUBKEY: ${{ secrets.SSH_PUBKEY }}
+        SSH_PRIVKEY: ${{ secrets.SSH_PRIVKEY }}
+        SSH_HOST: ${{ secrets.SSH_HOST }} 
+      run: |
+        mkdir -p "$HOME/.ssh"
+        echo "$SSH_PRIVKEY" > "$HOME/.ssh/${FTP_HOST}"
+        chmod 600 "$HOME/.ssh/${FTP_HOST}"
+        echo "$SSH_PUBKEY" > "$HOME/.ssh/${FTP_HOST}.pub"
+        chmod 644 "$HOME/.ssh/${FTP_HOST}.pub"
+        cat >>"$HOME/.ssh/config" <<EOF
+Host $SSH_HOST
+  HostName $FTP_HOST
+  User $FTP_USER
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/$FTP_HOST
+EOF
+        cat "$HOME/.ssh/config"
+    - name:
+      env:
+        SSH_HOST: ${{ secrets.SSH_HOST }} 
+      run: ./sync-ftp.py -n "$SSH_HOST:public_html"

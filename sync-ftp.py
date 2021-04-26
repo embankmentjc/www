@@ -171,7 +171,7 @@ for file in (changed_files + added_files):
             run('git','show',f'{ref}:{file}', stdout=f)
 
         cmd = f'put {src} {dst}'
-        if dry_run == 1:
+        if dry_run >= 1:
             print(f'Would put file: {src} → {dst} (SHA256: {md5sum(src)})')
             continue
 
@@ -186,7 +186,7 @@ for file in deleted_files:
         dst = file
     
     cmd = f'rm {dst}'
-    if dry_run == 1:
+    if dry_run >= 1:
         print(f'Would rm file: {dst}')
         continue
 

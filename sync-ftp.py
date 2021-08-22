@@ -1,8 +1,16 @@
 #!/usr/bin/env python
 
-from utz import *
-
 from argparse import ArgumentParser
+from os.path import basename, exists
+from re import fullmatch
+import subprocess
+from subprocess import CalledProcessError, DEVNULL, PIPE
+from sys import stderr
+from tempfile import TemporaryDirectory
+
+from utz import cd, lines, mkpar, run
+
+
 parser = ArgumentParser()
 parser.add_argument('-b','--branch',default='ftp',help="Git branch that is expected to track the FTP remote's state")
 parser.add_argument('-n','--dry-run',action='count',default=0,help='Set once for verify files only (downloads files but does not upload anything to remote server); twice to simply print which files would be verified/synced')
@@ -29,7 +37,7 @@ def parse_name_status_line(ln):
 
 SUPPORTED_STATUSES = 'AMD'
 def changed_paths(start, end):
-    status_names = [ parse_name_status_line(ln) for ln in  lines('git','diff','--name-status',f'{start}..{end}') ]
+    status_names = [ parse_name_status_line(ln) for ln in lines('git','diff','--name-status',f'{start}..{end}') ]
     status_map = {}
     for status, name in status_names:
         if status not in SUPPORTED_STATUSES:
@@ -82,7 +90,7 @@ def verify_file(file, expect_missing=False):
 
     def err(*lines):
         mismatched_files.append(file)
-        [ stderr.write('%s\n' % ln for ln in lines) ]
+        [ stderr.write('%s\n' % ln) for ln in lines ]
         raise Continue
 
     print(f'Checking file: {file}')
@@ -141,7 +149,7 @@ for file in added_files:
 
 
 if mismatched_files:
-    raise RuntimeError(f"Remote `{remote}` contents of {len(mismatched_files)} didn't match {branch}'s:\n\t%s" % "\n\t".join(mismatched_files))
+    raise RuntimeError(f"Remote `{remote}`: contents of {len(mismatched_files)} files didn't match {branch}'s:\n\t%s\n" % "\n\t".join(mismatched_files))
 
 
 def md5sum(file, BUF_SIZE=2**16):

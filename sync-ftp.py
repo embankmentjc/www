@@ -183,7 +183,7 @@ for file in (changed_files + added_files):
             print(f'Would put file: {src} → {dst} (SHA256: {md5sum(src)})')
             continue
 
-        print(f'Uploading file: {file} to {dst}')
+        print(f'Uploading file {file} to {dst}: {cmd}')
         subprocess.run(['sftp',remote], stdout=PIPE, stderr=PIPE, input=cmd.encode(), check=True)
 
 

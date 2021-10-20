@@ -1,4 +1,4 @@
-var modalKey = '2021_annual_mtng_modal_suppressed'
+var modalKey = '2021_annual_mtng_video_modal_suppressed'
 function closeModal(){
     console.log("Closing modal")
     var checked = $('#annualModalCheckbox2021').is(':checked')

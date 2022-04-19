@@ -10,12 +10,11 @@ from tempfile import TemporaryDirectory
 
 from utz import cd, lines, mkpar, run
 
-
 parser = ArgumentParser()
-parser.add_argument('-b','--branch',default='ftp',help="Git branch that is expected to track the FTP remote's state")
-parser.add_argument('-n','--dry-run',action='count',default=0,help='Set once for verify files only (downloads files but does not upload anything to remote server); twice to simply print which files would be verified/synced')
-parser.add_argument('-r','--ref',default='HEAD',help='Git ref to mirror to FTP remote')
-parser.add_argument('remote',help='FTP/SSH coordinates to SFTP to')
+parser.add_argument('-b', '--branch', default='ftp', help="Git branch that is expected to track the FTP remote's state")
+parser.add_argument('-n', '--dry-run', action='count', default=0, help='Set once for verify files only (downloads files but does not upload anything to remote server); twice to simply print which files would be verified/synced')
+parser.add_argument('-r', '--ref', default='HEAD', help='Git ref to mirror to FTP remote')
+parser.add_argument('remote', help='FTP/SSH coordinates to SFTP to')
 args = parser.parse_args()
 branch = args.branch
 dry_run = args.dry_run
@@ -36,8 +35,10 @@ def parse_name_status_line(ln):
 
 
 SUPPORTED_STATUSES = 'AMD'
+
+
 def changed_paths(start, end):
-    status_names = [ parse_name_status_line(ln) for ln in lines('git','diff','--name-status',f'{start}..{end}') ]
+    status_names = [parse_name_status_line(ln) for ln in lines('git', 'diff', '--name-status', f'{start}..{end}')]
     status_map = {}
     for status, name in status_names:
         if status not in SUPPORTED_STATUSES:
@@ -62,9 +63,9 @@ if remote_files:
     if changed_files:
         msg += f'{len(changed_files)} changed files'
         if deleted_files:
-            msg += f' and {len(deleted_files)} deleted files' 
+            msg += f' and {len(deleted_files)} deleted files'
     else:
-        msg += f'{len(deleted_files)} deleted files' 
+        msg += f'{len(deleted_files)} deleted files'
     msg += f' from ref {branch} vs. remote {remote}'
     print(msg)
     if changed_files:
@@ -83,14 +84,14 @@ def verify_file(file, expect_missing=False):
         rpath = f'{path}/{file}'
     else:
         rpath = file
-    
+
     if dry_run == 2:
         print(f'Would check file: {file}')
         raise Continue
 
     def err(*lines):
         mismatched_files.append(file)
-        [ stderr.write('%s\n' % ln) for ln in lines ]
+        [stderr.write('%s\n' % ln) for ln in lines]
         raise Continue
 
     print(f'Checking file: {file}')
@@ -98,7 +99,7 @@ def verify_file(file, expect_missing=False):
     with TemporaryDirectory() as dir:
         if expect_missing:
             try:
-                run('git','show',f'{branch}:{file}', stderr=DEVNULL)
+                run('git', 'show', f'{branch}:{file}', stderr=DEVNULL)
                 err(f'File {file} appears to exist in ref {branch}')
             except CalledProcessError as e:
                 if e.returncode != 128:
@@ -109,7 +110,7 @@ def verify_file(file, expect_missing=False):
             local_path = f'{local_dir}/{file}'
             mkpar(local_path)
             with open(local_path, 'wb') as f:
-                run('git','show',f'{branch}:{file}', stdout=f)
+                run('git', 'show', f'{branch}:{file}', stdout=f)
 
         # Pull down the version from the FTP `remote`
         remote_dir = f'{dir}/remote'
@@ -118,8 +119,8 @@ def verify_file(file, expect_missing=False):
         with cd(remote_dir):
             cmd = f'get {rpath}'
             print(f'FTP: {cmd}')
-            subprocess.run(['sftp',remote], stdout=PIPE, stderr=PIPE, input=cmd.encode(), check=True)
-        
+            subprocess.run(['sftp', remote], stdout=PIPE, stderr=PIPE, input=cmd.encode(), check=True)
+
         if expect_missing:
             if exists(remote_path):
                 err(f'git show {branch}:{file} exited with unexpected code {e.returncode} (expected 128)')
@@ -140,19 +141,19 @@ for file in remote_files:
     except Continue:
         pass
 
-
 for file in added_files:
     try:
         verify_file(file, expect_missing=True)
     except Continue:
         pass
 
-
 if mismatched_files:
-    raise RuntimeError(f"Remote `{remote}`: contents of {len(mismatched_files)} files didn't match {branch}'s:\n\t%s\n" % "\n\t".join(mismatched_files))
+    raise RuntimeError(
+        f"Remote `{remote}`: contents of {len(mismatched_files)} files didn't match {branch}'s:\n\t%s\n" % "\n\t".join(
+            mismatched_files))
 
 
-def md5sum(file, BUF_SIZE=2**16):
+def md5sum(file, BUF_SIZE=2 ** 16):
     import hashlib
 
     md5 = hashlib.md5()
@@ -171,12 +172,12 @@ for file in (changed_files + added_files):
         dst = f'{path}/{file}'
     else:
         dst = file
-    
+
     with TemporaryDirectory() as dir:
         src = f'{dir}/{file}'
         mkpar(src)
         with open(src, 'wb') as f:
-            run('git','show',f'{ref}:{file}', stdout=f)
+            run('git', 'show', f'{ref}:{file}', stdout=f)
 
         cmd = f'put {src} {dst}'
         if dry_run >= 1:
@@ -184,18 +185,17 @@ for file in (changed_files + added_files):
             continue
 
         print(f'Uploading file {file} to {dst}: {cmd}')
-        subprocess.run(['sftp',remote], stdout=PIPE, stderr=PIPE, input=cmd.encode(), check=True)
-
+        subprocess.run(['sftp', remote], stdout=PIPE, stderr=PIPE, input=cmd.encode(), check=True)
 
 for file in deleted_files:
     if path:
         dst = f'{path}/{file}'
     else:
         dst = file
-    
+
     cmd = f'rm {dst}'
     if dry_run >= 1:
         print(f'Would rm file: {dst}')
         continue
 
-    subprocess.run(['sftp',remote], stdout=PIPE, stderr=PIPE, input=cmd.encode(), check=True)
+    subprocess.run(['sftp', remote], stdout=PIPE, stderr=PIPE, input=cmd.encode(), check=True)

@@ -2,6 +2,25 @@
 
 set -ex
 
+if [ -z "$SSH_PRIVKEY" ]; then
+    echo "\$SSH_PRIVKEY env var required" >&2
+    exit 11
+fi
+if [ -z "$SSH_PUBKEY" ]; then
+    echo "\$SSH_PUBKEY env var required" >&2
+    exit 12
+fi
+if [ -z "$FTP_HOST" ]; then
+    echo "\$FTP_HOST env var required" >&2
+    exit 13
+fi
+if [ -z "$FTP_USER" ]; then
+    echo "\$FTP_USER env var required" >&2
+    exit 14
+fi
+
+SSH_HOST="${SSH_HOST:-$FTP_HOST}"
+
 mkdir -p "$HOME/.ssh"
 
 echo "$SSH_PRIVKEY" > "$HOME/.ssh/${FTP_HOST}"

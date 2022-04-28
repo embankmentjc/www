@@ -56,12 +56,13 @@
           <p>
             <a href="https://www.greenway.org/new-york-to-philadelphia-greenway-ride/volunteer"><strong>More info here</strong></a>, or <a href="https://docs.google.com/forms/d/e/1FAIpQLScVz_B-rFy1TuRtDO3KpFP4ldUgIm2035S63ji9ov0F2ZA1MA/viewform"><strong>sign up here.</strong></a>
           </p>
-          <p>
-            <label>
-              <input id="ecg-nyc-phl-2022-volunteer-checkbox" type="checkbox"/>
-              <span>Don't show this message again</span>
-            </label>
-          </p>
+          <div class="group group-xl offset-top-30">
+            <a class="btn btn-default" href="#" data-dismiss="modal" aria-label="Close"><span class="btn-text">Dismiss</span></a>
+          </div>
+          <label onclick="setModalSuppressCookie()">
+            <input id="ecg-nyc-phl-2022-volunteer-checkbox" type="checkbox" />
+            <span>Don't show this message again</span>
+          </label>
         </div>
       </div>
     </div>
@@ -173,7 +174,8 @@
               <div>
                 <h2 class="font-default font-italic text-regular">Get up to date on the Harsimus Branch and Embankment news and events - then help us write the next chapter! </h2>
               </div>
-              <div class="group group-xl offset-top-30"><a class="btn btn-primary btn-lg btn-anis-effect" href="#news-section-recent">Recent Headline</a>
+              <div class="group group-xl offset-top-30">
+                <a class="btn btn-primary btn-lg btn-anis-effect" href="#news-section-recent">Recent Headline</a>
                 <a class="btn btn-default btn-lg btn-anis-effect" data-caption-animate="fadeInUp" data-caption-delay="1200" href="involved.html#involved-section-member"><span class="btn-text">Become a Member!</span></a>
               </div>
             </div>

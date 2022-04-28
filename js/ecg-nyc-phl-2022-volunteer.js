@@ -10,6 +10,7 @@ function setModalSuppressCookie() {
     if (checked) {
         $.cookie(modalKey, true, {expires: 2147483647});
     } else {
+        $.cookie(modalKey, null, {expires: 2147483647});
         $.removeCookie(modalKey);
     }
     console.log("set cookie:", $.cookie(modalKey))
@@ -17,7 +18,7 @@ function setModalSuppressCookie() {
 
 $(document).ready(function(){
     $(modalSelector).on('blur', setModalSuppressCookie);
-    if ($.cookie(modalKey) == null) {
+    if (!$.cookie(modalKey) || $.cookie(modalKey) == "null") {
         console.log("Showing modal")
         $(modalSelector).modal('show');
     }

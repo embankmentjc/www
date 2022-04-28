@@ -17,8 +17,13 @@ function setModalSuppressCookie() {
 }
 
 $(document).ready(function(){
-    $(modalSelector).on('blur', setModalSuppressCookie);
-    if (!$.cookie(modalKey) || $.cookie(modalKey) == "null") {
+    $(checkboxSelector).on('click', function (e) {
+        var checked = $(checkboxSelector).is(':checked')
+        console.log("label click; checked:", checked);
+        setModalSuppressCookie();
+    })
+    var modalSuppressedCookie = $.cookie(modalKey)
+    if (!modalSuppressedCookie || modalSuppressedCookie == "null") {
         console.log("Showing modal")
         $(modalSelector).modal('show');
     }

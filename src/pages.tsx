@@ -191,18 +191,15 @@ function Footer() {
                     <div className="col-sm-7 text-sm-left col-lg-4 col-xl-3">
                         <a href="news#news-section-recent"><h6 className="text-uppercase text-spacing-60">Latest news</h6></a>
 
-                        <PostWidget date="2021-10-19" href="https://youtu.be/57REN4mHF2o">
-                            Check out the latest Embankment Coalition video, including drone flyovers
+                        <PostWidget date="2022-05-18" href="https://us02web.zoom.us/webinar/register/WN_W2Kt62F0Qoe9CIZ8M8YWmA">
+                            Register for a community meeting on the Embankment Redevelopment Plan, hosted by Jersey City Planning
+                        </PostWidget>
+                        <PostWidget date="2022-05-11" href="https://youtu.be/qxAHqzLqnoo">
+                            Check out the new, updated Embankment Coalition video, including drone flyovers
                         </PostWidget>
                         <PostWidget date="2021-05-13">
                             Climate Change 2021: Challenges and Solutions (recordings: <a href="https://www.youtube.com/watch?v=TK754w-IPfU" target="_blank">part 1</a>,
                             <a href="https://www.youtube.com/watch?v=1rw7wIAgqZY" target="_blank">part 2</a>)
-                        </PostWidget>
-                        <PostWidget date="2021-03-17" href="https://www.railstotrails.org/trailblog/2021/march/15/2021-trail-grants-awardees-support-community-connections-on-and-off-trails/">
-                            Rails to Trails Grant Award
-                        </PostWidget>
-                        <PostWidget date="2021-02-02" href="https://youtu.be/ciznhv7ZmZM">
-                            Essex-Hudson County Greenway presentation
                         </PostWidget>
                     </div>
                 </div>

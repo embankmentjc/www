@@ -43,27 +43,22 @@ export default function Body() {
                                 {/* Section Blog Modern */}
                                 <section>
                                     <div className="post-modern-timeline-date text-md-left">
-                                        <time dateTime="2021-10-19">19 Oct 2021</time>
+                                        <time dateTime="2022-05-11">11 May 2022</time>
                                     </div>
                                     {/* Post Modern */}
                                     <article className="post post-modern post-modern-timeline post-modern-timeline-left">
                                         {/* Post media */}
                                         <header className="post-media">
-                                            <a href="https://youtu.be/57REN4mHF2o" target="_blank">
+                                            <a href="https://youtu.be/qxAHqzLqnoo" target="_blank">
                                                 <img className="img-fluid img-cover" width="570" height="321" src="images/embankment-annual-mtng-img.jpeg" alt="" />
                                             </a>
                                         </header>
                                         {/* Post content */}
                                         <section className="post-content text-left">
-                                            {/* Post Title */}
-                                            <div className="post-title">
-                                                <h6 className="offset-top-24">Embankment Coalition 2021 Annual Meeting</h6>
-                                            </div>
                                             {/* Post Body */}
                                             <div className="post-body offset-top-20">
-                                                <a href="https://youtu.be/57REN4mHF2o" target="_blank">
-                                                    <p>The Coalition’s 2021 annual meeting was Tuesday, Oct 19, 2021.</p>
-                                                    <p><strong className="mr-auto">Check out the latest Embankment Coalition video, including drone flyovers</strong></p>
+                                                <a href="https://youtu.be/qxAHqzLqnoo" target="_blank">
+                                                    <p>Check out the newest drone flyover video about the Embankment and East Coast Greenway!</p>
                                                 </a>
                                             </div>
                                             <div className="post-author">

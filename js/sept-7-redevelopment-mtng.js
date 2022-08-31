@@ -1,7 +1,7 @@
-var modalKey = 'ecg-nyc-phl-2022-volunteer-modal_suppressed'
-var checkboxId = 'ecg-nyc-phl-2022-volunteer-checkbox'
+var modalKey = 'sept-7-redevelopment-mtng-modal_suppressed'
+var checkboxId = 'sept-7-redevelopment-mtng-checkbox'
 var checkboxSelector = '#' + checkboxId
-var modalId = 'ecg-nyc-phl-2022-volunteer-modal'
+var modalId = 'sept-7-redevelopment-mtng-modal'
 var modalSelector = '#' + modalId
 
 function setModalSuppressCookie() {

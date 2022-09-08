@@ -1,4 +1,4 @@
-var modalKey = 'sept-7-redevelopment-mtng-modal_suppressed'
+var modalKey = 'sept-8-video-modal_suppressed'
 var checkboxId = 'sept-7-redevelopment-mtng-checkbox'
 var checkboxSelector = '#' + checkboxId
 var modalId = 'sept-7-redevelopment-mtng-modal'

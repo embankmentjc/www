@@ -1,0 +1,7 @@
+.navbar-force-stuck {
+    background-color: #191919;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}

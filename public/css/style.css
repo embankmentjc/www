@@ -836,7 +836,7 @@ pre code {
 	margin-left: 91.66667%;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 300px) {
 	.col-sm {
 		flex-basis: 0;
 		flex-grow: 1;

@@ -4,11 +4,11 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "dev": "webpack --mode=development -w",
+    "webpack": "webpack --mode=development -w",
     "ssr": "node pages/server.js",
-    "nd": "next dev",
+    "dev": "next dev",
     "nb": "next build",
-    "nbx": "next build && next export",
+    "export": "next build && next export",
     "ns": "next start",
     "nx": "next export"
   },

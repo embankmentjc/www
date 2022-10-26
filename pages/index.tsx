@@ -135,7 +135,7 @@ function BannerSlides() {
                             title="Welcome to the Harsimus Branch and Embankment"
                             subtitle="The Future of Green Infrastructure in Jersey City"
                             btn1={{ href: "vision.html", text: "Explore Our Vision", }}
-                            btn2={{ href: "involved#involved-section-member", text: "Become a Member", }}
+                            btn2={{ href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", }}
                         />
                         <BannerSlide
                             img="images/HOME-SLIDER2.jpg"
@@ -150,7 +150,7 @@ function BannerSlides() {
                             alt="TODO"
                             title="Our Vision"
                             subtitle="Preserve, Restore, Activate"
-                            btn1={{ href: "vision.html#vision-section-vision", text: "Learn More", }}
+                            btn1={{ href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", }}
                             btn2={{ href: "involved#involved-section-member", text: "Become a Member", }}
                         />
                     </ul>
@@ -174,6 +174,7 @@ export default function Body() {
                     <div className="row justify-content-sm-center">
                         <div className="col-md-9 col-xl-8">
                             <p>The Harsimus Branch is a rail corridor running for about a mile in Jersey City. Its Embankment is a massive, segmented stone structure with lush green meadows and forest on top that developed naturally when freight service ended. </p>
+                            <p><strong><a href="https://youtu.be/qxAHqzLqnoo">Check out the "EMBANKMENT AND EAST COAST GREENWAY VISION" video for more info (and some drone flyovers!)</a></strong></p>
                         </div>
                     </div>
                     <div className="row justify-content-sm-center offset-top-66">
@@ -222,7 +223,6 @@ export default function Body() {
                         <div className="col-md-8 col-lg-4 text-md-left offset-top-34 offset-lg-top-0">
                             <h3>The Historic Embankment</h3>
                             <p>The Harsimus Branch Embankment is the sturdy vestige of a rail economy and landscape that once dominated Jersey City. The masonry and earth structure possesses a remarkable physical integrity and during construction the journalistic accounts stressed its monumental qualities. Landscape historian John Stilgoe writes of the structure as having “the everlasting solidity of Egyptian pyramids and Inca roads” (Stilgoe, 1998, p. 42).</p>
-
                             <div className="offset-top-20">
                                 <p>Designed by James J. Ferris, a prominent civil engineer and politician in Jersey City, the Embankment was erected from 1901-1905 to replace an existing iron and timber elevated rail line that was deemed too low and unstable. The Embankment stone structure ranged from 27 feet  to 13 feet  in height with each stone weighing nearly a ton. At this scale, the stone and earth structure not only resolved the instability of the existing structure but also better absorbed the vibrations and noises from the constant industrial traffic moving through the Jersey City community - creating a safer and healthier urban environment. </p>
                             </div>

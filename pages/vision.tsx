@@ -1,152 +1,13 @@
 import { Page } from "../src/pages"
 import {ReactNode} from "react";
-
-function CarouselButton({ text, href }: { text: string, href: string, }) {
-    return (
-        <a href={href} target="_blank"><button className="btn btn-primary" type="button">{text}</button></a>
-    )
-}
-
-function BigPicture({ title, img, children }: { title: string, img?: string, children: ReactNode }) {
-    return (
-        <section id="vision-section-bigpicture" className="section-98 section-sm-110 bg-white-lilac">
-            <div className="container">
-                <h1>{title}</h1>
-                <hr className="divider divider-lg bg-mantis" />
-                {children}
-            </div>
-        </section>
-    )
-}
-
-type Figure = {
-    src: string
-    alt?: string
-    caption?: string
-    border?: string
-    //style?: { [k: string]: any }
-}
-function Figure({ src, alt, caption, border, }: Figure) {
-    const { thumbnail, img, figcaption }: any = caption ? {
-        img: { className: "figure-img img-fluid" },
-        figcaption: <figcaption className="figure-caption">{caption}</figcaption>,
-    } : {
-        thumbnail: { className: "thumbnail-classic" },
-    }
-    return (
-        <div data-lightgallery="group">
-            <a {...thumbnail} data-lightgallery="item" href={src}>
-                <figure className="figure">
-                    <img {...img} width="570" height="321" src={src} alt={alt} style={{ border }} />
-                    {figcaption}
-                </figure>
-            </a>
-        </div>
-    )
-}
-
-type ConceptSectionBody = {
-    figCols?: number
-    children: ReactNode
-} & Figure
-function ConceptSectionBody({ figCols = 8, children, ...figure }: ConceptSectionBody) {
-    return (
-        <>
-            <div className="row justify-content-md-center offset-top-20">
-                <div className={`col-md-${figCols} col-lg-${figCols} inset-lg-right-80`}>
-                    <header className="post-media">
-                        <Figure {...figure} />
-                    </header>
-                </div>
-                <div className={`col-md-${12 - figCols} col-lg-${12 - figCols} text-md-left offset-top-34 offset-lg-top-0`}>
-                    {children}
-                </div>
-            </div>
-        </>
-    )
-}
-
-type ConceptSection = {
-    title: string
-    pre?: ReactNode
-} & ConceptSectionBody
-
-function ConceptSection({ title, pre, children, ...rest }: ConceptSection) {
-    return (
-        <section className="section novi-background section-50 section-sm-top-5">
-            <div className="container">
-                {pre}
-                <ConceptSectionBody {...rest}>
-                    <h3>{title}</h3>
-                    {children}
-                </ConceptSectionBody>
-            </div>
-        </section>
-    )
-}
-
-type ArtistSection = {
-    bullets: string[]
-    figure: Figure
-} & ConceptSection
-
-function ArtistSection({ bullets, figure, alt, caption, children, ...rest}: ArtistSection) {
-    return (
-        <ConceptSection caption={caption} alt={alt || caption} {...rest}>
-            <div className="container">
-                <div className="row offset-top-20">
-                    <div className="col-md-6 col-lg-6" style={{ textAlign: "center" }}>
-                        <ul className="list-unstyled" style={{ listStyleType: "disc", textAlign: "left", display: "inline-block" }}>{
-                            bullets.map(bullet => <li key={"bullet"}>{bullet}</li>)
-                        }</ul>
-                    </div>
-                    <div className="col-md-6 col-lg-6 text-center">
-                        <Figure {...figure} />
-                    </div>
-                </div>
-                {children}
-            </div>
-        </ConceptSection>
-    )
-}
-
-function ParallaxSection1({ id, title, img, children }: { id?: string, title: ReactNode, img: string, children?: ReactNode, }) {
-    return (
-        <section id={id} className="section parallax-container" data-parallax-img={img}>
-            <div className="parallax-content section-98 section-sm-124 bg-overlay-white">
-                <div className="container">
-                    <div className="row justify-content-md-center">
-                        <div className="col-md-10">
-                            <h1>{title}</h1>
-                            {children}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    )
-}
-
-function ParallaxSection2({ title, id, blurb, img, children, }: { title: string, id: string, blurb: ReactNode, img: string, children?: ReactNode, }) {
-    return (
-        <section id={id} className="section parallax-container bg-black" data-parallax-img={img}>
-            <div className="parallax-content section-98 section-sm-110 context-light">
-                <div className="container">
-                    <div>
-                        <h2><span className="big">{title}</span></h2>
-                    </div>
-                    <hr className="divider divider-lg bg-mantis" />
-                    <div className="row justify-content-sm-center offset-top-24">
-                        <div className="col-sm-10 col-xl-8">
-                            <p>{blurb}</p>
-                        </div>
-                        {children}
-                    </div>
-                </div>
-            </div>
-        </section>
-    )
-}
+import {
+    ArtistSection,
+    BigPicture,
+    CarouselButton,
+    ConceptSection,
+    ParallaxSection1,
+    ParallaxSection2
+} from "../src/sections";
 
 export default function Body() {
     return (
@@ -179,19 +40,14 @@ export default function Body() {
                 </section>
             }
         >
-            <BigPicture title={"Our Philosophy"}>
-                <div className="row justify-content-sm-center">
-                    <div className="col-md-9 col-xl-8">
-                        <p>Conservationist Aldo Leopold coined the term “land ethic” to describe the valuing of soil, water, plants, and animals – “the land” – as members of a community of living organisms, with humans, the thinking members, fostering the community’s evolving relationships.</p>
-                        <p>When the land atop Jersey City’s Harsimus Embankment opens to people for the first time in more than a century, Leopold’s land ethic is a way to look at the Harsimus Branch and connecting corridors. The public, whose preservation efforts have been sustained now for two decades, are its stewards.</p>
-                        <p>With study, consideration of many ideas, and thoughtful decisions, Jersey City can restore degraded soil, support organisms that have found niches in a hardscape, re-introduce native species extinguished by industrial uses, sequester carbon, control stormwater, and provide transportation and recreation options easy on fellow life forms. Following Leopold’s belief that direct experience is necessary for people to develop a land ethic, we can reconnect our children with nature.</p>
-                        <p>These thoughts underlie our philosophy for the entire Harsimus Branch and associated rail structures and land.</p>
-                    </div>
-                </div>
+            <BigPicture title={"Our Philosophy"} id={"vision-section-bigpicture"}>
+                <p>Conservationist Aldo Leopold coined the term “land ethic” to describe the valuing of soil, water, plants, and animals – “the land” – as members of a community of living organisms, with humans, the thinking members, fostering the community’s evolving relationships.</p>
+                <p>When the land atop Jersey City’s Harsimus Embankment opens to people for the first time in more than a century, Leopold’s land ethic is a way to look at the Harsimus Branch and connecting corridors. The public, whose preservation efforts have been sustained now for two decades, are its stewards.</p>
+                <p>With study, consideration of many ideas, and thoughtful decisions, Jersey City can restore degraded soil, support organisms that have found niches in a hardscape, re-introduce native species extinguished by industrial uses, sequester carbon, control stormwater, and provide transportation and recreation options easy on fellow life forms. Following Leopold’s belief that direct experience is necessary for people to develop a land ethic, we can reconnect our children with nature.</p>
+                <p>These thoughts underlie our philosophy for the entire Harsimus Branch and associated rail structures and land.</p>
             </BigPicture>
 
             <ParallaxSection1 title={"Living with the Land"} id={"vision-section-vision"} img="images/HOME-STEP2.jpg">
-                <hr className="divider bg-mantis" />
                 <p className="offset-md-top-66">Care for the environment is this century’s greatest challenge – and Jersey City’s greatest opportunity. Thoughtful treatment of the Harsimus Branch can set a precedent for cities around the world, demonstrating that a healthy ecology and infrastructure are compatible, not competitors.</p>
                 <p>The meadows and forest that took root decades ago on the historic Embankment rail structure, in the midst of downtown Jersey City, is unique to our city. We know of no other city in the world that has a self-seeded forest running through its downtown. This upland forest is thriving, its habitat part of a wildlife corridor from the Hudson River to the Hackensack.</p>
                 <p>The Embankment Coalition vision for the Harsimus Branch and its Embankment preserves much of this forest and opens it to Jersey City residents for sensitive reuse. While part of the corridor is reserved for possible future light rail, residents can enjoy, on foot and by bike, a naturally occurring wilderness in their own backyards.</p>

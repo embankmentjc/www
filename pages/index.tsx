@@ -1,5 +1,6 @@
 import React from "react"
 import { Page } from "../src/pages"
+import {GradientHeader} from "../src/sections";
 
 
 export async function getStaticProps(context: any) {
@@ -332,24 +333,7 @@ export default function Body() {
             </section>
 
             {/* Next Steps */}
-            <section id="home-section-steps" className="section novi-background section-66 section-top-50 bg-mantis section-triangle section-triangle-bottom context-dark">
-                <div className="container">
-                    <div className="row justify-content-md-center">
-                        <h2><span className="big">Next Steps</span></h2>
-                        <div className="col-lg-8">
-                        </div>
-                    </div>
-                </div>
-                <svg className="svg-triangle-bottom" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                    <defs>
-                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style={{ stopColor: 'rgb(99,189,98)', stopOpacity: 1 }}></stop>
-                            <stop offset="100%" style={{ stopColor: 'rgb(99,189,98)', stopOpacity: 1 }}></stop>
-                        </linearGradient>
-                    </defs>
-                    <polyline points="0,0 60,0 29,29" fill="url(#grad2)"></polyline>
-                </svg>
-            </section>
+            <GradientHeader id={"home-section-steps"} title={"Next Steps"} />
 
             <section className="section novi-background section-66 section-sm-0">
                 <div className="container">

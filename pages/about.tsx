@@ -2,29 +2,12 @@ import { Page } from "../src/pages"
 import {
     BigPicture,
     ConceptSection,
-    GradientHeader,
+    GradientHeader, IconBox2, IconBoxes,
     Paragraphs,
     ParallaxSection1,
     ParallaxSection2
 } from "../src/sections";
 import {ReactNode} from "react";
-
-function IconBox2({ title, key, blurb, offset = 34 }: { title: string, key?: string, blurb: ReactNode, offset?: number }) {
-    if (typeof blurb === 'string') {
-        blurb = <p>{blurb}</p>
-    }
-    return (
-        <div key={key || title} className={`offset-top-66 offset-xl-top-${offset}`}>
-            <div className="unit unit-sm flex-md-row text-md-left">
-                <div className="unit-left"><span className="icon novi-icon text-gray mdi mdi-check"></span></div>
-                <div className="unit-body">
-                    <h4 className="font-weight-bold text-mantis offset-md-top-5">{title}</h4>
-                    {blurb}
-                </div>
-            </div>
-        </div>
-    )
-}
 
 export default function Body() {
     return (
@@ -140,37 +123,29 @@ export default function Body() {
                 }
             ></ParallaxSection2>
 
-            <section className="section novi-background section-top-98 section-sm-top-110 section-sm-bottom-110 section-lg-top-66 section-bottom-98 section-lg-bottom-0">
-                <div className="container">
-                    <div className="row justify-content-md-center align-items-lg-center">
-                        <div className="col-xl-5 d-none d-xl-inline-block">
-                            <img className="img-fluid" width="470" height="770" src="images/ABOUT-HISTORIC.jpg" alt="" />
-                        </div>
-                        <div className="col-md-10 col-xl-5 section-lg-bottom-50">
-                            {
-                                Object.entries({
-                                    "1999": "State Register of Historic Places",
-                                    "2000": "National Register of Historic Places (determined eligible)",
-                                    "2003": "Jersey City Municipal Landmark",
-                                    "2004": "Recommended segment of East Coast Greenway",
-                                    "2005": <>
-                                        <p>Preservation New Jersey's "New Jersey's 10 Most Endangered Historic Sites" list.</p>
-                                        <p>Priority Acquisition, Hudson County Open Space & Recreation Plan</p>
-                                        <p>Highest Priority Acquisition Site, NY/NJ Harbor Estuary Habitat Program</p>
-                                    </>,
-                                    "2006": "Jersey City Municipal Landmark (re-designated)",
-                                    "2009": "Historic right of way needed for multiple uses, Jersey City Master Plan Circulation Element",
-                                    "2011": "National Trust for Historic Preservation \"This Place Matters\" national challenge, 7th place",
-                                    "2013": "Entire Harsimus Branch (Marin to Waldo) right of way  and associated sites eligible for National Register of Historic Places – NJ State Historic Preservation Office Opinions",
-                                    "2019": "NJ State Historic Preservation Office issues Opinion that the Village area is an Italian Village Historic District and its boundaries encompass the Harsimus Embankment, a contributing element.",
-                                }).map(
-                                    ([ title, blurb ], idx) => <IconBox2 key={title} title={title} blurb={blurb} {...(idx ? {} : {offset: 50})} />
-                                )
-                            }
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <IconBoxes
+                src={"images/ABOUT-HISTORIC.jpg"}
+                boxes={
+                    Object.entries({
+                        "1999": "State Register of Historic Places",
+                        "2000": "National Register of Historic Places (determined eligible)",
+                        "2003": "Jersey City Municipal Landmark",
+                        "2004": "Recommended segment of East Coast Greenway",
+                        "2005": <>
+                            <p>Preservation New Jersey's "New Jersey's 10 Most Endangered Historic Sites" list.</p>
+                            <p>Priority Acquisition, Hudson County Open Space & Recreation Plan</p>
+                            <p>Highest Priority Acquisition Site, NY/NJ Harbor Estuary Habitat Program</p>
+                        </>,
+                        "2006": "Jersey City Municipal Landmark (re-designated)",
+                        "2009": "Historic right of way needed for multiple uses, Jersey City Master Plan Circulation Element",
+                        "2011": "National Trust for Historic Preservation \"This Place Matters\" national challenge, 7th place",
+                        "2013": "Entire Harsimus Branch (Marin to Waldo) right of way  and associated sites eligible for National Register of Historic Places – NJ State Historic Preservation Office Opinions",
+                        "2019": "NJ State Historic Preservation Office issues Opinion that the Village area is an Italian Village Historic District and its boundaries encompass the Harsimus Embankment, a contributing element.",
+                    }).map(
+                        ([ title, blurb ]) => ({ icon: "check", title, blurb, })
+                    )
+                }
+            />
 
             <GradientHeader id={"about-section-coalition"} title={"Embankment Preservation Coalition"} />
 

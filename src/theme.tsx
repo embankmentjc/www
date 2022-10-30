@@ -48,7 +48,7 @@ export function Figure({ src, alt, caption, border, }: Figure) {
     )
 }
 
-export function Section({ id, title, pretitle, children }: { id?: string, title: ReactNode, pretitle?: ReactNode, children: ReactNode }) {
+export function Section({ id, title, pretitle, children }: { id?: string, title?: ReactNode, pretitle?: ReactNode, children: ReactNode }) {
     if (typeof title === "string") {
         title = <h2 className="font-weight-bold">{title}</h2>
     }
@@ -57,7 +57,7 @@ export function Section({ id, title, pretitle, children }: { id?: string, title:
             <div className="container">
                 {pretitle}
                 {title}
-                <hr className="divider bg-mantis" />
+                {title && <hr className="divider bg-mantis" />}
                 {children}
             </div>
         </section>

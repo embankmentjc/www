@@ -44,13 +44,10 @@ function Nav({ cur }: { cur: string }) {
             <li>
                 <a href={href}><span>{text}</span></a>
                 {
-                    items
-                    ? <ul className="rd-navbar-dropdown">
-                        {
-                            items.map(({ hash, text }) => MenuItem({ path, hash, text }))
-                        }
-                    </ul>
-                    : null
+                    items &&
+                    <ul className="rd-navbar-dropdown">{
+                        items.map(({ hash, text }) => MenuItem({ path, hash, text }))
+                    }</ul>
                 }
             </li>
         )
@@ -253,43 +250,37 @@ function Footer() {
     )
 }
 
-export function Page({ path, children, headerChildren, }: {
+export function Page({ path, children, headerChildren, scripts, }: {
     path: string
     children: ReactNode
     headerChildren?: ReactNode
+    scripts?: string[]
 }) {
-    return (
-        <>
-            <Head>
-                <title>The Embankment</title>
-                <meta charSet="utf-8" />
-                <link rel="icon" href="../images/favicon.ico" type="image/x-icon" />
-            </Head>
-            <div className="page-loader page-loader-variant-1">
-                <div>
-                    <img className='img-fluid' style={{ marginTop: '-20px', marginLeft: '-18px' }} width='330' height='67' src='images/logo-bigEPC.png' alt='' />
-                    <div className="offset-top-41 text-center">
-                        <div className="spinner" />
-                    </div>
-                </div>
+    return (<>
+        <Head>
+            <title>The Embankment</title>
+            <meta charSet="utf-8" />
+            <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
+        </Head>
+        <div className="page-loader page-loader-variant-1">
+            <div>
+                <img className='img-fluid' style={{ marginTop: '-20px', marginLeft: '-18px' }} width='330' height='67' src="/images/logo-bigEPC.png" alt='' />
+                <div className="offset-top-41 text-center"><div className="spinner" /></div>
             </div>
-            <div className="page text-center">
-                {/* Page Head */}
-                <header className="page-head slider-menu-position">
-                    {/* RD Navbar Transparent */}
-                    <Nav cur={path} />
-                    {headerChildren}
-                </header>
-
+        </div>
+        <div className="page text-center">
+            <header className="page-head slider-menu-position">
+                <Nav cur={path} />
+                {headerChildren}
+            </header>
             {children}
-
             <Footer />
         </div>
         {/* Global RD Mailform Output */}
-        <div className="snackbars" id="form-output-global"></div>
-        <Script src="../js/core.min.js" strategy="beforeInteractive"></Script>
-        <Script src="../js/script.js"></Script>
-        <Script src="../js/revolution.min.js"></Script>
-    </>
-    )
+        <div className="snackbars" id="form-output-global" />
+        <Script src="/js/core.min.js" strategy="beforeInteractive" />
+        <Script src="/js/script.js" />
+        <Script src="/js/revolution.min.js" />
+        {scripts?.map(src => <Script src={src}></Script>)}
+    </>)
 }

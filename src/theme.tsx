@@ -141,8 +141,9 @@ export function ArtistSection({ bullets, figure, alt, caption, children, ...rest
 }
 
 type HeaderButton = { href: string, text: string }
-export function ParallaxHeader({ title, subtitle, img, btn1, btn2, }: {
+export function ParallaxHeader({ title, embed, subtitle, img, btn1, btn2, }: {
     title: string
+    embed?: ReactNode
     subtitle: string
     img: string
     btn1: HeaderButton
@@ -157,6 +158,7 @@ export function ParallaxHeader({ title, subtitle, img, btn1, btn2, }: {
                             <div className="offset-top-4 offset-xl-top-0">
                                 <h1 className="text-capitalize"><span className="big">{title}</span></h1>
                             </div>
+                            {embed}
                             <div>
                                 <h2 className="font-default font-italic text-regular">{subtitle}</h2>
                             </div>

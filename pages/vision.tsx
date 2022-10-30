@@ -16,12 +16,24 @@ export default function Body() {
             headerChildren={
                 <ParallaxHeader
                     title={"Our Vision"}
+                    embed={
+                        <div className="offset-top-4 offset-xl-top-0" style={{ padding: "20px 0" }}>
+                            <iframe
+                                id="vision-video-embed" style={{ margin: "auto", width: "100%" }}
+                                src="https://www.youtube.com/embed/qxAHqzLqnoo" title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen={true}
+                            />
+                        </div>
+                    }
                     subtitle={"\"When we see land as a community to which we belong, we may begin to use it with love and respect.\" - Aldo Leopold"}
                     img={"images/NEWS-BANNER.jpg"}
                     btn1={{ text: "Concept", href: "#vision-section-concept", }}
                     btn2={{ text: "Become a Member!", href: "involved.html#involved-section-member", }}
                 />
             }
+            scripts={["/js/vision.js"]}
         >
             <BigPicture title={"Our Philosophy"} id={"vision-section-bigpicture"}>
                 <p>Conservationist Aldo Leopold coined the term “land ethic” to describe the valuing of soil, water, plants, and animals – “the land” – as members of a community of living organisms, with humans, the thinking members, fostering the community’s evolving relationships.</p>
@@ -36,7 +48,7 @@ export default function Body() {
                 <p>The Embankment Coalition vision for the Harsimus Branch and its Embankment preserves much of this forest and opens it to Jersey City residents for sensitive reuse. While part of the corridor is reserved for possible future light rail, residents can enjoy, on foot and by bike, a naturally occurring wilderness in their own backyards.</p>
             </ParallaxSection1>
 
-            <ConceptSection title={"Light Touch"} src={"images/HOME-STEP4.jpg"} pre={<>
+            <ConceptSection id={"vision-section-concept"} title={"Light Touch"} src={"images/HOME-STEP4.jpg"} pre={<>
                 <h1>Design Concept</h1>
                 <hr className="divider bg-mantis" />
             </>}>

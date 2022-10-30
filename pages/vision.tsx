@@ -146,7 +146,7 @@ export default function Body() {
                     "historic sites & districts",
                     "politics & economics",
                 ]}
-                figure={{
+                fig={{
                     src: "images/SciAm_1888_trestles_24171.jpg",
                     caption: "Scientific American, Jan 21, 1988",
                     border: "0.5em solid #615c5d",
@@ -171,7 +171,7 @@ export default function Body() {
                     "stormwater control",
                     "health & well-being",
                 ]}
-                figure={{
+                fig={{
                     src: "images/IMG_2466.jpg",
                     caption: "Drawing by Sean Gallagher",
                     border: "0.5em solid #86bf67",
@@ -203,7 +203,6 @@ export default function Body() {
                     </div>
                 </div>
             </section>
-
 
             <ParallaxSection1 title={<a href="about.html">Explore Our History</a>} img="images/VISION-HISTORY.jpg" />
         </Page>

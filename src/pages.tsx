@@ -131,7 +131,7 @@ function PostWidget({ date, dateStr, href, children, }: {
     dateStr = dateStr || m.format("M/D/YYYY")
     let body = (
         <div className="unit-body">
-            <div className="post-meta"><span className="novi-icon icon-xxs mdi mdi-arrow-right"></span>
+            <div className="post-meta"><span className="icon-xxs mdi mdi-arrow-right"></span>
                 <time className="text-dark" dateTime={m.format("YYYY-MM-DD")}>{dateStr}</time>
             </div>
             <div className="post-title">
@@ -175,7 +175,7 @@ function NewsletterSignup() {
                         <div className="input-group input-group-sm">
                             <span className="input-group-prepend">
                                 <span className="input-group-text input-group-icon">
-                                    <span className="novi-icon mdi mdi-email" />
+                                    <span className="mdi mdi-email" />
                                 </span>
                             </span>
                             <input className="form-control" placeholder="Type your E-Mail" type="email" name="email" data-constraints="@Required @Email" />

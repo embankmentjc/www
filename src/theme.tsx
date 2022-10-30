@@ -117,10 +117,10 @@ export function ConceptSection({ id, title, pre, children, ...rest }: ConceptSec
 
 export type ArtistSection = {
     bullets: string[]
-    figure: Figure
+    fig: Figure
 } & ConceptSection
 
-export function ArtistSection({ bullets, figure, alt, caption, children, ...rest}: ArtistSection) {
+export function ArtistSection({ bullets, fig, alt, caption, children, ...rest}: ArtistSection) {
     return (
         <ConceptSection caption={caption} alt={alt || caption} {...rest}>
             <div className="container">
@@ -131,7 +131,7 @@ export function ArtistSection({ bullets, figure, alt, caption, children, ...rest
                         }</ul>
                     </div>
                     <div className="col-md-6 col-lg-6 text-center">
-                        <Figure {...figure} />
+                        <Figure {...fig} />
                     </div>
                 </div>
                 {children}
@@ -266,21 +266,22 @@ type IconBox = {
 }
 
 export function IconBox2(
-    { title, titleOffset, key, blurb, icon, offset = 34 }: IconBox & {
-        titleOffset: number
-        offset?: number
+    { title, key, blurb, icon, classes, iconClasses, titleClasses }: IconBox & {
+        classes?: string
+        iconClasses?: string
+        titleClasses?: string
     }) {
     if (typeof blurb === 'string') {
         blurb = <p>{blurb}</p>
     }
     return (
-        <div key={key || title} className={`offset-top-66 offset-xl-top-${offset}`}>
+        <div key={key || title} className={`offset-top-66 ${classes || ""}`}>
             <div className="unit unit-sm flex-md-row text-md-left">
                 <div className="unit-left">
-                    <span className={`icon novi-icon text-gray mdi mdi-${icon}`} />
+                    <span className={`icon mdi mdi-${icon} ${iconClasses || ""}`} />
                 </div>
                 <div className="unit-body">
-                    <h4 className={`font-weight-bold text-mantis offset-md-top-${titleOffset}`}>{title}</h4>
+                    <h4 className={`font-weight-bold ${titleClasses || ""}`}>{title}</h4>
                     {blurb}
                 </div>
             </div>
@@ -288,7 +289,7 @@ export function IconBox2(
     )
 }
 
-export function IconBoxes(
+export function IconBoxesSection(
     { id, title, titleOffset = 5, src, alt, boxes, }: {
         id?: string
         title?: string
@@ -314,75 +315,16 @@ export function IconBoxes(
                         }
                         {
                             boxes.map((box, idx) =>
-                                <IconBox2 {...box} titleOffset={titleOffset} {...(idx ? {} : {offset: 50})} />
+                                <IconBox2
+                                    {...box}
+                                    classes={`offset-xl-top-${idx ? 34 : 50}`}
+                                    iconClasses={"text-gray"}
+                                    titleClasses={`text-mantis offset-md-top-${titleOffset}`}
+                                />
                             )
                         }
                     </div>
                 </div>
-            </div>
-        </section>
-    )
-}
-
-export function NextStep({ side, step, title, src, first, children, }: { side: "left" | "right", step: string, title: string, src: string, first?: boolean, children: ReactNode, }) {
-    const justify = side == "left" ? "start" : "end"
-    const aside = side == "left" ? "right" : "left"
-    const insetClass = side == "left" ? "inset-md-right-30" : "inset-md-left-50"
-    return (
-        <div className={`row justify-content-sm-center justify-content-md-${justify} ${first ? "" : "offset-top-0"}`}>
-            <div className={`col-sm-10 col-md-6 section-image-aside section-image-aside-${aside} text-left`}>
-                <div className="section-image-aside-img d-none d-md-block" style={{ backgroundImage: `url(${src})` }}></div>
-                <div className={`section-image-aside-body section-sm-66 ${insetClass}`}>
-                    <div><h3 className="text-picton-blue">{step}</h3></div>
-                    <div className="offset-top-10"><h2>{title}</h2></div>
-                    <div className="offset-top-20">{children}</div>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-export function NextSteps() {
-    const nextSteps = [{
-        title: "Planning for Reuse",
-        src: "images/HOME-STEP1.jpg",
-        children: <>
-            <p>If Jersey City acquires the Harsimus Branch, as we expect, it will follow the typical land use public process for the Branch and Embankment. An Area in Need Study, redevelopment plans, and site plans must be reviewed by various land use boards and approved for the project to move forward.</p>
-            <p>During this process, the City is expected to consult with state and federal agencies and organizations, among them New Jersey Department of Environmental Protection offices, including its Historic Preservation Office; the federal Surface Transportation Board; and the federal Advisory Council on Historic Preservation. The Embankment Coalition will encourage public participation.</p>
-        </>,
-    }, {
-        title: "Community Engagement",
-        src: "images/HOME-STEP3B.jpg",
-        children: <>
-            <p>In civic activism spearheaded by the Embankment Coalition, thousands of individuals and dozens of local, state, regional, and national organizations rallied over two decades to save the historic Harsimus Branch right-of-way and its elevated stone Embankment for 21st-century uses. </p>
-            <p>The Coalition will continue to engage this steadfast and informed public to advance an ecological vision for the Branch compatible with historic preservation, passive recreation, muscle-powered transportation, and a commitment to community and democratic ideals. We aim to build a chain of stewards for segments of the East Coast Greenway as it moves its way through Hudson County.</p>
-        </>,
-    }, {
-        title: "Concept Development",
-        src: "images/HOME-STEP4.jpg",
-        children: <>
-            <p>From its inception in 1999, the Embankment Coalition has advocated for historically compatible reuses as historic site, rail, trail, and open space. Since 2004 the East Coast Greenway off-road trail over the Embankment has been supported by Jersey City and Hudson County resolutions and planning documents. We are now enlisting support for a broad ecological vision and a public process that will result in an inspirational design for the Embankment, the Branch, and associated resources.</p>
-            <p>The Harsimus Branch design must be responsive to its historic status. The Embankment is listed in the State Register of Historic Places (1999), eligible for the National Register of Historic Places (2000), and a Municipal Landmark (2006). The longer right-of-way is also eligible for the National Register (2018). It runs through national historic districts and past other historic sites. The treatment of these resources must therefore follow U.S. Department of Interior guidelines.</p>
-        </>,
-    }, {
-        title: "Securing the Future",
-        src: "images/HOME-SLIDER2.jpg",
-        children: <>
-            <p>When Jersey City acquires the Harsimus Branch and Embankment, the Coalition will expand and strengthen its board. We aim to partner with the City to raise funds for park and trail development and maintenance. We will organize educational and cultural programming.</p>
-            <p>The Coalition will encourage local organizations along the Jersey City segments of the East Coast Greenway to become stewards of their segments. We will explore relationships with other organizations and local and state agencies to advance best land use practices along the Branch and its connections.</p>
-        </>,
-    }]
-    const children = nextSteps.map(
-        (nextStep, idx) => {
-            const side = (idx % 2 == 0) ? "left" : "right"
-            const step = `Step 0${idx + 1}`
-            return <NextStep side={side} step={step} {...nextStep} first={idx == 0} />
-        }
-    )
-    return (
-        <section className="section section-66 section-sm-0">
-            <div className="container">
-                {children}
             </div>
         </section>
     )

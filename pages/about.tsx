@@ -2,7 +2,7 @@ import { Page } from "../src/pages"
 import {
     BigPicture,
     ConceptSection,
-    GradientHeader, IconBoxes,
+    GradientHeader, IconBoxesSection,
     Paragraphs,
     ParallaxSection1,
     ParallaxSection2
@@ -112,7 +112,7 @@ export default function Body() {
                 }
             ></ParallaxSection2>
 
-            <IconBoxes
+            <IconBoxesSection
                 src={"images/ABOUT-HISTORIC.jpg"}
                 boxes={
                     Object.entries({

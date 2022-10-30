@@ -22,7 +22,7 @@ function NewsletterSubscribe() {
                                     <div className="input-group input-group-sm">
                                         <span className="input-group-prepend">
                                             <span className="input-group-text input-group-icon">
-                                                <span className="novi-icon mdi mdi-email" />
+                                                <span className="mdi mdi-email" />
                                             </span>
                                         </span>
                                         <input className="form-control" placeholder="Type your E-Mail" type="email" name="email" data-constraints="@Required @Email" />
@@ -114,7 +114,7 @@ function Pretitle({ title, icon }: Pretitle) {
         <ul className="list-inline">
             <li className="list-inline-item">{title}</li>
             <li className="list-inline-item">
-                <div className={`icon novi-icon icon-xxs text-dark mdi mdi-${icon}`} />
+                <div className={`icon icon-xxs text-dark mdi mdi-${icon}`} />
             </li>
         </ul>
     )
@@ -316,7 +316,7 @@ function Connect() {
                             footer={
                                 <div className="group">
                                     <a className="btn btn-danger btn-icon btn-icon-left" href="mailto:embankmentJC@gmail.com">
-                                        <span className="novi-icon icon icon-xs mdi mdi-check"></span>Make Request
+                                        <span className="icon icon-xs mdi mdi-check"></span>Make Request
                                     </a>
                                 </div>
                             }

@@ -347,7 +347,7 @@ export function NextSteps() {
     )
 }
 
-export function Banner({ id, title, icon, children, }: { id?: string, title: string, icon: string, children: ReactNode, }) {
+export function Banner({ id, title, icon, children, }: { id?: string, title: string, icon: string, children?: ReactNode, }) {
     return (
         <section id={id} className="section breadcrumb-classic">
             <div className="container section-34 section-sm-50">

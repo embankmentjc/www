@@ -224,6 +224,49 @@ function Supporters() {
     )
 }
 
+function MembershipOption({ name, price, src, value }: { name: string, price: number, src: string, value: string, }) {
+    const duration = name == "Life" ? "one-time" : "annual"
+    return (
+        <div key={name} className="col-12 col-md-6 isotope-item" data-filter="Gallery 1">
+            <div className="product-image">
+                <img className="img-fluid product-image-area" src={src} alt={`${name} membership: ${price} ${duration}`} />
+            </div>
+            <div className="product-block-hover">
+                <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                    <input type="hidden" name="cmd" value="_s-xclick" />
+                    <input type="hidden" name="hosted_button_id" value={value} />
+                    <input type="image" src="/images/selectmembership.jpg" name="submit" alt={`Purchase ${price} ${duration} \"${name}\" membership with PayPal`} />
+                    <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                </form>
+            </div>
+        </div>
+
+    )
+}
+
+function MembershipOptions() {
+    return (
+        <Section id="involved-section-member" title={<h1> Become a Member!</h1>}>
+            <p>Members are the bedrock of the Coalition. Please join us today.</p>
+            <p>Select a membership level below or if you prefer to mail your membership paperwork <a href="/images/membership2019.pdf" target="_blank"><span className="font-weight-bold">Click Here</span></a>.</p>
+            <div className="row">
+                <div className="col-xl-12 offset-top-34">
+                    <div className="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">
+                        <div className="row grid-group-sm" data-lightgallery="group">
+                            <MembershipOption name={"Student / Senior"} price={10} src={"images/bees2.jpg"} value={"TD673N8N5Q4HA"} />
+                            <MembershipOption name={"Individual"} price={25} src={"images/individual2.jpg"} value={"RYLN4DQ2N5HAS"} />
+                            <MembershipOption name={"Family"} price={40} src={"images/family2.jpg"} value={"7492YV58QXSZW"} />
+                            <MembershipOption name={"Friend"} price={100} src={"images/friend2.jpg"} value={"GSJLC7A9PVUF4"} />
+                            <MembershipOption name={"Benefactor"} price={250} src={"images/benefactor2.jpg"} value={"YZ5XMHDA75V2L"} />
+                            <MembershipOption name={"Life"} price={1000} src={"images/life2.jpg"} value={"HW6BR6ER4RXTA"} />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Section>
+    )
+}
+
 export default function Body() {
     return (
         <Page
@@ -241,7 +284,9 @@ export default function Body() {
                                         <h2 className="font-default font-italic text-regular">Join the community effort to realize our vision for the Harsimus Branch.</h2>
                                     </div>
                                     <div className="group group-xl offset-top-30"><a className="btn btn-primary btn-lg btn-anis-effect" href="#involved-section-member">Become a Member!</a>
-                                        <a className="btn btn-default btn-lg btn-anis-effect" data-caption-animate="fadeInUp" data-caption-delay="1200" href="#involved-section-donate"><span className="btn-text">Donate</span></a>
+                                        <a className="btn btn-default btn-lg btn-anis-effect" data-caption-animate="fadeInUp" data-caption-delay="1200" href="#involved-section-donate">
+                                            <span className="btn-text">Donate</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -250,131 +295,7 @@ export default function Body() {
                 </section>
             }
         >
-            {/* Become a Membership Options */}
-            <section id="involved-section-member" className="section section-98 section-sm-110">
-                <div className="container">
-                    <div><h1> Become a Member!</h1></div>
-                    <div className="divider bg-mantis"></div>
-                    <div>
-                        <p>Members are the bedrock of the Coalition. Please join us today.</p>
-                    </div>
-                    <div>
-                        <p></p>
-                        <p>Select a membership level below or if you prefer to mail your membership paperwork <a href="images/membership2019.pdf" target="_blank"><span className="font-weight-bold">Click Here</span></a>.</p>
-                    </div>
-                    <div className="row">
-                        {/* Membership Options  */}
-                        <div className="col-xl-12 offset-top-34">
-                            <div className="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">
-                                <div className="row grid-group-sm" data-lightgallery="group">
-
-                                    {/* STUDENT / SENIOR  */}
-                                    <div className="col-12 col-md-6 isotope-item" data-filter="Gallery 1">
-                                        {/* Product Image */}
-                                        <div className="product-image">
-                                            <img className="img-fluid product-image-area" src="images/bees2.jpg" alt="" />
-                                        </div>
-                                        <div className="product-block-hover">
-                                            {/* Product Add To cart */}
-                                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                                <input type="hidden" name="cmd" value="_s-xclick" />
-                                                <input type="hidden" name="hosted_button_id" value="TD673N8N5Q4HA" />
-                                                <input type="image" src="http://www.embankment.org/embankment/images/selectmembership.jpg" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-                                                <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    {/* INDIVIDUAL  */}
-                                    <div className="col-12 col-md-6 isotope-item" data-filter="Gallery 1">
-                                        {/* Product Image */}
-                                        <div className="product-image">
-                                            <img className="img-fluid product-image-area" src="images/individual2.jpg" alt="" />
-                                        </div>
-                                        <div className="product-block-hover">
-                                            {/* Product Add To cart */}
-                                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                                <input type="hidden" name="cmd" value="_s-xclick" />
-                                                <input type="hidden" name="hosted_button_id" value="RYLN4DQ2N5HAS" />
-                                                <input type="image" src="http://www.embankment.org/embankment/images/selectmembership.jpg" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-                                                <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    {/* FAMILY  */}
-                                    <div className="col-12 col-md-6 isotope-item" data-filter="Gallery 1">
-                                        {/* Product Image */}
-                                        <div className="product-image">
-                                            <img className="img-fluid product-image-area" src="images/family2.jpg" alt="" />
-                                        </div>
-                                        <div className="product-block-hover">
-                                            {/* Product Add To cart */}
-                                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                                <input type="hidden" name="cmd" value="_s-xclick" />
-                                                <input type="hidden" name="hosted_button_id" value="7492YV58QXSZW" />
-                                                <input type="image" src="http://www.embankment.org/embankment/images/selectmembership.jpg" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-                                                <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    {/* FRIEND  */}
-                                    <div className="col-12 col-md-6 isotope-item" data-filter="Gallery 1">
-                                        {/* Product Image */}
-                                        <div className="product-image">
-                                            <img className="img-fluid product-image-area" src="images/friend2.jpg" alt="" />
-                                        </div>
-                                        <div className="product-block-hover">
-                                            {/* Product Add To cart */}
-                                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                                <input type="hidden" name="cmd" value="_s-xclick" />
-                                                <input type="hidden" name="hosted_button_id" value="GSJLC7A9PVUF4" />
-                                                <input type="image" src="http://www.embankment.org/embankment/images/selectmembership.jpg" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-                                                <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    {/* BENEFACTOR  */}
-                                    <div className="col-12 col-md-6 isotope-item" data-filter="Gallery 1">
-                                        {/* Product Image */}
-                                        <div className="product-image">
-                                            <img className="img-fluid product-image-area" src="images/benefactor2.jpg" alt="" />
-                                        </div>
-                                        <div className="product-block-hover">
-                                            {/* Product Add To cart */}
-                                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                                <input type="hidden" name="cmd" value="_s-xclick" />
-                                                <input type="hidden" name="hosted_button_id" value="YZ5XMHDA75V2L" />
-                                                <input type="image" src="http://www.embankment.org/embankment/images/selectmembership.jpg" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-                                                <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-                                            </form>
-                                        </div>
-                                    </div>
-
-                                    {/* LIFE  */}
-                                    <div className="col-12 col-md-6 isotope-item" data-filter="Gallery 1">
-                                        {/* Product Image */}
-                                        <div className="product-image">
-                                            <img className="img-fluid product-image-area" src="images/life2.jpg" alt="" />
-                                        </div>
-                                        <div className="product-block-hover">
-                                            {/* Product Add To cart */}
-                                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                                                <input type="hidden" name="cmd" value="_s-xclick" />
-                                                <input type="hidden" name="hosted_button_id" value="HW6BR6ER4RXTA" />
-                                                <input type="image" src="http://embankment.org/embankment/images/selectmembership.jpg" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-                                                <img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <MembershipOptions />
 
             <ParallaxSection1 id={"involved-section-volunteer"} title={"Volunteer"} img={"images/INVOLVED_VOLUNTEER.jpg"}>
                 <p>The Embankment Preservation Coalition operates with an all-volunteer board and volunteers from the community.</p>

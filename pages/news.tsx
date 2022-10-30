@@ -3,6 +3,7 @@ import { Page } from "../src/pages"
 import {ReactNode} from "react";
 
 import { DateTime } from "luxon"
+import {Banner} from "../src/theme";
 
 function NewsletterSubscribe() {
     return (
@@ -36,33 +37,6 @@ function NewsletterSubscribe() {
                     </div>
                 </div>
             </div>
-        </section>
-    )
-}
-
-function CalendarBanner() {
-    return (
-        <section id="news-section-event" className="section novi-background breadcrumb-classic">
-            <div className="container section-34 section-sm-50">
-                <div className="row align-items-xl-center">
-                    <div className="col-xl-5 d-none d-xl-block text-xl-left">
-                        <h2><span className="big">Calendar</span></h2>
-                    </div>
-                    <div className="col-xl-2 d-none d-md-block"><span className="icon icon-white mdi mdi-calendar"></span></div>
-                    <div className="offset-top-0 offset-md-top-10 col-xl-5 offset-xl-top-0 small text-xl-right">
-                        <ul className="list-inline list-inline-dashed p" />
-                    </div>
-                </div>
-            </div>
-            <svg className="svg-triangle-bottom" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <defs>
-                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style={{ stopColor: "rgb(110,192,161)", stopOpacity: 1 }}></stop>
-                        <stop offset="100%" style={{ stopColor: "rgb(111,193,156)", stopOpacity: 1 }}></stop>
-                    </linearGradient>
-                </defs>
-                <polyline points="0,0 60,0 29,29" fill="url(#grad1)"></polyline>
-            </svg>
         </section>
     )
 }
@@ -353,7 +327,7 @@ export default function Body() {
             }
         >
             {/* Section News */}
-            <section id="news-section-recent" className="section novi-background section-98 section-sm-top-110 section-sm-bottom-124">
+            <section id="news-section-recent" className="section section-98 section-sm-top-110 section-sm-bottom-124">
                 <div className="container">
                     <h2 className="font-weight-bold">News + Press</h2>
                     <hr className="divider bg-mantis" />
@@ -670,10 +644,10 @@ export default function Body() {
 
             <NewsletterSubscribe />
 
-            <CalendarBanner />
+            <Banner id={"news-section-event"} title={"Calendar"} icon={"calendar"} />
 
             {/* Events  */}
-            <section className="section novi-background section-98 section-sm-110">
+            <section className="section section-98 section-sm-110">
                 <div className="container">
                     <h2 className="font-weight-bold">Events</h2>
                     <hr className="divider bg-mantis" />

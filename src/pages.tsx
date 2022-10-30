@@ -235,7 +235,7 @@ function LatestNews() {
 
 function Footer() {
     return (
-        <footer className="section novi-background section-relative section-top-66 section-bottom-34 page-footer bg-black context-dark">
+        <footer className="section section-relative section-top-66 section-bottom-34 page-footer bg-black context-dark">
             <div className="container">
                 <div className="row justify-content-sm-center text-xl-left grid-group-md">
                     <FooterBrand />

@@ -48,6 +48,22 @@ export function Figure({ src, alt, caption, border, }: Figure) {
     )
 }
 
+export function Section({ id, title, pretitle, children }: { id?: string, title: ReactNode, pretitle?: ReactNode, children: ReactNode }) {
+    if (typeof title === "string") {
+        title = <h2 className="font-weight-bold">{title}</h2>
+    }
+    return (
+        <section id={id} className="section section-98 section-sm-110">
+            <div className="container">
+                {pretitle}
+                {title}
+                <hr className="divider bg-mantis" />
+                {children}
+            </div>
+        </section>
+    )
+}
+
 export type ConceptSectionBody = {
     figCols?: number
     figure?: boolean
@@ -81,9 +97,8 @@ export type ConceptSection = {
 } & ConceptSectionBody
 
 export function ConceptSection({ id, title, pre, children, ...rest }: ConceptSection) {
-    console.log(`ConceptSection ${title}, figure: ${rest.figure}`, rest.figure === false)
     return (
-        <section id={id} className="section novi-background section-50 section-sm-top-5">
+        <section id={id} className="section section-50 section-sm-top-5">
             <div className="container">
                 {pre}
                 <ConceptSectionBody {...rest}>
@@ -161,7 +176,7 @@ export function ParallaxSection2({ title, id, blurb, img, children, }: { title: 
 
 export function GradientHeader({ id, title }: { id?: string, title: string, }) {
     return (
-        <section id={id} className="section novi-background section-66 section-top-50 bg-mantis section-triangle section-triangle-bottom context-dark">
+        <section id={id} className="section section-66 section-top-50 bg-mantis section-triangle section-triangle-bottom context-dark">
             <div className="container">
                 <div className="row justify-content-md-center">
                     <h2><span className="big">{title}</span></h2>
@@ -243,7 +258,7 @@ export function IconBoxes(
     }
 ) {
     return (
-        <section id={id} className="section novi-background section-top-98 section-sm-top-110 section-sm-bottom-110 section-lg-top-66 section-bottom-98 section-lg-bottom-0">
+        <section id={id} className="section section-top-98 section-sm-top-110 section-sm-bottom-110 section-lg-top-66 section-bottom-98 section-lg-bottom-0">
             <div className="container">
                 <div className="row justify-content-md-center align-items-lg-center">
                     <div className="col-xl-5 d-none d-xl-inline-block">
@@ -324,10 +339,37 @@ export function NextSteps() {
         }
     )
     return (
-        <section className="section novi-background section-66 section-sm-0">
+        <section className="section section-66 section-sm-0">
             <div className="container">
                 {children}
             </div>
+        </section>
+    )
+}
+
+export function Banner({ id, title, icon, children, }: { id?: string, title: string, icon: string, children: ReactNode, }) {
+    return (
+        <section id={id} className="section breadcrumb-classic">
+            <div className="container section-34 section-sm-50">
+                <div className="row align-items-xl-center">
+                    <div className="col-xl-5 d-none d-xl-block text-xl-left">
+                        <h2><span className="big">{title}</span></h2>
+                    </div>
+                    <div className="col-xl-2 d-none d-md-block"><span className={`icon icon-white mdi mdi-${icon}`}></span></div>
+                    <div className="offset-top-0 offset-md-top-10 col-xl-5 offset-xl-top-0 small text-xl-right">
+                        {children}
+                    </div>
+                </div>
+            </div>
+            <svg className="svg-triangle-bottom" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style={{ stopColor: "rgb(110,192,161)", stopOpacity: 1 }}></stop>
+                        <stop offset="100%" style={{ stopColor: "rgb(111,193,156)", stopOpacity: 1 }}></stop>
+                    </linearGradient>
+                </defs>
+                <polyline points="0,0 60,0 29,29" fill="url(#grad1)"></polyline>
+            </svg>
         </section>
     )
 }

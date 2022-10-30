@@ -57414,3 +57414,7 @@ html:not(.ie-11):not(.ios) .parallax-disabled {
 		margin-top: 60px;
 	}
 }
+
+section p > a, section li > a {
+    text-decoration: underline;
+}

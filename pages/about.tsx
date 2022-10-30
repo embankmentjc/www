@@ -2,36 +2,25 @@ import { Page } from "../src/pages"
 import {
     BigPicture,
     ConceptSection,
-    GradientHeader, IconBox2, IconBoxes,
+    GradientHeader, IconBoxes,
     Paragraphs,
     ParallaxSection1,
     ParallaxSection2
-} from "../src/sections";
-import {ReactNode} from "react";
+} from "../src/theme";
+import {ParallaxHeader} from "../src/theme";
 
 export default function Body() {
     return (
         <Page
             path="about"
             headerChildren={
-                <section className="section parallax-container bg-black" data-parallax-img="images/ABOUT-JERSEYCITY.jpg">
-                    <div className="parallax-content context-dark">
-                        <div className="container">
-                            <div className="row align-items-sm-center justify-content-sm-center section-cover section-98 section-sm-110 text-lg-left context-dark">
-                                <div className="col-sm-12">
-                                    <div className="offset-top-4 offset-xl-top-0">
-                                        <h1 className="text-capitalize"><span className="big">ABOUT</span></h1>
-                                    </div>
-                                    <div>
-                                        <h2 className="font-default font-italic text-regular"> New Jersey’s historian John T. Cunningham called Hudson County a “mantle of wheels” for its central role in transportation history. Now outdated infrastructure can meet 21st-century needs.
-                                        </h2>
-                                    </div>
-                                    <div className="group group-xl offset-top-30"><a className="btn btn-primary btn-lg btn-anis-effect" href="#about-section-history">The History</a><a className="btn btn-default btn-lg btn-anis-effect" data-caption-animate="fadeInUp" data-caption-delay="1200" href="involved.html#involved-section-member"><span className="btn-text">Become a Member!</span></a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <ParallaxHeader
+                    title={"ABOUT"}
+                    subtitle={"New Jersey’s historian John T. Cunningham called Hudson County a “mantle of wheels” for its central role in transportation history. Now outdated infrastructure can meet 21st-century needs."}
+                    img={"images/ABOUT-JERSEYCITY.jpg"}
+                    btn1={{ text: "The History", href: "#about-section-history", }}
+                    btn2={{ text: "Become a Member!", href: "involved.html#involved-section-member", }}
+                />
             }
         >
             <BigPicture title={"The History"}>

@@ -1,8 +1,8 @@
 
 import { Page } from "../src/pages"
-import {ReactNode} from "react";
+import React, {ReactNode} from "react";
 
-import {Banner, Section} from "../src/theme";
+import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../src/theme";
 import moment from "moment/moment";
 
 function NewsletterSubscribe() {
@@ -33,22 +33,6 @@ function NewsletterSubscribe() {
                                 </div>
                                 <div className="form-output" id="form-subscribe-footer" />
                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    )
-}
-
-function BecomeAMember() {
-    return (
-        <section className="section parallax-container" data-parallax-img="images/HOME-SLIDER1.jpg">
-            <div className="parallax-content section-98 section-sm-124 bg-overlay-white">
-                <div className="container">
-                    <div className="row justify-content-md-center">
-                        <div className="col-md-10">
-                            <h1><a href="involved.html#involved-section-member">Become a Member!</a></h1>
                         </div>
                     </div>
                 </div>
@@ -174,7 +158,7 @@ function NewsItem({ title, pretitle, date, dateStr, center, href, src, alt, auth
     </>)
 }
 
-function News() {
+function NewsFeed() {
     const items: NewsItem[] = [
         {
             date: "2022-10-25",
@@ -364,37 +348,23 @@ export default function Body() {
         <Page
             path="news"
             headerChildren={
-                <section className="section parallax-container bg-black" data-parallax-img="images/NEWS-BANNER.jpg">
-                <div className="parallax-content context-dark">
-                    <div className="container">
-                    <div className="row align-items-sm-center justify-content-sm-center section-cover section-98 section-sm-110 text-lg-left context-dark">
-                        <div className="col-sm-12">
-                        <div className="offset-top-4 offset-xl-top-0">
-                            <h1 className="text-capitalize">
-                            <span className="big">News + Events</span>
-                            </h1>
-                        </div>
-                        <div>
-                            <h2 className="font-default font-italic text-regular">Get up to date on the Harsimus Branch and Embankment news and events - then help us write the next chapter! </h2>
-                        </div>
-                        <div className="group group-xl offset-top-30">
-                            <a className="btn btn-primary btn-lg btn-anis-effect" href="#news-section-recent">Recent Headline</a>
-                            <a className="btn btn-default btn-lg btn-anis-effect" data-caption-animate="fadeInUp" data-caption-delay="1200" href="involved.html#involved-section-member">
-                            <span className="btn-text">Become a Member!</span>
-                            </a>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </section>
+                <ParallaxHeader
+                    title={"News + Events"}
+                    subtitle={"Get up to date on the Harsimus Branch and Embankment news and events - then help us write the next chapter!"}
+                    img={"images/NEWS-BANNER.jpg"}
+                    btn1={{ text: "Recent Headline", href: "#news-section-recent", }}
+                    btn2={{ text: "Become a Member!", href: "involved.html#involved-section-member", }}
+                />
             }
         >
-            <News />
+            <NewsFeed />
             <NewsletterSubscribe />
             <Banner id={"news-section-connect"} title={"Get in Touch"} icon={"email"} />
             <Connect />
-            <BecomeAMember />
+            <ParallaxSection1
+                title={<a href="involved.html#involved-section-member">Become a Member!</a>}
+                img={"images/HOME-SLIDER1.jpg"}
+            />
         </Page>
     )
 }

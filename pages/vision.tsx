@@ -3,40 +3,24 @@ import {
     ArtistSection,
     BigPicture,
     CarouselButton,
-    ConceptSection,
+    ConceptSection, ParallaxHeader,
     ParallaxSection1,
     ParallaxSection2
 } from "../src/theme";
+import React from "react";
 
 export default function Body() {
     return (
         <Page
             path="vision"
             headerChildren={
-                <section className="section parallax-container bg-black" data-parallax-img="images/VISION-BANNER.jpg">
-                    <div className="parallax-content context-dark">
-                        <div className="container">
-                            <div className="row align-items-sm-center justify-content-sm-center section-cover section-98 section-sm-110 text-lg-left context-dark">
-                                <div className="col-sm-12">
-                                    <div className="offset-top-4 offset-xl-top-0">
-                                        <h1 className="text-capitalize"><span className="big">Our Vision</span></h1>
-                                    </div>
-                                    <div>
-                                        <h2 className="font-default font-italic text-regular">
-                                            "When we see land as a community to which we belong, we may begin to use it with love and respect." - Aldo Leopold
-                                        </h2>
-                                    </div>
-                                    <div className="group group-xl offset-top-30">
-                                        <a className="btn btn-primary btn-lg btn-anis-effect" href="#vision-section-concept">Concept</a>
-                                        <a className="btn btn-default btn-lg btn-anis-effect" data-caption-animate="fadeInUp" data-caption-delay="1200" href="involved.html#involved-section-member">
-                                            <span className="btn-text">Become a Member!</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <ParallaxHeader
+                    title={"Our Vision"}
+                    subtitle={"\"When we see land as a community to which we belong, we may begin to use it with love and respect.\" - Aldo Leopold"}
+                    img={"images/NEWS-BANNER.jpg"}
+                    btn1={{ text: "Concept", href: "#vision-section-concept", }}
+                    btn2={{ text: "Become a Member!", href: "involved.html#involved-section-member", }}
+                />
             }
         >
             <BigPicture title={"Our Philosophy"} id={"vision-section-bigpicture"}>

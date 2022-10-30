@@ -1,5 +1,5 @@
 import { Page } from "../src/pages"
-import {Banner, ParallaxSection1, Section} from "../src/theme";
+import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../src/theme";
 import React from "react";
 
 type Field = {
@@ -272,52 +272,31 @@ export default function Body() {
         <Page
             path="involved"
             headerChildren={
-                <section className="section parallax-container bg-black" data-parallax-img="images/INVOLVED-BANNER2.jpg">
-                    <div className="parallax-content context-dark">
-                        <div className="container">
-                            <div className="row align-items-sm-center justify-content-sm-center section-cover section-98 section-sm-110 text-lg-left context-dark">
-                                <div className="col-sm-12">
-                                    <div className="offset-top-4 offset-xl-top-0">
-                                        <h1 className="text-capitalize"><span className="big">GET INVOLVED</span></h1>
-                                    </div>
-                                    <div>
-                                        <h2 className="font-default font-italic text-regular">Join the community effort to realize our vision for the Harsimus Branch.</h2>
-                                    </div>
-                                    <div className="group group-xl offset-top-30"><a className="btn btn-primary btn-lg btn-anis-effect" href="#involved-section-member">Become a Member!</a>
-                                        <a className="btn btn-default btn-lg btn-anis-effect" data-caption-animate="fadeInUp" data-caption-delay="1200" href="#involved-section-donate">
-                                            <span className="btn-text">Donate</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <ParallaxHeader
+                    title={"GET INVOLVED"}
+                    subtitle={"Join the community effort to realize our vision for the Harsimus Branch."}
+                    img={"images/INVOLVED-BANNER2.jpg"}
+                    btn1={{ text: "Become a Member!", href: "#involved-section-member", }}
+                    btn2={{ text: "Donate", href: "#involved-section-donate", }}
+                />
             }
         >
             <MembershipOptions />
-
             <ParallaxSection1 id={"involved-section-volunteer"} title={"Volunteer"} img={"images/INVOLVED_VOLUNTEER.jpg"}>
                 <p>The Embankment Preservation Coalition operates with an all-volunteer board and volunteers from the community.</p>
                 <p>Volunteers staff our outreach table at local fairs and festivals; organize events; distribute information to the neighborhoods; consult on historic preservation and the environment; lend their professional expertise for architectural renderings, web site design, art, and photography; and help us forge alliances with supportive local and regional organizations.</p>
                 <p>We can put people with all sorts of background and skills to work, for as little as an hour or for a long-term commitment. Volunteer! <span className="font-weight-bold bold"> Volunteer!</span> </p>
             </ParallaxSection1>
-
             <SignupForm />
-
             <Donate />
-
             <Banner id={"involved-section-partners"} title={"Our Partners"} icon={"drag-horizontal"} >
                 <ul className="list-inline list-inline-dashed p">
                     <li className="list-inline-item"><a href="#involved-section-sponsors">Sponsors</a></li>
                     <li className="list-inline-item"><a href="#involved-section-endorsements">Supporters</a></li>
                 </ul>
             </Banner>
-
             <Sponsors />
-
             <Supporters />
-
             <ParallaxSection1 title={<a href="vision.html">Explore Our Vision</a>} img={"images/HOME-SLIDER2.jpg"} />
         </Page>
     )

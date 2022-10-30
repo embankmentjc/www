@@ -140,6 +140,40 @@ export function ArtistSection({ bullets, figure, alt, caption, children, ...rest
     )
 }
 
+type HeaderButton = { href: string, text: string }
+export function ParallaxHeader({ title, subtitle, img, btn1, btn2, }: {
+    title: string
+    subtitle: string
+    img: string
+    btn1: HeaderButton
+    btn2: HeaderButton
+}) {
+    return (
+        <section className="section parallax-container bg-black" data-parallax-img={img}>
+            <div className="parallax-content context-dark">
+                <div className="container">
+                    <div className="row align-items-sm-center justify-content-sm-center section-cover section-98 section-sm-110 text-lg-left context-dark">
+                        <div className="col-sm-12">
+                            <div className="offset-top-4 offset-xl-top-0">
+                                <h1 className="text-capitalize"><span className="big">{title}</span></h1>
+                            </div>
+                            <div>
+                                <h2 className="font-default font-italic text-regular">{subtitle}</h2>
+                            </div>
+                            <div className="group group-xl offset-top-30">
+                                <a className="btn btn-primary btn-lg btn-anis-effect" href={btn1.href}>{btn1.text}</a>
+                                <a className="btn btn-default btn-lg btn-anis-effect" data-caption-animate="fadeInUp" data-caption-delay="1200" href={btn2.href}>
+                                    <span className="btn-text">{btn2.text}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    )
+}
+
 export function ParallaxSection1({ id, title, img, children }: { id?: string, title?: ReactNode, img: string, children?: ReactNode, }) {
     return (
         <section id={id} className="section parallax-container" data-parallax-img={img}>

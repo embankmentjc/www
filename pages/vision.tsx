@@ -1,5 +1,4 @@
 import { Page } from "../src/pages"
-import {ReactNode} from "react";
 import {
     ArtistSection,
     BigPicture,
@@ -7,7 +6,7 @@ import {
     ConceptSection,
     ParallaxSection1,
     ParallaxSection2
-} from "../src/sections";
+} from "../src/theme";
 
 export default function Body() {
     return (

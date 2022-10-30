@@ -8,8 +8,7 @@ import {
     NextStep,
     NextSteps,
     ParallaxSection1
-} from "../src/sections";
-import {NextScript} from "next/document";
+} from "../src/theme";
 
 
 export async function getStaticProps(context: any) {

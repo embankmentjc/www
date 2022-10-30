@@ -6,28 +6,11 @@ export function CarouselButton({ text, href }: { text: string, href: string, }) 
     )
 }
 
-export function BigPicture({ title, id, children }: { title: string, id?: string, children: ReactNode }) {
-    return (
-        <section id={id} className="section-98 section-sm-110 bg-white-lilac">
-            <div className="container">
-                <h1>{title}</h1>
-                <hr className="divider divider-lg bg-mantis" />
-                <div className="row justify-content-sm-center">
-                    <div className="col-md-9 col-xl-8">
-                        {children}
-                    </div>
-                </div>
-            </div>
-        </section>
-    )
-}
-
 export type Figure = {
     src: string
     alt?: string
     caption?: string
     border?: string
-    //style?: { [k: string]: any }
 }
 export function Figure({ src, alt, caption, border, }: Figure) {
     const { thumbnail, img, figcaption }: any = caption ? {
@@ -48,19 +31,41 @@ export function Figure({ src, alt, caption, border, }: Figure) {
     )
 }
 
-export function Section({ id, title, pretitle, children }: { id?: string, title?: ReactNode, pretitle?: ReactNode, children: ReactNode }) {
+export function Section({ id, h1, title, pretitle, children }: {
+    id?: string
+    h1?: boolean
+    title?: ReactNode
+    pretitle?: ReactNode
+    children: ReactNode
+}) {
     if (typeof title === "string") {
-        title = <h2 className="font-weight-bold">{title}</h2>
+        if (h1) {
+            title = <h1>{title}</h1>
+        } else {
+            title = <h2 className="font-weight-bold">{title}</h2>
+        }
     }
     return (
         <section id={id} className="section section-98 section-sm-110">
             <div className="container">
                 {pretitle}
                 {title}
-                {title && <hr className="divider bg-mantis" />}
+                {title && <hr className={`divider ${h1 ? "divider-lg" : ""} bg-mantis`} />}
                 {children}
             </div>
         </section>
+    )
+}
+
+export function BigPicture({ title, id, children }: { title: string, id?: string, children: ReactNode }) {
+    return (
+        <Section id={id} title={title} h1={true}>
+            <div className="row justify-content-sm-center">
+                <div className="col-md-9 col-xl-8">
+                    {children}
+                </div>
+            </div>
+        </Section>
     )
 }
 

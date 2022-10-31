@@ -30,7 +30,7 @@ export default function Body() {
                     subtitle={"\"When we see land as a community to which we belong, we may begin to use it with love and respect.\" - Aldo Leopold"}
                     img={"images/NEWS-BANNER.jpg"}
                     btn1={{ text: "Concept", href: "#vision-section-concept", }}
-                    btn2={{ text: "Become a Member!", href: "involved.html#involved-section-member", }}
+                    btn2={{ text: "Become a Member!", href: "/involved.html#involved-section-member", }}
                 />
             }
             scripts={["/js/vision.js"]}
@@ -88,9 +88,7 @@ export default function Body() {
 
             <ParallaxSection2
                 title={"A Green Network"} id="vision-section-crossroads" img="images/VISION-JERSEYCITY.jpg"
-                blurb={<>
-                    Jersey City and Hudson County Master Plans call for the development of an off-road route for the East Coast Greenway Maine-to-Florida trail.  Developing the Harsimus Branch will significantly advance that route through Hudson County, linking historic sites, parks, and other open spaces.  The Greenway will serve as a spine for a trail system.
-                </>}>
+                blurb={"Jersey City and Hudson County Master Plans call for the development of an off-road route for the East Coast Greenway Maine-to-Florida trail.  Developing the Harsimus Branch will significantly advance that route through Hudson County, linking historic sites, parks, and other open spaces.  The Greenway will serve as a spine for a trail system."}>
                 <div className="col-sm-12">
                     <div className="offset-top-50 offset-xl-top-66">
                         {/* owl carousel; TODO: doesn't work? */}
@@ -125,9 +123,7 @@ export default function Body() {
 
             <ParallaxSection2
                 title={"Creating Our Sustainable Future with the Harsimus Branch"} id="vision-section-art" img="images/VISION-JERSEYCITY.jpg"
-                blurb={<>
-                    Artists have long been integral to the Jersey City community. Our Embankment vision embraces their creativity and weaves their vision and voices into the project, helping each of us to see and learn in new ways.
-                </>}>
+                blurb={"Artists have long been integral to the Jersey City community. Our Embankment vision embraces their creativity and weaves their vision and voices into the project, helping each of us to see and learn in new ways."}>
             </ParallaxSection2>
 
             <ArtistSection
@@ -190,13 +186,13 @@ export default function Body() {
                     <div className="row justify-content-center">
                         {/* owl carousel */}
                         <div className="col-lg-6 col-md-6 owl-carousel owl-carousel-default owl-carousel-class-light veil-owl-nav" data-loop="false" data-items="3" data-sm-items="3" data-dots="false" data-mouse-drag="false" data-lg-items="3" data-nav="false">
-                            <a href="involved.html#involved-section-donate">
+                            <a href="/involved.html#involved-section-donate">
                                 <button className="btn btn-primary" type="button">Donate</button>
                             </a>
-                            <a href="involved.html#involved-section-volunteer">
+                            <a href="/involved.html#involved-section-volunteer">
                                 <button className="btn btn-primary" type="button">Volunteer</button>
                             </a>
-                            <a href="involved.html#involved-section-sponsors">
+                            <a href="/involved.html#involved-section-sponsors">
                                 <button className="btn btn-primary" type="button">Sponsor</button>
                             </a>
                         </div>
@@ -204,7 +200,7 @@ export default function Body() {
                 </div>
             </section>
 
-            <ParallaxSection1 title={<a href="about.html">Explore Our History</a>} img="images/VISION-HISTORY.jpg" />
+            <ParallaxSection1 title={<a href="/about.html">Explore Our History</a>} img="images/VISION-HISTORY.jpg" />
         </Page>
     )
 }

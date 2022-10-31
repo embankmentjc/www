@@ -127,7 +127,7 @@ export function ArtistSection({ bullets, fig, alt, caption, children, ...rest}: 
                 <div className="row offset-top-20">
                     <div className="col-md-6 col-lg-6" style={{ textAlign: "center" }}>
                         <ul className="list-unstyled" style={{ listStyleType: "disc", textAlign: "left", display: "inline-block" }}>{
-                            bullets.map(bullet => <li key={"bullet"}>{bullet}</li>)
+                            bullets.map(bullet => <li key={bullet}>{bullet}</li>)
                         }</ul>
                     </div>
                     <div className="col-md-6 col-lg-6 text-center">
@@ -142,13 +142,16 @@ export function ArtistSection({ bullets, fig, alt, caption, children, ...rest}: 
 
 type HeaderButton = { href: string, text: string }
 export function ParallaxHeader({ title, embed, subtitle, img, btn1, btn2, }: {
-    title: string
+    title: ReactNode
     embed?: ReactNode
     subtitle: string
     img: string
     btn1: HeaderButton
     btn2: HeaderButton
 }) {
+    if (typeof title === 'string') {
+        title = <h1 className="text-capitalize"><span className="big">{title}</span></h1>
+    }
     return (
         <section className="section parallax-container bg-black" data-parallax-img={img}>
             <div className="parallax-content context-dark">
@@ -156,17 +159,15 @@ export function ParallaxHeader({ title, embed, subtitle, img, btn1, btn2, }: {
                     <div className="row align-items-sm-center justify-content-sm-center section-cover section-98 section-sm-110 text-lg-left context-dark">
                         <div className="col-sm-12">
                             <div className="offset-top-4 offset-xl-top-0">
-                                <h1 className="text-capitalize"><span className="big">{title}</span></h1>
+                                {title}
                             </div>
                             {embed}
                             <div>
                                 <h2 className="font-default font-italic text-regular">{subtitle}</h2>
                             </div>
                             <div className="group group-xl offset-top-30">
-                                <a className="btn btn-primary btn-lg btn-anis-effect" href={btn1.href}>{btn1.text}</a>
-                                <a className="btn btn-default btn-lg btn-anis-effect" data-caption-animate="fadeInUp" data-caption-delay="1200" href={btn2.href}>
-                                    <span className="btn-text">{btn2.text}</span>
-                                </a>
+                                <a href={btn1.href}className="btn btn-primary btn-lg btn-anis-effect">{btn1.text}</a>
+                                <a href={btn2.href}className="btn btn-default btn-lg btn-anis-effect"><span className="btn-text">{btn2.text}</span></a>
                             </div>
                         </div>
                     </div>
@@ -195,6 +196,9 @@ export function ParallaxSection1({ id, title, img, children }: { id?: string, ti
 }
 
 export function ParallaxSection2({ title, id, blurb, img, children, }: { title: string, id: string, blurb: ReactNode, img: string, children?: ReactNode, }) {
+    if (typeof blurb === 'string') {
+        blurb = <p>{blurb}</p>
+    }
     return (
         <section id={id} className="section parallax-container bg-black" data-parallax-img={img}>
             <div className="parallax-content section-98 section-sm-110 context-light">
@@ -204,9 +208,7 @@ export function ParallaxSection2({ title, id, blurb, img, children, }: { title: 
                     </div>
                     <hr className="divider divider-lg bg-mantis" />
                     <div className="row justify-content-sm-center offset-top-24">
-                        <div className="col-sm-10 col-xl-8">
-                            <p>{blurb}</p>
-                        </div>
+                        <div className="col-sm-10 col-xl-8">{blurb}</div>
                         {children}
                     </div>
                 </div>
@@ -260,13 +262,12 @@ export function Paragraphs({ id, title, children }: { id?: string, title?: strin
 
 type IconBox = {
     title: string
-    key?: string
     blurb: ReactNode
     icon: string
 }
 
 export function IconBox2(
-    { title, key, blurb, icon, classes, iconClasses, titleClasses }: IconBox & {
+    { title, blurb, icon, classes, iconClasses, titleClasses }: IconBox & {
         classes?: string
         iconClasses?: string
         titleClasses?: string
@@ -275,7 +276,7 @@ export function IconBox2(
         blurb = <p>{blurb}</p>
     }
     return (
-        <div key={key || title} className={`offset-top-66 ${classes || ""}`}>
+        <div className={`offset-top-66 ${classes || ""}`}>
             <div className="unit unit-sm flex-md-row text-md-left">
                 <div className="unit-left">
                     <span className={`icon mdi mdi-${icon} ${iconClasses || ""}`} />
@@ -316,6 +317,7 @@ export function IconBoxesSection(
                         {
                             boxes.map((box, idx) =>
                                 <IconBox2
+                                    key={box.title}
                                     {...box}
                                     classes={`offset-xl-top-${idx ? 34 : 50}`}
                                     iconClasses={"text-gray"}

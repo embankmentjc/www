@@ -8,13 +8,13 @@ function Brand({ className }: { className: string }) {
     return (
         <div className={className}>
             <a href="/">
-                <img style={{ marginTop: '-5px', marginLeft: '-15px' }} width='138' height='31' src="images/logo-lightEPC.png" alt="" />
+                <img style={{ marginTop: '-5px', marginLeft: '-15px' }} width='138' height='31' src="/images/logo-lightEPC.png" alt="" />
             </a>
         </div>
     )
 }
 
-function Nav({ cur }: { cur: string }) {
+function Nav({ cur, navStyle }: { cur: string, navStyle?: any }) {
     function MenuItem({ path, hash, text, }: {
         path: string
         hash: string
@@ -92,6 +92,7 @@ function Nav({ cur }: { cur: string }) {
         <div className="rd-navbar-wrap">
             <nav
                 className="rd-navbar rd-navbar-default rd-atata rd-navbar-transparent"
+                style={navStyle}
                 data-md-device-layout="rd-navbar-fixed"
                 data-lg-device-layout="rd-navbar-static"
                 data-lg-auto-height="true"
@@ -199,11 +200,11 @@ function UsefulLinks() {
                 <div className="d-inline-block">
                     <ul className="list list-marked">
                         <li><a href="/">Home</a></li>
-                        <li><a href="about">About</a></li>
-                        <li><a href="vision.html">Our Vision</a></li>
-                        <li><a href="involved">Get Involved</a></li>
-                        <li><a href="news">News + Events</a></li>
-                        <li><a href="involved#involved-section-donate">Donate</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/vision">Our Vision</a></li>
+                        <li><a href="/involved">Get Involved</a></li>
+                        <li><a href="/news">News + Events</a></li>
+                        <li><a href="/involved#involved-section-donate">Donate</a></li>
                         <li><a href="mailto:embankmentJC@gmail.com">Contact Us</a></li>
                     </ul>
                 </div>
@@ -215,12 +216,12 @@ function UsefulLinks() {
 function LatestNews() {
     return (
         <div className="col-sm-7 text-sm-left col-lg-4 col-xl-3">
-            <a href="news#news-section-recent"><h6 className="text-uppercase text-spacing-60">Latest news</h6></a>
+            <a href="/news#news-section-recent"><h6 className="text-uppercase text-spacing-60">Latest news</h6></a>
 
             <PostWidget date="2022-10-25" href="news#news-section-recent">
                 Register for the 2022 Embankment Preservation Coalition annual meeting
             </PostWidget>
-            <PostWidget date="2022-11-01" dateStr="11/1/2022 – 12/16/2022" href="./embankment-on-my-mind.html">
+            <PostWidget date="2022-11-01" dateStr="11/1/2022 – 12/16/2022" href="embankment-on-my-mind">
                 <i>The Embankment on My Mind</i> exhibits original art from 43 artists responding to multiple aspects of the Harsimus Branch amp; Embankment, including its history and its promise.
             </PostWidget>
             <PostWidget date="2022-09-07" href="https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ">
@@ -250,11 +251,12 @@ function Footer() {
     )
 }
 
-export function Page({ path, children, headerChildren, scripts, }: {
+export function Page({ path, children, headerChildren, scripts, navStyle, }: {
     path: string
     children: ReactNode
     headerChildren?: ReactNode
     scripts?: string[]
+    navStyle?: any
 }) {
     return (<>
         <Head>
@@ -270,17 +272,16 @@ export function Page({ path, children, headerChildren, scripts, }: {
         </div>
         <div className="page text-center">
             <header className="page-head slider-menu-position">
-                <Nav cur={path} />
+                <Nav cur={path} navStyle={navStyle} />
                 {headerChildren}
             </header>
             {children}
             <Footer />
         </div>
-        {/* Global RD Mailform Output */}
         <div className="snackbars" id="form-output-global" />
         <Script src="/js/core.min.js" strategy="beforeInteractive" />
         <Script src="/js/script.js" />
         <Script src="/js/revolution.min.js" />
-        {scripts?.map(src => <Script src={src}></Script>)}
+        {scripts?.map(src => <Script key={src} src={src} />)}
     </>)
 }

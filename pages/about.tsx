@@ -19,11 +19,11 @@ export default function Body() {
                     subtitle={"New Jersey’s historian John T. Cunningham called Hudson County a “mantle of wheels” for its central role in transportation history. Now outdated infrastructure can meet 21st-century needs."}
                     img={"images/ABOUT-JERSEYCITY.jpg"}
                     btn1={{ text: "The History", href: "#about-section-history", }}
-                    btn2={{ text: "Become a Member!", href: "involved.html#involved-section-member", }}
+                    btn2={{ text: "Become a Member!", href: "/involved#involved-section-member", }}
                 />
             }
         >
-            <BigPicture title={"The History"}>
+            <BigPicture id={"about-section-history"} title={"The History"}>
                 <p>Stagecoaches, ferries, canals, and trains made Hudson County key to an early transportation network focused on the port of New York.</p>
                 <p>The first steam ferry service in the world began in 1812 when Robert Fulton traveled between Jersey City and Manhattan. </p>
                 <p>In the 1830s, the Morris Canal brought Pennsylvania coal into Jersey City. One of the earliest railroads in the country, the New Jersey Railroad, was also established. </p>
@@ -166,7 +166,7 @@ export default function Body() {
                 <p>Litigant, with allies City of Jersey City and Rails to Trails Conservancy, over status of Harsimus Branch. Our claim that the Harsimus Branch is a regulated rail line with protections for the public interest prevailed in federal courts. All litigants are now poised to settle the litigation, subject to government approvals.</p>
             </Paragraphs>
 
-            <ParallaxSection1 title={<a href="involved.html">Become a Member!</a>} img={"images/NEWS-BANNER.jpg"} />
+            <ParallaxSection1 title={<a href="involved">Become a Member!</a>} img={"images/NEWS-BANNER.jpg"} />
         </Page>
     )
 }

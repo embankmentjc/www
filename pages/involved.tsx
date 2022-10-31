@@ -37,7 +37,7 @@ function SignupForm() {
                                         { label: "Phone", },
                                         { label: "Email", },
                                         { label: "Background", id: "message", cols: 12, },
-                                    ].map(field => <Field {...field} />)
+                                    ].map(field => <Field key={field.label} {...field} />)
                                 }
                             </div>
                             <div className="offset-top-24 text-center">
@@ -91,7 +91,7 @@ function SponsorsList(
                     {
                         sponsors.map(
                             ({ alt, src, href, width, height, }) =>
-                                <div className="col-md-4 col-xl-2 offset-top-41 offset-xl-top-0">
+                                <div key={alt} className="col-md-4 col-xl-2 offset-top-41 offset-xl-top-0">
                                     <a href={href} target="_blank">
                                         <img className="" alt={alt} src={src} width={width || 150} height={height || 70} />
                                     </a>
@@ -148,10 +148,7 @@ function SupportersList({ title, supporters }: { title: string, supporters: ({ n
         <ul style={{ listStyle: "none", paddingInlineStart: 0, }} className={"p"}>
             {supporters.map(
                 ({ name, href }) =>
-                    href
-                        ? <li><a href={href} target="_blank">{name}</a></li>
-                        : <li>{name}</li>
-
+                    <li key={name}>{href ? <a href={href} target="_blank">{name}</a> : name}</li>
             )}
         </ul>
     </>)

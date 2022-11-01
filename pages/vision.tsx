@@ -30,7 +30,7 @@ export default function Body() {
                     subtitle={"\"When we see land as a community to which we belong, we may begin to use it with love and respect.\" - Aldo Leopold"}
                     img={"images/NEWS-BANNER.jpg"}
                     btn1={{ text: "Concept", href: "#vision-section-concept", }}
-                    btn2={{ text: "Become a Member!", href: "/involved.html#involved-section-member", }}
+                    btn2={{ text: "Become a Member!", href: "/involved#involved-section-member", }}
                 />
             }
             scripts={["/js/vision.js"]}
@@ -186,13 +186,13 @@ export default function Body() {
                     <div className="row justify-content-center">
                         {/* owl carousel */}
                         <div className="col-lg-6 col-md-6 owl-carousel owl-carousel-default owl-carousel-class-light veil-owl-nav" data-loop="false" data-items="3" data-sm-items="3" data-dots="false" data-mouse-drag="false" data-lg-items="3" data-nav="false">
-                            <a href="/involved.html#involved-section-donate">
+                            <a href="/involved#involved-section-donate">
                                 <button className="btn btn-primary" type="button">Donate</button>
                             </a>
-                            <a href="/involved.html#involved-section-volunteer">
+                            <a href="/involved#involved-section-volunteer">
                                 <button className="btn btn-primary" type="button">Volunteer</button>
                             </a>
-                            <a href="/involved.html#involved-section-sponsors">
+                            <a href="/involved#involved-section-sponsors">
                                 <button className="btn btn-primary" type="button">Sponsor</button>
                             </a>
                         </div>
@@ -200,7 +200,7 @@ export default function Body() {
                 </div>
             </section>
 
-            <ParallaxSection1 title={<a href="/about.html">Explore Our History</a>} img="images/VISION-HISTORY.jpg" />
+            <ParallaxSection1 title={<a href="/about">Explore Our History</a>} img="images/VISION-HISTORY.jpg" />
         </Page>
     )
 }

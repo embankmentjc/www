@@ -180,11 +180,11 @@ function NewsFeed() {
         },
         {
             date: "2022-11-01", dateStr: "1 Nov – 16 Dec 2022",
-            title: <a href="./embankment-on-my-mind.html"><i>The Embankment On My Mind</i> Exhibition</a>,
-            src: "/images/teomm/teomm-banner.jpeg", alt: "The Embankment On My Mind exhibition", href: "./embankment-on-my-mind.html", children: (<>
+            title: <a href="/embankment-on-my-mind"><i>The Embankment On My Mind</i> Exhibition</a>,
+            src: "/images/teomm/teomm-banner.jpeg", alt: "The Embankment On My Mind exhibition", href: "/embankment-on-my-mind", children: (<>
                 <p><strong>Location:</strong> New Jersey City University Lemmerman and Visual Arts Galleries (<a href="https://goo.gl/maps/Ka1XAeVHwgB2GWEw7">map</a>)</p>
                 <p>
-                    <a href="./embankment-on-my-mind.html"><i>The Embankment On My Mind</i></a> exhibits original art inspired by the grassroots preservation initiative that holds the promise of transforming Jersey City's treatment of open space and an emerging trail system. Sixteen artists depicting local flora and fauna join twenty-seven artists with wide-ranging responses to the Harsimus Branch Embankment, the massive stone rail structure in Downtown Jersey City that the Embankment Coalition has been working to preserve.
+                    <a href="/embankment-on-my-mind"><i>The Embankment On My Mind</i></a> exhibits original art inspired by the grassroots preservation initiative that holds the promise of transforming Jersey City's treatment of open space and an emerging trail system. Sixteen artists depicting local flora and fauna join twenty-seven artists with wide-ranging responses to the Harsimus Branch Embankment, the massive stone rail structure in Downtown Jersey City that the Embankment Coalition has been working to preserve.
                 </p>
                 <ul style={{ listStyle: "none", padding: "0 1rem"}}>
                     <li><strong>Reception:</strong> November 5, 3:00 pm - 6:00 pm (both galleries)</li>
@@ -202,7 +202,7 @@ function NewsFeed() {
             src: "/images/sept-7-redevelopment-mtng.jpeg", alt: "Embankment community meeting flyer",
             href: "https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ",
             children: (<>
-                <p>Support <a href="vision.html#design">the Embankment Coalition's <strong>"light touch" vision</strong></a> for treatment of the Harsimus BranchEmbankment at an upcoming Jersey City Planning Department meeting,Wednesday, Sept. 7, 6:30-8:30 pm.  <a href="https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ" target="_blank"><strong>Register here.</strong></a></p>
+                <p>Support <a href="/vision#design">the Embankment Coalition's <strong>"light touch" vision</strong></a> for treatment of the Harsimus BranchEmbankment at an upcoming Jersey City Planning Department meeting,Wednesday, Sept. 7, 6:30-8:30 pm.  <a href="https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ" target="_blank"><strong>Register here.</strong></a></p>
                 <p>City Planners will be rolling out an Embankment Redevelopment Plan focused on the open space of Blocks 2-8 of the Embankment property from the west side of Manila Avenue to beyond Newark Avenue near the Turnpike Extension.  Help ensure that the future for the Embankment is historic preservation, conservation of what has become an ecological corridor, and connectivity of neighborhoods to a regional carbon-free transportation network.</p>
             </>)
         },
@@ -353,7 +353,7 @@ export default function Body() {
                     subtitle={"Get up to date on the Harsimus Branch and Embankment news and events - then help us write the next chapter!"}
                     img={"images/NEWS-BANNER.jpg"}
                     btn1={{ text: "Recent Headline", href: "#news-section-recent", }}
-                    btn2={{ text: "Become a Member!", href: "involved.html#involved-section-member", }}
+                    btn2={{ text: "Become a Member!", href: "/involved#involved-section-member", }}
                 />
             }
         >
@@ -362,7 +362,7 @@ export default function Body() {
             <Banner id={"news-section-connect"} title={"Get in Touch"} icon={"email"} />
             <Connect />
             <ParallaxSection1
-                title={<a href="involved.html#involved-section-member">Become a Member!</a>}
+                title={<a href="/involved#involved-section-member">Become a Member!</a>}
                 img={"images/HOME-SLIDER1.jpg"}
             />
         </Page>

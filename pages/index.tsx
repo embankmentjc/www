@@ -140,7 +140,7 @@ function BannerSlides() {
                             alt="TODO"
                             title="Welcome to the Harsimus Branch and Embankment"
                             subtitle="The Future of Green Infrastructure in Jersey City"
-                            btn1={{ href: "vision.html", text: "Explore Our Vision", }}
+                            btn1={{ href: "/vision", text: "Explore Our Vision", }}
                             btn2={{ href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", }}
                         />
                         <BannerSlide
@@ -149,7 +149,7 @@ function BannerSlides() {
                             title="Historic Structure and a Natural Forest"
                             subtitle="A Green Corridor Unique to Jersey City"
                             btn1={{ href: "#home-section-what", text: "Learn More", }}
-                            btn2={{ href: "involved#involved-section-donate", text: "Donate", }}
+                            btn2={{ href: "/involved#involved-section-donate", text: "Donate", }}
                         />
                         <BannerSlide
                             img="images/HOME-SLIDER3.jpg"
@@ -157,7 +157,7 @@ function BannerSlides() {
                             title="Our Vision"
                             subtitle="Preserve, Restore, Activate"
                             btn1={{ href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", }}
-                            btn2={{ href: "involved#involved-section-member", text: "Become a Member", }}
+                            btn2={{ href: "/involved#involved-section-member", text: "Become a Member", }}
                         />
                     </ul>
                 </div>
@@ -188,6 +188,7 @@ function IntroSectionWhat() {
                 }].map(
                     icon =>
                         <IconBox2
+                            key={icon.title}
                             {...icon}
                             classes={"col-md-8 col-lg-4"}
                             iconClasses={"icon-mantis-filled icon-circle"}
@@ -264,7 +265,7 @@ function NextSteps() {
         (nextStep, idx) => {
             const side = (idx % 2 == 0) ? "left" : "right"
             const step = `Step 0${idx + 1}`
-            return <NextStep side={side} step={step} {...nextStep} first={idx == 0} />
+            return <NextStep key={step} side={side} step={step} {...nextStep} first={idx == 0} />
         }
     )
     return (
@@ -305,7 +306,7 @@ export default function Body() {
             />
             <GradientHeader id={"home-section-steps"} title={"Next Steps"} />
             <NextSteps />
-            <ParallaxSection1 title={<a href="vision.html">Explore Our Vision</a>} img={"images/HOME-SLIDER3.jpg"}/>
+            <ParallaxSection1 title={<a href="/vision">Explore Our Vision</a>} img={"images/HOME-SLIDER3.jpg"}/>
         </Page>
     )
 }

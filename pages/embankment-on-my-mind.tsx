@@ -8,7 +8,7 @@ export default function Body() {
                 <div className="container">
                     <div className="row justify-content-center offset-top-20">
                         <h2>
-                            <span style={{ fontWeight: "bold", fontStyle: "italic" }}>The Embankment on My Mind</span>
+                            <span style={{ fontWeight: "bold", fontStyle: "italic" }}>The Embankment on My Mind</span>{' '}
                             <span style={{ fontWeight: "normal" }}>Exhibition</span>
                         </h2>
                         <div className="col-md-12 col-lg-12" style={{ textAlign: "center" }}>

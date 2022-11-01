@@ -294,7 +294,7 @@ export default function Body() {
             </Banner>
             <Sponsors />
             <Supporters />
-            <ParallaxSection1 title={<a href="vision.html">Explore Our Vision</a>} img={"images/HOME-SLIDER2.jpg"} />
+            <ParallaxSection1 title={<a href="/vision">Explore Our Vision</a>} img={"images/HOME-SLIDER2.jpg"} />
         </Page>
     )
 }

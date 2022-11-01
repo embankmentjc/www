@@ -109,39 +109,34 @@ export default function Body() {
                             </div>
                             <hr />
                             <div className="row offset-top-20">
-                                <p>
-                                    This project is made possible by a grant from the <a href="https://nj.gov/state/njsca/index.html">New Jersey State Council on the Arts</a>, a division of the Department of State, and administered by <a href="https://hudsoncountyculturalaffairs.org/">the Hudson County Office of Cultural & Heritage Affairs</a>, Thomas A. DeGise, Hudson County Executive & the Hudson County Board of County Commissioners.
-                                </p>
-                                <p>
-                                    Supported by public funds from <a href="http://www.jerseycityculture.org/programs/arts-and-culture-trust-fund-2/">the Jersey City Arts and Culture Trust Fund</a>.
-                                </p>
+                                <p> This project is made possible by a grant from the <a href="https://nj.gov/state/njsca/index.html">New Jersey State Council on the Arts</a>, a division of the Department of State, and administered by <a href="https://hudsoncountyculturalaffairs.org/">the Hudson County Office of Cultural & Heritage Affairs</a>, Thomas A. DeGise, Hudson County Executive & the Hudson County Board of County Commissioners.</p>
+                                <p>Supported by public funds from <a href="http://www.jerseycityculture.org/programs/arts-and-culture-trust-fund-2/">the Jersey City Arts and Culture Trust Fund</a>.</p>
                             </div>
-                            <div className="row justify-content-center offset-top-20" >
-                            </div>
+                            <div className="row justify-content-center offset-top-20" />
                             <hr/>
                             <div className="row justify-content-center offset-top-40" >
                                 <div className="col-sm-7 col-md-3 col-lg-3">
                                     <a href="https://hudsoncountyculturalaffairs.org/">
-                                        <img src="images/teomm/teomm-njhc-logo.jpeg" alt="New Jersey Hudson County logo" style={{ maxWidth: "100%" }} />
+                                        <img src="/images/teomm/teomm-njhc-logo.jpeg" alt="New Jersey Hudson County logo" style={{ maxWidth: "100%" }} />
                                     </a>
                                 </div>
                                 <div className="col-sm-6 col-md-3 col-lg-3">
                                     <a href="http://www.jerseycityculture.org/programs/arts-and-culture-trust-fund-2/">
-                                        <img src="images/teomm/teomm-jcac-logo.jpeg" alt="Jersey City Arts & Culture Trust Fund logo" style={{ maxWidth: "100%" }} />
+                                        <img src="/images/teomm/teomm-jcac-logo.jpeg" alt="Jersey City Arts & Culture Trust Fund logo" style={{ maxWidth: "100%" }} />
                                     </a>
                                 </div>
                             </div>
                             <div className="row justify-content-center offset-top-20" >
                                 <div className="col-sm-10 col-md-5 col-lg-5">
                                     <a href="https://www.njcu.edu/">
-                                        <img src="images/teomm/teomm-njcu-logo.png" alt="New Jersey City University logo" style={{ maxWidth: "100%" }} />
+                                        <img src="/images/teomm/teomm-njcu-logo.png" alt="New Jersey City University logo" style={{ maxWidth: "100%" }} />
                                     </a>
                                 </div>
                             </div>
                             <div className="row justify-content-center offset-top-20" >
                                 <div className="col-sm-10 col-md-5 col-lg-5">
                                     <a href="https://embankment.org">
-                                        <img src="images/teomm/teomm-epc-logo.jpg" alt="Embankment Prservation Coalition logo" style={{ maxWidth: "100%" }} />
+                                        <img src="/images/teomm/teomm-epc-logo.jpg" alt="Embankment Preservation Coalition logo" style={{ maxWidth: "100%" }} />
                                     </a>
                                 </div>
                             </div>

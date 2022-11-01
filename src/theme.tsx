@@ -1,5 +1,15 @@
 import React, {ReactNode} from "react";
 
+export function Brand({ className }: { className: string }) {
+    return (
+        <div className={className}>
+            <a href="/">
+                <img style={{ marginTop: '-5px', marginLeft: '-15px' }} width='138' height='31' src="/images/logo-lightEPC.png" alt="" />
+            </a>
+        </div>
+    )
+}
+
 export function CarouselButton({ text, href }: { text: string, href: string, }) {
     return (
         <a href={href} target="_blank"><button className="btn btn-primary" type="button">{text}</button></a>

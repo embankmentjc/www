@@ -309,10 +309,10 @@ function Connect() {
                     <div className="inset-lg-right-20">
                         <ConnectItem
                             title={"Request a Presentation"}
-                            href={"mailto:embankmentJC@gmail.com/"}
+                            href={"mailto:embankmentJC@gmail.com"}
                             id={"connect"}
                             subtitle={"Location: Zoom Meeting | Time: 7:00-8:00pm"}
-                            img={{ src: "images/ABOUT-6TH.jpg", alt: "Old aerial photo of Jersey City, 6th St. highlighted", }}
+                            img={{ src: "/images/ABOUT-6TH.jpg", alt: "Old aerial photo of Jersey City, 6th St. highlighted", }}
                             footer={
                                 <div className="group">
                                     <a className="btn btn-danger btn-icon btn-icon-left" href="mailto:embankmentJC@gmail.com">
@@ -321,20 +321,14 @@ function Connect() {
                                 </div>
                             }
                         >
-                            <p>
-                                The Embankment Preservation Coalition can tailor a presentation to your organization's interests, whether it's Harsimus Branch and Embankment railroad history, our ecological vision for park and trail design, or our advocacy for a trail system throughout the City that would enable every resident to be within ten minutes of a safe, off-road walking and biking trail.
-                            </p>
-                            <p>
-                                Our work is all about making connections - so, with apologies to E.M. Forster, only connect with us! To request a presentation, email the Coalition with your proposal and, if you can, give us several options for dates and times.
-                            </p>
+                            <p>The Embankment Preservation Coalition can tailor a presentation to your organization's interests, whether it's Harsimus Branch and Embankment railroad history, our ecological vision for park and trail design, or our advocacy for a trail system throughout the City that would enable every resident to be within ten minutes of a safe, off-road walking and biking trail.</p>
+                            <p>Our work is all about making connections - so, with apologies to E.M. Forster, only connect with us! To request a presentation, email the Coalition with your proposal and, if you can, give us several options for dates and times.</p>
                         </ConnectItem>
                         <ConnectItem
                             title={"Accessibility / Special Requests"}
                             id={"accessibility"}
                         >
-                            <p>
-                                The Embankment Coalition seeks to accommodate at our events people of varied abilities, within the limits of our resources.  If you require special accommodations, please contact us at least two weeks in advance of an event at embankmentjc@gmail.com or call 201-963-0232 and leave a message.  Please include your contact information and the best ways and times to contact you. Suggestions on how to make our events more accessible are also welcomed!  Thank you.
-                            </p>
+                            <p>The Embankment Coalition seeks to accommodate at our events people of varied abilities, within the limits of our resources.  If you require special accommodations, please contact us at least two weeks in advance of an event at embankmentjc@gmail.com or call 201-963-0232 and leave a message.  Please include your contact information and the best ways and times to contact you. Suggestions on how to make our events more accessible are also welcomed!  Thank you.</p>
                         </ConnectItem>
                     </div>
                 </div>
@@ -351,7 +345,7 @@ export default function Body() {
                 <ParallaxHeader
                     title={"News + Events"}
                     subtitle={"Get up to date on the Harsimus Branch and Embankment news and events - then help us write the next chapter!"}
-                    img={"images/NEWS-BANNER.jpg"}
+                    img={"/images/NEWS-BANNER.jpg"}
                     btn1={{ text: "Recent Headline", href: "#news-section-recent", }}
                     btn2={{ text: "Become a Member!", href: "/involved#involved-section-member", }}
                 />

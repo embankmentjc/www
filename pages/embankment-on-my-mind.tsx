@@ -1,8 +1,9 @@
 import { Page } from "../src/pages"
+import {Figure} from "../src/theme";
 
 export default function Body() {
     return (
-        <Page path="embankment-on-my-mind" navStyle={{ backgroundColor: "#191919" }}>
+        <Page path="embankment-on-my-mind" navStuck={true}>
             <section className="section section-50 section-sm-top-5">
                 <img src="/images/teomm/teomm-banner.jpeg" style={{ maxWidth: "100%" }}/>
                 <div className="container">
@@ -22,16 +23,11 @@ export default function Body() {
                         </div>
                         <div className="row offset-top-20">
                             <header className="post-media">
-                                <div data-lightgallery="group">
-                                    <a data-lightgallery="item" href="/images/teomm/teomm-night-shot.jpeg">
-                                        <figure className="figure">
-                                            <img className="figure-img img-fluid" src="/images/teomm/teomm-night-shot.jpeg" alt="Photograph of the Embankment at night" />
-                                            <figcaption className="figure-caption">
-                                                Kay Kenny, Moonwalk, Archival inkjet print of digital photographic montage, 20” x 24” (framed)
-                                            </figcaption>
-                                        </figure>
-                                    </a>
-                                </div>
+                                <Figure
+                                    src={"/images/teomm/teomm-night-shot.jpeg"}
+                                    alt={"Photograph of the Embankment at night"}
+                                    caption={"Kay Kenny, Moonwalk, Archival inkjet print of digital photographic montage, 20” x 24” (framed)"}
+                                />
                             </header>
                         </div>
                         <div className="col-md-9 col-lg-7 text-md-left offset-top-34 offset-lg-top-0">

@@ -4,8 +4,9 @@ import Head from 'next/head'
 import Script from 'next/script'
 import {Footer} from "./footer";
 import {Brand} from "./theme";
+import navStyles from "../components/navbar.module.css";
 
-function Nav({ cur, navStyle }: { cur: string, navStyle?: any }) {
+function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean }) {
     function MenuItem({ path, hash, text, }: {
         path: string
         hash: string
@@ -82,8 +83,7 @@ function Nav({ cur, navStyle }: { cur: string, navStyle?: any }) {
     return (
         <div className="rd-navbar-wrap">
             <nav
-                className="rd-navbar rd-navbar-default rd-atata rd-navbar-transparent"
-                style={navStyle}
+                className={`rd-navbar rd-navbar-default rd-atata rd-navbar-transparent ${navStuck ? navStyles["navbar-force-stuck"] : ""}`}
                 data-md-device-layout="rd-navbar-fixed"
                 data-lg-device-layout="rd-navbar-static"
                 data-lg-auto-height="true"
@@ -91,7 +91,7 @@ function Nav({ cur, navStyle }: { cur: string, navStyle?: any }) {
                 data-lg-layout="rd-navbar-static"
                 data-lg-stick-up="true"
             >
-                <div className="rd-navbar-inner">
+                <div className={`rd-navbar-inner ${navStuck ? navStyles["rd-navbar-inner"] : ""}`}>
                     {/* RD Navbar Panel */}
                     <div className="rd-navbar-panel">
                         {/* RD Navbar Toggle */}
@@ -113,12 +113,12 @@ function Nav({ cur, navStyle }: { cur: string, navStyle?: any }) {
     );
 }
 
-export function Page({ path, children, headerChildren, scripts, navStyle, }: {
+export function Page({ path, children, headerChildren, scripts, navStuck, }: {
     path: string
     children: ReactNode
     headerChildren?: ReactNode
     scripts?: string[]
-    navStyle?: any
+    navStuck?: boolean
 }) {
     return (<>
         <Head>
@@ -134,7 +134,7 @@ export function Page({ path, children, headerChildren, scripts, navStyle, }: {
         </div>
         <div className="page text-center">
             <header className="page-head slider-menu-position">
-                <Nav cur={path} navStyle={navStyle} />
+                <Nav cur={path} navStuck={navStuck} />
                 {headerChildren}
             </header>
             {children}

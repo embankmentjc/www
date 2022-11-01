@@ -1,0 +1,12 @@
+.navbar-force-stuck {
+    background-color: #191919;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.navbar-force-stuck > .rd-navbar-inner {
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}

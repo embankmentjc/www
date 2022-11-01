@@ -96,13 +96,12 @@ function UsefulLinks() {
 function LatestNews() {
     return (
         <div className="col-sm-7 text-sm-left col-lg-4 col-xl-3">
-            <a href="/news#news-section-recent"><h6 className="text-uppercase text-spacing-60">Latest news</h6></a>
-
-            <PostWidget date="2022-10-25" href="news#news-section-recent">
-                Register for the 2022 Embankment Preservation Coalition annual meeting
-            </PostWidget>
+            <h6 className="text-uppercase text-spacing-60"><a href="/news#news-section-recent">Latest news</a></h6>
             <PostWidget date="2022-11-01" dateStr="11/1/2022 – 12/16/2022" href="embankment-on-my-mind">
                 <i>The Embankment on My Mind</i> exhibits original art from 43 artists responding to multiple aspects of the Harsimus Branch amp; Embankment, including its history and its promise.
+            </PostWidget>
+            <PostWidget date="2022-10-25" href="news#news-section-recent">
+                Register for the 2022 Embankment Preservation Coalition annual meeting
             </PostWidget>
             <PostWidget date="2022-09-07" href="https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ">
                 <strong>Another community meeting</strong> on the Embankment Redevelopment Plan! Hosted by Jersey City Planning, register here.

@@ -7,7 +7,7 @@ import moment from "moment/moment";
 
 function NewsletterSubscribe() {
     return (
-        <section id="news-section-subscribe" className="section parallax-container context-light" data-parallax-img="images/NEWS-SUBSCRIBE.jpg">
+        <section id="news-section-subscribe" className="section parallax-container context-light" data-parallax-img="/images/NEWS-SUBSCRIBE.jpg">
             <div className="parallax-content section-98 section-md-110 bg-overlay-white">
                 <div className="container">
                     <h1>Subscribe to Our Newsletter</h1>
@@ -357,7 +357,7 @@ export default function Body() {
             <Connect />
             <ParallaxSection1
                 title={<a href="/involved#involved-section-member">Become a Member!</a>}
-                img={"images/HOME-SLIDER1.jpg"}
+                img={"/images/HOME-SLIDER1.jpg"}
             />
         </Page>
     )

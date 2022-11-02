@@ -121,7 +121,7 @@ function Sponsors() {
                     { alt: "Jersey City Times", src: "/images/sponsors/jersey%20city%20times.jpg", href: "https://jcitytimes.com/", },
                     { alt: "Keller Williams Realty", src: "/images/sponsors/KW_LOGO.png", href: "https://stephengucciardo.kw.com/", },
                     { alt: "Skinner's Loft", src: "/images/sponsors/SKINNER2_LOGO.png", href: "https://www.skinnersloft.com/", height: 150, },
-                    { alt: "Key Foods", src: "images/sponsors//KEYFOOD_LOGO.png", href: "https://keyfoodstores.keyfood.com/store/keyFood/en/store/1666?distance=0.00%20mile&query=574%20Jersey%20Ave%20Jersey%20City,%20NJ%2007302%20United%20States&radius=5&services=&all=", },
+                    { alt: "Key Foods", src: "/images/sponsors//KEYFOOD_LOGO.png", href: "https://keyfoodstores.keyfood.com/store/keyFood/en/store/1666?distance=0.00%20mile&query=574%20Jersey%20Ave%20Jersey%20City,%20NJ%2007302%20United%20States&radius=5&services=&all=", },
                     { alt: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
                     { alt: "Madame Claude", src: "/images/sponsors/MADAME_LOGO.png", href: "http://www.madameclaudejc.com/", },
                     { alt: "Madame Claude Wine", src: "/images/sponsors/MADAMEWINE_LOGO.png", href: "https://www.madameclaudewine.com/", },
@@ -131,11 +131,11 @@ function Sponsors() {
             <SponsorsList
                 title={"Silver Level"}
                 sponsors={[
-                    { alt: "PostNet", src: "images/sponsors/POST_LOGO.png", href: "https://locations.postnet.com/nj/jersey-city/344-grove-st", height: 75, },
-                    { alt: "Delenio", src: "images/sponsors/DELENIO_LOGO.png", href: "https://www.deleniojc.com/", height: 75, },
-                    { alt: "Carmine's Pizza", src: "images/sponsors/CARMINE_LOGO.png", href: "https://www.mycarminespizza.com/", height: 65, },
-                    { alt: "Newport Pharmacy", src: "images/sponsors/NEWPORT_LOGO.png", href: "https://goo.gl/maps/W6dWQvseMSkuXo3HA", height: 50, },
-                    { alt: "Mastrolia Pharmacy", src: "images/sponsors/MASTROLIA_LOGO.jpg", href: "https://goo.gl/maps/wR2UT9jEn2NC2Ffp6", height: 75, },
+                    { alt: "PostNet", src: "/images/sponsors/POST_LOGO.png", href: "https://locations.postnet.com/nj/jersey-city/344-grove-st", height: 75, },
+                    { alt: "Delenio", src: "/images/sponsors/DELENIO_LOGO.png", href: "https://www.deleniojc.com/", height: 75, },
+                    { alt: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", href: "https://www.mycarminespizza.com/", height: 65, },
+                    { alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "https://goo.gl/maps/W6dWQvseMSkuXo3HA", height: 50, },
+                    { alt: "Mastrolia Pharmacy", src: "/images/sponsors/MASTROLIA_LOGO.jpg", href: "https://goo.gl/maps/wR2UT9jEn2NC2Ffp6", height: 75, },
                 ]}
             />
         </Section>
@@ -250,12 +250,12 @@ function MembershipOptions() {
                 <div className="col-xl-12 offset-top-34">
                     <div className="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">
                         <div className="row grid-group-sm" data-lightgallery="group">
-                            <MembershipOption name={"Student / Senior"} price={10} src={"images/bees2.jpg"} value={"TD673N8N5Q4HA"} />
-                            <MembershipOption name={"Individual"} price={25} src={"images/individual2.jpg"} value={"RYLN4DQ2N5HAS"} />
-                            <MembershipOption name={"Family"} price={40} src={"images/family2.jpg"} value={"7492YV58QXSZW"} />
-                            <MembershipOption name={"Friend"} price={100} src={"images/friend2.jpg"} value={"GSJLC7A9PVUF4"} />
-                            <MembershipOption name={"Benefactor"} price={250} src={"images/benefactor2.jpg"} value={"YZ5XMHDA75V2L"} />
-                            <MembershipOption name={"Life"} price={1000} src={"images/life2.jpg"} value={"HW6BR6ER4RXTA"} />
+                            <MembershipOption name={"Student / Senior"} price={10} src={"/images/bees2.jpg"} value={"TD673N8N5Q4HA"} />
+                            <MembershipOption name={"Individual"} price={25} src={"/images/individual2.jpg"} value={"RYLN4DQ2N5HAS"} />
+                            <MembershipOption name={"Family"} price={40} src={"/images/family2.jpg"} value={"7492YV58QXSZW"} />
+                            <MembershipOption name={"Friend"} price={100} src={"/images/friend2.jpg"} value={"GSJLC7A9PVUF4"} />
+                            <MembershipOption name={"Benefactor"} price={250} src={"/images/benefactor2.jpg"} value={"YZ5XMHDA75V2L"} />
+                            <MembershipOption name={"Life"} price={1000} src={"/images/life2.jpg"} value={"HW6BR6ER4RXTA"} />
                         </div>
                     </div>
                 </div>
@@ -272,14 +272,14 @@ export default function Body() {
                 <ParallaxHeader
                     title={"GET INVOLVED"}
                     subtitle={"Join the community effort to realize our vision for the Harsimus Branch."}
-                    img={"images/INVOLVED-BANNER2.jpg"}
+                    img={"/images/INVOLVED-BANNER2.jpg"}
                     btn1={{ text: "Become a Member!", href: "#involved-section-member", }}
                     btn2={{ text: "Donate", href: "#involved-section-donate", }}
                 />
             }
         >
             <MembershipOptions />
-            <ParallaxSection1 id={"involved-section-volunteer"} title={"Volunteer"} img={"images/INVOLVED_VOLUNTEER.jpg"}>
+            <ParallaxSection1 id={"involved-section-volunteer"} title={"Volunteer"} img={"/images/INVOLVED_VOLUNTEER.jpg"}>
                 <p>The Embankment Preservation Coalition operates with an all-volunteer board and volunteers from the community.</p>
                 <p>Volunteers staff our outreach table at local fairs and festivals; organize events; distribute information to the neighborhoods; consult on historic preservation and the environment; lend their professional expertise for architectural renderings, web site design, art, and photography; and help us forge alliances with supportive local and regional organizations.</p>
                 <p>We can put people with all sorts of background and skills to work, for as little as an hour or for a long-term commitment. Volunteer! <span className="font-weight-bold bold"> Volunteer!</span> </p>
@@ -294,7 +294,7 @@ export default function Body() {
             </Banner>
             <Sponsors />
             <Supporters />
-            <ParallaxSection1 title={<a href="/vision">Explore Our Vision</a>} img={"images/HOME-SLIDER2.jpg"} />
+            <ParallaxSection1 title={<a href="/vision">Explore Our Vision</a>} img={"/images/HOME-SLIDER2.jpg"} />
         </Page>
     )
 }

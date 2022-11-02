@@ -17,7 +17,7 @@ function NewsletterSubscribe() {
                             <p>Stay informed about the Harsimus Branch and events sponsored by the Embankment Preservation Coalition and other preservation and conservation allies by subscribing to our newsletter. You will receive the Coalition online newsletter
                                 and occasional alerts and notices. We do not share your contact information with others, and we promise not to inundate you with email. You can also unsubscribe at any time.</p>
                             {/* Call to action type 1 */}
-                            <form className="rd-mailform" data-form-output="form-subscribe-footer" data-form-type="subscribe" method="post" action="api/email-signup">
+                            <form className="rd-mailform" data-form-output="form-subscribe-footer" data-form-type="subscribe" method="post" action="bat/rd-mailform.php">
                                 <div className="form-group">
                                     <div className="input-group input-group-sm">
                                         <span className="input-group-prepend">

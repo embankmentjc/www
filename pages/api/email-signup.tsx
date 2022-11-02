@@ -25,6 +25,7 @@ function Email({ data }: { data: { [k: string]: string } }) {
     )
 }
 
+// WIP, still using bat/rd-mailform.php
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
         console.log("405…", req.method)

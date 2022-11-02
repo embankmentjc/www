@@ -1,5 +1,6 @@
 import { Page } from "../src/pages"
 import {Figure} from "../src/theme";
+import styles from "embankment-on-my-mind.module.css"
 
 export default function Body() {
     return (
@@ -117,26 +118,26 @@ export default function Body() {
                             <div className="row justify-content-center offset-top-40" >
                                 <div className="col-sm-7 col-md-3 col-lg-3">
                                     <a href="https://hudsoncountyculturalaffairs.org/">
-                                        <img src="/images/teomm/teomm-njhc-logo.jpeg" alt="New Jersey Hudson County logo" style={{ maxWidth: "100%" }} />
+                                        <img src="/images/teomm/teomm-njhc-logo.jpeg" alt="New Jersey Hudson County logo" className={styles.logo} />
                                     </a>
                                 </div>
                                 <div className="col-sm-6 col-md-3 col-lg-3">
                                     <a href="http://www.jerseycityculture.org/programs/arts-and-culture-trust-fund-2/">
-                                        <img src="/images/teomm/teomm-jcac-logo.jpeg" alt="Jersey City Arts & Culture Trust Fund logo" style={{ maxWidth: "100%" }} />
+                                        <img src="/images/teomm/teomm-jcac-logo.jpeg" alt="Jersey City Arts & Culture Trust Fund logo" className={styles.logo} />
                                     </a>
                                 </div>
                             </div>
                             <div className="row justify-content-center offset-top-20" >
                                 <div className="col-sm-10 col-md-5 col-lg-5">
                                     <a href="https://www.njcu.edu/">
-                                        <img src="/images/teomm/teomm-njcu-logo.png" alt="New Jersey City University logo" style={{ maxWidth: "100%" }} />
+                                        <img src="/images/teomm/teomm-njcu-logo.png" alt="New Jersey City University logo" className={styles.logo} />
                                     </a>
                                 </div>
                             </div>
                             <div className="row justify-content-center offset-top-20" >
                                 <div className="col-sm-10 col-md-5 col-lg-5">
                                     <a href="https://embankment.org">
-                                        <img src="/images/teomm/teomm-epc-logo.jpg" alt="Embankment Preservation Coalition logo" style={{ maxWidth: "100%" }} />
+                                        <img src="/images/teomm/teomm-epc-logo.jpg" alt="Embankment Preservation Coalition logo" className={styles.logo} />
                                     </a>
                                 </div>
                             </div>

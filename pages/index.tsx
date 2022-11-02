@@ -136,7 +136,7 @@ function BannerSlides() {
                     {/* BEGIN MAIN SLIDE LIST */}
                     <ul>
                         <BannerSlide
-                            img="images/HOME-SLIDER1.jpg"
+                            img="/images/HOME-SLIDER1.jpg"
                             alt="TODO"
                             title="Welcome to the Harsimus Branch and Embankment"
                             subtitle="The Future of Green Infrastructure in Jersey City"
@@ -144,7 +144,7 @@ function BannerSlides() {
                             btn2={{ href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", }}
                         />
                         <BannerSlide
-                            img="images/HOME-SLIDER2.jpg"
+                            img="/images/HOME-SLIDER2.jpg"
                             alt="TODO"
                             title="Historic Structure and a Natural Forest"
                             subtitle="A Green Corridor Unique to Jersey City"
@@ -152,7 +152,7 @@ function BannerSlides() {
                             btn2={{ href: "/involved#involved-section-donate", text: "Donate", }}
                         />
                         <BannerSlide
-                            img="images/HOME-SLIDER3.jpg"
+                            img="/images/HOME-SLIDER3.jpg"
                             alt="TODO"
                             title="Our Vision"
                             subtitle="Preserve, Restore, Activate"
@@ -202,15 +202,15 @@ function IntroSectionWhat() {
 
 function ConceptSections() {
     return (<>
-        <ConceptSection id="home-section-historic" title={"The Historic Embankment"} src={"images/HOME-AERIAL.jpg"} figure={false}>
+        <ConceptSection id="home-section-historic" title={"The Historic Embankment"} src={"/images/HOME-AERIAL.jpg"} figure={false}>
             <p>The Harsimus Branch Embankment is the sturdy vestige of a rail economy and landscape that once dominated Jersey City. The masonry and earth structure possesses a remarkable physical integrity and during construction the journalistic accounts stressed its monumental qualities. Landscape historian John Stilgoe writes of the structure as having “the everlasting solidity of Egyptian pyramids and Inca roads” (Stilgoe, 1998, p. 42).</p>
             <p>Designed by James J. Ferris, a prominent civil engineer and politician in Jersey City, the Embankment was erected from 1901-1905 to replace an existing iron and timber elevated rail line that was deemed too low and unstable. The Embankment stone structure ranged from 27 feet  to 13 feet  in height with each stone weighing nearly a ton. At this scale, the stone and earth structure not only resolved the instability of the existing structure but also better absorbed the vibrations and noises from the constant industrial traffic moving through the Jersey City community - creating a safer and healthier urban environment. </p>
         </ConceptSection>
-        <ConceptSection id="home-section-forest" title={"The Natural Urban Meadow and Forest"} src={"images/HOME-STEP2.jpg"} figure={false}>
+        <ConceptSection id="home-section-forest" title={"The Natural Urban Meadow and Forest"} src={"/images/HOME-STEP2.jpg"} figure={false}>
             <p>When rail activities on the Harsimus Branch slowed, nature moved in to colonize the deep soils of the Embankment. Inaccessible from street level, the stone islands were a protected environment. Meadows and a natural forest established themselves within a densely built out urban context. Birds and butterflies found niches in the center of hardscape—an expanded habitat.</p>
             <p>A community of plants has established itself without human intervention. Though stewardship of the historic site may require some removal of trees with roots disturbing the stones, the current ecology is self-sufficient and needs no maintenance to survive. Preserving the green corridor will set precedent for cities around the world, demonstrating that a healthy ecology and urban infrastructure are compatible, not competitors.</p>
         </ConceptSection>
-        <ConceptSection id="home-section-eastcoast" title={"The East Coast Greenway"} src={"images/HOME-EASTCOAST.jpg"} figure={false}>
+        <ConceptSection id="home-section-eastcoast" title={"The East Coast Greenway"} src={"/images/HOME-EASTCOAST.jpg"} figure={false}>
             <p>The East Coast Greenway connects 15 states and 450 cities and towns via 3,000 miles of people-powered trails from Maine to Florida. A collaborative effort led by the East Coast Greenway Alliance partnering with nonprofits, businesses, and governments, the Greenway represents a commitment to public health, environmental sustainability, economic development, and civic engagement by communities along its length. The goal: a largely off-road trail offering a safe place for people of all ages and abilities to exercise, commute, and visit new destinations.</p>
             <p>About 60% of the permanent Greenway route is in place in New Jersey but only a small portion is complete in Hudson County.  We aim to change that! An interim on-road route exists but, for safety reasons, is not recommended. The permanent, largely off-road route will enter Jersey City from New York via ferry or the Hudson River Waterfront Walkway from the George Washington Bridge. It will continue along Sixth Street over the Embankment and through the Bergen Arches, and use other corridors to Jersey City’s West Side and on to Secaucus.</p>
         </ConceptSection>
@@ -237,25 +237,25 @@ function NextStep({ side, step, title, src, first, children, }: { side: "left" |
 
 function NextSteps() {
     const nextSteps = [{
-        title: "Planning for Reuse", src: "images/HOME-STEP1.jpg",
+        title: "Planning for Reuse", src: "/images/HOME-STEP1.jpg",
         children: <>
             <p>If Jersey City acquires the Harsimus Branch, as we expect, it will follow the typical land use public process for the Branch and Embankment. An Area in Need Study, redevelopment plans, and site plans must be reviewed by various land use boards and approved for the project to move forward.</p>
             <p>During this process, the City is expected to consult with state and federal agencies and organizations, among them New Jersey Department of Environmental Protection offices, including its Historic Preservation Office; the federal Surface Transportation Board; and the federal Advisory Council on Historic Preservation. The Embankment Coalition will encourage public participation.</p>
         </>,
     }, {
-        title: "Community Engagement", src: "images/HOME-STEP3B.jpg",
+        title: "Community Engagement", src: "/images/HOME-STEP3B.jpg",
         children: <>
             <p>In civic activism spearheaded by the Embankment Coalition, thousands of individuals and dozens of local, state, regional, and national organizations rallied over two decades to save the historic Harsimus Branch right-of-way and its elevated stone Embankment for 21st-century uses. </p>
             <p>The Coalition will continue to engage this steadfast and informed public to advance an ecological vision for the Branch compatible with historic preservation, passive recreation, muscle-powered transportation, and a commitment to community and democratic ideals. We aim to build a chain of stewards for segments of the East Coast Greenway as it moves its way through Hudson County.</p>
         </>,
     }, {
-        title: "Concept Development", src: "images/HOME-STEP4.jpg",
+        title: "Concept Development", src: "/images/HOME-STEP4.jpg",
         children: <>
             <p>From its inception in 1999, the Embankment Coalition has advocated for historically compatible reuses as historic site, rail, trail, and open space. Since 2004 the East Coast Greenway off-road trail over the Embankment has been supported by Jersey City and Hudson County resolutions and planning documents. We are now enlisting support for a broad ecological vision and a public process that will result in an inspirational design for the Embankment, the Branch, and associated resources.</p>
             <p>The Harsimus Branch design must be responsive to its historic status. The Embankment is listed in the State Register of Historic Places (1999), eligible for the National Register of Historic Places (2000), and a Municipal Landmark (2006). The longer right-of-way is also eligible for the National Register (2018). It runs through national historic districts and past other historic sites. The treatment of these resources must therefore follow U.S. Department of Interior guidelines.</p>
         </>,
     }, {
-        title: "Securing the Future", src: "images/HOME-SLIDER2.jpg",
+        title: "Securing the Future", src: "/images/HOME-SLIDER2.jpg",
         children: <>
             <p>When Jersey City acquires the Harsimus Branch and Embankment, the Coalition will expand and strengthen its board. We aim to partner with the City to raise funds for park and trail development and maintenance. We will organize educational and cultural programming.</p>
             <p>The Coalition will encourage local organizations along the Jersey City segments of the East Coast Greenway to become stewards of their segments. We will explore relationships with other organizations and local and state agencies to advance best land use practices along the Branch and its connections.</p>
@@ -285,11 +285,11 @@ export default function Body() {
         >
             <IntroSectionWhat />
             <ConceptSections />
-            <ParallaxSection1 id={"home-section-now"} img={"images/HOME-BOTTOM.jpg"} />
+            <ParallaxSection1 id={"home-section-now"} img={"/images/HOME-BOTTOM.jpg"} />
             <IconBoxesSection
                 id={"home-section-mission"}
                 title={"Our Goals"}
-                src={"images/HOME-MISSION2.jpg"}
+                src={"/images/HOME-MISSION2.jpg"}
                 boxes={[ {
                     icon: "checkbox-marked-circle",
                     title: "Preserve",
@@ -306,7 +306,7 @@ export default function Body() {
             />
             <GradientHeader id={"home-section-steps"} title={"Next Steps"} />
             <NextSteps />
-            <ParallaxSection1 title={<a href="/vision">Explore Our Vision</a>} img={"images/HOME-SLIDER3.jpg"}/>
+            <ParallaxSection1 title={<a href="/vision">Explore Our Vision</a>} img={"/images/HOME-SLIDER3.jpg"}/>
         </Page>
     )
 }

@@ -75,7 +75,6 @@ function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean }) {
                 <SubMenu path="/news" text="NEWS + EVENTS" items={[
                     { hash: "news-section-recent", text: "News + Press", },
                     { hash: "news-section-subscribe", text: "Subscribe", },
-                    { hash: "news-section-event", text: "Event Calendar", },
                 ]} />
                 <SubMenu path="/involved" hash="involved-section-donate" text="DONATE" />
                 <SubMenu path="/involved" hash="involved-section-sponsors" text="SPONSORS" />

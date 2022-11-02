@@ -7,6 +7,9 @@ import {Brand} from "./theme";
 import navStyles from "../components/navbar.module.css";
 
 function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean }) {
+    if ((cur == "" || cur) && !cur.startsWith("/")) {
+        cur = `/${cur}`
+    }
     function MenuItem({ path, hash, text, }: {
         path: string
         hash: string
@@ -53,29 +56,29 @@ function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean }) {
                     { hash: "home-section-mission", text: "What are the Coalition's Goals?", },
                     { hash: "home-section-steps", text: "What are the Next Steps?", },
                 ]} />
-                <SubMenu path="about" text="ABOUT" items={[
+                <SubMenu path="/about" text="ABOUT" items={[
                     { hash: "about-section-history", text: "The History", },
                     { hash: "about-section-coalition", text: "The Coalition", },
                 ]} />
-                <SubMenu path="vision" text="OUR VISION" items={[
+                <SubMenu path="/vision" text="OUR VISION" items={[
                     { hash: "vision-section-bigpicture", text: "Our Philosophy", },
                     { hash: "vision-section-vision", text: "Harsimus Branch Vision", },
                     { hash: "vision-section-crossroads", text: "Jersey City Greenways", },
                     { hash: "vision-section-art", text: "Art for a Sustainable Future", },
                 ]} />
-                <SubMenu path="involved" text="GET INVOLVED" items={[
+                <SubMenu path="/involved" text="GET INVOLVED" items={[
                     { hash: "involved-section-member", text: "Become a Member!", },
                     { hash: "involved-section-volunteer", text: "Volunteer", },
                     { hash: "involved-section-donate", text: "Donate", },
                     { hash: "involved-section-partners", text: "Our Partners", },
                 ]} />
-                <SubMenu path="news" text="NEWS + EVENTS" items={[
+                <SubMenu path="/news" text="NEWS + EVENTS" items={[
                     { hash: "news-section-recent", text: "News + Press", },
                     { hash: "news-section-subscribe", text: "Subscribe", },
                     { hash: "news-section-event", text: "Event Calendar", },
                 ]} />
-                <SubMenu path="involved" hash="involved-section-donate" text="DONATE" />
-                <SubMenu path="involved" hash="involved-section-sponsors" text="SPONSORS" />
+                <SubMenu path="/involved" hash="involved-section-donate" text="DONATE" />
+                <SubMenu path="/involved" hash="involved-section-sponsors" text="SPONSORS" />
             </ul>
         )
     }

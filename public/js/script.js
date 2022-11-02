@@ -1723,7 +1723,7 @@ $document.ready( function () {
 
 					if (isValidated(inputs, captcha)) {
 
-						// veify reCaptcha
+						// verify reCaptcha
 						if (captcha.length) {
 							var captchaToken = captcha.find('.g-recaptcha-response').val(),
 								captchaMsg = {
@@ -1786,7 +1786,7 @@ $document.ready( function () {
 				},
 				success: function (result) {
 					console.log("success! result…:", result)
-					result = result.code
+					//result = result.code  // used with /api/email-signup endpoint
 
 					var form = $(plugins.rdMailForm[this.extraData.counter]),
 						output = $("#" + form.attr("data-form-output")),

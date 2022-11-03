@@ -217,7 +217,7 @@ export function ParallaxSection2({ title, id, blurb, img, children, }: { title: 
                         <h2><span className="big">{title}</span></h2>
                     </div>
                     <hr className="divider divider-lg bg-mantis" />
-                    <div className="row justify-content-sm-center offset-top-24">
+                    <div className="row justify-content-center offset-top-24">
                         <div className="col-sm-10 col-xl-8">{blurb}</div>
                         {children}
                     </div>
@@ -231,7 +231,7 @@ export function GradientHeader({ id, title }: { id?: string, title: string, }) {
     return (
         <section id={id} className="section section-66 section-top-50 bg-mantis section-triangle section-triangle-bottom context-dark">
             <div className="container">
-                <div className="row justify-content-md-center">
+                <div className="row justify-content-center">
                     <h2><span className="big">{title}</span></h2>
                     <div className="col-lg-8" />
                 </div>

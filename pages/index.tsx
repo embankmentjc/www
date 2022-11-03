@@ -222,7 +222,7 @@ function NextStep({ side, step, title, src, first, children, }: { side: "left" |
     const aside = side == "left" ? "right" : "left"
     const insetClass = side == "left" ? "inset-md-right-30" : "inset-md-left-50"
     return (
-        <div className={`row justify-content-sm-center justify-content-md-${justify} ${first ? "" : "offset-top-0"}`}>
+        <div className={`row justify-content-sm-center justify-content-md-${justify} ${first ? "" : "offset-sm-top-0"}`}>
             <div className={`col-sm-10 col-md-6 section-image-aside section-image-aside-${aside} text-left`}>
                 <div className="section-image-aside-img d-none d-md-block" style={{ backgroundImage: `url(${src})` }}></div>
                 <div className={`section-image-aside-body section-sm-66 ${insetClass}`}>

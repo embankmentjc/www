@@ -1,6 +1,6 @@
 <?php
 
-$formConfigFile = file_get_contents("rd-mailform.config.json");
+$formConfigFile = file_get_contents(".rd-mailform.config.json");
 $formConfig = json_decode($formConfigFile, true);
 
 date_default_timezone_set('Etc/UTC');

@@ -1,5 +1,5 @@
 const config = {
-    trailingSlash: true,
+    //trailingSlash: true,
 }
 
 export default config;

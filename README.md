@@ -1,11 +1,11 @@
-# embankment.org ([next.js] port)
-The currently live [embankment.org] is an export from [Novi Builder]; this is a [next.js] version including [an email signup endpoint][email-signup.tsx].
+# Embankment Preservation Coalition Website ([embankment.org])
+This repository holds source code for [embankment.org].
 
-A demo of this version is at [embankment.vercel.app](https://embankment.vercel.app/); it should look and behave identically to the previous version.
+It was originally built using [Novi Builder], exported, changed hands a few times, and then factored into React components / [next.js].
 
-![Screenshot of embankment.vercel.app](./screenshot.png)
+![Screenshot of embankment.org](./screenshot.png)
 
 [embankment.org]: https://embankment.org
 [next.js]: https://nextjs.org/
-[Nove Builder]: https://novibuilder.com/
+[Novi Builder]: https://novibuilder.com/
 [email-signup.tsx]: ./pages/api/email-signup.tsx

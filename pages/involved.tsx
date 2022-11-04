@@ -1,5 +1,5 @@
-import { Page } from "../src/pages"
-import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../src/theme";
+import Page from "../components/page"
+import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import React from "react";
 
 type Field = {

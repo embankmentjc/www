@@ -1,4 +1,4 @@
-import { Page } from "../src/pages"
+import Page from "../components/page"
 import {
     ArtistSection,
     BigPicture,
@@ -6,7 +6,7 @@ import {
     ConceptSection, ParallaxHeader,
     ParallaxSection1,
     ParallaxSection2
-} from "../src/theme";
+} from "../components/theme";
 import React from "react";
 
 export default function Body() {

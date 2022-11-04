@@ -1,4 +1,4 @@
-import { Page } from "../src/pages"
+import Page from "../components/page"
 
 export default function Body() {
     return (

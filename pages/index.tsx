@@ -1,11 +1,11 @@
 import React, {ReactNode} from "react"
-import { Page } from "../src/pages"
+import Page from "../components/page"
 import {
     ConceptSection,
     GradientHeader, IconBox2,
     IconBoxesSection,
     ParallaxSection1, Section
-} from "../src/theme";
+} from "../components/theme";
 
 
 export async function getStaticProps(context: any) {

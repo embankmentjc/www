@@ -111,7 +111,7 @@ function LatestNews() {
     )
 }
 
-export function Footer() {
+export default function Footer() {
     return (
         <footer className="section section-relative section-top-66 section-bottom-34 page-footer bg-black context-dark">
             <div className="container">

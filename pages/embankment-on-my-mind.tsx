@@ -1,5 +1,5 @@
-import { Page } from "../src/pages"
-import {Figure} from "../src/theme";
+import Page from "../components/page"
+import {Figure} from "../components/theme";
 import styles from "embankment-on-my-mind.module.css"
 
 export default function Body() {

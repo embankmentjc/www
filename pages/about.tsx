@@ -1,4 +1,4 @@
-import { Page } from "../src/pages"
+import Page from "../components/page"
 import {
     BigPicture,
     ConceptSection,
@@ -6,8 +6,8 @@ import {
     Paragraphs,
     ParallaxSection1,
     ParallaxSection2
-} from "../src/theme";
-import {ParallaxHeader} from "../src/theme";
+} from "../components/theme";
+import {ParallaxHeader} from "../components/theme";
 
 export default function Body() {
     return (

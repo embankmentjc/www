@@ -1,8 +1,8 @@
 
-import { Page } from "../src/pages"
+import Page from "../components/page"
 import React, {ReactNode} from "react";
 
-import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../src/theme";
+import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
 
 function NewsletterSubscribe() {

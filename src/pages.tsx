@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Script from 'next/script'
 import {Footer} from "./footer";
 import {Brand} from "./theme";
-import navStyles from "../components/navbar.module.css";
+import navStyles from "./navbar.module.css";
 
 function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean }) {
     if ((cur == "" || cur) && !cur.startsWith("/")) {

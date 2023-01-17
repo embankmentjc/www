@@ -1,6 +1,6 @@
 import Page from "../components/page"
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
-import React from "react";
+import React, {CSSProperties} from "react";
 
 type Field = {
     label: string
@@ -76,30 +76,45 @@ function Donate() {
     )
 }
 
+type Sponsor = {
+    alt: string
+    src: string
+    href: string
+    width?: number | string
+    height?: number | string
+    className?: string
+}
+type SponsorRow = {
+    colClass: string
+    sponsors: Sponsor[]
+    colStyle?: CSSProperties
+}
+
 function SponsorsList(
-    { title, sponsors }: {
+    { title, sponsorRows }: {
         title: string,
-        sponsors: ({ alt: string, src: string, href: string, width?: number, height?: number, }[])
+        sponsorRows: SponsorRow[]
     }
 ) {
     return (<>
         <h3 className="font-weight-bold">{title}</h3>
         <hr className="divider bg-mantis" />
-        <div className="row justify-content-sm-center align-items-xl-center offset-top-66">
-            <div className="col-md-10 col-lg-9 col-xl-12">
-                <div className="row">
-                    {
+        <div className="row justify-content-sm-center align-items-xl-center offset-top-66" style={{ marginTop: 0, }}>
+            <div className="col-md-10 col-lg-9 col-xl-12">{
+                sponsorRows.map(({ colClass, sponsors, colStyle, }) =>
+                    <div className="row justify-content-center align-items-center" style={{ marginTop: "0", }}>{
                         sponsors.map(
-                            ({ alt, src, href, width, height, }) =>
-                                <div key={alt} className="col-md-4 col-xl-2 offset-top-41 offset-xl-top-0">
+                            ({alt, src, href, width, height, className, }) =>
+                                <div key={alt} className={className || colClass} style={{ marginTop: "1em", marginBottom: "1em", ...colStyle, }}>
                                     <a href={href} target="_blank">
-                                        <img className="" alt={alt} src={src} width={width || 150} height={height || 70} />
+                                        <img style={{maxWidth: "100%", /*maxHeight: "100%",*/ verticalAlign: "middle",}} alt={alt} src={src} width={width || "100%"}
+                                             height={height}/>
                                     </a>
                                 </div>
                         )
-                    }
-                </div>
-            </div>
+                    }</div>
+                )
+            }</div>
         </div>
     </>)
 }
@@ -115,27 +130,35 @@ function Sponsors() {
             <p>To become a sponsor of the Harsimus Branch and Embankment, please <a href="mailto:embankmentJC@gmail.com" target="_blank"><span className="font-weight-bold">Click Here (embankmentJC@gmail.com)</span></a>.</p>
             <SponsorsList
                 title={"Gold Level"}
-                sponsors={[
-                    { alt: "Community Compost Company", src: "/images/sponsors/community compost company.jpg", href: "https://www.communitycompostco.com/", },
-                    { alt: "Two Boots Pizza", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
-                    { alt: "Jersey City Times", src: "/images/sponsors/jersey%20city%20times.jpg", href: "https://jcitytimes.com/", },
-                    { alt: "Keller Williams Realty", src: "/images/sponsors/KW_LOGO.png", href: "https://stephengucciardo.kw.com/", },
-                    { alt: "Skinner's Loft", src: "/images/sponsors/SKINNER2_LOGO.png", href: "https://www.skinnersloft.com/", height: 150, },
-                    { alt: "Key Foods", src: "/images/sponsors//KEYFOOD_LOGO.png", href: "https://keyfoodstores.keyfood.com/store/keyFood/en/store/1666?distance=0.00%20mile&query=574%20Jersey%20Ave%20Jersey%20City,%20NJ%2007302%20United%20States&radius=5&services=&all=", },
-                    { alt: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
-                    { alt: "Madame Claude", src: "/images/sponsors/MADAME_LOGO.png", href: "http://www.madameclaudejc.com/", },
-                    { alt: "Madame Claude Wine", src: "/images/sponsors/MADAMEWINE_LOGO.png", href: "https://www.madameclaudewine.com/", },
-                    { alt: "Warren G Curtin Realty", src: "/images/sponsors/WARREN_LOGO.jpg", href: "http://www.wgcrealty.com/team/9b459cb0-7fb9-4260-860a-9e2a3cc2c08a/21704/18", width: 200, height: 110, },
+                sponsorRows={[
+                    {
+                        colClass: "col-sm-6 col-md-3",
+                        sponsors: [
+                            { width: "95%", alt: "Two Boots Pizza", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
+                            { width: "75%", alt: "Jersey City Times", src: "/images/sponsors/jersey%20city%20times.jpg", href: "https://jcitytimes.com/", },
+                            { width: "95%", alt: "Key Foods", src: "/images/sponsors/KEYFOOD_LOGO.png", href: "https://keyfoodstores.keyfood.com/store/keyFood/en/store/1666?distance=0.00%20mile&query=574%20Jersey%20Ave%20Jersey%20City,%20NJ%2007302%20United%20States&radius=5&services=&all=", },
+                            { width: "70%", alt: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
+                            { width: "70%", alt: "Darke Pines", src: "/images/sponsors/darkepines_logovertical.jpg", href: "https://www.darkepines.com/", },
+                            { width: "70%", alt: "Hair is Happiness", src: "/images/sponsors/hair-is-happiness.png", href: "http://hairishappiness.com/", },
+                            { width: "70%", alt: "Irene Barnaby Group", src: "/images/sponsors/IBG_SecondaryLogo_Black.png", href: "https://www.compass.com/concierge/irene-barnaby/", },
+                            { width: "70%", alt: "Scandinavian School of Jersey City", src: "/images/sponsors/scandischool.png", href: "https://www.scandischool.com/", },
+                        ]}
                 ]}
             />
             <SponsorsList
                 title={"Silver Level"}
-                sponsors={[
-                    { alt: "PostNet", src: "/images/sponsors/POST_LOGO.png", href: "https://locations.postnet.com/nj/jersey-city/344-grove-st", height: 75, },
-                    { alt: "Delenio", src: "/images/sponsors/DELENIO_LOGO.png", href: "https://www.deleniojc.com/", height: 75, },
-                    { alt: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", href: "https://www.mycarminespizza.com/", height: 65, },
-                    { alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "https://goo.gl/maps/W6dWQvseMSkuXo3HA", height: 50, },
-                    { alt: "Mastrolia Pharmacy", src: "/images/sponsors/MASTROLIA_LOGO.jpg", href: "https://goo.gl/maps/wR2UT9jEn2NC2Ffp6", height: 75, },
+                sponsorRows={[
+                    {
+                        colStyle: { marginTop: 0, },
+                        colClass: "col-sm-4 col-md-2",
+                        sponsors: [
+                            { width: "100%", alt: "PostNet", src: "/images/sponsors/POST_LOGO.png", href: "https://locations.postnet.com/nj/jersey-city/344-grove-st", },
+                            { width: "100%", alt: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", href: "https://www.mycarminespizza.com/", },
+                            { width: "100%", alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "https://goo.gl/maps/W6dWQvseMSkuXo3HA", },
+                            { width: "100%", alt: "Boutique Realty", src: "/images/sponsors/Boutique Realty.png", href: "http://boutiquerealty.com/jersey-city/", },
+                            { width: "100%", alt: "Thirsty Quaker", src: "/images/sponsors/Thirsty Quaker Color.png", href: "https://thirstyquaker.com/", },
+                        ]
+                    }
                 ]}
             />
         </Section>

@@ -10,7 +10,13 @@
     "nb": "next build",
     "export": "next build && next export",
     "ns": "next start",
-    "nx": "next export"
+    "nx": "next export",
+    "deploy-dev": "rsync -avzh --delete out/ epc:dev_html/",
+    "dd": "rsync -avzh --delete out/ epc:dev_html/",
+    "ddn": "rsync -avzhn --delete out/ epc:dev_html/",
+    "deploy-main": "rsync -avzh --delete out/ epc:public_html/",
+    "dm": "rsync -avzh --delete out/ epc:public_html/",
+    "dmn": "rsync -avzhn --delete out/ epc:public_html/"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +33,7 @@
     "webpack-cli": "^4.9.2"
   },
   "dependencies": {
+    "@mdx-js/react": "^2.1.5",
     "escape-html": "^1.0.3",
     "luxon": "^3.0.1",
     "moment": "^2.29.1",

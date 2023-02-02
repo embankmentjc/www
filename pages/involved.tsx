@@ -161,6 +161,7 @@ function Sponsors() {
                     }
                 ]}
             />
+            <iframe src="https://www.google.com/maps/d/embed?mid=1dcD7yyrDl7FrEyl_YJe84neMu1WFYbU&ehbc=2E312F" width="100%" height="600"></iframe>
         </Section>
     )
 }

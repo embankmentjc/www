@@ -4,7 +4,7 @@ export function Brand({ className }: { className: string }) {
     return (
         <div className={className}>
             <a href="/">
-                <img style={{ marginTop: '-5px', marginLeft: '-15px' }} width='138' height='31' src="/images/logo-lightEPC.png" alt="" />
+                <img style={{ marginTop: '-5px', marginLeft: '-15px' }} width='138' height='31' src="/images/logo-lightEPC.png" alt={"Embankment Preservation Coalition logo"} />
             </a>
         </div>
     )

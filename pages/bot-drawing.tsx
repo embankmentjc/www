@@ -4,7 +4,7 @@ export default function Body() {
     return (
         <Page path="bot-drawing" navStuck={true}>
             <section className="section novi-background section-50 section-sm-top-5">
-                <img src="/images/bot-drawing/clementine.png" style={{ width: "100%", paddingTop: "6px" }}/>
+                <img alt={"Still-life of a clementine peel in a spiral"} src="/images/bot-drawing/clementine.png" style={{ width: "100%", paddingTop: "6px" }}/>
                 <div className="container">
                     <div className="row justify-content-center offset-top-20">
                         <div className="col-md-9 col-lg-7 text-center offset-top-34 offset-lg-top-0">

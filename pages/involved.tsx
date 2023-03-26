@@ -67,7 +67,7 @@ function Donate() {
                             <input type="hidden" name="cmd" value="_s-xclick" />
                             <input type="hidden" name="hosted_button_id" value="Q63S34XYKEG9N" />
                             <input type="image" src="/images/secure.jpg" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-                            <img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                            <img alt={"Paypal tracking pixel"} src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
                         </form>
                     </div>
                 </div>
@@ -256,11 +256,10 @@ function MembershipOption({ name, price, src, value }: { name: string, price: nu
                     <input type="hidden" name="cmd" value="_s-xclick" />
                     <input type="hidden" name="hosted_button_id" value={value} />
                     <input type="image" src="/images/selectmembership.jpg" name="submit" alt={`Purchase ${price} ${duration} \"${name}\" membership with PayPal`} />
-                    <img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+                    <img alt={"Paypal tracking pixel"} src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
                 </form>
             </div>
         </div>
-
     )
 }
 

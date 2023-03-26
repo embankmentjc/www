@@ -20,7 +20,7 @@ export default function Page({ path, children, headerChildren, scripts, navStuck
         </Head>
         <div className="page-loader page-loader-variant-1">
             <div>
-                <img className='img-fluid' style={{ marginTop: '-20px', marginLeft: '-18px' }} width='330' height='67' src="/images/logo-bigEPC.png" alt='' />
+                <img className='img-fluid' style={{ marginTop: '-20px', marginLeft: '-18px' }} width='330' height='67' src="/images/logo-bigEPC.png" alt={"Embankment Preservation Coalition logo"} />
                 <div className="offset-top-41 text-center"><div className="spinner" /></div>
             </div>
         </div>

@@ -132,14 +132,15 @@ function Sponsors() {
                 title={"Gold Level"}
                 sponsorRows={[
                     {
-                        colClass: "col-sm-6 col-md-3",
+                        colClass: "col-sm-6 col-md-4",
                         sponsors: [
                             { width: "95%", alt: "Two Boots Pizza", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
-                            { width: "75%", alt: "Jersey City Times", src: "/images/sponsors/jersey%20city%20times.jpg", href: "https://jcitytimes.com/", },
+                            { width: "65%", alt: "Jersey City Times", src: "/images/sponsors/jersey%20city%20times.jpg", href: "https://jcitytimes.com/", },
                             { width: "95%", alt: "Key Foods", src: "/images/sponsors/KEYFOOD_LOGO.png", href: "https://keyfoodstores.keyfood.com/store/keyFood/en/store/1666?distance=0.00%20mile&query=574%20Jersey%20Ave%20Jersey%20City,%20NJ%2007302%20United%20States&radius=5&services=&all=", },
+                            { width: "65%", alt: "Skinner's Loft", src: "/images/sponsors/skinner_logo.png", href: "https://www.skinnersloft.com/", },
                             { width: "70%", alt: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
                             { width: "70%", alt: "Darke Pines", src: "/images/sponsors/darkepines_logovertical.jpg", href: "https://www.darkepines.com/", },
-                            { width: "70%", alt: "Hair is Happiness", src: "/images/sponsors/hair-is-happiness.png", href: "http://hairishappiness.com/", },
+                            { width: "75%", alt: "Hair is Happiness", src: "/images/sponsors/hair-is-happiness.png", href: "http://hairishappiness.com/", },
                             { width: "70%", alt: "Irene Barnaby Group", src: "/images/sponsors/IBG_SecondaryLogo_Black.png", href: "https://www.compass.com/concierge/irene-barnaby/", },
                             { width: "70%", alt: "Scandinavian School of Jersey City", src: "/images/sponsors/scandischool.png", href: "https://www.scandischool.com/", },
                         ]}

@@ -100,7 +100,7 @@ export default function Body() {
                             <CarouselButton href="http://www.jcvillage.org/101-2/mary-benson-park/" text="Mary Benson Park" />
                             <CarouselButton href="https://www.google.com/maps/place/Gateway+Park/@40.7182864,-74.05672,18z/data=!4m12!1m6!3m5!1s0x0:0x75118676d1527f46!2sGateway+Field!8m2!3d40.7181949!4d-74.0567307!3m4!1s0x0:0x766e6d41dedc6b94!8m2!3d40.7192591!4d-74.056447" text="Gateway Park" />
                             <CarouselButton href="https://www.folsp.org" text="Liberty State Park" />
-                            <CarouselButton href="http://www.hudsonriverwaterfront.org/" text="Hudson River Waterfront" />
+                            <CarouselButton href="https://www.hudsonriverwaterfront.org/" text="Hudson River Waterfront" />
                         </div>
                     </div>
                 </div>

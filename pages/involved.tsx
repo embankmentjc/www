@@ -201,7 +201,7 @@ function Supporters() {
                                 { name: "Downtown Coalition of Neighborhood Associations" },
                                 { name: "Hamilton Park Neighborhood Association", href: "http://hpnajc.org" },
                                 { name: "Harsimus Cove Association", href: "http://harsimuscove.org" },
-                                { name: "Heights Hope Neighborhood Association", href: "http://heightshope.webs.com/" },
+                                { name: "Heights Hope Neighborhood Association", href: "https://heightshope.webs.com/" },
                                 { name: "Historic Paulus Hook Association", href: "http://paulushook.org" },
                                 { name: "Madison Avenue Block Association", href: "https://www.facebook.com/MadisonAveBlockAssc" },
                                 { name: "Powerhouse Arts District Neighborhood Association", href: "http://padnajc.org" },
@@ -217,35 +217,35 @@ function Supporters() {
                             supporters={[
                                 { name: "Bergen Arches Preservation Alliance", href: "https://www.bergenarches.com/", },
                                 { name: "Enos Jones Park Association", href: "https://www.jonespark.org/", },
-                                { name: "Jersey City Family Initiative", href: "http://groups.yahoo.com/group/JerseyCityFamilyInitiative/", },
+                                { name: "Jersey City Family Initiative", href: "https://groups.yahoo.com/group/JerseyCityFamilyInitiative/", },  // TODO: defunct?
                                 { name: "Jersey City Landmarks Conservancy", href: "http://jclandmarks.org", },
                                 { name: "Jersey City Parks Coalition", href: "http://jcparks.org", },
-                                { name: "Jersey City Reservoir Preservation Alliance", href: "http://www.jcreservoir.org", },
+                                { name: "Jersey City Reservoir Preservation Alliance", href: "https://www.jcreservoir.org", },
                                 { name: "Jersey City Trees Committee", },
                                 { name: "Journal Square Community Association", href: "https://www.jsqca.com/", },
-                                { name: "Pershing Field Garden Friends", href: "http://www.pershingfield.org/", },
-                                { name: "Pro Arts", href: "http://www.proartsjerseycity.org/", },
-                                { name: "Sustainable JC", href: "http://sustainablejc.org", },
+                                { name: "Pershing Field Garden Friends", href: "https://www.pershingfield.org/", },
+                                { name: "Pro Arts", href: "https://www.proartsjerseycity.org/", },
+                                { name: "Sustainable JC", href: "https://sustainablejc.org", },
                             ]}
                         />
                         <SupportersList
                             title={"Regional and National Organizations"}
                             supporters={[
                                 { name: "Conservation Resources, Inc.", href: "http://conservationresources.org", },
-                                { name: "East Coast Greenway Alliance", href: "http://www.greenway.org", },
+                                { name: "East Coast Greenway Alliance", href: "https://www.greenway.org", },
                                 { name: "Hudson County Sierra Club ", href: "https://https://www.facebook.com/HudsonCountySierraClub/", },
                                 { name: "Friends of the High Line", href: "http://www.thehighline.org", },
-                                { name: "Friends of Liberty State Park", href: "http://www.folsp.org/", },
-                                { name: "Hudson River Waterfront Walkway Conservancy", href: "http://www.hudsonriverwaterfront.org", },
-                                { name: "Metropolitan Waterfront Alliance", href: "http://www.waterfrontalliance.org/", },
-                                { name: "National Trust for Historic Preservation", href: "http://www.preservationnation.org", },
-                                { name: "New Jersey Conservation Foundation", href: "http://www.njconservation.org", },
+                                { name: "Friends of Liberty State Park", href: "https://www.folsp.org/", },
+                                { name: "Hudson River Waterfront Walkway Conservancy", href: "https://www.hudsonriverwaterfront.org", },
+                                { name: "Metropolitan Waterfront Alliance", href: "https://www.waterfrontalliance.org/", },
+                                { name: "National Trust for Historic Preservation", href: "https://www.preservationnation.org", },
+                                { name: "New Jersey Conservation Foundation", href: "https://www.njconservation.org", },
                                 { name: "NY/NJ Baykeeper", href: "http://nynjbaykeeper.org/", },
-                                { name: "Preservation NJ", href: "http://www.preservationnj.org/site/ExpEng/", },
-                                { name: "Rails to Trails Conservancy", href: "http://www.railstotrails.org", },
+                                { name: "Preservation NJ", href: "https://www.preservationnj.org/site/ExpEng/", },
+                                { name: "Rails to Trails Conservancy", href: "https://www.railstotrails.org", },
                                 { name: "Sierra Club of New Jersey", href: "http://newjersey.sierraclub.org", },
-                                { name: "Skyway Park Conservancy", href: "http://skywaypark.org/", },
-                                { name: "Trust for Public Land", href: "http://www.tpl.org", },
+                                { name: "Skyway Park Conservancy", href: "https://skywaypark.org/", },
+                                { name: "Trust for Public Land", href: "https://www.tpl.org", },
                             ]}
                         />
                     </div>

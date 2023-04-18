@@ -85,14 +85,16 @@ type Sponsor = {
     className?: string
 }
 type SponsorRow = {
-    colClass: string
+    colClass?: string
     sponsors: Sponsor[]
     colStyle?: CSSProperties
 }
 
 function SponsorsList(
-    { title, sponsorRows }: {
+    { title, colsClass, colsStyle, sponsorRows }: {
         title: string,
+        colsClass?: string
+        colsStyle?: CSSProperties
         sponsorRows: SponsorRow[]
     }
 ) {
@@ -101,14 +103,18 @@ function SponsorsList(
         <hr className="divider bg-mantis" />
         <div className="row justify-content-sm-center align-items-xl-center offset-top-66" style={{ marginTop: 0, }}>
             <div className="col-md-10 col-lg-9 col-xl-12">{
-                sponsorRows.map(({ colClass, sponsors, colStyle, }) =>
-                    <div className="row justify-content-center align-items-center" style={{ marginTop: "0", }}>{
+                sponsorRows.map(({ colClass, sponsors, colStyle, }, idx) =>
+                    <div className="row justify-content-center align-items-center" style={{ marginTop: "0", }} key={`row-${idx}`}>{
                         sponsors.map(
                             ({alt, src, href, width, height, className, }) =>
-                                <div key={alt} className={className || colClass} style={{ marginTop: "1em", marginBottom: "1em", ...colStyle, }}>
+                                <div key={alt} className={className || colClass || colsClass} style={{ marginTop: "1em", marginBottom: "1em", ...(colStyle || {}), ...(colsStyle || {}) }}>
                                     <a href={href} target="_blank">
-                                        <img style={{maxWidth: "100%", /*maxHeight: "100%",*/ verticalAlign: "middle",}} alt={alt} src={src} width={width || "100%"}
-                                             height={height}/>
+                                        <img style={{maxWidth: "100%", /*maxHeight: "100%",*/ verticalAlign: "middle",}}
+                                             alt={alt}
+                                             src={src}
+                                             width={width || "100%"}
+                                             height={height}
+                                        />
                                     </a>
                                 </div>
                         )
@@ -130,9 +136,9 @@ function Sponsors() {
             <p>To become a sponsor of the Harsimus Branch and Embankment, please <a href="mailto:embankmentJC@gmail.com" target="_blank"><span className="font-weight-bold">Click Here (embankmentJC@gmail.com)</span></a>.</p>
             <SponsorsList
                 title={"Gold Level"}
+                colsClass={"col-sm-6 col-md-4"}
                 sponsorRows={[
                     {
-                        colClass: "col-sm-6 col-md-4",
                         sponsors: [
                             { width: "95%", alt: "Two Boots Pizza", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
                             { width: "65%", alt: "Jersey City Times", src: "/images/sponsors/jersey%20city%20times.jpg", href: "https://jcitytimes.com/", },
@@ -148,18 +154,22 @@ function Sponsors() {
             />
             <SponsorsList
                 title={"Silver Level"}
+                colsStyle={{ marginTop: 0, }}
+                colsClass={"col-sm-4 col-md-3"}
                 sponsorRows={[
                     {
-                        colStyle: { marginTop: 0, },
-                        colClass: "col-sm-4 col-md-2",
                         sponsors: [
                             { width: "100%", alt: "PostNet", src: "/images/sponsors/POST_LOGO.png", href: "https://locations.postnet.com/nj/jersey-city/344-grove-st", },
                             { width: "100%", alt: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", href: "https://www.mycarminespizza.com/", },
                             { width: "100%", alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "https://goo.gl/maps/W6dWQvseMSkuXo3HA", },
+                        ]
+                    },
+                    {
+                        sponsors: [
                             { width: "100%", alt: "Boutique Realty", src: "/images/sponsors/Boutique Realty.png", href: "http://boutiquerealty.com/jersey-city/", },
                             { width: "100%", alt: "Thirsty Quaker", src: "/images/sponsors/Thirsty Quaker Color.png", href: "https://thirstyquaker.com/", },
                         ]
-                    }
+                    },
                 ]}
             />
         </Section>
@@ -180,7 +190,7 @@ function SupportersList({ title, supporters }: { title: string, supporters: ({ n
 
 function Supporters() {
     return (
-        <Section id="involved-section-endorsements" title={"Supporters"}>
+        <Section id="involved-section-endorsements" title={"Supporters"} style={{ paddingTop: 0 }}>
             <p>If your organization would like to endorse the Coalition's goals, please <a href="mailto:embankmentJC@gmail.com" target="_blank"><span className="font-weight-bold">Click Here (embankmentJC@gmail.com)</span></a>.</p>
             <div className="row justify-content-sm-center align-items-xl-center offset-top-6">
                 <div className="col-md-10 col-lg-9 col-xl-12">

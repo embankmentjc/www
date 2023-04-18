@@ -1,4 +1,4 @@
-import React, {ReactNode} from "react";
+import React, {CSSProperties, ReactNode} from "react";
 
 export function Brand({ className }: { className: string }) {
     return (
@@ -41,11 +41,12 @@ export function Figure({ src, alt, caption, border, }: Figure) {
     )
 }
 
-export function Section({ id, h1, title, pretitle, children }: {
+export function Section({ id, h1, title, pretitle, style, children }: {
     id?: string
     h1?: boolean
     title?: ReactNode
     pretitle?: ReactNode
+    style?: CSSProperties
     children: ReactNode
 }) {
     if (typeof title === "string") {
@@ -56,7 +57,7 @@ export function Section({ id, h1, title, pretitle, children }: {
         }
     }
     return (
-        <section id={id} className="section section-98 section-sm-110">
+        <section id={id} className={"section section-98 section-sm-110"} style={style || {}}>
             <div className="container">
                 {pretitle}
                 {title}

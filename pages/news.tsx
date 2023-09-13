@@ -4,7 +4,7 @@ import React, {ReactNode} from "react";
 
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
-import {becomeMemberId} from "./involved";
+import {becomeMemberId, signupId} from "./involved";
 
 function NewsletterSubscribe() {
     return (
@@ -161,6 +161,24 @@ function NewsItem({ title, pretitle, date, dateStr, center, href, src, alt, auth
 
 function NewsFeed() {
     const items: NewsItem[] = [
+        {
+            date: "2023-09-28",
+            title: "Hold the Date! Surface Transportation Board online meeting",
+            center: true,
+            // src: "",
+            // href: "",
+            children: (<>
+                <p>
+                    This may be <strong>the public's last meaningful chance to comment</strong> on Conrail's proposed abandonment of the Harsimus Branch and Embankment in Jersey City before the regulatory agency rules on its fate.
+                </p>
+                <p>
+                    Meeting details, including the agenda, log-in information, and other logistics will be circulated at least two weeks prior to the September 28 meeting.
+                </p>
+                <p>
+                    Check back here for details, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
+                </p>
+            </>)
+        },
         {
             date: "2022-10-25",
             title: <a href="https://www.eventbrite.com/e/embankment-preservation-coalition-annual-meeting-registration-430408943737">Embankment Preservation Coalition Annual Meeting</a>,

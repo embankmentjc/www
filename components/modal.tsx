@@ -49,7 +49,7 @@ export function Modal() {
                         <ul style={{listStyle: "none",}}>
                             <li><strong>Surface Transportation Board online meeting</strong></li>
                             <li>Thursday, September 28, 2023, 5 to 9 pm</li>
-                            <li>Re: Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167 (Sub.no. 1189X)</li>
+                            <li>Re: Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167, Sub.no. 1189X)</li>
                         </ul>
                         <p>
                             This may be <strong>the public's last meaningful chance to comment</strong> on Conrail's proposed abandonment of the Harsimus Branch and Embankment in Jersey City before the regulatory agency rules on its fate.

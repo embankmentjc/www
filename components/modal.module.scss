@@ -6,6 +6,18 @@
 
   .content {
     border: 2px solid white;
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 0.5em;
+      line-height: 1em;
+      font-size: 1.7em;
+      cursor: pointer;
+      background-color: transparent;
+      color: white;
+      border: none;
+    }
     ul {
       padding-left: 0;
     }

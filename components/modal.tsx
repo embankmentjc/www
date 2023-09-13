@@ -43,6 +43,7 @@ export function Modal() {
                     className={`modal-content ${css.content}`}
                     onClick={e => { e.stopPropagation()}}
                 >
+                    <button className={`close ${css.close}`} onClick={() => setShowModal(false)}>x</button>
                     <div className="modal-header" style={{display: "block",}}>
                         <h3>Hold the Date!</h3>
                         <ul style={{listStyle: "none",}}>

@@ -274,9 +274,10 @@ function MembershipOption({ name, price, src, value }: { name: string, price: nu
     )
 }
 
+export const involvedSectionMemberId = "involved-section-member"
 function MembershipOptions() {
     return (
-        <Section id="involved-section-member" title={<h1> Become a Member!</h1>}>
+        <Section id={involvedSectionMemberId} title={<h1> Become a Member!</h1>}>
             <p>Members are the bedrock of the Coalition. Please join us today.</p>
             <p>Select a membership level below or if you prefer to mail your membership paperwork <a href="/images/membership2019.pdf" target="_blank"><span className="font-weight-bold">Click Here</span></a>.</p>
             <div className="row">
@@ -306,7 +307,7 @@ export default function Body() {
                     title={"GET INVOLVED"}
                     subtitle={"Join the community effort to realize our vision for the Harsimus Branch."}
                     img={"/images/INVOLVED-BANNER2.jpg"}
-                    btn1={{ text: "Become a Member!", href: "#involved-section-member", }}
+                    btn1={{ text: "Become a Member!", href: `#${involvedSectionMemberId}`, }}
                     btn2={{ text: "Donate", href: "#involved-section-donate", }}
                 />
             }

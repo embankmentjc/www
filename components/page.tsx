@@ -4,14 +4,17 @@ import Head from 'next/head'
 import Script from 'next/script'
 import Footer from "./footer";
 import Nav from "./nav";
+import {Modal} from "./modal";
 
-export default function Page({ path, children, headerChildren, scripts, navStuck, }: {
+export default function Page({ path, children, headerChildren, scripts, navStuck, modal, }: {
     path: string
     children: ReactNode
     headerChildren?: ReactNode
     scripts?: string[]
     navStuck?: boolean
+    modal?: boolean
 }) {
+
     return (<>
         <Head>
             <title>The Embankment</title>
@@ -25,6 +28,7 @@ export default function Page({ path, children, headerChildren, scripts, navStuck
             </div>
         </div>
         <div className="page text-center">
+            {modal && <Modal />}
             <header className="page-head slider-menu-position">
                 <Nav cur={path} navStuck={navStuck} />
                 {headerChildren}

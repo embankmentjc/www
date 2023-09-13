@@ -4,6 +4,7 @@ import React, {ReactNode} from "react";
 
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
+import {involvedSectionMemberId} from "./involved";
 
 function NewsletterSubscribe() {
     return (
@@ -293,7 +294,7 @@ function NewsFeed() {
             <div className="row justify-content-md-center">
                 <div className="col-md-10 col-lg-8 col-xl-7">
                     <div className="inset-left-0 inset-lg-right-20">{
-                        items.map(item => <NewsItem {...item} />)
+                        items.map((item, idx) => <NewsItem key={idx} {...item} />)
                     }</div>
                 </div>
             </div>
@@ -341,13 +342,14 @@ export default function Body() {
     return (
         <Page
             path="news"
+            modal={true}
             headerChildren={
                 <ParallaxHeader
                     title={"News + Events"}
                     subtitle={"Get up to date on the Harsimus Branch and Embankment news and events - then help us write the next chapter!"}
                     img={"/images/NEWS-BANNER.jpg"}
                     btn1={{ text: "Recent Headline", href: "#news-section-recent", }}
-                    btn2={{ text: "Become a Member!", href: "/involved#involved-section-member", }}
+                    btn2={{ text: "Become a Member!", href: `/involved#${involvedSectionMemberId}`, }}
                 />
             }
         >
@@ -356,7 +358,7 @@ export default function Body() {
             <Banner id={"news-section-connect"} title={"Get in Touch"} icon={"email"} />
             <Connect />
             <ParallaxSection1
-                title={<a href="/involved#involved-section-member">Become a Member!</a>}
+                title={<a href={`/involved#${involvedSectionMemberId}`}>Become a Member!</a>}
                 img={"/images/HOME-SLIDER1.jpg"}
             />
         </Page>

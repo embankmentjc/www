@@ -8,6 +8,7 @@ import {
     ParallaxSection2
 } from "../components/theme";
 import React from "react";
+import {involvedSectionMemberId} from "./involved";
 
 export default function Body() {
     return (
@@ -30,7 +31,7 @@ export default function Body() {
                     subtitle={"\"When we see land as a community to which we belong, we may begin to use it with love and respect.\" - Aldo Leopold"}
                     img={"/images/NEWS-BANNER.jpg"}
                     btn1={{ text: "Concept", href: "#vision-section-concept", }}
-                    btn2={{ text: "Become a Member!", href: "/involved#involved-section-member", }}
+                    btn2={{ text: "Become a Member!", href: `/involved#${involvedSectionMemberId}`, }}
                 />
             }
             scripts={["/js/vision.js"]}

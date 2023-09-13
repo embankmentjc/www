@@ -6,6 +6,7 @@ import {
     IconBoxesSection,
     ParallaxSection1, Section
 } from "../components/theme";
+import {involvedSectionMemberId} from "./involved";
 
 
 export async function getStaticProps(context: any) {
@@ -157,7 +158,7 @@ function BannerSlides() {
                             title="Our Vision"
                             subtitle="Preserve, Restore, Activate"
                             btn1={{ href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", }}
-                            btn2={{ href: "/involved#involved-section-member", text: "Become a Member", }}
+                            btn2={{ href: `/involved#${involvedSectionMemberId}`, text: "Become a Member", }}
                         />
                     </ul>
                 </div>
@@ -282,6 +283,7 @@ export default function Body() {
         <Page
             path="/"
             headerChildren={<BannerSlides />}
+            modal={true}
         >
             <IntroSectionWhat />
             <ConceptSections />

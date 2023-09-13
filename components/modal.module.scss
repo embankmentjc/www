@@ -1,0 +1,13 @@
+.modal {
+  display: block;
+  &.hidden {
+    display: none;
+  }
+
+  .content {
+    border: 2px solid white;
+    ul {
+      padding-left: 0;
+    }
+  }
+}

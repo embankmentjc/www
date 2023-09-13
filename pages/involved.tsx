@@ -2,6 +2,9 @@ import Page from "../components/page"
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import React, {CSSProperties} from "react";
 
+export const becomeMemberId = "involved-section-member"
+export const signupId = "signup"
+
 type Field = {
     label: string
     id?: string
@@ -23,7 +26,7 @@ function Field({ label, id, cols = 6 }: Field) {
 
 function SignupForm() {
     return (
-        <Section title={"Sign Up Here"}>
+        <Section id={signupId} title={"Sign Up Here"}>
             <div className="offset-md-top-36">
                 <div className="row justify-content-sm-center">
                     <div className="col-sm-10 col-lg-8">
@@ -274,10 +277,9 @@ function MembershipOption({ name, price, src, value }: { name: string, price: nu
     )
 }
 
-export const involvedSectionMemberId = "involved-section-member"
 function MembershipOptions() {
     return (
-        <Section id={involvedSectionMemberId} title={<h1> Become a Member!</h1>}>
+        <Section id={becomeMemberId} title={<h1> Become a Member!</h1>}>
             <p>Members are the bedrock of the Coalition. Please join us today.</p>
             <p>Select a membership level below or if you prefer to mail your membership paperwork <a href="/images/membership2019.pdf" target="_blank"><span className="font-weight-bold">Click Here</span></a>.</p>
             <div className="row">
@@ -307,7 +309,7 @@ export default function Body() {
                     title={"GET INVOLVED"}
                     subtitle={"Join the community effort to realize our vision for the Harsimus Branch."}
                     img={"/images/INVOLVED-BANNER2.jpg"}
-                    btn1={{ text: "Become a Member!", href: `#${involvedSectionMemberId}`, }}
+                    btn1={{ text: "Become a Member!", href: `#${becomeMemberId}`, }}
                     btn2={{ text: "Donate", href: "#involved-section-donate", }}
                 />
             }

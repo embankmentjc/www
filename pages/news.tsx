@@ -4,7 +4,7 @@ import React, {ReactNode} from "react";
 
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
-import {involvedSectionMemberId} from "./involved";
+import {becomeMemberId} from "./involved";
 
 function NewsletterSubscribe() {
     return (
@@ -349,7 +349,7 @@ export default function Body() {
                     subtitle={"Get up to date on the Harsimus Branch and Embankment news and events - then help us write the next chapter!"}
                     img={"/images/NEWS-BANNER.jpg"}
                     btn1={{ text: "Recent Headline", href: "#news-section-recent", }}
-                    btn2={{ text: "Become a Member!", href: `/involved#${involvedSectionMemberId}`, }}
+                    btn2={{ text: "Become a Member!", href: `/involved#${becomeMemberId}`, }}
                 />
             }
         >
@@ -358,7 +358,7 @@ export default function Body() {
             <Banner id={"news-section-connect"} title={"Get in Touch"} icon={"email"} />
             <Connect />
             <ParallaxSection1
-                title={<a href={`/involved#${involvedSectionMemberId}`}>Become a Member!</a>}
+                title={<a href={`/involved#${becomeMemberId}`}>Become a Member!</a>}
                 img={"/images/HOME-SLIDER1.jpg"}
             />
         </Page>

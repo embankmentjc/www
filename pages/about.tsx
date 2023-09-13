@@ -8,7 +8,7 @@ import {
     ParallaxSection2
 } from "../components/theme";
 import {ParallaxHeader} from "../components/theme";
-import {involvedSectionMemberId} from "./involved";
+import {becomeMemberId} from "./involved";
 
 export default function Body() {
     return (
@@ -20,7 +20,7 @@ export default function Body() {
                     subtitle={"New Jersey’s historian John T. Cunningham called Hudson County a “mantle of wheels” for its central role in transportation history. Now outdated infrastructure can meet 21st-century needs."}
                     img={"/images/ABOUT-JERSEYCITY.jpg"}
                     btn1={{ text: "The History", href: "#about-section-history", }}
-                    btn2={{ text: "Become a Member!", href: `/involved#${involvedSectionMemberId}`, }}
+                    btn2={{ text: "Become a Member!", href: `/involved#${becomeMemberId}`, }}
                 />
             }
         >

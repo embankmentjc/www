@@ -1,6 +1,6 @@
 import navStyles from "./navbar.module.css";
 import {Brand} from "./theme";
-import {involvedSectionMemberId} from "../pages/involved";
+import {becomeMemberId} from "../pages/involved";
 
 export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean }) {
     if ((cur == "" || cur) && !cur.startsWith("/")) {
@@ -63,7 +63,7 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
                     { hash: "vision-section-art", text: "Art for a Sustainable Future", },
                 ]} />
                 <SubMenu path="/involved" text="GET INVOLVED" items={[
-                    { hash: involvedSectionMemberId, text: "Become a Member!", },
+                    { hash: becomeMemberId, text: "Become a Member!", },
                     { hash: "involved-section-volunteer", text: "Volunteer", },
                     { hash: "involved-section-donate", text: "Donate", },
                     { hash: "involved-section-partners", text: "Our Partners", },

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import css from "./modal.module.scss"
-import {involvedSectionMemberId} from "../pages/involved";
+import {becomeMemberId, signupId} from "../pages/involved";
 
 export const id = "2023-stb-modal"
 
@@ -57,7 +57,7 @@ export function Modal() {
                             Meeting details, including the agenda, log-in information, and other logistics will be circulated at least two weeks prior to the September 28 meeting.
                         </p>
                         <p>
-                            Check back here for details, or <a href={`/involved#${involvedSectionMemberId}`}><strong>sign up for our email list</strong></a> to stay informed.
+                            Check back here for details, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
                         </p>
                     </div>
                     <div className="modal-body" onBlur={() => console.log("blur!")}>

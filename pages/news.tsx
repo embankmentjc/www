@@ -5,6 +5,7 @@ import React, {ReactNode} from "react";
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
 import {becomeMemberId, signupId} from "./involved";
+import {registerUrl} from "../components/modal";
 
 function NewsletterSubscribe() {
     return (
@@ -163,20 +164,27 @@ function NewsFeed() {
     const items: NewsItem[] = [
         {
             date: "2023-09-28",
-            title: "Hold the Date! Surface Transportation Board online meeting",
+            title: <strong>Surface Transportation Board online meeting</strong>,
             center: true,
             // src: "",
-            // href: "",
+            href: registerUrl,
             children: (<>
+                <p>Thurs, September 28, 2023, 5-9pm; <a target={"_blank"} href={registerUrl}><strong>register to speak here</strong>!</a></p>
                 <p>
-                    This may be <strong>the public's last meaningful chance to comment</strong> on Conrail's proposed abandonment of the Harsimus Branch and Embankment in Jersey City before the regulatory agency rules on its fate.
+                    Online Public Meeting re National Historic Preservation Act Section 106 Review of Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167, Sub.no. 1189X), Hosted by Surface Transportation Board Office of Environmental Analysis.
                 </p>
                 <p>
-                    Meeting details, including the agenda, log-in information, and other logistics will be circulated at least two weeks prior to the September 28 meeting.
+                    The Section 106 process is designed to consider
+                    ways to "avoid, minimize, or mitigate" adverse effects to historic resources that
+                    are subject to federal permits. To date, OEA has simply suggested documentation
+                    and signage. We are calling for OEA to consider ways to preserve the historic
+                    resource, not presume its demolition and memorialize it.
                 </p>
                 <p>
-                    Check back here for details, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
+                    The Embankment Coalition has worked tirelessly to preserve the Harsimus Branch & Embankment
+                    in Jersey City for historically compatible uses of open space, trail, and future light rail. Now we need your help!
                 </p>
+                <p><a target={"_blank"} href={registerUrl}><strong>Register to speak here</strong></a>, contact <a href={"mailto:Karen.Stevens@stb.gov"}>Karen.Stevens@stb.gov</a> / 202-245-0304 for special assistance, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.</p>
             </>)
         },
         {

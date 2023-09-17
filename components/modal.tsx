@@ -3,6 +3,7 @@ import css from "./modal.module.scss"
 import {becomeMemberId, signupId} from "../pages/involved";
 
 export const id = "2023-stb-modal"
+export const registerUrl = "https://www.zoomgov.com/meeting/register/vJItf-muqjIqHwFL6t68ih8dpwboGSduj2s"
 
 export function Modal() {
     const modalSuppressedKey = `${id}_suppressed`
@@ -29,7 +30,6 @@ export function Modal() {
         },
         []
     )
-
     return (
         <div
             id={id}
@@ -45,20 +45,19 @@ export function Modal() {
                 >
                     <button className={`close ${css.close}`} onClick={() => setShowModal(false)}>x</button>
                     <div className="modal-header" style={{display: "block",}}>
-                        <h3>Hold the Date!</h3>
+                        <h3><a target={"_blank"} href={registerUrl}>Speak up</a> for Harsimus Branch & Embankment Preservation!</h3>
                         <ul style={{listStyle: "none",}}>
                             <li><strong>Surface Transportation Board online meeting</strong></li>
                             <li>Thursday, September 28, 2023, 5 to 9 pm</li>
-                            <li>Re: Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167, Sub.no. 1189X)</li>
+                            <li>Re: Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167, Sub. no. 1189X)</li>
                         </ul>
+                        <h4><a target={"_blank"} href={registerUrl}><strong>Register for the Meeting here.</strong></a></h4>
+                        <p>If you need special assistance, <a href={"mailto:Karen.Stevens@stb.gov"}>contact Karen.Stevens@stb.gov</a> or 202-245-0304.</p>
                         <p>
                             This may be <strong>the public's last meaningful chance to comment</strong> on Conrail's proposed abandonment of the Harsimus Branch and Embankment in Jersey City before the regulatory agency rules on its fate.
                         </p>
                         <p>
-                            Meeting details, including the agenda, log-in information, and other logistics will be circulated at least two weeks prior to the September 28 meeting.
-                        </p>
-                        <p>
-                            Check back here for details, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
+                            <a href={"/news#news-section-recent"} onClick={() => setModalSuppressCookie(true)}>Learn more about the meeting here</a>, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
                         </p>
                     </div>
                     <div className="modal-body" onBlur={() => console.log("blur!")}>

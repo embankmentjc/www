@@ -4,9 +4,10 @@ import {becomeMemberId, signupId} from "../pages/involved";
 
 export const id = "2023-stb-modal"
 export const registerUrl = "https://www.zoomgov.com/meeting/register/vJItf-muqjIqHwFL6t68ih8dpwboGSduj2s"
+export const emailUrl = "mailto:Karen.Stevens@stb.gov?subject=Register+to+comment+at+Embankment+meeting&body=Please+register+me+to+comment+at+the+Surface+Transportation+Board+online+meeting+on+Thursday%2C+September+28.+Thank+you%21"
 
 export function Modal() {
-    const modalSuppressedKey = `${id}_suppressed`
+    const modalSuppressedKey = `${id}_suppressed-v2`
 
     function setModalSuppressCookie(checked: boolean) {
         console.log("checked:", checked);
@@ -45,14 +46,13 @@ export function Modal() {
                 >
                     <button className={`close ${css.close}`} onClick={() => setShowModal(false)}>x</button>
                     <div className="modal-header" style={{display: "block",}}>
-                        <h3><a target={"_blank"} href={registerUrl}>Speak up</a> for Harsimus Branch & Embankment Preservation!</h3>
+                        <h3>Speak out for Harsimus Branch & Embankment Preservation!</h3>
                         <ul style={{listStyle: "none",}}>
                             <li><strong>Surface Transportation Board online meeting</strong></li>
                             <li>Thursday, September 28, 2023, 5 to 9 pm</li>
                             <li>Re: Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167, Sub. no. 1189X)</li>
                         </ul>
-                        <h4><a target={"_blank"} href={registerUrl}><strong>Register for the Meeting here.</strong></a></h4>
-                        <p>If you need special assistance, <a href={"mailto:Karen.Stevens@stb.gov"}>contact Karen.Stevens@stb.gov</a> or 202-245-0304.</p>
+                        <p><a target={"_blank"} href={registerUrl}><strong>Register for the meeting here</strong></a>, and email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to sign up to speak.</p>
                         <p>
                             This may be <strong>the public's last meaningful chance to comment</strong> on Conrail's proposed abandonment of the Harsimus Branch and Embankment in Jersey City before the regulatory agency rules on its fate.
                         </p>

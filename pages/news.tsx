@@ -5,7 +5,7 @@ import React, {ReactNode} from "react";
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
 import {becomeMemberId, signupId} from "./involved";
-import {registerUrl} from "../components/modal";
+import {emailUrl, registerUrl} from "../components/modal";
 
 function NewsletterSubscribe() {
     return (
@@ -169,7 +169,7 @@ function NewsFeed() {
             // src: "",
             href: registerUrl,
             children: (<>
-                <p>Thurs, September 28, 2023, 5-9pm; <a target={"_blank"} href={registerUrl}><strong>register to speak here</strong>!</a></p>
+                <p>Thurs, September 28, 2023, 5-9pm; <a target={"_blank"} href={registerUrl}><strong>register here</strong></a>, and email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to speak.</p>
                 <p>
                     Online Public Meeting re National Historic Preservation Act Section 106 Review of Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167, Sub.no. 1189X), Hosted by Surface Transportation Board Office of Environmental Analysis.
                 </p>
@@ -184,7 +184,7 @@ function NewsFeed() {
                     The Embankment Coalition has worked tirelessly to preserve the Harsimus Branch & Embankment
                     in Jersey City for historically compatible uses of open space, trail, and future light rail. Now we need your help!
                 </p>
-                <p><a target={"_blank"} href={registerUrl}><strong>Register to speak here</strong></a>, contact <a href={"mailto:Karen.Stevens@stb.gov"}>Karen.Stevens@stb.gov</a> / 202-245-0304 for special assistance, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.</p>
+                <p><a target={"_blank"} href={registerUrl}><strong>Register to attend here</strong></a>, email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to sign up to speak, and <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.</p>
             </>)
         },
         {

@@ -169,7 +169,13 @@ function NewsFeed() {
             // src: "",
             href: registerUrl,
             children: (<>
-                <p>Thurs, September 28, 2023, 5-9pm; <a target={"_blank"} href={registerUrl}><strong>register here</strong></a>, and email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to speak.</p>
+                <p>
+                    Thurs, September 28, 2023, 5-9pm; <a target={"_blank"} href={registerUrl}><strong>register here</strong></a>, and email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to speak. See these docs for guidance on commenting:
+                </p>
+                <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+                    <li><a target={"_blank"} href={"/STB-notice.pdf"}><strong>Embankment Coalition Notice: What to Tell the STB</strong></a></li>
+                    <li><a target={"_blank"} href={"/STB-comments.pdf"}><strong>Embankment Coalition Guidance on Comments to the STB</strong>.</a></li>
+                </ul>
                 <p>
                     Online Public Meeting re National Historic Preservation Act Section 106 Review of Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167, Sub.no. 1189X), Hosted by Surface Transportation Board Office of Environmental Analysis.
                 </p>

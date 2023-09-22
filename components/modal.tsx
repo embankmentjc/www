@@ -52,7 +52,7 @@ export function Modal() {
                             <li>Thursday, September 28, 2023, 5 to 9 pm</li>
                             <li>Re: Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167, Sub. no. 1189X)</li>
                         </ul>
-                        <p><a target={"_blank"} href={registerUrl}><strong>Register for the meeting here</strong></a>, and email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to sign up to speak.</p>
+                        <p><a target={"_blank"} href={registerUrl}><strong>Register for the meeting here</strong></a>, and email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to sign up to speak. Comment guidance can be found <a target={"_blank"} href={"/STB-notice.pdf"}><strong>here</strong></a> and <a target={"_blank"} href={"/STB-comments.pdf"}><strong>here</strong></a>.</p>
                         <p>
                             This may be <strong>the public's last meaningful chance to comment</strong> on Conrail's proposed abandonment of the Harsimus Branch and Embankment in Jersey City before the regulatory agency rules on its fate.
                         </p>

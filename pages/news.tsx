@@ -180,7 +180,7 @@ function NewsFeed() {
                     Online Public Meeting re National Historic Preservation Act Section 106 Review of Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167, Sub.no. 1189X), Hosted by Surface Transportation Board Office of Environmental Analysis.
                 </p>
                 <p>
-                    The Section 106 process is designed to consider ways to "avoid, minimize, or mitigate" adverse effects to historic resources that are subject to federal permits. To date, in a <a target={"_blank"} href={"/STB-MOA.pdf"}>draft Memorandum of Agreement</a>, OEA is suggesting documentation and signage as mitigation. We are calling for OEA to consider ways to preserve the historic resource, not presume its demolition and memorialize it.
+                    The Section 106 process is designed to consider ways to "avoid, minimize, or mitigate" adverse effects to historic resources that are subject to federal permits. To date, in a <a target={"_blank"} href={"/STB-MOA.pdf"}><strong>draft Memorandum of Agreement</strong></a>, OEA is suggesting documentation and signage as mitigation. We are calling for OEA to consider ways to preserve the historic resource, not presume its demolition and memorialize it.
                 </p>
                 <p>
                     The Embankment Coalition has worked tirelessly to preserve the Harsimus Branch & Embankment
@@ -370,7 +370,6 @@ export default function Body() {
     return (
         <Page
             path="news"
-            modal={true}
             headerChildren={
                 <ParallaxHeader
                     title={"News + Events"}

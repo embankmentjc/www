@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import css from "./modal.module.scss"
 import {becomeMemberId, signupId} from "../pages/involved";
 
-export const id = "2023-stb-modal"
+export const id = "20230927-stb-modal"
 export const registerUrl = "https://www.zoomgov.com/meeting/register/vJItf-muqjIqHwFL6t68ih8dpwboGSduj2s"
 export const emailUrl = "mailto:Karen.Stevens@stb.gov?subject=Register+to+comment+at+Embankment+meeting&body=Please+register+me+to+comment+at+the+Surface+Transportation+Board+online+meeting+on+Thursday%2C+September+28.+Thank+you%21"
 
@@ -57,7 +57,7 @@ export function Modal() {
                             This may be <strong>the public's last meaningful chance to comment</strong> on Conrail's proposed abandonment of the Harsimus Branch and Embankment in Jersey City before the regulatory agency rules on its fate.
                         </p>
                         <p>
-                            <a href={"/news#news-section-recent"} onClick={() => setModalSuppressCookie(true)}>Learn more about the meeting here</a>, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
+                            <a href={"/news#news-section-recent"}>Learn more about the meeting here</a>, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
                         </p>
                     </div>
                     <div className="modal-body" onBlur={() => console.log("blur!")}>

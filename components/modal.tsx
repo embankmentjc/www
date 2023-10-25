@@ -2,9 +2,8 @@ import React, {useEffect, useState} from "react";
 import css from "./modal.module.scss"
 import {becomeMemberId, signupId} from "../pages/involved";
 
-export const id = "20230927-stb-modal"
-export const registerUrl = "https://www.zoomgov.com/meeting/register/vJItf-muqjIqHwFL6t68ih8dpwboGSduj2s"
-export const emailUrl = "mailto:Karen.Stevens@stb.gov?subject=Register+to+comment+at+Embankment+meeting&body=Please+register+me+to+comment+at+the+Surface+Transportation+Board+online+meeting+on+Thursday%2C+September+28.+Thank+you%21"
+export const id = "20231101-annual-mtng"
+export const registerUrl = "mailto:embankmentjc@gmail.com?subject=Register%20for%20Embankment%20annual%20meeting&body=Please%20register%20for%20me%20for%20the%20meeting%20(Wednesday,%20November%201,%202023%20at%207pm%20at%20Grace%20Church%20Van%20Vorst)"
 
 export function Modal() {
     const modalSuppressedKey = `${id}_suppressed-v2`
@@ -46,18 +45,15 @@ export function Modal() {
                 >
                     <button className={`close ${css.close}`} onClick={() => setShowModal(false)}>x</button>
                     <div className="modal-header" style={{display: "block",}}>
-                        <h3>Speak out for Harsimus Branch & Embankment Preservation!</h3>
+                        <h3>Attend the Embankment Coalition's Annual Meeting!</h3>
                         <ul style={{listStyle: "none",}}>
-                            <li><strong>Surface Transportation Board online meeting</strong></li>
-                            <li>Thursday, September 28, 2023, 5 to 9 pm</li>
-                            <li>Re: Conrail's Proposed Abandonment of Harsimus Branch (Docket No. AB-167, Sub. no. 1189X)</li>
+                            <li>Wednesday, November 1, 2023, 7pm</li>
+                            <li><a target={"_blank"} href={"https://www.gracevanvorst.org/"}>Grace Church Van Vorst</a></li>
+                            <li><a target={"_blank"} href={"https://maps.app.goo.gl/fJRv7b81QBir98Fm7"}>39 Erie St, Jersey City, NJ (enter on 2nd Street)</a></li>
                         </ul>
-                        <p><a target={"_blank"} href={registerUrl}><strong>Register for the meeting here</strong></a>, and email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to sign up to speak. Comment guidance can be found <a target={"_blank"} href={"/STB-notice.pdf"}><strong>here</strong></a> and <a target={"_blank"} href={"/STB-comments.pdf"}><strong>here</strong></a>.</p>
+                        <p><a href={registerUrl}>Click to email your RSVP to embankmentjc@gmail.com</a></p>
                         <p>
-                            This may be <strong>the public's last meaningful chance to comment</strong> on Conrail's proposed abandonment of the Harsimus Branch and Embankment in Jersey City before the regulatory agency rules on its fate.
-                        </p>
-                        <p>
-                            <a href={"/news#news-section-recent"}>Learn more about the meeting here</a>, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
+                            <a href={"/news#news-section-recent"}>More info here</a>, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
                         </p>
                     </div>
                     <div className="modal-body" onBlur={() => console.log("blur!")}>

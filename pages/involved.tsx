@@ -281,7 +281,7 @@ function MembershipOptions() {
     return (
         <Section id={becomeMemberId} title={<h1> Become a Member!</h1>}>
             <p>Members are the bedrock of the Coalition. Please join us today.</p>
-            <p>Select a membership level below or if you prefer to mail your membership paperwork <a href="/images/membership2019.pdf" target="_blank"><span className="font-weight-bold">Click Here</span></a>.</p>
+            <p>Select a membership level below or if you prefer to mail your membership paperwork <a href="/images/membership2023.pdf" target="_blank"><span className="font-weight-bold">Click Here</span></a>.</p>
             <div className="row">
                 <div className="col-xl-12 offset-top-34">
                     <div className="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">

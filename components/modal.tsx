@@ -3,7 +3,7 @@ import css from "./modal.module.scss"
 import {becomeMemberId, signupId} from "../pages/involved";
 
 export const id = "20231101-annual-mtng"
-export const registerUrl = "mailto:embankmentjc@gmail.com?subject=Register%20for%20Embankment%20annual%20meeting&body=Please%20register%20for%20me%20for%20the%20meeting%20(Wednesday,%20November%201,%202023%20at%207pm%20at%20Grace%20Church%20Van%20Vorst)"
+export const registerUrl = "mailto:embankmentjc@gmail.com?subject=Register%20for%20Embankment%20annual%20meeting&body=Please%20register%20me%20for%20the%20meeting%20(Wednesday,%20November%201,%202023%20at%207pm%20at%20Grace%20Church%20Van%20Vorst).%0a%0aThank%20you,%0a%3CYour%20name%3E"
 
 export function Modal() {
     const modalSuppressedKey = `${id}_suppressed-v2`
@@ -51,7 +51,15 @@ export function Modal() {
                             <li><a target={"_blank"} href={"https://www.gracevanvorst.org/"}>Grace Church Van Vorst</a></li>
                             <li><a target={"_blank"} href={"https://maps.app.goo.gl/fJRv7b81QBir98Fm7"}>39 Erie St, Jersey City, NJ (enter on 2nd Street)</a></li>
                         </ul>
-                        <p><a href={registerUrl}>Click to email your RSVP to embankmentjc@gmail.com</a></p>
+                        <p><a target={"_blank"} href={registerUrl}><strong>Click to email your RSVP to embankmentjc@gmail.com</strong></a></p>
+                        <p>
+                            <ul>
+                                <li><strong>Updates from EPC Board Members:</strong></li>
+                                <li>Project Status - Federal and local efforts</li>
+                                <li>Designing Our Future</li>
+                                <li>What you can do to help</li>
+                            </ul>
+                        </p>
                         <p>
                             <a href={"/news#news-section-recent"}>More info here</a>, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
                         </p>

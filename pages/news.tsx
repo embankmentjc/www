@@ -163,11 +163,33 @@ function NewsItem({ title, pretitle, date, dateStr, center, href, src, alt, auth
 function NewsFeed() {
     const items: NewsItem[] = [
         {
+            date: "2023-11-01",
+            title: <strong>Attend the Embankment Coalition's Annual Meeting!</strong>,
+            center: true,
+            href: registerUrl,
+            children: <>
+                <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+                    <li>Wednesday, November 1, 2023, 7pm</li>
+                    <li><a target={"_blank"} href={"https://www.gracevanvorst.org/"}>Grace Church Van Vorst</a></li>
+                    <li><a target={"_blank"} href={"https://maps.app.goo.gl/fJRv7b81QBir98Fm7"}>39 Erie St, Jersey City, NJ (enter on 2nd Street)</a></li>
+                </ul>
+                <p><a target={"_blank"} href={registerUrl}><strong>Click to email your RSVP to embankmentjc@gmail.com</strong></a></p>
+                <p>
+                    <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+                        <li><strong>Updates from EPC Board Members:</strong></li>
+                        <li>Project Status - Federal and local efforts</li>
+                        <li>Designing Our Future</li>
+                        <li>What you can do to help</li>
+                    </ul>
+                </p>
+            </>
+        },
+        {
             date: "2023-09-28",
             title: <strong>Surface Transportation Board online meeting</strong>,
             center: true,
             // src: "",
-            href: registerUrl,
+            // href: registerUrl,
             children: (<>
                 <p>
                     Thurs, September 28, 2023, 5-9pm; <a target={"_blank"} href={registerUrl}><strong>register here</strong></a>, and email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to speak. See these docs for guidance on commenting:

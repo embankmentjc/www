@@ -30,7 +30,8 @@
     "tsc": "^2.0.4",
     "typescript": "^4.6.2",
     "webpack": "^5.70.0",
-    "webpack-cli": "^4.9.2"
+    "webpack-cli": "^4.9.2",
+    "write-redirects": "https://gitpkg.now.sh/runsascoded/next-write-redirects?18be2e3"
   },
   "dependencies": {
     "@mdx-js/react": "^2.1.5",

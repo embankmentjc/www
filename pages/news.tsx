@@ -5,7 +5,7 @@ import React, {ReactNode} from "react";
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
 import {becomeMemberId, signupId} from "./involved";
-import {emailUrl, registerUrl} from "../components/modal";
+import {registerUrl} from "../components/modal";
 
 function NewsletterSubscribe() {
     return (
@@ -166,6 +166,7 @@ function NewsFeed() {
             date: "2023-11-01",
             title: <strong>Attend the Embankment Coalition's Annual Meeting!</strong>,
             center: true,
+            src: "/images/embankment-annual-mtng-img.jpeg", alt: "Oblique aerial view of the embankment",
             href: registerUrl,
             children: <>
                 <ul style={{ listStyle: "none", paddingLeft: 0 }}>
@@ -174,14 +175,13 @@ function NewsFeed() {
                     <li><a target={"_blank"} href={"https://maps.app.goo.gl/fJRv7b81QBir98Fm7"}>39 Erie St, Jersey City, NJ (enter on 2nd Street)</a></li>
                 </ul>
                 <p><a target={"_blank"} href={registerUrl}><strong>Click to email your RSVP to embankmentjc@gmail.com</strong></a></p>
-                <p>
-                    <ul style={{ listStyle: "none", paddingLeft: 0 }}>
-                        <li><strong>Updates from EPC Board Members:</strong></li>
-                        <li>Project Status - Federal and local efforts</li>
-                        <li>Designing Our Future</li>
-                        <li>What you can do to help</li>
-                    </ul>
-                </p>
+                <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+                    <li><strong>Updates from EPC Board Members:</strong></li>
+                    <li>Project Status - Federal and local efforts</li>
+                    <li>Designing Our Future</li>
+                    <li>What you can do to help</li>
+                </ul>
+                <p><a href={`/involved#${signupId}`}><strong>Sign up for our email list</strong></a> to stay informed.</p>
             </>
         },
         {
@@ -192,7 +192,7 @@ function NewsFeed() {
             // href: registerUrl,
             children: (<>
                 <p>
-                    Thurs, September 28, 2023, 5-9pm; <a target={"_blank"} href={registerUrl}><strong>register here</strong></a>, and email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to speak. See these docs for guidance on commenting:
+                    Thurs, September 28, 2023, 5-9pm; see these docs for guidance on commenting:
                 </p>
                 <ul style={{ listStyle: "none", paddingLeft: 0 }}>
                     <li><a target={"_blank"} href={"/STB-notice.pdf"}><strong>Embankment Coalition Notice: What to Tell the STB</strong></a></li>
@@ -208,7 +208,7 @@ function NewsFeed() {
                     The Embankment Coalition has worked tirelessly to preserve the Harsimus Branch & Embankment
                     in Jersey City for historically compatible uses of open space, trail, and future light rail. Now we need your help!
                 </p>
-                <p><a target={"_blank"} href={registerUrl}><strong>Register to attend here</strong></a>, email <a target={"_blank"} href={emailUrl}><strong>Karen.Stevens@stb.gov</strong></a> to sign up to speak, and <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.</p>
+                <p><a href={`/involved#${signupId}`}><strong>Sign up for our email list</strong></a> to stay informed.</p>
             </>)
         },
         {

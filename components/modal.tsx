@@ -60,9 +60,7 @@ export function Modal() {
                                 <li>What you can do to help</li>
                             </ul>
                         </p>
-                        <p>
-                            <a href={"/news#news-section-recent"}>More info here</a>, or <a href={`/involved#${signupId}`}><strong>sign up for our email list</strong></a> to stay informed.
-                        </p>
+                        <p><a href={`/involved#${signupId}`}><strong>Sign up for our email list</strong></a> to stay informed.</p>
                     </div>
                     <div className="modal-body" onBlur={() => console.log("blur!")}>
                         <div className="group group-xl offset-top-30">

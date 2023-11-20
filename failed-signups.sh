@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
+# Example:
+# cd ~/mail
+# $ ls -ltr new | tail -n5 | last | failed-signups.sh
 
-for f in `cat recover.txt`; do
+while read f; do
     (
         stat -c%y new/$f | tuf .
         awk '/^Content-Type: text\/plain/{p=1;print;next} p&&/^Content-Type: text\/html/{p=0};p' new/$f \

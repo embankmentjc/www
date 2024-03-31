@@ -1,0 +1,41 @@
+.page {
+  a {
+    color: #0070f3;
+    text-decoration: underline;
+  }
+}
+.banner {
+  background-size: cover;
+  background: url('/images/HOME-SLIDER1.jpg') 0 50%;
+  h1 {
+    color: white;
+    font-size: 8vw;
+    text-align: center;
+    padding: 1.5em 1em;
+  }
+}
+
+.note {
+  font-weight: bold;
+}
+.event {
+  margin-bottom: 1em;
+  .title {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  .date {
+    font-weight: bold;
+    display: inline;
+  }
+  .location {
+    font-weight: bold;
+    display: inline;
+    &:before {
+      content: ', ';
+    }
+  }
+  .description {
+
+  }
+}

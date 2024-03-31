@@ -41,12 +41,13 @@ export function Figure({ src, alt, caption, border, }: Figure) {
     )
 }
 
-export function Section({ id, h1, title, pretitle, style, children }: {
+export function Section({ id, h1, title, pretitle, style, className, children }: {
     id?: string
     h1?: boolean
     title?: ReactNode
     pretitle?: ReactNode
     style?: CSSProperties
+    className?: string
     children: ReactNode
 }) {
     if (typeof title === "string") {
@@ -57,7 +58,7 @@ export function Section({ id, h1, title, pretitle, style, children }: {
         }
     }
     return (
-        <section id={id} className={"section section-98 section-sm-110"} style={style || {}}>
+        <section id={id} className={`section section-98 section-sm-110 ${className ?? ""}`} style={style || {}}>
             <div className="container">
                 {pretitle}
                 {title}

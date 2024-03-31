@@ -4,6 +4,9 @@
     text-decoration: underline;
   }
 }
+.row {
+  margin-top: 0;
+}
 .banner {
   background-size: cover;
   background: url('/images/HOME-SLIDER1.jpg') 0 50%;
@@ -15,11 +18,14 @@
   }
 }
 
+.section {
+  padding-bottom: 0;
+}
 .note {
-  font-weight: bold;
+  margin-bottom: 1em;
 }
 .event {
-  margin-bottom: 1em;
+  margin: 1em 0;
   .title {
     font-weight: bold;
     margin-bottom: 0;

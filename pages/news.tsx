@@ -6,6 +6,8 @@ import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/t
 import moment from "moment/moment";
 import {becomeMemberId, signupId} from "./involved";
 import {registerUrl} from "../components/modal";
+import css from "./2024-events.module.scss";
+import { Events2024, MailTo } from "./2024-events";
 
 function NewsletterSubscribe() {
     return (
@@ -119,6 +121,20 @@ function Pretitle({ title, icon }: Pretitle) {
                 <div className={`icon icon-xxs text-dark mdi mdi-${icon}`} />
             </li>
         </ul>
+    )
+}
+
+function UpcomingEvents() {
+    return (
+        <Section id={"news-section-upcoming"} title={"2024 Events"} className={css.section}>
+            <div className={`row justify-content-md-center ${css.row}`}>
+                <div className="col-md-10 col-lg-8 col-xl-7">
+                    <div className="inset-left-0 inset-lg-right-20">
+                        <Events2024 />
+                    </div>
+                </div>
+            </div>
+        </Section>
     )
 }
 
@@ -253,7 +269,7 @@ function NewsFeed() {
             src: "/images/sept-7-redevelopment-mtng.jpeg", alt: "Embankment community meeting flyer",
             href: "https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ",
             children: (<>
-                <p>Support <a href="/vision#design">the Embankment Coalition's <strong>"light touch" vision</strong></a> for treatment of the Harsimus BranchEmbankment at an upcoming Jersey City Planning Department meeting,Wednesday, Sept. 7, 6:30-8:30 pm.  <a href="https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ" target="_blank"><strong>Register here.</strong></a></p>
+                <p>Support <a href="/vision#design">the Embankment Coalition's <strong>"light touch" vision</strong></a> for treatment of the Harsimus BranchEmbankment at an upcoming Jersey City Planning Department meeting,Wednesday, Sept. 7, 6:30-8:30 pm. <a href="https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ" target="_blank"><strong>Register here.</strong></a></p>
                 <p>City Planners will be rolling out an Embankment Redevelopment Plan focused on the open space of Blocks 2-8 of the Embankment property from the west side of Manila Avenue to beyond Newark Avenue near the Turnpike Extension.  Help ensure that the future for the Embankment is historic preservation, conservation of what has become an ecological corridor, and connectivity of neighborhoods to a regional carbon-free transportation network.</p>
             </>)
         },
@@ -402,6 +418,7 @@ export default function Body() {
                 />
             }
         >
+            <UpcomingEvents />
             <NewsFeed />
             <NewsletterSubscribe />
             <Banner id={"news-section-connect"} title={"Get in Touch"} icon={"email"} />

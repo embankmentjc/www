@@ -7,7 +7,7 @@ import moment from "moment/moment";
 import {becomeMemberId, signupId} from "./involved";
 import {registerUrl} from "../components/modal";
 import css from "./2024-events.module.scss";
-import { Events2024, MailTo } from "./2024-events";
+import { Events2024 } from "./2024-events";
 
 function NewsletterSubscribe() {
     return (

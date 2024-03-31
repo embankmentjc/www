@@ -1,4 +1,4 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import IntrinsicElements = React.JSX.IntrinsicElements;
 
 export type Props = {
@@ -6,14 +6,18 @@ export type Props = {
     top?: string
     id: string
     className?: string
+    style?: CSSProperties
     children: React.ReactNode
 }
 
-export function Title({ H, top = "-4em", id, className, children }: Props)
+export function Title({ H, top = "-4em", id, className, style, children }: Props)
 {
-    return <H className={className}>
-        <span id={id} style={{ position: "relative", top, }}></span>
-        <a href={`#${id}`} >{children}</a>
+    return <H
+        style={{position: "relative", ...(style ?? {})}}
+        className={className}
+    >
+        <span id={id} style={{position: "absolute", top,}}></span>
+        <a href={`#${id}`}>{children}</a>
     </H>
 }
 

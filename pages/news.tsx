@@ -126,7 +126,7 @@ function Pretitle({ title, icon }: Pretitle) {
 
 function UpcomingEvents() {
     return (
-        <Section id={"news-section-upcoming"} title={"2024 Events"} className={css.section}>
+        <Section id={"2024-events"} title={"2024 Events"} className={css.section}>
             <div className={`row justify-content-md-center ${css.row}`}>
                 <div className="col-md-10 col-lg-8 col-xl-7">
                     <div className="inset-left-0 inset-lg-right-20">

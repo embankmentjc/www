@@ -1,5 +1,5 @@
 import React, {CSSProperties, ReactNode} from "react";
-import { H1, H2 } from "./title";
+import { H1, H2 } from "@rdub/next-base/heading";
 
 export function Brand({ className }: { className: string }) {
     return (

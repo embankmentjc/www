@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@mdx-js/react": "^2.1.5",
+    "@rdub/next-base": "0.2.1",
     "escape-html": "^1.0.3",
     "luxon": "^3.4.4",
     "moment": "^2.29.1",

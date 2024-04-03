@@ -19,7 +19,7 @@ export function Events2024() {
             <div className={css.event}>
                 <H4 id={"jc-and-its-railroads"}>"Jersey City and Its Railroads: They Covered the Waterfront and Helped Shape a Nation"</H4>
                 <div className={css.date}>Sunday, May 5, 7-8:30 pm</div>
-                <div className={css.location}>Grace Church Van Vorst, 39 Erie Street (entrance on Coles).</div>
+                <div className={css.location}>Grace Church Van Vorst, 39 Erie Street (entrance on 2nd St).</div>
                 <div className={css.description}>
                     The Embankment Coalition is observing Preservation Month with two presentations on rail and local history by Bennett Levin. Bennett is a retired professional engineer and former Commissioner, Department of Licenses and Inspections for the City of Philadelphia, as well as a former member of the Historic Preservation Commission there, among other pursuits. A rail line preservationist and founder of a company that rebuilds and restores locomotives, Bennett acquired a lifelong interest in all-things-rail through visits to his grandmother's house on 5th Street adjacent to the Harsimus Branch. Reserve a place for this talk, "The Blessings of Geography" by emailing <MailTo to="embankmentjc@gmail.com"/> and specifying May 5th . It will be followed on May 19th by Bennett’s recollections of our neighborhood; see below.
                 </div>

@@ -52,14 +52,12 @@ export function Modal() {
                             <li><a target={"_blank"} href={"https://maps.app.goo.gl/fJRv7b81QBir98Fm7"}>39 Erie St, Jersey City, NJ (enter on 2nd Street)</a></li>
                         </ul>
                         <p><a target={"_blank"} href={registerUrl}><strong>Click to email your RSVP to embankmentjc@gmail.com</strong></a></p>
-                        <p>
-                            <ul>
-                                <li><strong>Updates from EPC Board Members:</strong></li>
-                                <li>Project Status - Federal and local efforts</li>
-                                <li>Designing Our Future</li>
-                                <li>What you can do to help</li>
-                            </ul>
-                        </p>
+                        <ul>
+                            <li><strong>Updates from EPC Board Members:</strong></li>
+                            <li>Project Status - Federal and local efforts</li>
+                            <li>Designing Our Future</li>
+                            <li>What you can do to help</li>
+                        </ul>
                         <p><a href={`/involved#${signupId}`}><strong>Sign up for our email list</strong></a> to stay informed.</p>
                     </div>
                     <div className="modal-body" onBlur={() => console.log("blur!")}>

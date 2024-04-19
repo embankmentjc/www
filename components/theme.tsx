@@ -52,7 +52,9 @@ export function Section({ id, h1, top = "-3em", title, pretitle, style, classNam
     className?: string
     children: ReactNode
 }) {
+    let sectionId = id
     if (typeof title === "string") {
+        sectionId = undefined
         if (h1) {
             if (id) {
                 title = <H1 id={id} top={top}>{title}</H1>
@@ -68,7 +70,7 @@ export function Section({ id, h1, top = "-3em", title, pretitle, style, classNam
         }
     }
     return (
-        <section className={`section section-98 section-sm-110 ${className ?? ""}`} style={style || {}}>
+        <section id={sectionId} className={`section section-98 section-sm-110 ${className ?? ""}`} style={style || {}}>
             <div className="container">
                 {pretitle}
                 {title}

@@ -54,7 +54,7 @@ function SignupForm() {
 
 function Donate() {
     return (
-        <Section id={donateId} >
+        <Section id={donateId}>
             <div className="row justify-content-sm-center offset-top-10">
                 <div className="col-sm-10">
                     {/* Bootstrap jumbotron */}

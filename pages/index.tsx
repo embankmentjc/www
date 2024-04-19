@@ -35,13 +35,14 @@ function Btn({ href, text, primary, }: {
     )
 }
 
-function BannerSlide({ img, alt, title, subtitle, btn1, btn2, }: {
+export type Btn = { href: string, text: string }
+
+function BannerSlide({ img, alt, title, subtitle, btns, }: {
     img: string
     alt: string
     title: string
     subtitle: string
-    btn1: { href: string, text: string }
-    btn2: { href: string, text: string }
+    btns: Btn[]
 }) {
     return (
         <li data-transition="crossfade">
@@ -113,10 +114,9 @@ function BannerSlide({ img, alt, title, subtitle, btn1, btn2, }: {
                                     data-x="['center','center','center','center']"
                                     data-frames="[{&quot;delay&quot;:&quot;+550&quot;,&quot;speed&quot;:2000,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:250px;opacity:0;fb:50px;&quot;,&quot;to&quot;:&quot;o:1;fb:0;&quot;,&quot;ease&quot;:&quot;Power4.easeOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:400,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;fb:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
                                 >
-                                    <div className="group group-xl offset-top-20 offset-sm-top-50">
-                                        {Btn({ ...btn1, primary: true })}
-                                        {Btn({ ...btn2, primary: false })}
-                                    </div>
+                                    <div className="group group-xl offset-top-20 offset-sm-top-50">{
+                                        btns.map((btn, key) => <Btn key={key} {...btn} primary={true} />)
+                                    }</div>
                                 </div>
                             </div>
                         </div>
@@ -141,24 +141,33 @@ function BannerSlides() {
                             alt="TODO"
                             title="Welcome to the Harsimus Branch and Embankment"
                             subtitle="The Future of Green Infrastructure in Jersey City"
-                            btn1={{ href: "/vision", text: "Explore Our Vision", }}
-                            btn2={{ href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", }}
+                            btns={[
+                                { href: "/now", text: "Embankment NOW", },
+                                { href: "/vision", text: "Explore Our Vision", },
+                                { href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", },
+                            ]}
                         />
                         <BannerSlide
                             img="/images/HOME-SLIDER2.jpg"
                             alt="TODO"
                             title="Historic Structure and a Natural Forest"
                             subtitle="A Green Corridor Unique to Jersey City"
-                            btn1={{ href: "#home-section-what", text: "Learn More", }}
-                            btn2={{ href: "/involved#involved-section-donate", text: "Donate", }}
+                            btns={[
+                                { href: "/now", text: "Embankment NOW", },
+                                { href: "#home-section-what", text: "Learn More", },
+                                { href: "/involved#involved-section-donate", text: "Donate", },
+                            ]}
                         />
                         <BannerSlide
                             img="/images/HOME-SLIDER3.jpg"
                             alt="TODO"
                             title="Our Vision"
                             subtitle="Preserve, Restore, Activate"
-                            btn1={{ href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", }}
-                            btn2={{ href: `/involved#${becomeMemberId}`, text: "Become a Member", }}
+                            btns={[
+                                { href: "/now", text: "Embankment NOW", },
+                                { href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", },
+                                { href: `/involved#${becomeMemberId}`, text: "Become a Member", },
+                            ]}
                         />
                     </ul>
                 </div>

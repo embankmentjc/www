@@ -3,7 +3,7 @@ import moment from "moment/moment"
 import {Brand} from "./theme"
 import { newsItems } from "./news"
 import A from "@rdub/next-base/a";
-import { donateId } from "../pages/involved";
+import { donateId } from "../components/ids";
 
 function PostWidget({ date, dateStr, href, children, }: {
     date: string

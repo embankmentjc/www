@@ -1,14 +1,7 @@
 import Page from "../components/page"
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import React, {CSSProperties} from "react";
-
-export const becomeMemberId = "involved-section-member"
-export const signupId = "signup"
-export const donateId = "involved-section-donate"
-export const volunteerId = "involved-section-volunteer"
-export const sponsorsId = "involved-section-sponsors"
-export const partnersId = "involved-section-partners"
-export const endorsementsId = "involved-section-endorsements"
+import { becomeMemberId, donateId, endorsementsId, partnersId, signupId, sponsorsId, volunteerId } from "../components/ids";
 
 type Field = {
     label: string

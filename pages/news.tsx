@@ -4,7 +4,7 @@ import React, {ReactNode} from "react";
 
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
-import {becomeMemberId} from "./involved";
+import {becomeMemberId} from "../components/ids";
 import css from "./2024-events.module.scss";
 import { Events2024 } from "./2024-events";
 import A from "@rdub/next-base/a";

@@ -8,7 +8,7 @@ import {
     ParallaxSection2
 } from "../components/theme";
 import {ParallaxHeader} from "../components/theme";
-import {becomeMemberId} from "./involved";
+import {becomeMemberId} from "../components/ids";
 
 export default function Body() {
     return (

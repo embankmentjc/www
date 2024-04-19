@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import css from "./modal.module.scss"
-import {becomeMemberId, signupId} from "../pages/involved";
+import { signupId } from "./ids";
 
 export const id = "20231101-annual-mtng"
 export const registerUrl = "mailto:embankmentjc@gmail.com?subject=Register%20for%20Embankment%20annual%20meeting&body=Please%20register%20me%20for%20the%20meeting%20(Wednesday,%20November%201,%202023%20at%207pm%20at%20Grace%20Church%20Van%20Vorst).%0a%0aThank%20you,%0a%3CYour%20name%3E"

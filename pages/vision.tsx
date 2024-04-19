@@ -8,7 +8,7 @@ import {
     ParallaxSection2
 } from "../components/theme";
 import React from "react";
-import { becomeMemberId, donateId, sponsorsId, volunteerId } from "./involved";
+import { becomeMemberId, donateId, sponsorsId, visionId, volunteerId } from "../components/ids";
 
 export default function Body() {
     return (
@@ -43,7 +43,7 @@ export default function Body() {
                 <p>These thoughts underlie our philosophy for the entire Harsimus Branch and associated rail structures and land.</p>
             </BigPicture>
 
-            <ParallaxSection1 title={"Living with the Land"} id={"vision-section-vision"} img="/images/HOME-STEP2.jpg">
+            <ParallaxSection1 title={"Living with the Land"} id={visionId} img="/images/HOME-STEP2.jpg">
                 <p className="offset-md-top-66">Care for the environment is this century’s greatest challenge – and Jersey City’s greatest opportunity. Thoughtful treatment of the Harsimus Branch can set a precedent for cities around the world, demonstrating that a healthy ecology and infrastructure are compatible, not competitors.</p>
                 <p>The meadows and forest that took root decades ago on the historic Embankment rail structure, in the midst of downtown Jersey City, is unique to our city. We know of no other city in the world that has a self-seeded forest running through its downtown. This upland forest is thriving, its habitat part of a wildlife corridor from the Hudson River to the Hackensack.</p>
                 <p>The Embankment Coalition vision for the Harsimus Branch and its Embankment preserves much of this forest and opens it to Jersey City residents for sensitive reuse. While part of the corridor is reserved for possible future light rail, residents can enjoy, on foot and by bike, a naturally occurring wilderness in their own backyards.</p>

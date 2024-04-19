@@ -6,7 +6,7 @@ import {
     IconBoxesSection,
     ParallaxSection1, Section
 } from "../components/theme";
-import { becomeMemberId, donateId } from "./involved";
+import { becomeMemberId, donateId } from "../components/ids";
 
 
 export async function getStaticProps(context: any) {

@@ -1,5 +1,5 @@
 import { registerUrl } from "./modal";
-import { signupId } from "../pages/involved";
+import { signupId, visionId } from "./ids";
 import React, { ReactNode } from "react";
 
 export const change = { name: "Change.org", src: "/images/logo_change.jpg", alt: "change.org logo", }
@@ -157,7 +157,7 @@ export const newsItems: NewsItem[] = [
         src: "/images/sept-7-redevelopment-mtng.jpeg", alt: "Embankment community meeting flyer",
         href: "https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ",
         children: (<>
-            <p>Support <a href="/vision#design">the Embankment Coalition's <strong>"light touch" vision</strong></a> for treatment of the Harsimus BranchEmbankment at an upcoming Jersey City Planning Department meeting,Wednesday, Sept. 7, 6:30-8:30 pm. <a href="https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ" target="_blank"><strong>Register here.</strong></a></p>
+            <p>Support <a href={`/vision#${visionId}`}>the Embankment Coalition's <strong>"light touch" vision</strong></a> for treatment of the Harsimus BranchEmbankment at an upcoming Jersey City Planning Department meeting,Wednesday, Sept. 7, 6:30-8:30 pm. <a href="https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ" target="_blank"><strong>Register here.</strong></a></p>
             <p>City Planners will be rolling out an Embankment Redevelopment Plan focused on the open space of Blocks 2-8 of the Embankment property from the west side of Manila Avenue to beyond Newark Avenue near the Turnpike Extension.  Help ensure that the future for the Embankment is historic preservation, conservation of what has become an ecological corridor, and connectivity of neighborhoods to a regional carbon-free transportation network.</p>
         </>)
     },

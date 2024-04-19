@@ -1,6 +1,6 @@
 import navStyles from "./navbar.module.css";
 import {Brand} from "./theme";
-import { becomeMemberId, donateId, partnersId, sponsorsId, volunteerId } from "../pages/involved";
+import { becomeMemberId, donateId, partnersId, sponsorsId, volunteerId } from "./ids";
 
 export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean }) {
     if ((cur == "" || cur) && !cur.startsWith("/")) {

@@ -6,7 +6,7 @@ import {
     IconBoxesSection,
     ParallaxSection1, Section
 } from "../components/theme";
-import {becomeMemberId} from "./involved";
+import { becomeMemberId, donateId } from "./involved";
 
 
 export async function getStaticProps(context: any) {
@@ -155,7 +155,7 @@ function BannerSlides() {
                             btns={[
                                 { href: "/now", text: "Embankment NOW", },
                                 { href: "#home-section-what", text: "Learn More", },
-                                { href: "/involved#involved-section-donate", text: "Donate", },
+                                { href: `/involved#${donateId}`, text: "Donate", },
                             ]}
                         />
                         <BannerSlide

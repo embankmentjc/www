@@ -4,6 +4,11 @@ import React, {CSSProperties} from "react";
 
 export const becomeMemberId = "involved-section-member"
 export const signupId = "signup"
+export const donateId = "involved-section-donate"
+export const volunteerId = "involved-section-volunteer"
+export const sponsorsId = "involved-section-sponsors"
+export const partnersId = "involved-section-partners"
+export const endorsementsId = "involved-section-endorsements"
 
 type Field = {
     label: string
@@ -56,7 +61,7 @@ function SignupForm() {
 
 function Donate() {
     return (
-        <Section id={"involved-section-donate"} >
+        <Section id={donateId} >
             <div className="row justify-content-sm-center offset-top-10">
                 <div className="col-sm-10">
                     {/* Bootstrap jumbotron */}
@@ -131,7 +136,7 @@ function SponsorsList(
 function Sponsors() {
     return (
         <Section
-            id={"involved-section-sponsors"}
+            id={sponsorsId}
             title={"Sponsors"}
             pretitle={<p>Local, regional, and national organizations and businesses support the Embankment Preservation Coalition in numerous ways. </p>}
         >
@@ -193,7 +198,7 @@ function SupportersList({ title, supporters }: { title: string, supporters: ({ n
 
 function Supporters() {
     return (
-        <Section id="involved-section-endorsements" title={"Supporters"} style={{ paddingTop: 0 }}>
+        <Section id={endorsementsId} title={"Supporters"} style={{ paddingTop: 0 }}>
             <p>If your organization would like to endorse the Coalition's goals, please <a href="mailto:embankmentJC@gmail.com" target="_blank"><span className="font-weight-bold">Click Here (embankmentJC@gmail.com)</span></a>.</p>
             <div className="row justify-content-sm-center align-items-xl-center offset-top-6">
                 <div className="col-md-10 col-lg-9 col-xl-12">
@@ -310,22 +315,22 @@ export default function Body() {
                     subtitle={"Join the community effort to realize our vision for the Harsimus Branch."}
                     img={"/images/INVOLVED-BANNER2.jpg"}
                     btn1={{ text: "Become a Member!", href: `#${becomeMemberId}`, }}
-                    btn2={{ text: "Donate", href: "#involved-section-donate", }}
+                    btn2={{ text: "Donate", href: `#${donateId}`, }}
                 />
             }
         >
             <MembershipOptions />
-            <ParallaxSection1 id={"involved-section-volunteer"} title={"Volunteer"} img={"/images/INVOLVED_VOLUNTEER.jpg"}>
+            <ParallaxSection1 id={volunteerId} title={"Volunteer"} img={"/images/INVOLVED_VOLUNTEER.jpg"}>
                 <p>The Embankment Preservation Coalition operates with an all-volunteer board and volunteers from the community.</p>
                 <p>Volunteers staff our outreach table at local fairs and festivals; organize events; distribute information to the neighborhoods; consult on historic preservation and the environment; lend their professional expertise for architectural renderings, web site design, art, and photography; and help us forge alliances with supportive local and regional organizations.</p>
                 <p>We can put people with all sorts of background and skills to work, for as little as an hour or for a long-term commitment. Volunteer! <span className="font-weight-bold bold"> Volunteer!</span> </p>
             </ParallaxSection1>
             <SignupForm />
             <Donate />
-            <Banner id={"involved-section-partners"} title={"Our Partners"} icon={"drag-horizontal"} >
+            <Banner id={partnersId} title={"Our Partners"} icon={"drag-horizontal"} >
                 <ul className="list-inline list-inline-dashed p">
-                    <li className="list-inline-item"><a href="#involved-section-sponsors">Sponsors</a></li>
-                    <li className="list-inline-item"><a href="#involved-section-endorsements">Supporters</a></li>
+                    <li className="list-inline-item"><a href={`#${sponsorsId}`}>Sponsors</a></li>
+                    <li className="list-inline-item"><a href={`#${endorsementsId}`}>Supporters</a></li>
                 </ul>
             </Banner>
             <Sponsors />

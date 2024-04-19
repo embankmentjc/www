@@ -139,12 +139,12 @@ export default function Body() {
 
             <GradientHeader id={"about-section-coalition"} title={"Embankment Preservation Coalition"} />
 
-            <Paragraphs id={"vision-section-background"} title={"Our Background"}>
+            <Paragraphs id={"about-section-background"} title={"Our Background"}>
                 <p>The Embankment Preservation Coalition formed in 1998 as a working group that evolved from meetings of more than a hundred neighbors concerned about a proposal to demolish the Harsimus Branch Embankment and develop the site, which is located in Downtown Jersey City and forms the boundary of two National Historic Districts.</p>
                 <p>The group spent months researching the historic, environmental, aesthetic, and cultural aspects of this structure. Findings led to a consensus that the Embankment is an important and irreplaceable historic, environmental, and transportation resource that must be preserved.  A nonprofit organized in 1999 to preserve the Embankment structure and reuse the Branch for multiple public purposes.</p>
             </Paragraphs>
 
-            <ParallaxSection1 title={"Coalition Achievements"} id={"involved-section-donate"} img={"/images/VISION-HISTORY.jpg"} >
+            <ParallaxSection1 title={"Coalition Achievements"} id={"about-section-donate"} img={"/images/VISION-HISTORY.jpg"} >
                 <p>The Embankment Preservation Coalition is a grassroots, all-volunteer organization. Learn how the Coalition has since garnered wide support, and how you can join in preservation efforts.</p>
             </ParallaxSection1>
 

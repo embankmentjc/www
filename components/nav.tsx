@@ -1,6 +1,6 @@
 import navStyles from "./navbar.module.css";
 import {Brand} from "./theme";
-import {becomeMemberId} from "../pages/involved";
+import { becomeMemberId, donateId, partnersId, sponsorsId, volunteerId } from "../pages/involved";
 
 export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean }) {
     if ((cur == "" || cur) && !cur.startsWith("/")) {
@@ -64,16 +64,16 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
                 ]} />
                 <SubMenu path="/involved" text="GET INVOLVED" items={[
                     { hash: becomeMemberId, text: "Become a Member!", },
-                    { hash: "involved-section-volunteer", text: "Volunteer", },
-                    { hash: "involved-section-donate", text: "Donate", },
-                    { hash: "involved-section-partners", text: "Our Partners", },
+                    { hash: volunteerId, text: "Volunteer", },
+                    { hash: donateId, text: "Donate", },
+                    { hash: partnersId, text: "Our Partners", },
                 ]} />
                 <SubMenu path="/news" text="NEWS + EVENTS" items={[
                     { hash: "news-section-recent", text: "News + Press", },
                     { hash: "news-section-subscribe", text: "Subscribe", },
                 ]} />
-                <SubMenu path="/involved" hash="involved-section-donate" text="DONATE" />
-                <SubMenu path="/involved" hash="involved-section-sponsors" text="SPONSORS" />
+                <SubMenu path="/involved" hash={donateId} text="DONATE" />
+                <SubMenu path="/involved" hash={sponsorsId} text="SPONSORS" />
             </ul>
         )
     }

@@ -8,7 +8,7 @@ import {
     ParallaxSection2
 } from "../components/theme";
 import React from "react";
-import {becomeMemberId} from "./involved";
+import { becomeMemberId, donateId, sponsorsId, volunteerId } from "./involved";
 
 export default function Body() {
     return (
@@ -187,13 +187,13 @@ export default function Body() {
                     <div className="row justify-content-center">
                         {/* owl carousel */}
                         <div className="col-lg-6 col-md-6 owl-carousel owl-carousel-default owl-carousel-class-light veil-owl-nav" data-loop="false" data-items="3" data-sm-items="3" data-dots="false" data-mouse-drag="false" data-lg-items="3" data-nav="false">
-                            <a href="/involved#involved-section-donate">
+                            <a href={`/involved#${donateId}`}>
                                 <button className="btn btn-primary" type="button">Donate</button>
                             </a>
-                            <a href="/involved#involved-section-volunteer">
+                            <a href={`/involved#${volunteerId}`}>
                                 <button className="btn btn-primary" type="button">Volunteer</button>
                             </a>
-                            <a href="/involved#involved-section-sponsors">
+                            <a href={`/involved#${sponsorsId}`}>
                                 <button className="btn btn-primary" type="button">Sponsor</button>
                             </a>
                         </div>

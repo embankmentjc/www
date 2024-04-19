@@ -1,8 +1,9 @@
 import {ReactNode} from "react"
 import moment from "moment/moment"
 import {Brand} from "./theme"
-import { newsItems } from "../pages/news"
+import { newsItems } from "./news"
 import A from "@rdub/next-base/a";
+import { donateId } from "../pages/involved";
 
 function PostWidget({ date, dateStr, href, children, }: {
     date: string
@@ -86,7 +87,7 @@ function UsefulLinks() {
                         <li><a href="/vision">Our Vision</a></li>
                         <li><a href="/involved">Get Involved</a></li>
                         <li><a href="/news">News + Events</a></li>
-                        <li><a href="/involved#involved-section-donate">Donate</a></li>
+                        <li><a href={`/involved#${donateId}`}>Donate</a></li>
                         <li><a href="mailto:embankmentJC@gmail.com">Contact Us</a></li>
                     </ul>
                 </div>

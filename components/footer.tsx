@@ -1,6 +1,8 @@
-import {ReactNode} from "react";
-import moment from "moment/moment";
-import {Brand} from "./theme";
+import {ReactNode} from "react"
+import moment from "moment/moment"
+import {Brand} from "./theme"
+import { newsItems } from "../pages/news"
+import A from "@rdub/next-base/a";
 
 function PostWidget({ date, dateStr, href, children, }: {
     date: string
@@ -24,8 +26,7 @@ function PostWidget({ date, dateStr, href, children, }: {
     )
 
     if (href) {
-        const target = (href.startsWith("/")) ? {} : { target: "_blank" }
-        body = <a className="d-block" href={href} {...target}>{body}</a>
+        body = <A className="d-block" href={href}>{body}</A>
     }
 
     return (
@@ -98,15 +99,17 @@ function LatestNews() {
     return (
         <div className="col-sm-7 text-sm-left col-lg-4 col-xl-3">
             <h6 className="text-uppercase text-spacing-60"><a href="/news#news-section-recent">Latest news</a></h6>
-            <PostWidget date="2022-11-01" dateStr="11/1/2022 – 12/16/2022" href="/embankment-on-my-mind">
-                <i>The Embankment on My Mind</i> exhibits original art from 43 artists responding to multiple aspects of the Harsimus Branch amp; Embankment, including its history and its promise.
-            </PostWidget>
-            <PostWidget date="2022-10-25" href="/news#news-section-recent">
-                Register for the 2022 Embankment Preservation Coalition annual meeting
-            </PostWidget>
-            <PostWidget date="2022-09-07" href="https://us02web.zoom.us/webinar/register/WN_P_MasqhtR0mTH5X30yCkcQ">
-                <strong>Another community meeting</strong> on the Embankment Redevelopment Plan! Hosted by Jersey City Planning, register here.
-            </PostWidget>
+            {
+                newsItems.slice(0, 3).map((item, i) => (
+                    <PostWidget key={i} date={item.date}>
+                        <A href={`#${item.id}`}>{item.title}</A>
+                        {
+                            item.description &&
+                            <div>{item.description}</div>
+                        }
+                    </PostWidget>
+                ))
+            }
         </div>
     )
 }

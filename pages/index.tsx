@@ -137,7 +137,7 @@ function BannerSlides() {
                     {/* BEGIN MAIN SLIDE LIST */}
                     <ul>
                         <BannerSlide
-                            img="/images/homepage-slides/render-1.jpeg"
+                            img="/images/homepage-slides/50p/render-1.jpeg"
                             alt="Rendering - people walking on the Embankment"
                             title="Welcome to the Harsimus Branch and Embankment"
                             subtitle="The Future of Green Infrastructure in Jersey City"
@@ -148,7 +148,7 @@ function BannerSlides() {
                             ]}
                         />
                         <BannerSlide
-                            img="/images/homepage-slides/render-2.jpeg"
+                            img="/images/homepage-slides/50p/render-2.jpeg"
                             alt="Rendering - kids playing on the embankment"
                             title="Historic Structure and a Natural Forest"
                             subtitle="A Green Corridor Unique to Jersey City"
@@ -159,7 +159,7 @@ function BannerSlides() {
                             ]}
                         />
                         <BannerSlide
-                            img="/images/homepage-slides/render-3.jpeg"
+                            img="/images/homepage-slides/50p/render-3.jpeg"
                             alt="Rendering - people walking on a bridge between two Embankment blocks"
                             title="Our Vision"
                             subtitle="Preserve, Restore, Activate"

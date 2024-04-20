@@ -7,8 +7,12 @@
 }
 
 .logo {
-  width: 100%;
-  min-height: 100%
+  width: 100vw;
+  background-size: cover;
+  max-height: 150vh;
+  img {
+    width: 100%;
+  }
 }
 
 $fade: 20vh;

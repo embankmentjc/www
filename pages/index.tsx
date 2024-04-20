@@ -312,7 +312,7 @@ export default function Body() {
                 boxes={[{
                     icon: "checkbox-marked-circle",
                     title: "Preserve",
-                    blurb: "To preserve the historic Pennsylvania Railroad Harsimus Branch, its Embankment, and associated rail structures, and conserve th, meadows and forests these sustain.",
+                    blurb: "To preserve the historic Pennsylvania Railroad Harsimus Branch, its Embankment, and associated rail structures, and conserve the meadows and forests these sustain.",
                 }, {
                     icon: "tree",
                     title: "Restore",

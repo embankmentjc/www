@@ -316,7 +316,7 @@ export default function Body() {
             <ParallaxSection1 id={volunteerId} title={"Volunteer"} img={"/images/INVOLVED_VOLUNTEER.jpg"}>
                 <p>The Embankment Preservation Coalition operates with an all-volunteer board and volunteers from the community.</p>
                 <p>Volunteers staff our outreach table at local fairs and festivals; organize events; distribute information to the neighborhoods; consult on historic preservation and the environment; lend their professional expertise for architectural renderings, web site design, art, and photography; and help us forge alliances with supportive local and regional organizations.</p>
-                <p>We can put people with all sorts of background and skills to work, for as little as an hour or for a long-term commitment. Volunteer! <span className="font-weight-bold bold"> Volunteer!</span> </p>
+                <p>We can put people with all sorts of background and skills to work, for as little as an hour or for a long-term commitment. <span className="font-weight-bold bold"> Volunteer!</span> </p>
             </ParallaxSection1>
             <SignupForm />
             <Donate />

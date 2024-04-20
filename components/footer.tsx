@@ -84,6 +84,7 @@ function UsefulLinks() {
                     <ul className="list list-marked">
                         <li><a href="/">Home</a></li>
                         <li><a href="/about">About</a></li>
+                        <li><a href="/now">Embankment NOW</a></li>
                         <li><a href="/vision">Our Vision</a></li>
                         <li><a href="/involved">Get Involved</a></li>
                         <li><a href="/news">News + Events</a></li>

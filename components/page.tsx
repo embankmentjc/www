@@ -21,13 +21,13 @@ export default function Page({ path, children, headerChildren, scripts, navStuck
             <meta charSet="utf-8" />
             <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
         </Head>
-        <div className="page-loader page-loader-variant-1">
-            <div>
-                <img className='img-fluid' style={{ marginTop: '-20px', marginLeft: '-18px' }} width='330' height='67' src="/images/logo-bigEPC.png" alt={"Embankment Preservation Coalition logo"} />
-                <div className="offset-top-41 text-center"><div className="spinner" /></div>
-            </div>
-        </div>
-        <div className="page text-center">
+        {/*<div className="page-loader page-loader-variant-1">*/}
+        {/*    <div>*/}
+        {/*        <img className='img-fluid' style={{ marginTop: '-20px', marginLeft: '-18px' }} width='330' height='67' src="/images/logo-bigEPC.png" alt={"Embankment Preservation Coalition logo"} />*/}
+        {/*        <div className="offset-top-41 text-center"><div className="spinner" /></div>*/}
+        {/*    </div>*/}
+        {/*</div>*/}
+        G<div className="page text-center">
             {modal && <Modal />}
             <header className="page-head slider-menu-position">
                 <Nav cur={path} navStuck={navStuck} />

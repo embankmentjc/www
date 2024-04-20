@@ -4,7 +4,7 @@ import React, {ReactNode} from "react";
 
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
-import { becomeMemberId, events2024 } from "../components/ids";
+import { becomeMemberId, events2024, newsId } from "../components/ids";
 import css from "./2024-events.module.scss";
 import { Events2024 } from "./2024-events";
 import A from "@rdub/next-base/a";
@@ -137,7 +137,7 @@ function NewsItem({ id, title, pretitle, date, dateStr, center, href, src, alt, 
 
 function NewsFeed() {
     return (
-        <Section id={"news-section-recent"} title={"News + Press"}>
+        <Section id={newsId} title={"News + Press"}>
             <div className="row justify-content-md-center">
                 <div className="col-md-10 col-lg-8 col-xl-7">
                     <div className="inset-left-0 inset-lg-right-20">{

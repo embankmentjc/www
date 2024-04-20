@@ -9,3 +9,5 @@ export const endorsementsId = "involved-section-endorsements"
 export const visionId = "vision-section-vision"
 
 export const events2024 = "2024-events"
+
+export const newsId = "news-section-recent"

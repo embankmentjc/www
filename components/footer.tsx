@@ -3,7 +3,7 @@ import moment from "moment/moment"
 import {Brand} from "./theme"
 import { newsItems } from "./news"
 import A from "@rdub/next-base/a";
-import { donateId } from "../components/ids";
+import { donateId, newsId } from "../components/ids";
 
 function PostWidget({ date, dateStr, href, children, }: {
     date: string
@@ -99,11 +99,11 @@ function UsefulLinks() {
 function LatestNews() {
     return (
         <div className="col-sm-7 text-sm-left col-lg-4 col-xl-3">
-            <h6 className="text-uppercase text-spacing-60"><a href="/news#news-section-recent">Latest news</a></h6>
+            <h6 className="text-uppercase text-spacing-60"><a href={`/news#${newsId}`}>Latest news</a></h6>
             {
                 newsItems.slice(0, 3).map((item, i) => (
                     <PostWidget key={i} date={item.date}>
-                        <A href={`#${item.id}`}>{item.title}</A>
+                        <A href={`/news#${item.id}`}>{item.title}</A>
                         {
                             item.description &&
                             <div>{item.description}</div>

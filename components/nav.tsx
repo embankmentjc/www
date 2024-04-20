@@ -1,6 +1,6 @@
 import navStyles from "./navbar.module.css";
 import {Brand} from "./theme";
-import { becomeMemberId, donateId, partnersId, sponsorsId, volunteerId } from "./ids";
+import { becomeMemberId, donateId, newsId, partnersId, sponsorsId, volunteerId } from "./ids";
 
 export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean }) {
     if ((cur == "" || cur) && !cur.startsWith("/")) {
@@ -69,7 +69,7 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
                     { hash: partnersId, text: "Our Partners", },
                 ]} />
                 <SubMenu path="/news" text="NEWS + EVENTS" items={[
-                    { hash: "news-section-recent", text: "News + Press", },
+                    { hash: newsId, text: "News + Press", },
                     { hash: "news-section-subscribe", text: "Subscribe", },
                 ]} />
                 <SubMenu path="/involved" hash={donateId} text="DONATE" />

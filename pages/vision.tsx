@@ -49,7 +49,7 @@ export default function Body() {
                 <p>The Embankment Coalition vision for the Harsimus Branch and its Embankment preserves much of this forest and opens it to Jersey City residents for sensitive reuse. While part of the corridor is reserved for possible future light rail, residents can enjoy, on foot and by bike, a naturally occurring wilderness in their own backyards.</p>
             </ParallaxSection1>
 
-            <ConceptSection id={"vision-section-concept"} title={"Light Touch"} src={"/images/HOME-STEP4.jpg"} pre={<>
+            <ConceptSection id={"vision-section-concept"} title={"Light Touch"} src={"/images/homepage-slides/50p/render-3.jpeg"} pre={<>
                 <h1>Design Concept</h1>
                 <hr className="divider bg-mantis" />
             </>}>

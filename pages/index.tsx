@@ -6,8 +6,8 @@ import {
     IconBoxesSection,
     ParallaxSection1, Section
 } from "../components/theme";
-import { becomeMemberId, donateId } from "../components/ids";
-
+import { becomeMemberId, donateId, visionId } from "../components/ids";
+import css from "./index.module.scss"
 
 export async function getStaticProps(context: any) {
     return {
@@ -291,17 +291,25 @@ export default function Body() {
     return (
         <Page
             path="/"
-            headerChildren={<BannerSlides />}
+            headerChildren={<BannerSlides/>}
             // modal={true}
         >
-            <IntroSectionWhat />
-            <ConceptSections />
-            <ParallaxSection1 id={"home-section-now"} img={"/images/HOME-BOTTOM.jpg"} />
+            <IntroSectionWhat/>
+            <GradientHeader
+                id={"now"}
+                title={<a href={"/now"}><span className={css.title}>Embankment NOW</span></a>}
+                className={css.embankmentNow}
+                chevron={false}
+            >
+                <p className={css.subtitle}>Click <a href={"/now"}>HERE</a> to help us make <a href={`/vision#${visionId}`}>the Embankment vision</a> a reality.</p>
+            </GradientHeader>
+            <ConceptSections/>
+            <ParallaxSection1 id={"home-section-now"} img={"/images/HOME-BOTTOM.jpg"}/>
             <IconBoxesSection
                 id={"home-section-mission"}
                 title={"Our Goals"}
                 src={"/images/HOME-MISSION2.jpg"}
-                boxes={[ {
+                boxes={[{
                     icon: "checkbox-marked-circle",
                     title: "Preserve",
                     blurb: "To preserve the historic Pennsylvania Railroad Harsimus Branch, its Embankment, and associated rail structures, and conserve th, meadows and forests these sustain.",
@@ -313,10 +321,10 @@ export default function Body() {
                     icon: "run",
                     title: "Activate",
                     blurb: "To activate for the public, in environmentally sustainable ways, a network of local and regional pedestrian and biking trails, linked to the East Coast Greenway.",
-                } ]}
+                }]}
             />
-            <GradientHeader id={"home-section-steps"} title={"Next Steps"} />
-            <NextSteps />
+            <GradientHeader id={"home-section-steps"} title={"Next Steps"}/>
+            <NextSteps/>
             <ParallaxSection1 title={<a href="/vision">Explore Our Vision</a>} img={"/images/HOME-SLIDER3.jpg"}/>
         </Page>
     )

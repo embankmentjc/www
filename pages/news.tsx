@@ -4,7 +4,7 @@ import React, {ReactNode} from "react";
 
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
-import {becomeMemberId} from "../components/ids";
+import { becomeMemberId, events2024 } from "../components/ids";
 import css from "./2024-events.module.scss";
 import { Events2024 } from "./2024-events";
 import A from "@rdub/next-base/a";
@@ -89,7 +89,7 @@ const epc = { name: "Embankment.org", src: "/images/favicon.ico", alt: "Embankme
 
 function UpcomingEvents() {
     return (
-        <Section id={"2024-events"} title={"2024 Events"} className={css.section}>
+        <Section id={events2024} title={"2024 Events"} className={css.section}>
             <div className={`row justify-content-md-center ${css.row}`}>
                 <div className="col-md-10 col-lg-8 col-xl-7">
                     <div className="inset-left-0 inset-lg-right-20">

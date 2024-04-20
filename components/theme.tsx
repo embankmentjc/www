@@ -241,24 +241,33 @@ export function ParallaxSection2({ title, id, blurb, img, children, }: { title: 
     )
 }
 
-export function GradientHeader({ id, title }: { id?: string, title: string, }) {
+export function GradientHeader({ id, title, className = "", chevron = true, children, }: {
+    id?: string
+    title: ReactNode
+    className?: string
+    chevron?: boolean
+    children?: ReactNode
+}) {
     return (
-        <section id={id} className="section section-66 section-top-50 bg-mantis section-triangle section-triangle-bottom context-dark">
+        <section id={id} className={`section section-66 section-top-50 bg-mantis section-triangle section-triangle-bottom context-dark ${className}`}>
             <div className="container">
                 <div className="row justify-content-center">
-                    <h2><span className="big">{title}</span></h2>
-                    <div className="col-lg-8" />
+                    <h2><span className={`big`}>{title}</span></h2>
+                    <div className={`col-lg-8`}>{children}</div>
                 </div>
             </div>
-            <svg className="svg-triangle-bottom" xmlns="http://www.w3.org/2000/svg" version="1.1">
-                <defs>
-                    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" style={{ stopColor: "rgb(99,189,98)", stopOpacity: 1 }}></stop>
-                        <stop offset="100%" style={{ stopColor: "rgb(99,189,98)", stopOpacity: 1 }}></stop>
-                    </linearGradient>
-                </defs>
-                <polyline points="0,0 60,0 29,29" fill="url(#grad2)"></polyline>
-            </svg>
+            {
+                chevron &&
+                <svg className="svg-triangle-bottom" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <defs>
+                        <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style={{ stopColor: "rgb(99,189,98)", stopOpacity: 1 }}></stop>
+                            <stop offset="100%" style={{ stopColor: "rgb(99,189,98)", stopOpacity: 1 }}></stop>
+                        </linearGradient>
+                    </defs>
+                    <polyline points="0,0 60,0 29,29" fill="url(#grad2)"></polyline>
+                </svg>
+            }
         </section>
     )
 }

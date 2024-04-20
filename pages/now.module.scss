@@ -7,19 +7,12 @@
 }
 
 .logo {
-  //position: absolute;
-  //top: 0;
-  max-width: 100%;
+  width: 100%;
   min-height: 100%
 }
 
 $fade: 20vh;
 
-//.text {
-//  position: absolute;
-//  top: 50vh;
-//  border: 2px solid red;
-//}
 .container::before {
   content: "";
   position: absolute;
@@ -31,44 +24,28 @@ $fade: 20vh;
   pointer-events: none;
 }
 .container {
-  //border: 2px solid blue;
+  width: 100vw;
   position: relative;
-  //top: $fade;
-  //top: 70vh;
   top: -1em;
-  //bottom: $fade;
-  //top: -2em;
   background-color: white;
   padding: 0 5vw 2em;
   color: black;
   margin-left: 0;
   margin-right: 0;
-  width: 100vw;
 }
 .contents {
   position: relative;
-  //top: -6vh;
   margin: auto;
   max-width: 70vw;
-  //text-align: center;
   .outline {
     margin: auto;
-    //text-align: left;
     ul {
-      //display: inline-block;
-      //margin: auto;
       text-align: left;
-      //margin-left: 3em;
       padding: 1em 0 1em 50%;
-      //padding: 1em 0;
       list-style: none inside none;
       & > li {
         transform: translateX(-40%);
         min-width: 20em;
-        //text-wrap: nowrap;
-        //text-align: left;
-        //float: left;
-        //margin: auto;
       }
     }
   }

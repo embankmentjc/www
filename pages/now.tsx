@@ -9,7 +9,7 @@ export default function Body() {
         <Page path="now" navStuck={true}>
             <section className={`section novi-background section-50 section-sm-top-5 ${css.page}`}>
                 <div className={css.logo}>
-                    <img src={'/images/now/Embankment Now Poster (FRONT) X-Website.png'} alt={"Aerial view of the Embankment"} />
+                    <img src={'/images/now/poster.png'} alt={"Aerial view of the Embankment"} />
                 </div>
                 <div className={css.text}>
                 <div className={css.container}>

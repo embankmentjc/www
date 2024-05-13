@@ -137,8 +137,8 @@ function BannerSlides() {
                     {/* BEGIN MAIN SLIDE LIST */}
                     <ul>
                         <BannerSlide
-                            img="/images/homepage-slides/50p/render-1.jpeg"
-                            alt="Rendering - people walking on the Embankment"
+                            img="/images/HOME-SLIDER1.jpg"
+                            alt="View of Embankment walls and greenery"
                             title="Welcome to the Harsimus Branch and Embankment"
                             subtitle="The Future of Green Infrastructure in Jersey City"
                             btns={[
@@ -148,8 +148,8 @@ function BannerSlides() {
                             ]}
                         />
                         <BannerSlide
-                            img="/images/homepage-slides/50p/render-2.jpeg"
-                            alt="Rendering - kids playing on the embankment"
+                            img="/images/homepage-slides/50p/city-view.jpeg"
+                            alt="Rendering - people walking on a bridge between two Embankment blocks"
                             title="Historic Structure and a Natural Forest"
                             subtitle="A Green Corridor Unique to Jersey City"
                             btns={[
@@ -159,8 +159,8 @@ function BannerSlides() {
                             ]}
                         />
                         <BannerSlide
-                            img="/images/homepage-slides/50p/render-3.jpeg"
-                            alt="Rendering - people walking on a bridge between two Embankment blocks"
+                            img="/images/homepage-slides/50p/forest-view.jpeg"
+                            alt="Rendering - people walking on the Embankment"
                             title="Our Vision"
                             subtitle="Preserve, Restore, Activate"
                             btns={[
@@ -234,7 +234,7 @@ function NextStep({ side, step, title, src, first, children, }: { side: "left" |
     return (
         <div className={`row justify-content-sm-center justify-content-md-${justify} ${first ? "" : "offset-sm-top-0"}`}>
             <div className={`col-sm-10 col-md-6 section-image-aside section-image-aside-${aside} text-left`}>
-                <div className="section-image-aside-img d-none d-md-block" style={{ backgroundImage: `url(${src})` }}></div>
+                <div className="section-image-aside-img d-none d-md-block" style={{ backgroundImage: `url(${src})`, backgroundPositionX: "center", }}></div>
                 <div className={`section-image-aside-body section-sm-66 ${insetClass}`}>
                     <div><h3 className="text-picton-blue">{step}</h3></div>
                     <div className="offset-top-10"><h2>{title}</h2></div>
@@ -259,13 +259,13 @@ function NextSteps() {
             <p>The Coalition will continue to engage this steadfast and informed public to advance an ecological vision for the Branch compatible with historic preservation, passive recreation, muscle-powered transportation, and a commitment to community and democratic ideals. We aim to build a chain of stewards for segments of the East Coast Greenway as it moves its way through Hudson County.</p>
         </>,
     }, {
-        title: "Concept Development", src: "/images/homepage-slides/50p/render-3.jpeg",
+        title: "Concept Development", src: "/images/homepage-slides/50p/city-view.jpeg",
         children: <>
             <p>From its inception in 1999, the Embankment Coalition has advocated for historically compatible reuses as historic site, rail, trail, and open space. Since 2004 the East Coast Greenway off-road trail over the Embankment has been supported by Jersey City and Hudson County resolutions and planning documents. We are now enlisting support for a broad ecological vision and a public process that will result in an inspirational design for the Embankment, the Branch, and associated resources.</p>
             <p>The Harsimus Branch design must be responsive to its historic status. The Embankment is listed in the State Register of Historic Places (1999), eligible for the National Register of Historic Places (2000), and a Municipal Landmark (2006). The longer right-of-way is also eligible for the National Register (2018). It runs through national historic districts and past other historic sites. The treatment of these resources must therefore follow U.S. Department of Interior guidelines.</p>
         </>,
     }, {
-        title: "Securing the Future", src: "/images/homepage-slides/50p/render-2.jpeg",
+        title: "Securing the Future", src: "/images/homepage-slides/50p/meadows-view.jpeg",
         children: <>
             <p>When Jersey City acquires the Harsimus Branch and Embankment, the Coalition will expand and strengthen its board. We aim to partner with the City to raise funds for park and trail development and maintenance. We will organize educational and cultural programming.</p>
             <p>The Coalition will encourage local organizations along the Jersey City segments of the East Coast Greenway to become stewards of their segments. We will explore relationships with other organizations and local and state agencies to advance best land use practices along the Branch and its connections.</p>

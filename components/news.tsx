@@ -1,6 +1,7 @@
 import { registerUrl } from "./modal";
 import { signupId, visionId } from "./ids";
 import React, { ReactNode } from "react";
+import { MailTo } from "./mailto";
 
 export const change = { name: "Change.org", src: "/images/logo_change.jpg", alt: "change.org logo", }
 export const jj = { name: "Jersey Journal", src: "/images/logo_jersey.jpg", alt: "nj.com logo", }
@@ -57,6 +58,27 @@ export type NewsItem = {
 }
 
 export const newsItems: NewsItem[] = [
+    {
+        id: "cleanup",
+        title: "Embankment Cleanup",
+        date: "2024-05-11",
+        description: "meet at 6th and Jersey Avenue",
+        children: "Join the Embankment Coalition and Ward E Councilman James Solomon for a cleanup of the area around the Embankment.",
+    },
+    {
+        id: "jc-and-its-railroads",
+        title: "Jersey City and Its Railroads: They Covered the Waterfront and Helped Shape a Nation",
+        date: "2024-05-05",
+        description: "Grace Church Van Vorst, 39 Erie Street (entrance on 2nd St).",
+        children: <>The Embankment Coalition is observing Preservation Month with two presentations on rail and local history by Bennett Levin. Bennett is a retired professional engineer and former Commissioner, Department of Licenses and Inspections for the City of Philadelphia, as well as a former member of the Historic Preservation Commission there, among other pursuits. A rail line preservationist and founder of a company that rebuilds and restores locomotives, Bennett acquired a lifelong interest in all-things-rail through visits to his grandmother's house on 5th Street adjacent to the Harsimus Branch. Reserve a place for this talk, "The Blessings of Geography" by emailing <MailTo to="embankmentjc@gmail.com"/> and specifying May 5th . It will be followed on May 19th by Bennett’s recollections of our neighborhood; see below.</>,
+    },
+    {
+        id: "earth-day",
+        title: "Earth Day at Jersey City Lincoln Park",
+        date: "2024-04-20",
+        description: "West Side Avenue Entrance.",
+        children: `Demonstrate your support for environmental protection. Bring the kids for a day of fun and information on how the environment is being addressed in Hudson County. The Embankment Coalition will be tabling with members of the Jersey City Parks Coalition and other environmental groups, at this Hudson County Improvement Authority event. We’ll be rolling out a new "Embankment Now" campaign there.`,
+    },
     {
         date: "2023-11-01", id: "2023-annual-mtng",
         title: <strong>Attend the Embankment Coalition's Annual Meeting!</strong>,

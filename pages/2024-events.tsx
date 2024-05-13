@@ -9,30 +9,6 @@ export function Events2024() {
         <div className={css.note}>Note: Please check back for new events and latest details as event dates approach. All events are free and open to the public; some require reservations.</div>
         <div className="col-md-12 col-lg-12" style={{textAlign: "center"}}>
             <div className={css.event}>
-                <H4 id={"earth-day"}>Earth Day at Jersey City Lincoln Park</H4>
-                <div className={css.date}>Saturday, April 20, 11 am-3 pm</div>
-                <div className={css.location}>West Side Avenue Entrance.</div>
-                <div className={css.description}>
-                    Demonstrate your support for environmental protection. Bring the kids for a day of fun and information on how the environment is being addressed in Hudson County. The Embankment Coalition will be tabling with members of the Jersey City Parks Coalition and other environmental groups, at this Hudson County Improvement Authority event. We’ll be rolling out a new "Embankment Now" campaign there.
-                </div>
-            </div>
-            <div className={css.event}>
-                <H4 id={"jc-and-its-railroads"}>"Jersey City and Its Railroads: They Covered the Waterfront and Helped Shape a Nation"</H4>
-                <div className={css.date}>Sunday, May 5, 7-8:30 pm</div>
-                <div className={css.location}>Grace Church Van Vorst, 39 Erie Street (entrance on 2nd St).</div>
-                <div className={css.description}>
-                    The Embankment Coalition is observing Preservation Month with two presentations on rail and local history by Bennett Levin. Bennett is a retired professional engineer and former Commissioner, Department of Licenses and Inspections for the City of Philadelphia, as well as a former member of the Historic Preservation Commission there, among other pursuits. A rail line preservationist and founder of a company that rebuilds and restores locomotives, Bennett acquired a lifelong interest in all-things-rail through visits to his grandmother's house on 5th Street adjacent to the Harsimus Branch. Reserve a place for this talk, "The Blessings of Geography" by emailing <MailTo to="embankmentjc@gmail.com"/> and specifying May 5th . It will be followed on May 19th by Bennett’s recollections of our neighborhood; see below.
-                </div>
-            </div>
-            <div className={css.event}>
-                <H4 id={"cleanup"}>Embankment Cleanup.</H4>
-                <div className={css.date}>Saturday, May 11, 11 am-1 pm</div>
-                <div className={css.location}>meet at 6th and Jersey Avenue</div>
-                <div className={css.description}>
-                    Join the Embankment Coalition and Ward E Councilman James Solomon for a cleanup of the area around the Embankment.
-                </div>
-            </div>
-            <div className={css.event}>
                 <H4 id={"bot-art-walk"}>Children’s Botanical Art Walk.</H4>
                 <div className={css.date}>Saturday, May 18, 11 am</div>
                 <div className={css.description}>

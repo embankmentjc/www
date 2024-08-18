@@ -141,6 +141,8 @@ function Sponsors() {
                 sponsorRows={[
                     {
                         sponsors: [
+                            { width: "75%", alt: "Base Gym", src: "/images/sponsors/Base Gym.png", href: "https://www.basenj.com/", },
+                            { width: "70%", alt: "The Power Plant by Boyce Mode", src: "/images/sponsors/power-plant.png", href: "https://www.thepowerplantcafe.com/", },
                             { width: "95%", alt: "Two Boots Pizza", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
                             { width: "65%", alt: "Jersey City Times", src: "/images/sponsors/jersey%20city%20times.jpg", href: "https://jcitytimes.com/", },
                             { width: "95%", alt: "Key Foods", src: "/images/sponsors/KEYFOOD_LOGO.png", href: "https://keyfoodstores.keyfood.com/store/keyFood/en/store/1666?distance=0.00%20mile&query=574%20Jersey%20Ave%20Jersey%20City,%20NJ%2007302%20United%20States&radius=5&services=&all=", },

@@ -150,7 +150,6 @@ function Sponsors() {
                             { width: "70%", alt: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
                             { width: "70%", alt: "Darke Pines", src: "/images/sponsors/darkepines_logovertical.jpg", href: "https://www.darkepines.com/", },
                             { width: "75%", alt: "Hair is Happiness", src: "/images/sponsors/hair-is-happiness.png", href: "http://hairishappiness.com/", },
-                            { width: "70%", alt: "Irene Barnaby Group", src: "/images/sponsors/IBG_SecondaryLogo_Black.png", href: "https://www.compass.com/concierge/irene-barnaby/", },
                             { width: "70%", alt: "Scandinavian School of Jersey City", src: "/images/sponsors/scandischool.png", href: "https://www.scandischool.com/", },
                         ]}
                 ]}
@@ -162,13 +161,14 @@ function Sponsors() {
                 sponsorRows={[
                     {
                         sponsors: [
+                            { width: "100%", alt: "Irene Barnaby Group", src: "/images/sponsors/IBG_SecondaryLogo_Black.png", href: "https://www.compass.com/concierge/irene-barnaby/", },
                             { width: "100%", alt: "PostNet", src: "/images/sponsors/POST_LOGO.png", href: "https://locations.postnet.com/nj/jersey-city/344-grove-st", },
                             { width: "100%", alt: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", href: "https://www.mycarminespizza.com/", },
-                            { width: "100%", alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "https://goo.gl/maps/W6dWQvseMSkuXo3HA", },
                         ]
                     },
                     {
                         sponsors: [
+                            { width: "100%", alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "https://goo.gl/maps/W6dWQvseMSkuXo3HA", },
                             { width: "100%", alt: "Boutique Realty", src: "/images/sponsors/Boutique Realty.png", href: "http://boutiquerealty.com/jersey-city/", },
                             { width: "100%", alt: "Thirsty Quaker", src: "/images/sponsors/Thirsty Quaker Color.png", href: "https://thirstyquaker.com/", },
                         ]

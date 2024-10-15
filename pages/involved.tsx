@@ -141,9 +141,11 @@ function Sponsors() {
                 sponsorRows={[
                     {
                         sponsors: [
-                            { width: "75%", alt: "Base Gym", src: "/images/sponsors/Base Gym.png", href: "https://www.basenj.com/", },
+                            { width: "100%", alt: "Grove Street Bicycles", src: "/images/sponsors/GroveStreetBikes.png", href: "https://www.grovestreetbicycles.com/", },
+                            { width: "100%", alt: "JC Families", src: "/images/sponsors/JCFamilieswhiteback.jpeg", href: "https://jcfamilies.com/", },
+                            { width: "100%", alt: "Base Gym", src: "/images/sponsors/Base Gym.png", href: "https://www.basenj.com/", },
                             { width: "70%", alt: "The Power Plant by Boyce Mode", src: "/images/sponsors/power-plant.png", href: "https://www.thepowerplantcafe.com/", },
-                            { width: "95%", alt: "Two Boots Pizza", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
+                            { width: "100%", alt: "Two Boots Pizza", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
                             { width: "65%", alt: "Jersey City Times", src: "/images/sponsors/jersey%20city%20times.jpg", href: "https://jcitytimes.com/", },
                             { width: "95%", alt: "Key Foods", src: "/images/sponsors/KEYFOOD_LOGO.png", href: "https://keyfoodstores.keyfood.com/store/keyFood/en/store/1666?distance=0.00%20mile&query=574%20Jersey%20Ave%20Jersey%20City,%20NJ%2007302%20United%20States&radius=5&services=&all=", },
                             { width: "65%", alt: "Skinner's Loft", src: "/images/sponsors/skinner_logo.png", href: "https://www.skinnersloft.com/", },
@@ -159,6 +161,20 @@ function Sponsors() {
                 colsStyle={{ marginTop: 0, }}
                 colsClass={"col-sm-4 col-md-3"}
                 sponsorRows={[
+                    {
+                        sponsors: [
+                            { width: "100%", alt: "Pet Shop Bar", src: "/images/sponsors/PetShop.png", href: "https://www.petshopjc.com/", },
+                            { width: "100%", alt: "Metropolis Music Inc", src: "/images/sponsors/MetropolisMusic.png", href: "https://maps.app.goo.gl/Geg2zX64XWU3mm4y6", },
+                            { width: "100%", alt: "Ed & Mary's Bar", src: "/images/sponsors/EdandMarys.png", href: "https://www.edandmarys.com/", },
+                        ]
+                    },
+                    {
+                        sponsors: [
+                            { width: "100%", alt: "Brightside Tavern", src: "/images/sponsors/BrightSide.jpg", href: "https://maps.app.goo.gl/xpDWmQJJroJiQg3P7", },
+                            { width: "100%", alt: "Jersey City Bicycle Company", src: "/images/sponsors/jcbicyclecompany.png", href: "https://www.jcbicycleco.com/", },
+                            { width: "100%", alt: "Salon X", src: "/images/sponsors/SalonX.jpg", href: "https://colormodels.wixsite.com/salonx", },
+                        ]
+                    },
                     {
                         sponsors: [
                             { width: "100%", alt: "Irene Barnaby Group", src: "/images/sponsors/IBG_SecondaryLogo_Black.png", href: "https://www.compass.com/concierge/irene-barnaby/", },
@@ -220,7 +236,6 @@ function Supporters() {
                             supporters={[
                                 { name: "Bergen Arches Preservation Alliance", href: "https://www.bergenarches.com/", },
                                 { name: "Enos Jones Park Association", href: "https://www.jonespark.org/", },
-                                { name: "Jersey City Family Initiative", href: "https://groups.yahoo.com/group/JerseyCityFamilyInitiative/", },  // TODO: defunct?
                                 { name: "Jersey City Landmarks Conservancy", href: "http://jclandmarks.org", },
                                 { name: "Jersey City Parks Coalition", href: "http://jcparks.org", },
                                 { name: "Jersey City Reservoir Preservation Alliance", href: "https://www.jcreservoir.org", },

@@ -136,59 +136,52 @@ function Sponsors() {
             <p>Sponsors are businesses and organizations that provide financial support to the Embankment Coalition. Please support those that make our work possible!</p>
             <p>To become a sponsor of the Harsimus Branch and Embankment, please <a href="mailto:embankmentJC@gmail.com" target="_blank"><span className="font-weight-bold">Click Here (embankmentJC@gmail.com)</span></a>.</p>
             <SponsorsList
+                title={"Platinum (10+ Years)"}
+                colsClass={"col-sm-6 col-md-4"}
+                sponsorRows={[
+                    { sponsors: [
+                        { width: "70%", alt: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
+                        { width: "100%", alt: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", href: "https://www.mycarminespizza.com/", },
+                    ]}, { sponsors: [
+                        { width: "100%", alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "https://goo.gl/maps/W6dWQvseMSkuXo3HA", },
+                        { width: "65%", alt: "Skinner's Loft", src: "/images/sponsors/skinner_logo.png", href: "https://www.skinnersloft.com/", },
+                    ]}
+                ]}
+            />
+            <SponsorsList
                 title={"Gold Level"}
                 colsClass={"col-sm-6 col-md-4"}
                 sponsorRows={[
-                    {
-                        sponsors: [
-                            { width: "100%", alt: "Grove Street Bicycles", src: "/images/sponsors/GroveStreetBikes.png", href: "https://www.grovestreetbicycles.com/", },
-                            { width: "100%", alt: "JC Families", src: "/images/sponsors/JCFamilieswhiteback.jpeg", href: "https://jcfamilies.com/", },
-                            { width: "100%", alt: "Base Gym", src: "/images/sponsors/Base Gym.png", href: "https://www.basenj.com/", },
-                            { width: "70%", alt: "The Power Plant by Boyce Mode", src: "/images/sponsors/power-plant.png", href: "https://www.thepowerplantcafe.com/", },
-                            { width: "100%", alt: "Two Boots Pizza", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
-                            { width: "65%", alt: "Jersey City Times", src: "/images/sponsors/jersey%20city%20times.jpg", href: "https://jcitytimes.com/", },
-                            { width: "95%", alt: "Key Foods", src: "/images/sponsors/KEYFOOD_LOGO.png", href: "https://keyfoodstores.keyfood.com/store/keyFood/en/store/1666?distance=0.00%20mile&query=574%20Jersey%20Ave%20Jersey%20City,%20NJ%2007302%20United%20States&radius=5&services=&all=", },
-                            { width: "65%", alt: "Skinner's Loft", src: "/images/sponsors/skinner_logo.png", href: "https://www.skinnersloft.com/", },
-                            { width: "70%", alt: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
-                            { width: "70%", alt: "Darke Pines", src: "/images/sponsors/darkepines_logovertical.jpg", href: "https://www.darkepines.com/", },
-                            { width: "75%", alt: "Hair is Happiness", src: "/images/sponsors/hair-is-happiness.png", href: "http://hairishappiness.com/", },
-                            { width: "70%", alt: "Scandinavian School of Jersey City", src: "/images/sponsors/scandischool.png", href: "https://www.scandischool.com/", },
-                        ]}
+                    { sponsors: [
+                        { width: "100%", alt: "Grove Street Bicycles", src: "/images/sponsors/GroveStreetBikes.png", href: "https://www.grovestreetbicycles.com/", },
+                        { width: "100%", alt: "JC Families", src: "/images/sponsors/JCFamilieswhiteback.jpeg", href: "https://jcfamilies.com/", },
+                        { width: "100%", alt: "Base Gym", src: "/images/sponsors/Base Gym.png", href: "https://www.basenj.com/", },
+                        { width: "100%", alt: "Two Boots Pizza", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
+                        { width: "70%", alt: "The Power Plant by Boyce Mode", src: "/images/sponsors/power-plant.png", href: "https://www.thepowerplantcafe.com/", },
+                        { width: "95%", alt: "Key Foods", src: "/images/sponsors/KEYFOOD_LOGO.png", href: "https://keyfoodstores.keyfood.com/store/keyFood/en/store/1666?distance=0.00%20mile&query=574%20Jersey%20Ave%20Jersey%20City,%20NJ%2007302%20United%20States&radius=5&services=&all=", },
+                        { width: "75%", alt: "Hair is Happiness", src: "/images/sponsors/HairHappinessLogo2024.png", href: "https://hairishappiness.com/", },
+                        { width: "70%", alt: "Scandinavian School of Jersey City", src: "/images/sponsors/scandischool.png", href: "https://www.scandischool.com/", },
+                        { width: "70%", alt: "Darke Pines", src: "/images/sponsors/darkepines_logovertical.jpg", href: "https://www.darkepines.com/", },
+                    ]}
                 ]}
             />
             <SponsorsList
                 title={"Silver Level"}
-                colsStyle={{ marginTop: 0, }}
+                colsStyle={{ marginTop: 0, marginBottom: "1em" }}
                 colsClass={"col-sm-4 col-md-3"}
                 sponsorRows={[
-                    {
-                        sponsors: [
-                            { width: "100%", alt: "Pet Shop Bar", src: "/images/sponsors/PetShop.png", href: "https://www.petshopjc.com/", },
-                            { width: "100%", alt: "Metropolis Music Inc", src: "/images/sponsors/MetropolisMusic.png", href: "https://maps.app.goo.gl/Geg2zX64XWU3mm4y6", },
-                            { width: "100%", alt: "Ed & Mary's Bar", src: "/images/sponsors/EdandMarys.png", href: "https://www.edandmarys.com/", },
-                        ]
-                    },
-                    {
-                        sponsors: [
-                            { width: "100%", alt: "Brightside Tavern", src: "/images/sponsors/BrightSide.jpg", href: "https://maps.app.goo.gl/xpDWmQJJroJiQg3P7", },
-                            { width: "100%", alt: "Jersey City Bicycle Company", src: "/images/sponsors/jcbicyclecompany.png", href: "https://www.jcbicycleco.com/", },
-                            { width: "100%", alt: "Salon X", src: "/images/sponsors/SalonX.jpg", href: "https://colormodels.wixsite.com/salonx", },
-                        ]
-                    },
-                    {
-                        sponsors: [
-                            { width: "100%", alt: "Irene Barnaby Group", src: "/images/sponsors/IBG_SecondaryLogo_Black.png", href: "https://www.compass.com/concierge/irene-barnaby/", },
-                            { width: "100%", alt: "PostNet", src: "/images/sponsors/POST_LOGO.png", href: "https://locations.postnet.com/nj/jersey-city/344-grove-st", },
-                            { width: "100%", alt: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", href: "https://www.mycarminespizza.com/", },
-                        ]
-                    },
-                    {
-                        sponsors: [
-                            { width: "100%", alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "https://goo.gl/maps/W6dWQvseMSkuXo3HA", },
-                            { width: "100%", alt: "Boutique Realty", src: "/images/sponsors/Boutique Realty.png", href: "http://boutiquerealty.com/jersey-city/", },
-                            { width: "100%", alt: "Thirsty Quaker", src: "/images/sponsors/Thirsty Quaker Color.png", href: "https://thirstyquaker.com/", },
-                        ]
-                    },
+                    { sponsors: [
+                        { width: "100%", alt: "Pet Shop Bar", src: "/images/sponsors/PetShop.png", href: "https://www.petshopjc.com/", },
+                        { width: "100%", alt: "Metropolis Music Inc", src: "/images/sponsors/MetropolisMusic.png", href: "https://maps.app.goo.gl/Geg2zX64XWU3mm4y6", },
+                        { width: "100%", alt: "Ed & Mary's Bar", src: "/images/sponsors/EdandMarys.png", href: "https://www.edandmarys.com/", },
+                    ]}, { sponsors: [
+                        { width: "100%", alt: "Brightside Tavern", src: "/images/sponsors/BrightSide.jpg", href: "https://maps.app.goo.gl/xpDWmQJJroJiQg3P7", },
+                        { width: "100%", alt: "Jersey City Bicycle Company", src: "/images/sponsors/jcbicyclecompany.png", href: "https://www.jcbicycleco.com/", },
+                        { width: "100%", alt: "Salon X", src: "/images/sponsors/SalonX.jpg", href: "https://colormodels.wixsite.com/salonx", },
+                    ]}, { sponsors: [
+                        { width: "100%", alt: "Irene Barnaby Group", src: "/images/sponsors/IBG_SecondaryLogo_Black.png", href: "https://www.compass.com/concierge/irene-barnaby/", },
+                        { width: "100%", alt: "Thirsty Quaker", src: "/images/sponsors/Thirsty Quaker Color.png", href: "https://thirstyquaker.com/", },
+                    ]},
                 ]}
             />
         </Section>

@@ -65,7 +65,7 @@ function BannerSlide({ img, alt, title, subtitle, btns, }: {
                 data-basealign="slide"
                 data-responsive_offset="on"
                 data-responsive="off"
-                data-frames="[{&quot;delay&quot;:10,&quot;speed&quot;:400,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;opacity:0;&quot;,&quot;to&quot;:&quot;o:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:400,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+                data-frames={`[{"delay":10,"speed":400,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":400,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]`}
                 data-margintop="[0,0,0,0]"
                 data-marginright="[0,0,0,0]"
                 data-marginbottom="[0,0,0,0]"
@@ -78,7 +78,7 @@ function BannerSlide({ img, alt, title, subtitle, btns, }: {
                     data-y="['center','center','center','center']"
                     data-x="['center','center','center','center']"
                     data-type="column"
-                    data-frames="[{&quot;delay&quot;:&quot;+0&quot;,&quot;speed&quot;:400,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;opacity:0;&quot;,&quot;to&quot;:&quot;opacity:1;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:400,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+                    data-frames={`[{"delay":"+0","speed":400,"frame":"0","from":"opacity:0;","to":"opacity:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":400,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]`}
                 >
                     <div className="container">
                         <div className="row justify-content-sm-center align-items-sm-center">
@@ -90,7 +90,7 @@ function BannerSlide({ img, alt, title, subtitle, btns, }: {
                                     data-lineheight="['68', '44', '42', '34']"
                                     data-y="['center','center','center','center']"
                                     data-x="['center','center','center','center']"
-                                    data-frames="[{&quot;delay&quot;:&quot;+400&quot;,&quot;speed&quot;:1700,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:250px;opacity:0;fb:50px;&quot;,&quot;to&quot;:&quot;o:1;fb:0;&quot;,&quot;ease&quot;:&quot;Power4.easeOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:400,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;fb:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+                                    data-frames={`[{"delay":"+400","speed":1700,"frame":"0","from":"y:250px;opacity:0;fb:50px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":400,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]`}
                                 >
                                     <h1><span className="big text-uppercase">{title}</span></h1>
                                 </div>
@@ -100,7 +100,7 @@ function BannerSlide({ img, alt, title, subtitle, btns, }: {
                                     data-type="text"
                                     data-y="['center','center','center','center']"
                                     data-x="['center','center','center','center']"
-                                    data-frames="[{&quot;delay&quot;:&quot;+490&quot;,&quot;speed&quot;:2000,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:250px;opacity:0;fb:50px;&quot;,&quot;to&quot;:&quot;o:1;fb:0;&quot;,&quot;ease&quot;:&quot;Power4.easeOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:400,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;fb:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+                                    data-frames={`[{"delay":"+490","speed":2000,"frame":"0","from":"y:250px;opacity:0;fb:50px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":400,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]`}
                                 >
                                     <h4 className="text-bold">{subtitle}</h4>
                                 </div>
@@ -112,7 +112,7 @@ function BannerSlide({ img, alt, title, subtitle, btns, }: {
                                     data-lineheight="['inherit', 'inherit', 'inherit', 'inherit']"
                                     data-y="['center','center','center','center']"
                                     data-x="['center','center','center','center']"
-                                    data-frames="[{&quot;delay&quot;:&quot;+550&quot;,&quot;speed&quot;:2000,&quot;frame&quot;:&quot;0&quot;,&quot;from&quot;:&quot;y:250px;opacity:0;fb:50px;&quot;,&quot;to&quot;:&quot;o:1;fb:0;&quot;,&quot;ease&quot;:&quot;Power4.easeOut&quot;},{&quot;delay&quot;:&quot;wait&quot;,&quot;speed&quot;:400,&quot;frame&quot;:&quot;999&quot;,&quot;to&quot;:&quot;opacity:0;fb:0;&quot;,&quot;ease&quot;:&quot;Power3.easeInOut&quot;}]"
+                                    data-frames={`[{"delay":"+550","speed":2000,"frame":"0","from":"y:250px;opacity:0;fb:50px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":400,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]`}
                                 >
                                     <div className="group group-xl offset-top-20 offset-sm-top-50">{
                                         btns.map((btn, key) => <Btn key={key} {...btn} primary={true} />)

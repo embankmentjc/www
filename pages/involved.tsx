@@ -143,7 +143,7 @@ function Sponsors() {
                         { width: "70%", alt: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
                         { width: "100%", alt: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", href: "https://www.mycarminespizza.com/", },
                     ]}, { sponsors: [
-                        { width: "100%", alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "https://goo.gl/maps/W6dWQvseMSkuXo3HA", },
+                        { width: "100%", alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "http://www.newportpharmacy.com", },
                         { width: "65%", alt: "Skinner's Loft", src: "/images/sponsors/skinner_logo.png", href: "https://www.skinnersloft.com/", },
                     ]}
                 ]}
@@ -172,10 +172,10 @@ function Sponsors() {
                 sponsorRows={[
                     { sponsors: [
                         { width: "100%", alt: "Pet Shop Bar", src: "/images/sponsors/PetShop.png", href: "https://www.petshopjc.com/", },
-                        { width: "100%", alt: "Metropolis Music Inc", src: "/images/sponsors/MetropolisMusic.png", href: "https://maps.app.goo.gl/Geg2zX64XWU3mm4y6", },
+                        { width: "100%", alt: "Metropolis Music Inc", src: "/images/sponsors/MetropolisMusic.png", href: "http://www.metropolisnj.com/", },
                         { width: "100%", alt: "Ed & Mary's Bar", src: "/images/sponsors/EdandMarys.png", href: "https://www.edandmarys.com/", },
                     ]}, { sponsors: [
-                        { width: "100%", alt: "Brightside Tavern", src: "/images/sponsors/BrightSide.jpg", href: "https://maps.app.goo.gl/xpDWmQJJroJiQg3P7", },
+                        { width: "100%", alt: "Brightside Tavern", src: "/images/sponsors/BrightSide.jpg", href: "https://thebrightsidetavern.com/", },
                         { width: "100%", alt: "Jersey City Bicycle Company", src: "/images/sponsors/jcbicyclecompany.png", href: "https://www.jcbicycleco.com/", },
                         { width: "100%", alt: "Salon X", src: "/images/sponsors/SalonX.jpg", href: "https://colormodels.wixsite.com/salonx", },
                     ]}, { sponsors: [

@@ -31,30 +31,20 @@
   }
   .date {
     font-weight: bold;
-    display: inline;
   }
   .location {
     font-weight: bold;
-    display: inline;
-    &:before {
-      content: ', ';
-    }
   }
   .sub {
     font-weight: bold;
+    a {
+      text-decoration: underline;
+      color: #0070f3;
+    }
   }
   .description {
     a {
       color: #0070f3;
     }
-  }
-}
-
-.newsItem {
-  a {
-    text-decoration: underline;
-  }
-  .title {
-    margin-top: 0;
   }
 }

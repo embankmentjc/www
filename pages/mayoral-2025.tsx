@@ -4,6 +4,9 @@ import React from "react";
 import { ParallaxHeader } from "../components/theme";
 import A from "@rdub/next-base/a";
 
+export const mayoral2025Eventbrite = `https://www.eventbrite.com/e/jersey-city-mayoral-candidates-forum-on-historic-preservation-environment-tickets-1274084112879`
+export const mayoral2025Form = "https://docs.google.com/forms/d/1s-0nYBkfwFlXvZHuFsGflFp1wpP7JJBid3RFnGa22qw/edit"
+
 export default function Body() {
   return (
     <Page
@@ -17,14 +20,14 @@ export default function Body() {
             <p className={css.bold}><A href={"https://www.gracevanvorst.org/"}>Grace Church Van Vorst</A></p>
             <p><A href={"https://maps.app.goo.gl/dAzrTzsQQBrgkind7"}>39 Erie Street (entrance on 2nd Street), Jersey City NJ 07302</A></p>
             <div className={css.banner}>
-              <A href={"https://www.eventbrite.com/e/jersey-city-mayoral-candidates-forum-on-historic-preservation-environment-tickets-1274084112879"}><img src={"/images/mayor-forum-2025/candidates.avif"} /></A>
+              <A href={mayoral2025Eventbrite}><img src={"/images/mayor-forum-2025/candidates.avif"} /></A>
             </div>
           </div>}
           className={css.header}
           btnsCls={css.btns}
           img={"/images/NEWS-BANNER.jpg"}
-          btn1={{ text: "RSVP", href: `https://www.eventbrite.com/e/jersey-city-mayoral-candidates-forum-on-historic-preservation-environment-tickets-1274084112879`, }}
-          btn2={{ text: "Contribute Questions", href: "https://docs.google.com/forms/d/1s-0nYBkfwFlXvZHuFsGflFp1wpP7JJBid3RFnGa22qw/edit", }}
+          btn1={{ text: "RSVP", href: mayoral2025Eventbrite, }}
+          btn2={{ text: "Contribute Questions", href: mayoral2025Form, }}
         />
       }
     >

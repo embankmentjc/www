@@ -4,11 +4,11 @@ import React, {ReactNode} from "react";
 
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
-import { becomeMemberId, events2024, newsId } from "../components/ids";
+import { becomeMemberId, events2024, events2025, newsId } from "../components/ids";
 import css from "./2024-events.module.scss";
-import { Events2024 } from "./2024-events";
 import A from "@rdub/next-base/a";
 import { Author, newsItems, Pretitle, NewsItem, } from "../components/news";
+import { Events2025 } from "./2025-events";
 
 function NewsletterSubscribe() {
     return (
@@ -88,17 +88,17 @@ function ConnectItem({ title, href, id, subtitle, img, footer, children, }: {
 const epc = { name: "Embankment.org", src: "/images/favicon.ico", alt: "Embankment.org logo", }
 
 function UpcomingEvents() {
-    return (
-        <Section id={events2024} title={"2024 Events"} className={css.section}>
+    return <>
+        <Section id={events2025} title={"2025 Events"} className={css.section}>
             <div className={`row justify-content-md-center ${css.row}`}>
                 <div className="col-md-10 col-lg-8 col-xl-7">
                     <div className="inset-left-0 inset-lg-right-20">
-                        <Events2024 />
+                        <Events2025 />
                     </div>
                 </div>
             </div>
         </Section>
-    )
+    </>
 }
 
 function NewsItem({ id, title, pretitle, date, dateStr, center, href, src, alt, author = epc, children }: NewsItem) {
@@ -109,7 +109,7 @@ function NewsItem({ id, title, pretitle, date, dateStr, center, href, src, alt, 
             {<span id={id} style={{ position: "absolute", top: "-5em", }}></span>}
             <a href={`#${id}`}><time dateTime={date}>{dateStr}</time></a>
         </div>
-        <article className="post post-modern post-modern-timeline post-modern-timeline-left">
+        <article className={`post post-modern post-modern-timeline post-modern-timeline-left ${css.newsItem}`}>
             {
                 src &&
                 <header className="post-media">
@@ -123,7 +123,7 @@ function NewsItem({ id, title, pretitle, date, dateStr, center, href, src, alt, 
                 {
                     title &&
                     <div className="post-title">
-                        <h6 className="offset-top-24">{
+                        <h6 className={`offset-top-24 ${css.title}`}>{
                             href ? <A href={href}>{title}</A> : title
                         }</h6>
                     </div>
@@ -194,7 +194,7 @@ export default function Body() {
                     title={"News + Events"}
                     subtitle={"Get up to date on the Harsimus Branch and Embankment news and events - then help us write the next chapter!"}
                     img={"/images/NEWS-BANNER.jpg"}
-                    btn1={{ text: "Recent Headline", href: "#news-section-recent", }}
+                    btn1={{ text: "Upcoming Events", href: `#${events2025}`, }}
                     btn2={{ text: "Become a Member!", href: `/involved#${becomeMemberId}`, }}
                 />
             }

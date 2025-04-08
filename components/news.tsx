@@ -9,21 +9,21 @@ export const starLedger = { name: "The Star-Ledger", src: "/images/logo_star.jpg
 
 export function ReadArticle({ href, text }: { href: string, text?: string }) {
     return (
-        <div className="post-tags group-xs">
-            <a className="label-custom label-lg-custom label-rounded-custom label-primary" href={href} target="_blank">{text || "Read Article"}</a>
-        </div>
+      <div className="post-tags group-xs">
+          <a className="label-custom label-lg-custom label-rounded-custom label-primary" href={href} target="_blank">{text || "Read Article"}</a>
+      </div>
     )
 }
 
 export type Author = { name: string, src: string, alt?: string }
 export function Author({ name, src, alt }: Author) {
     return (
-        <div className="post-author">
-            <div className="post-author-img">
-                <img className="rounded-circle" width="45" height="45" src={src} alt={alt} />
-            </div>
-            <div className="post-author-name text-middle">{name}</div>
-        </div>
+      <div className="post-author">
+          <div className="post-author-img">
+              <img className="rounded-circle" width="45" height="45" src={src} alt={alt} />
+          </div>
+          <div className="post-author-name text-middle">{name}</div>
+      </div>
     )
 }
 
@@ -33,12 +33,12 @@ export function Pretitle({ title, icon }: Pretitle) {
         title = <p>{title}</p>
     }
     return (
-        <ul className="list-inline">
-            <li className="list-inline-item">{title}</li>
-            <li className="list-inline-item">
-                <div className={`icon icon-xxs text-dark mdi mdi-${icon}`} />
-            </li>
-        </ul>
+      <ul className="list-inline">
+          <li className="list-inline-item">{title}</li>
+          <li className="list-inline-item">
+              <div className={`icon icon-xxs text-dark mdi mdi-${icon}`} />
+          </li>
+      </ul>
     )
 }
 
@@ -59,18 +59,48 @@ export type NewsItem = {
 
 export const newsItems: NewsItem[] = [
     {
+        id: "annual-mtng",
+        title: "Embankment Preservation Coalition Annual Members Meeting",
+        date: "2024-10-20",
+        children: `Presentation, status report, refreshments. Featured Talk: "Old Rails/New Life: Functional Ecology on the Embankment." Rutgers Associate Professor Frank Gallagher reported on doctoral research he supervised that was based on drone footage commissioned by the Embankment Coalition. Frank is Director of Environmental Planning in the Department of Landscape Architecture at Rutgers School of Environmental & Biological Sciences..`,
+    },
+    {
+        id: "rails-to-trails",
+        title: "Rails to Trails: Preserving the Past and Creating a Sustainable Future",
+        date: "2024-06-06",
+        children: `Conference Sessions, Keynote, Displays, including Embankment Coalition presentation below, at New Jersey City University (NJCU).`,
+    },
+    {
+        id: "nj-preservation-conference",
+        title: "NJ State History/Historic Preservation Conference<",
+        date: "2024-06-05",
+        children: `Workshops, Workshop, tours, and Conference Welcoming Event, at Central Railroad of New Jersey (CRRNJ) Terminal, Liberty State Park.`,
+    },
+    {
+        id: "bot-art-walk",
+        title: "Children’s Botanical Art Walk.",
+        date: "2024-05-18",
+        children: <>Jessica Costantine, educator and Embankment Coalition board member, led a walk along the Embankment to identify and draw plants that thrive in this urban landscape, visiting the Brunswick Community Garden for a special activity.</>,
+    },
+    {
+        id: "a-look-back",
+        title: "A Look Back at Our Downtown Neighborhood and Railroad Operations on the Embankment",
+        date: "2024-05-19",
+        children: <>Bennett Levin, our May 5 presenter (see above), returned on May 19th to share his memories of Downtown Jersey City neighborhoods during World War II, with a focus on the Pennsylvania Railroad Harsimus Branch and Embankment.</>,
+    },
+    {
         id: "cleanup",
         title: "Embankment Cleanup",
         date: "2024-05-11",
         description: "meet at 6th and Jersey Avenue",
-        children: "Join the Embankment Coalition and Ward E Councilman James Solomon for a cleanup of the area around the Embankment.",
+        children: "The Embankment Coalition and Ward E Councilman James Solomon cleaned up the area around the Embankment.",
     },
     {
         id: "jc-and-its-railroads",
         title: "Jersey City and Its Railroads: They Covered the Waterfront and Helped Shape a Nation",
         date: "2024-05-05",
         description: "Grace Church Van Vorst, 39 Erie Street (entrance on 2nd St).",
-        children: <>The Embankment Coalition is observing Preservation Month with two presentations on rail and local history by Bennett Levin. Bennett is a retired professional engineer and former Commissioner, Department of Licenses and Inspections for the City of Philadelphia, as well as a former member of the Historic Preservation Commission there, among other pursuits. A rail line preservationist and founder of a company that rebuilds and restores locomotives, Bennett acquired a lifelong interest in all-things-rail through visits to his grandmother's house on 5th Street adjacent to the Harsimus Branch. Reserve a place for this talk, "The Blessings of Geography" by emailing <MailTo to="embankmentjc@gmail.com"/> and specifying May 5th . It will be followed on May 19th by Bennett’s recollections of our neighborhood; see below.</>,
+        children: <>The Embankment Coalition observed Preservation Month with two presentations on rail and local history by Bennett Levin. Bennett is a retired professional engineer and former Commissioner, Department of Licenses and Inspections for the City of Philadelphia, as well as a former member of the Historic Preservation Commission there, among other pursuits. A rail line preservationist and founder of a company that rebuilds and restores locomotives, Bennett acquired a lifelong interest in all-things-rail through visits to his grandmother's house on 5th Street adjacent to the Harsimus Branch.</>,
     },
     {
         id: "earth-day",
@@ -136,11 +166,11 @@ export const newsItems: NewsItem[] = [
         date: "2022-10-25", id: "2022-annual-mtng",
         title: "Embankment Preservation Coalition Annual Meeting",
         description: (
-            <ul style={{listStyle: "none", paddingLeft: 0,}}>
-                <li>Guest Speaker:</li>
-                <li>Annisia Cialone, Director of Housing, Economic Development and Commerce,</li>
-                <li>City of Jersey City</li>
-            </ul>
+          <ul style={{listStyle: "none", paddingLeft: 0,}}>
+              <li>Guest Speaker:</li>
+              <li>Annisia Cialone, Director of Housing, Economic Development and Commerce,</li>
+              <li>City of Jersey City</li>
+          </ul>
         ),
         center: true,
         src: "/images/embankment-annual-mtng-img.jpeg", alt: "Oblique aerial view of the embankment",
@@ -189,10 +219,10 @@ export const newsItems: NewsItem[] = [
         src: "/images/EMBANKMENT%20REDEVELOPMENT%20PLAN%20CITY%20HEARING.jpg", alt: "Embankment community meeting flyer",
         href: "https://us02web.zoom.us/webinar/register/WN_W2Kt62F0Qoe9CIZ8M8YWmA",
         children: (
-            <a href="https://us02web.zoom.us/webinar/register/WN_W2Kt62F0Qoe9CIZ8M8YWmA" target="_blank">
-                <p>Give your opinion on development + bulk regulation plans!</p>
-                <p>Jersey City Planning is hosting a community meeting to discuss Embankment redevelopment plans. Register and make your voice heard!</p>
-            </a>
+          <a href="https://us02web.zoom.us/webinar/register/WN_W2Kt62F0Qoe9CIZ8M8YWmA" target="_blank">
+              <p>Give your opinion on development + bulk regulation plans!</p>
+              <p>Jersey City Planning is hosting a community meeting to discuss Embankment redevelopment plans. Register and make your voice heard!</p>
+          </a>
         )
     },
     {

@@ -1,5 +1,6 @@
 import React, {CSSProperties, ReactNode} from "react";
 import { H1, H2 } from "@rdub/next-base/heading";
+import A from "@rdub/next-base/a";
 
 export function Brand({ className }: { className: string }) {
     return (
@@ -165,19 +166,22 @@ export function ArtistSection({ bullets, fig, alt, caption, children, ...rest}: 
 }
 
 type HeaderButton = { href: string, text: string }
-export function ParallaxHeader({ title, embed, subtitle, img, btn1, btn2, }: {
+export function ParallaxHeader({ title, embed, subtitle, subtitleChildren, img, btn1, btn2, className, btnsCls, }: {
     title: ReactNode
     embed?: ReactNode
-    subtitle: string
+    subtitle?: ReactNode
+    subtitleChildren?: ReactNode
     img: string
     btn1: HeaderButton
     btn2: HeaderButton
+    className?: string
+    btnsCls?: string
 }) {
     if (typeof title === 'string') {
         title = <h1 className="text-capitalize"><span className="big">{title}</span></h1>
     }
     return (
-        <section className="section parallax-container bg-black" data-parallax-img={img}>
+        <section className={`section parallax-container bg-black ${className || ""}`} data-parallax-img={img}>
             <div className="parallax-content context-dark">
                 <div className="container">
                     <div className="row align-items-sm-center justify-content-sm-center section-cover section-98 section-sm-110 text-lg-left context-dark">
@@ -187,11 +191,12 @@ export function ParallaxHeader({ title, embed, subtitle, img, btn1, btn2, }: {
                             </div>
                             {embed}
                             <div>
-                                <h2 className="font-default font-italic text-regular">{subtitle}</h2>
+                                {subtitle ? <h2 className="font-default font-italic text-regular">{subtitle}</h2> : null}
+                                {subtitleChildren}
                             </div>
-                            <div className="group group-xl offset-top-30">
-                                <a href={btn1.href}className="btn btn-primary btn-lg btn-anis-effect">{btn1.text}</a>
-                                <a href={btn2.href}className="btn btn-default btn-lg btn-anis-effect"><span className="btn-text">{btn2.text}</span></a>
+                            <div className={`group group-xl offset-top-30 ${btnsCls || ""}`}>
+                                <A href={btn1.href} className="btn btn-primary btn-lg btn-anis-effect">{btn1.text}</A>
+                                <A href={btn2.href} className="btn btn-default btn-lg btn-anis-effect"><span className="btn-text">{btn2.text}</span></A>
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,7 @@ import css from "./2024-events.module.scss";
 import { Events2024 } from "./2024-events";
 import A from "@rdub/next-base/a";
 import { Author, newsItems, Pretitle, NewsItem, } from "../components/news";
+import { Events2025 } from "./2025-events";
 
 function NewsletterSubscribe() {
     return (
@@ -88,7 +89,16 @@ function ConnectItem({ title, href, id, subtitle, img, footer, children, }: {
 const epc = { name: "Embankment.org", src: "/images/favicon.ico", alt: "Embankment.org logo", }
 
 function UpcomingEvents() {
-    return (
+    return <>
+        <Section id={events2024} title={"2025 Events"} className={css.section}>
+            <div className={`row justify-content-md-center ${css.row}`}>
+                <div className="col-md-10 col-lg-8 col-xl-7">
+                    <div className="inset-left-0 inset-lg-right-20">
+                        <Events2025 />
+                    </div>
+                </div>
+            </div>
+        </Section>
         <Section id={events2024} title={"2024 Events"} className={css.section}>
             <div className={`row justify-content-md-center ${css.row}`}>
                 <div className="col-md-10 col-lg-8 col-xl-7">
@@ -98,7 +108,7 @@ function UpcomingEvents() {
                 </div>
             </div>
         </Section>
-    )
+    </>
 }
 
 function NewsItem({ id, title, pretitle, date, dateStr, center, href, src, alt, author = epc, children }: NewsItem) {

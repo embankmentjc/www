@@ -6,7 +6,6 @@ import { MailTo } from "../components/mailto";
 
 export function Events2024() {
     return <>
-        <div className={css.note}>Note: Please check back for new events and latest details as event dates approach. All events are free and open to the public; some require reservations.</div>
         <div className="col-md-12 col-lg-12" style={{textAlign: "center"}}>
             <div className={css.event}>
                 <H4 id={"bot-art-walk"}>Children’s Botanical Art Walk.</H4>

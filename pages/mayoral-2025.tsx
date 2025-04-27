@@ -36,7 +36,7 @@ export default function Body() {
           The <strong>Jersey City Landmarks Conservancy</strong> and the <strong>Embankment Preservation Coalition</strong> are sponsoring this Mayoral Candidates Forum, which will focus on two related subjects important to residents and central to quality of life in Jersey City: historic preservation and the environment.
         </p>
         <p>
-          As of March, six Jersey City residents have publicly declared their intention to run for mayor in the November 2025 election, and the first five below have agreed to participate in the forum:
+          As of March, seven Jersey City residents have publicly declared their intention to run for mayor in the November 2025 election, and the first five below have agreed to participate in the forum:
         </p>
         <ul className={css.candidates}>
           <li><A href={"https://www.ali2025.com/"}>Mussab Ali</A></li>
@@ -44,6 +44,7 @@ export default function Body() {
           <li><A href={"https://jim2025.com/"}>Jim McGreevey</A></li>
           <li><A href={"https://www.billodeajc.com/"}>Bill O’Dea</A></li>
           <li><A href={"https://solomonforjc.com/"}>James Solomon</A></li>
+          <li>Juan Vasquez</li>
           <li><A href={"https://www.joyceforjc.com/"}>Joyce Watterman</A></li>
         </ul>
         <p>
@@ -80,13 +81,33 @@ export default function Body() {
         <p><strong>Note:</strong> The Embankment Preservation Coalition and the Jersey City Landmarks Conservancy are nonprofit charitable organizations and do not endorse candidates for public office.</p>
         <img className={css.footerBanner} src={"/images/mayor-forum-2025/epc-jclc-diptych.avif"} />
         <hr/>
-        <h2>
-          Moderator
-        </h2>
-          <img src={"/images/mayor-forum-2025/Margaret Schmidt headshot.jpg"} className={css.moderator} />
+        <h2>Moderator</h2>
+        <img src={"/images/mayor-forum-2025/Margaret Schmidt headshot.jpg"} className={css.moderator} />
         <p>
           Margaret Schmidt was born and raised in Jersey City and worked at her hometown newspaper, <i>The Jersey Journal</i>, from 1980 until its closure in February 2025. As a reporter, she covered general assignment news and features, the federal court in Newark, and the Hoboken beat. As the Hudson Life editor, she led several JJ-sponsored events, including the Jersey City and Hoboken Artists Studio Tours. She later served as Managing Editor and Editor, just the second woman to hold that position in the paper's 157-year history. For the paper's final few years, she was Editor-at-Large, responsible for the paper's Opinion pages and freelance columns, receiving the NY/NJ Baykeeper's inaugural Truth to Power Award in 2024 for her editorial writing. A former adjunct professor of Journalism at Felician University in Rutherford, she also served on the boards of trustees of WomenRising Inc. and St. Dominic Academy in Jersey City. She's a graduate of Fordham University in the Bronx and holds a Master's Degree in Journalism from New York University.
         </p>
+        <h2>Contributing Organizations</h2>
+        <ul>
+          <li><A href={"https://bikejc.org"}>Bike JC</A></li>
+          <li>Cole Street Block Association</li>
+          <li><A href={"https://embankment.org"}>Embankment Preservation Coalition</A></li>
+          <li><A href={"https://greenway.org/"}>East Coast Greenway Alliance</A></li>
+          <li><A href={"https://www.folsp.org/"}>Friends of Liberty State Park</A></li>
+          <li><A href={"https://www.fvvp.org/"}>Friends of Van Vorst Park</A></li>
+          <li><A href={"https://harsimuscove.org/"}>Harsimus Cove Association</A></li>
+          <li>Highland Ave Neighborhood Association</li>
+          <li><A href={"https://www.sierraclub.org/new-jersey/hudson-county"}>Hudson County Sierra Club</A></li>
+          <li><A href={"https://www.jclandmarks.org/"}>Jersey City Landmarks Conservancy</A></li>
+          <li><A href={"https://jcparks.org/"}>Jersey City Parks Coalition</A></li>
+          <li><A href={"https://www.jsqca.com/"}>Journal Square Community Association</A></li>
+          <li><A href={"https://www.mjchistory.com/"}>Museum of Jersey City History</A></li>
+          <li><A href={"https://njbwc.org/"}>New Jersey Bike & Walk Coalition</A></li>
+          <li><A href={"https://www.njcu.edu/academics/schools-colleges/william-j-maxwell-college-arts-sciences/departments/political-science"}>New Jersey City University Political Science Department</A></li>
+          <li><A href={"https://www.nynjbaykeeper.org/"}>New York/New Jersey Baykeeper</A></li>
+          <li><A href={"https://www.instagram.com/pershing_field_garden_friends/"}>Pershing Field Garden Friends</A></li>
+          <li>Saffron Condominium</li>
+          <li><A href={"https://skywaypark.org/"}>Skyway Park Conservancy</A></li>
+        </ul>
       </div>
     </Page>
   )

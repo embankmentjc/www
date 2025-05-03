@@ -40,11 +40,11 @@ export default function Body() {
         </p>
         <ul className={css.candidates}>
           <li><A href={"https://www.ali2025.com/"}>Mussab Ali</A></li>
-          <li><A href={"Flash Gordon"}>Flash Gordon</A></li>
+          <li><A href={"Flash Gordon"}>Flash E. Gordon</A></li>
           <li><A href={"https://jim2025.com/"}>Jim McGreevey</A></li>
           <li><A href={"https://www.billodeajc.com/"}>Bill O’Dea</A></li>
           <li><A href={"https://solomonforjc.com/"}>James Solomon</A></li>
-          <li>Juan Vasquez</li>
+          <li>Juan Cheese Vasquez</li>
           <li><A href={"https://www.joyceforjc.com/"}>Joyce Watterman</A></li>
         </ul>
         <p>
@@ -94,11 +94,13 @@ export default function Body() {
           <li><A href={"https://greenway.org/"}>East Coast Greenway Alliance</A></li>
           <li><A href={"https://www.folsp.org/"}>Friends of Liberty State Park</A></li>
           <li><A href={"https://www.fvvp.org/"}>Friends of Van Vorst Park</A></li>
+          <li><A href={"https://www.facebook.com/groups/GRACOCanalCrossingsJerseyCity/"}>GRACO Community Group</A></li>
           <li><A href={"https://harsimuscove.org/"}>Harsimus Cove Association</A></li>
           <li>Highland Ave Neighborhood Association</li>
           <li><A href={"https://www.sierraclub.org/new-jersey/hudson-county"}>Hudson County Sierra Club</A></li>
           <li><A href={"https://www.jclandmarks.org/"}>Jersey City Landmarks Conservancy</A></li>
           <li><A href={"https://jcparks.org/"}>Jersey City Parks Coalition</A></li>
+          <li><A href={"https://www.instagram.com/jcreservoir"}>Jersey City Reservoir Preservation Alliance</A></li>
           <li><A href={"https://www.jsqca.com/"}>Journal Square Community Association</A></li>
           <li><A href={"https://www.mjchistory.com/"}>Museum of Jersey City History</A></li>
           <li><A href={"https://njbwc.org/"}>New Jersey Bike & Walk Coalition</A></li>
@@ -107,6 +109,15 @@ export default function Body() {
           <li><A href={"https://www.instagram.com/pershing_field_garden_friends/"}>Pershing Field Garden Friends</A></li>
           <li>Saffron Condominium</li>
           <li><A href={"https://skywaypark.org/"}>Skyway Park Conservancy</A></li>
+          <li><A href={"https://njgateway.wildones.org/"}>Wild Ones Gateway Chapter</A></li>
+        </ul>
+        <h3>
+          <b>Thank you</b> to:
+        </h3>
+        <ul>
+          <li><A href={"https://jerseycityculture.org/"}>City of Jersey City Cultural Affairs</A>,</li>
+          <li><A href={"https://www.gracevanvorst.org/"}>Grace Church Van Vorst</A>, and</li>
+          <li>all the civic-minded volunteers who made this event possible.</li>
         </ul>
       </div>
     </Page>

@@ -1360,7 +1360,7 @@ $document.ready( function () {
 			stickUpClone: ( !isNoviBuilder && navbar.attr("data-stick-up-clone") ) ? navbar.attr("data-stick-up-clone") === 'true' : false,
 			stickUpOffset: ( navbar.attr("data-stick-up-offset") ) ? navbar.attr("data-stick-up-offset") : 1,
 			anchorNavOffset: -78,
-			anchorNav: !isNoviBuilder,
+			anchorNav: false, // Disabled - handled by React in _app.js to fix async loading issues
 			anchorNavEasing: 'linear',
 			focusOnHover: !isNoviBuilder,
 			responsive: responsiveNavbar,

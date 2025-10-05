@@ -292,7 +292,7 @@ export default function Body() {
         <Page
             path="/"
             headerChildren={<BannerSlides/>}
-            // modal={true}
+            modal={true}
         >
             <IntroSectionWhat/>
             <GradientHeader

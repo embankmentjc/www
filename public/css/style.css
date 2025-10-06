@@ -45241,3 +45241,32 @@ td.legendColorBox {
 html:not(.ie-11):not(.ios) .parallax-disabled {
 	background-attachment: fixed;
 }
+
+/* Fix dropdown position on homepage with absolute navbar */
+.slider-menu-position .rd-navbar-static .rd-navbar-dropdown {
+	margin-top: 15px;
+}
+
+/* Fix navbar inner padding - override default 32px top padding */
+.rd-navbar-default.rd-navbar-static .rd-navbar-inner {
+	padding: 15px 55px !important;
+}
+
+.rd-navbar-default.rd-navbar-static.rd-navbar--is-stuck .rd-navbar-inner {
+	padding: 15px 55px !important;
+}
+
+/* Fix navbar wrapper - remove extra top space */
+.page-head {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+}
+
+.rd-navbar-wrap {
+	margin-top: 0 !important;
+}
+
+/* Ensure navbar starts at top when not stuck */
+.rd-navbar-default.rd-navbar-static:not(.rd-navbar--is-stuck) {
+	top: 0 !important;
+}

@@ -85,6 +85,7 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
                 data-md-layout="rd-navbar-fixed"
                 data-lg-layout="rd-navbar-static"
                 data-lg-stick-up="true"
+                data-lg-stick-up-offset="1"
             >
                 <div className={`rd-navbar-inner ${navStuck ? navStyles["rd-navbar-inner"] : ""}`}>
                     {/* RD Navbar Panel */}

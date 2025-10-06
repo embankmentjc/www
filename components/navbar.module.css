@@ -7,8 +7,7 @@
     z-index: 1000;
 }
 
-.navbar-force-stuck > .rd-navbar-inner {
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
+.navbar-force-stuck .rd-navbar-inner {
+    padding: 15px 55px !important;
 }
 

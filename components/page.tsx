@@ -27,7 +27,7 @@ export default function Page({ path, children, headerChildren, scripts, navStuck
         {/*        <div className="offset-top-41 text-center"><div className="spinner" /></div>*/}
         {/*    </div>*/}
         {/*</div>*/}
-        G<div className="page text-center">
+        <div className="page text-center">
             {modal && <Modal />}
             <header className="page-head slider-menu-position">
                 <Nav cur={path} navStuck={navStuck} />

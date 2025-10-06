@@ -59,6 +59,94 @@ export type NewsItem = {
 
 export const newsItems: NewsItem[] = [
     {
+        id: "settlement-council-mtng-2025",
+        title: "Critical City Council Meeting on Embankment Settlement",
+        date: "2025-11-12",
+        description: "Wednesday, November 12, 6pm at City Hall",
+        children: <>
+            <p>The City Council will vote on ordinances related to the Embankment litigation settlement. This is a critical moment for the future of the Embankment.</p>
+            <p><strong>We need community members to attend and speak before the vote.</strong> Your voice matters in preserving this historic resource and creating the green corridor our city needs.</p>
+            <p>The potential settlement includes a residential tower, city right-of-way easement, park on Block 2, and other public benefits. Come learn more and make your voice heard.</p>
+        </>,
+    },
+    {
+        id: "annual-mtng-2025",
+        title: "Embankment Coalition Annual Meeting 2025",
+        date: "2025-10-12",
+        description: "Sunday, October 12, 7-9pm",
+        center: true,
+        src: "/images/embankment-annual-mtng-img.jpeg",
+        alt: "Oblique aerial view of the embankment",
+        href: registerUrl,
+        children: <>
+            <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+                <li>Sunday, October 12, 2025, 7-9pm</li>
+                <li><a target={"_blank"} href={"https://www.gracevanvorst.org/"}>Grace Church Van Vorst</a></li>
+                <li><a target={"_blank"} href={"https://maps.app.goo.gl/fJRv7b81QBir98Fm7"}>39 Erie St, Jersey City, NJ (enter on 2nd Street)</a></li>
+            </ul>
+            <p><a target={"_blank"} href={registerUrl}><strong>Click to email your RSVP to embankmentjc@gmail.com</strong></a></p>
+            <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+                <li><strong>Join us for:</strong></li>
+                <li>• Update on settlement negotiations status</li>
+                <li>• Unveiling of new park designs</li>
+                <li>• Preparation for November City Council meeting</li>
+                <li>• Discussion of next steps and how you can help</li>
+            </ul>
+        </>,
+    },
+    {
+        id: "settlement-negotiations-2025",
+        title: "Embankment Settlement Negotiations Update",
+        date: "2025-10-04",
+        children: <>
+            <p>Ongoing negotiations between the Embankment Coalition and Jersey City regarding eight Embankment parcels are progressing. The potential settlement includes:</p>
+            <ul>
+                <li>A residential tower on one parcel</li>
+                <li>City right-of-way easement for public access</li>
+                <li>Public park development on Block 2</li>
+                <li>Additional community benefits</li>
+            </ul>
+            <p>This represents years of advocacy work to preserve this historic resource while meeting the city's development needs. Stay tuned for updates at our upcoming Annual Meeting on October 12.</p>
+        </>,
+    },
+    {
+        id: "botanical-walk-2025",
+        title: "Children's Botanical Nature Walk",
+        date: "2025-05-17",
+        description: "Saturday, May 17th at 11am",
+        children: <>
+            <p>Embankment Coalition board member and educator Jessica Costantine led a walk along the Embankment for children ages 5-12 to identify plants and animals that live there. The event included learning about the unique urban ecology of the Embankment.</p>
+        </>,
+    },
+    {
+        id: "mayoral-forum-2025",
+        title: "Mayoral Candidates Forum on Historic Preservation and the Environment",
+        date: "2025-05-04",
+        description: "Sunday, May 4th | 3-5:30pm at Grace Church Van Vorst",
+        children: <>
+            <p>Five mayoral candidates—Mussab Ali, Flash Gordon, Jim McGreevey, Bill O'Dea, and James Solomon—participated in a forum focused on historic preservation and environmental issues. Margaret Schmidt, former editor of <i>The Jersey Journal</i>, moderated the question-and-answer session.</p>
+            <p>Co-sponsored by the Embankment Preservation Coalition and Jersey City Landmarks Conservancy.</p>
+        </>,
+    },
+    {
+        id: "earth-day-2025",
+        title: "Earth Day 2025",
+        date: "2025-04-26",
+        description: "Saturday, April 26th | 11am - 3pm at Lincoln Park",
+        children: <>
+            <p>The Embankment Coalition joined other environmental organizations at the Hudson County Improvement Authority's annual Earth Day event. This year's theme was "Protecting Wildlife Through Eco-Friendly Living." The outdoor event took place in the Fountain Lawn Area at Lincoln Park.</p>
+        </>,
+    },
+    {
+        id: "6th-st-cleanup-2025",
+        title: "6th Street Embankment Cleanup",
+        date: "2025-04-19",
+        description: "Saturday, April 19th | 11am - 2pm",
+        children: <>
+            <p>Community members joined the Embankment Coalition for our annual spring cleanup at the corner of 6th Street & Jersey Avenue. Neighbors and friends celebrated Spring while caring for this historic and ecological resource.</p>
+        </>,
+    },
+    {
         id: "annual-mtng",
         title: "Embankment Preservation Coalition Annual Members Meeting",
         date: "2024-10-20",

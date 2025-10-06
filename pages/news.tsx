@@ -38,6 +38,9 @@ function NewsletterSubscribe() {
                                 </div>
                                 <div className="form-output" id="form-subscribe-footer" />
                             </form>
+                            <div className="offset-top-20 text-center">
+                                <a href="/newsletter" className="btn btn-default btn-sm">View Newsletter Archive</a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -10,40 +10,29 @@ export function Events2025() {
     <div className={css.note}>Note: Please check back for new events and latest details as event dates approach. All events are free and open to the public; some require reservations.</div>
     <div className="col-md-12 col-lg-12" style={{textAlign: "center"}}>
       <div className={css.event}>
-        <H4 id={"6th-st-cleanup"}>6th Street Embankment Cleanup</H4>
-        <div className={css.date}>Saturday, April 19th | 11am - 2pm</div>
-        <div className={css.location}>Corner of 6th Street & Jersey Avenue, Jersey City</div>
-        <div className={css.description}>Join neighbors and friends and celebrate Spring at our yearly clean-up.</div>
-      </div>
-      <div className={css.event}>
-        <H4 id={"earth-day"}>Earth Day 2025</H4>
-        <div className={css.date}>Saturday, April 26th | 11am - 3pm</div>
-        <div className={css.location}>Lincoln Park – West Side Ave Entrance – Jersey City</div>
-        <div className={css.description}>
-          Celebrate Earth Day with the Embankment Coalition at the Hudson County Improvement Authority's annual event. Stop by for free family fun and to learn more about organizations supporting a cleaner, more sustainable future. This year’s theme is Protecting Wildlife Through Eco-Friendly Living. The outdoor event will take place in the Fountain Lawn Area at Lincoln Park. Learn more at <A href={"https://www.hcia.org/"}>the HCIA web site</A>.
-        </div>
-      </div>
-      <div className={css.event}>
-        <H4 id={"mayoral-forum"}>Mayoral Candidates Forum on Historic Preservation and the Environment</H4>
-        <div className={css.date}>Sunday, May 4th | 3-5:30 PM (Doors open 3 PM; Program starts at 3:30 sharp)</div>
+        <H4 id={"annual-meeting"}>Embankment Coalition Annual Meeting</H4>
+        <div className={css.date}>Sunday, October 12th | 7-9pm</div>
         <div className={css.location}>Grace Church Van Vorst, 39 Erie St (entrance on 2nd St), Jersey City</div>
-        <div className={css.sub}><A href={mayoral2025Eventbrite}>Reserve seating here</A></div>
-        <div className={css.sub}><A href={mayoral2025Form}>Submit questions here</A>; we will draw upon these for the Q&A session</div>
-        <div className={css.sub}>Sponsors: Embankment Preservation Coalition and Jersey City Landmarks Conservancy</div>
+        <div className={css.sub}><A href={"mailto:embankmentjc@gmail.com?subject=RSVP for Annual Meeting"}>Email your RSVP to embankmentjc@gmail.com</A></div>
         <div className={css.description}>
-          Five of six candidates for mayor of Jersey City have accepted our invitation to this forum, focused on historic preservation and environmental issues. They are Mussab Ali, Flash Gordon, Jim McGreevey, Bill O'Dea, and James Solomon. (Joyce Watterman has a schedule conflict.)
-        </div>
-        <div>
-          Margaret Schmidt, former editor of <i>The Jersey Journal</i>, will moderate a question-and-answer session.  A reception will follow the program.
+          <p>Join us for updates on settlement negotiations status, unveiling of new park designs, and preparation for the November City Council meeting.</p>
+          <p><strong>Agenda:</strong></p>
+          <ul style={{ listStyle: "none", paddingLeft: 0 }}>
+            <li>• Update on settlement negotiations status</li>
+            <li>• Unveiling of new park designs</li>
+            <li>• Preparation for November City Council meeting</li>
+            <li>• Discussion of next steps and how you can help</li>
+          </ul>
         </div>
       </div>
       <div className={css.event}>
-        <H5 id={"bot-walk"}>Children’s Botanical Nature Walk</H5>
-        <div className={css.date}>Saturday, May 17th | 11am</div>
-        <div className={css.sub}><A href={"https://docs.google.com/forms/d/e/1FAIpQLSdAo6MfQFEiCvu_KiHP4u10-BdfzFX5SGQQ6ue4TDGZZgHMEQ/viewform"}>Register here</A></div>
-        <div>Meeting Place to be supplied upon confirmation of registration</div>
+        <H4 id={"council-meeting"}>Critical City Council Meeting on Embankment Settlement</H4>
+        <div className={css.date}>Wednesday, November 12th | 6pm</div>
+        <div className={css.location}>City Hall, Jersey City</div>
         <div className={css.description}>
-          Join Embankment Coalition board member and educator Jessica Costantine on a walk along the Embankment to identify plants and animals that live there. The event is open to children, ages 5-12, accompanied by an adult. Space is limited; please register using the link above.
+          <p>The City Council will vote on ordinances related to the Embankment litigation settlement. This is a critical moment for the future of the Embankment.</p>
+          <p><strong>We need community members to attend and speak before the vote.</strong> Your voice matters in preserving this historic resource and creating the green corridor our city needs.</p>
+          <p>The potential settlement includes a residential tower, city right-of-way easement, park on Block 2, and other public benefits.</p>
         </div>
       </div>
     </div>

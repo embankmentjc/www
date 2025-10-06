@@ -31,14 +31,12 @@ var
 		stepper: $("input[type='number']"),
 		toggles: $(".toggle-custom"),
 		textRotator: $(".text-rotator"),
-		owl: $(".owl-carousel"),
 		swiper: $(".swiper-slider"),
 		counter: $(".counter"),
 		flickrfeed: $(".flickr"),
 		twitterfeed: $(".twitter"),
 		progressBar: $(".progress-linear"),
 		circleProgress: $(".progress-bar-circle"),
-		isotope: $(".isotope"),
 		countDown: $(".countdown"),
 		stacktable: $("table[data-responsive='true']"),
 		customToggle: $("[data-custom-toggle]"),
@@ -1168,157 +1166,6 @@ $document.ready( function () {
 		for ( var i = 0; i < plugins.textRotator.length; i++ ) {
 			$(plugins.textRotator[i]).rotator();
 		}
-	}
-
-	/**
-	 * Owl carousel
-	 * @description Enables Owl carousel plugin
-	 */
-	if ( plugins.owl.length ) {
-		for ( var n = 0; n < plugins.owl.length; n++ ) {
-			var carousel = $(plugins.owl[n]),
-				responsive = {},
-				aliaces = ["-xs-", "-sm-", "-md-", "-lg-", "-xl-", "-xxl-"],
-				values = [0, 480, 768, 992, 1200, 1600];
-
-			for ( var i = 0; i < values.length; i++ ) {
-				responsive[values[i]] = {};
-				for ( var j = i; j >= -1; j-- ) {
-					if (!responsive[values[i]]["items"] && carousel.attr("data" + aliaces[j] + "items")) {
-						responsive[values[i]]["items"] = j < 0 ? 1 : parseInt(carousel.attr("data" + aliaces[j] + "items"));
-					}
-					if (!responsive[values[i]]["stagePadding"] && responsive[values[i]]["stagePadding"] !== 0 && carousel.attr("data" + aliaces[j] + "stage-padding")) {
-						responsive[values[i]]["stagePadding"] = j < 0 ? 0 : parseInt(carousel.attr("data" + aliaces[j] + "stage-padding"));
-					}
-					if (!responsive[values[i]]["margin"] && responsive[values[i]]["margin"] !== 0 && carousel.attr("data" + aliaces[j] + "margin")) {
-						responsive[values[i]]["margin"] = j < 0 ? 30 : parseInt(carousel.attr("data" + aliaces[j] + "margin"));
-					}
-					if (!responsive[values[i]]["dotsEach"] && responsive[values[i]]["dotsEach"] !== 0 && carousel.attr("data" + aliaces[j] + "dots-each")) {
-						responsive[values[i]]["dotsEach"] = j < 0 ? false : parseInt(carousel.attr("data" + aliaces[j] + "dots-each"));
-					}
-				}
-			}
-
-			// Create custom Pagination
-			if (carousel.attr('data-dots-custom')) {
-				carousel.on("initialized.owl.carousel", function (event) {
-					var carousel = $(event.currentTarget),
-						customPag = $(carousel.attr("data-dots-custom")),
-						active = 0;
-
-					if (carousel.attr('data-active')) {
-						active = parseInt(carousel.attr('data-active'));
-					}
-
-					carousel.trigger('to.owl.carousel', [active, 300, true]);
-					customPag.find("[data-owl-item='" + active + "']").addClass("active");
-
-					customPag.find("[data-owl-item]").on('click', function (e) {
-						e.preventDefault();
-						carousel.trigger('to.owl.carousel', [parseInt(this.getAttribute("data-owl-item")), 300, true]);
-					});
-
-					carousel.on("translate.owl.carousel", function (event) {
-						customPag.find(".active").removeClass("active");
-						customPag.find("[data-owl-item='" + event.item.index + "']").addClass("active")
-					});
-				});
-			}
-
-			// Create custom Navigation
-			if (carousel.attr('data-nav-custom')) {
-				carousel.on("initialized.owl.carousel", function (event) {
-					var carousel = $(event.currentTarget),
-						customNav = $(carousel.attr("data-nav-custom"));
-
-					customNav.find("[data-owl-prev]").on('click', function (e) {
-						e.preventDefault();
-						carousel.trigger('prev.owl.carousel', [300]);
-					});
-
-					customNav.find("[data-owl-next]").on('click', function (e) {
-						e.preventDefault();
-						carousel.trigger('next.owl.carousel', [300]);
-					});
-				});
-			}
-
-			carousel.owlCarousel({
-				autoplay: !isNoviBuilder ? carousel.attr("data-autoplay") === "true" : false,
-				loop: !isNoviBuilder ? carousel.attr("data-loop") === "true" : false,
-				items: 1,
-				autoplaySpeed: 600,
-				autoplayTimeout: 3000,
-				dotsContainer: carousel.attr("data-pagination-class") || false,
-				navContainer: carousel.attr("data-navigation-class") || false,
-				mouseDrag: !isNoviBuilder ? carousel.attr("data-mouse-drag") === "true" : false,
-				nav: carousel.attr("data-nav") === "true",
-				dots: carousel.attr("data-dots") === "true",
-				dotsEach: carousel.attr("data-dots-each") ? parseInt(carousel.attr("data-dots-each")) : false,
-				responsive: responsive,
-				animateOut: carousel.attr("data-animation-out") || false,
-				navText: carousel.attr("data-nav-text") ? $.parseJSON( carousel.attr("data-nav-text") ) : [],
-				navClass: carousel.attr("data-nav-class") ? $.parseJSON( carousel.attr("data-nav-class") ) : ['owl-prev', 'owl-next']
-				});
-		}
-	}
-
-	/**
-	 * Isotope
-	 * @description Enables Isotope plugin
-	 */
-	if (plugins.isotope.length) {
-		var isogroup = [];
-		for ( var i = 0; i < plugins.isotope.length; i++ ) {
-			var isotopeItem = plugins.isotope[i],
-				filterItems = $(isotopeItem).closest('.isotope-wrap').find('[data-isotope-filter]'),
-				iso = new Isotope(isotopeItem,
-					{
-						itemSelector: '.isotope-item',
-						layoutMode: isotopeItem.getAttribute('data-isotope-layout') ? isotopeItem.getAttribute('data-isotope-layout') : 'masonry',
-						filter: '*',
-					}
-				);
-
-			isogroup.push(iso);
-
-			filterItems.on("click", function (e) {
-				e.preventDefault();
-				var filter = $(this),
-					iso = $('.isotope[data-isotope-group="' + this.getAttribute("data-isotope-group") + '"]'),
-					filtersContainer = filter.closest(".isotope-filters");
-
-				filtersContainer
-					.find('.active')
-					.removeClass("active");
-				filter.addClass("active");
-
-				iso.isotope({
-					itemSelector: '.isotope-item',
-					layoutMode: iso.attr('data-isotope-layout') ? iso.attr('data-isotope-layout') : 'masonry',
-					filter: this.getAttribute("data-isotope-filter") == '*' ? '*' : '[data-filter*="' + this.getAttribute("data-isotope-filter") + '"]'
-				});
-
-				$window.trigger('resize');
-
-				// If d3Charts contains in isotop, resize it on click.
-				if (filtersContainer.hasClass('isotope-has-d3-graphs') && c3ChartsArray != undefined) {
-					setTimeout(function () {
-						for (var j = 0; j < c3ChartsArray.length; j++) {
-							c3ChartsArray[j].resize();
-						}
-					}, 500);
-				}
-
-			}).eq(0).trigger("click");
-		}
-
-		setTimeout(function () {
-			for ( var i = 0; i < isogroup.length; i++ ) {
-				isogroup[i].element.classList.add( "isotope--loaded" );
-				isogroup[i].layout();
-			}
-		}, 1200);
 	}
 
 	/**

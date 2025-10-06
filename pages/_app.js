@@ -9,11 +9,11 @@ export default function App({ Component, pageProps }) {
     const router = useRouter()
 
     useEffect(() => {
-        // Handle anchor scrolling after page load
-        const handleAnchorScroll = () => {
+        // Handle anchor scrolling - only on initial page load with hash
+        const handleInitialAnchorScroll = () => {
             const hash = window.location.hash
             if (hash) {
-                // Wait for all content to load before scrolling
+                // Wait for images and fonts to load on initial page load
                 setTimeout(() => {
                     const element = document.querySelector(hash)
                     if (element) {
@@ -23,28 +23,24 @@ export default function App({ Component, pageProps }) {
 
                         window.scrollTo({
                             top: offsetPosition,
-                            behavior: 'smooth'
+                            behavior: 'auto' // instant scroll
                         })
                     }
-                }, 500) // Give time for images and other async content to load
+                }, 500)
             }
         }
 
-        // Handle on route change
-        router.events.on('routeChangeComplete', handleAnchorScroll)
-
-        // Handle on initial load
+        // Handle on initial load only
         if (document.readyState === 'complete') {
-            handleAnchorScroll()
+            handleInitialAnchorScroll()
         } else {
-            window.addEventListener('load', handleAnchorScroll)
+            window.addEventListener('load', handleInitialAnchorScroll)
         }
 
         return () => {
-            router.events.off('routeChangeComplete', handleAnchorScroll)
-            window.removeEventListener('load', handleAnchorScroll)
+            window.removeEventListener('load', handleInitialAnchorScroll)
         }
-    }, [router])
+    }, [])
 
     return <Component {...pageProps} />
 }

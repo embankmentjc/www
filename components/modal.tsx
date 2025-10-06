@@ -3,7 +3,7 @@ import css from "./modal.module.scss"
 import { signupId } from "./ids";
 
 export const id = "20251012-annual-mtng"
-export const registerUrl = "mailto:embankmentjc@gmail.com?subject=RSVP%20for%20Embankment%20Annual%20Meeting&body=Please%20register%20me%20for%20the%20annual%20meeting%20(Sunday%2C%20October%2012%2C%202025%2C%207-9PM%20at%20Grace%20Church%20Van%20Vorst).%0A%0AThank%20you%2C%0A%3CYour%20name%3E"
+export const registerUrl = "mailto:embankmentjc@gmail.com?subject=RSVP for Annual Meeting"
 
 export function Modal() {
     const modalSuppressedKey = `${id}_suppressed-v2`
@@ -46,6 +46,7 @@ export function Modal() {
                     <button className={`close ${css.close}`} onClick={() => setShowModal(false)}>x</button>
                     <div className="modal-header" style={{display: "block",}}>
                         <h3>Please Attend These URGENT Meetings</h3>
+                        <p><a target={"_blank"} href={"/images/2025-annual-meeting.pdf"}><strong>View/Download Flyer (PDF)</strong></a></p>
                         <h4>ANNUAL MEETING</h4>
                         <ul style={{listStyle: "none",}}>
                             <li><strong>Sunday, October 12, 2025, 7-9PM</strong></li>

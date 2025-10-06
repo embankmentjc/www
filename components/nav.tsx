@@ -11,7 +11,7 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
         hash: string
         text: string
     }) {
-        let href = (path == cur) ? "" : path
+        let href = path
         if (hash) {
             href += `#${hash}`
         }
@@ -24,12 +24,9 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
         hash?: string
         items?: { hash: string, text: string }[]
     }) {
-        let href = (path == cur) ? "" : path
+        let href = path
         if (hash) {
             href += `#${hash}`
-        }
-        if (!href) {
-            href = path
         }
         return (
             <li>

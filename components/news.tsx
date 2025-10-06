@@ -84,7 +84,7 @@ export const newsItems: NewsItem[] = [
                 <li><a target={"_blank"} href={"https://www.gracevanvorst.org/"}>Grace Church Van Vorst</a></li>
                 <li><a target={"_blank"} href={"https://maps.app.goo.gl/fJRv7b81QBir98Fm7"}>39 Erie St, Jersey City, NJ (enter on 2nd Street)</a></li>
             </ul>
-            <p><a target={"_blank"} href={registerUrl}><strong>Click to email your RSVP to embankmentjc@gmail.com</strong></a></p>
+            <p><a target={"_blank"} href={registerUrl}><strong>Click to email your RSVP</strong></a> or email: embankmentjc@gmail.com</p>
             <ul style={{ listStyle: "none", paddingLeft: 0 }}>
                 <li><strong>Join us for:</strong></li>
                 <li>• Update on settlement negotiations status</li>
@@ -210,7 +210,7 @@ export const newsItems: NewsItem[] = [
                 <li><a target={"_blank"} href={"https://www.gracevanvorst.org/"}>Grace Church Van Vorst</a></li>
                 <li><a target={"_blank"} href={"https://maps.app.goo.gl/fJRv7b81QBir98Fm7"}>39 Erie St, Jersey City, NJ (enter on 2nd Street)</a></li>
             </ul>
-            <p><a target={"_blank"} href={registerUrl}><strong>Click to email your RSVP to embankmentjc@gmail.com</strong></a></p>
+            <p><a target={"_blank"} href={registerUrl}><strong>Click to email your RSVP</strong></a> or email: embankmentjc@gmail.com</p>
             <ul style={{ listStyle: "none", paddingLeft: 0 }}>
                 <li><strong>Updates from EPC Board Members:</strong></li>
                 <li>Project Status - Federal and local efforts</li>

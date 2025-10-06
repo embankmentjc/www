@@ -3,7 +3,7 @@ import css from "./modal.module.scss"
 import { signupId } from "./ids";
 
 export const id = "20251012-annual-mtng"
-export const registerUrl = "mailto:embankmentjc@gmail.com"
+export const registerUrl = "mailto:embankmentjc@gmail.com?subject=RSVP%20for%20Annual%20Meeting"
 
 export function Modal() {
     const modalSuppressedKey = `${id}_suppressed-v2`
@@ -46,7 +46,7 @@ export function Modal() {
                     <button className={`close ${css.close}`} onClick={() => setShowModal(false)}>x</button>
                     <div className="modal-header" style={{display: "block",}}>
                         <h3>Please Attend These URGENT Meetings</h3>
-                        <p><a target={"_blank"} href={"/images/2025-annual-meeting.pdf"}><strong>View/Download Flyer (PDF)</strong></a></p>
+                        <p><a target={"_blank"} href={"/pdf/2025-annual-meeting.pdf"}><strong>View/Download Flyer (PDF)</strong></a></p>
                         <h4>ANNUAL MEETING</h4>
                         <ul style={{listStyle: "none",}}>
                             <li><strong>Sunday, October 12, 2025, 7-9PM</strong></li>
@@ -54,7 +54,7 @@ export function Modal() {
                             <li><a target={"_blank"} href={"https://maps.app.goo.gl/fJRv7b81QBir98Fm7"}>39 Erie St, Jersey City, NJ (enter on 2nd Street)</a></li>
                         </ul>
                         <p><strong>Important Updates on Settlement Status, Next Steps & What YOU Can Do</strong></p>
-                        <p><a href={registerUrl}><strong>Click to email your RSVP to embankmentjc@gmail.com</strong></a></p>
+                        <p><a href={registerUrl}><strong>Click to email your RSVP</strong></a> or email: embankmentjc@gmail.com</p>
                         <hr />
                         <h4>CITY COUNCIL MEETING</h4>
                         <ul style={{listStyle: "none",}}>

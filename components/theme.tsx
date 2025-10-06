@@ -14,7 +14,7 @@ export function Brand({ className }: { className: string }) {
 
 export function CarouselButton({ text, href }: { text: string, href: string, }) {
     return (
-        <a href={href} target="_blank"><button className="btn btn-primary" type="button">{text}</button></a>
+        <a href={href} target="_blank" rel="noopener noreferrer"><button className="btn btn-primary" type="button">{text}</button></a>
     )
 }
 
@@ -206,14 +206,19 @@ export function ParallaxHeader({ title, embed, subtitle, subtitleChildren, img, 
     )
 }
 
-export function ParallaxSection1({ id, title, img, children }: { id?: string, title?: ReactNode, img: string, children?: ReactNode, }) {
+export function ParallaxSection1({ id, top = "-5em", title, img, children }: { id?: string, top?: string, title?: ReactNode, img: string, children?: ReactNode, }) {
     return (
-        <section id={id} className="section parallax-container" data-parallax-img={img}>
+        <section className="section parallax-container" data-parallax-img={img}>
             <div className="parallax-content section-98 section-sm-124 bg-overlay-white">
                 <div className="container">
                     <div className="row justify-content-md-center">
                         <div className="col-md-10">
-                            {title && <h1>{title}</h1>}
+                            {title && (
+                                <h1 style={{ position: "relative" }}>
+                                    {id && <span id={id} style={{ position: "absolute", top }} />}
+                                    {title}
+                                </h1>
+                            )}
                             {title && children && <hr className="divider bg-mantis" />}
                             {children}
                         </div>
@@ -224,17 +229,18 @@ export function ParallaxSection1({ id, title, img, children }: { id?: string, ti
     )
 }
 
-export function ParallaxSection2({ title, id, blurb, img, children, }: { title: string, id: string, blurb: ReactNode, img: string, children?: ReactNode, }) {
+export function ParallaxSection2({ title, id, top = "-5em", blurb, img, children, }: { title: string, id: string, top?: string, blurb: ReactNode, img: string, children?: ReactNode, }) {
     if (typeof blurb === 'string') {
         blurb = <p>{blurb}</p>
     }
     return (
-        <section id={id} className="section parallax-container bg-black" data-parallax-img={img}>
+        <section className="section parallax-container bg-black" data-parallax-img={img}>
             <div className="parallax-content section-98 section-sm-110 context-light">
                 <div className="container">
-                    <div>
-                        <h2><span className="big">{title}</span></h2>
-                    </div>
+                    <h2 style={{ position: "relative" }}>
+                        {id && <span id={id} style={{ position: "absolute", top }} />}
+                        <span className="big">{title}</span>
+                    </h2>
                     <hr className="divider divider-lg bg-mantis" />
                     <div className="row justify-content-center offset-top-24">
                         <div className="col-sm-10 col-xl-8">{blurb}</div>
@@ -246,18 +252,22 @@ export function ParallaxSection2({ title, id, blurb, img, children, }: { title: 
     )
 }
 
-export function GradientHeader({ id, title, className = "", chevron = true, children, }: {
+export function GradientHeader({ id, top = "-5em", title, className = "", chevron = true, children, }: {
     id?: string
+    top?: string
     title: ReactNode
     className?: string
     chevron?: boolean
     children?: ReactNode
 }) {
     return (
-        <section id={id} className={`section section-66 section-top-50 bg-mantis section-triangle section-triangle-bottom context-dark ${className}`}>
+        <section className={`section section-66 section-top-50 bg-mantis section-triangle section-triangle-bottom context-dark ${className}`}>
             <div className="container">
                 <div className="row justify-content-center">
-                    <h2><span className={`big`}>{title}</span></h2>
+                    <h2 style={{ position: "relative" }}>
+                        {id && <span id={id} style={{ position: "absolute", top }} />}
+                        <span className="big">{title}</span>
+                    </h2>
                     <div className={`col-lg-8`}>{children}</div>
                 </div>
             </div>
@@ -370,13 +380,16 @@ export function IconBoxesSection(
     )
 }
 
-export function Banner({ id, title, icon, children, }: { id?: string, title: string, icon: string, children?: ReactNode, }) {
+export function Banner({ id, top = "-5em", title, icon, children, }: { id?: string, top?: string, title: string, icon: string, children?: ReactNode, }) {
     return (
-        <section id={id} className="section breadcrumb-classic">
+        <section className="section breadcrumb-classic">
             <div className="container section-34 section-sm-50">
                 <div className="row align-items-xl-center">
                     <div className="col-xl-5 d-none d-xl-block text-xl-left">
-                        <h2><span className="big">{title}</span></h2>
+                        <h2 style={{ position: "relative" }}>
+                            {id && <span id={id} style={{ position: "absolute", top }} />}
+                            <span className="big">{title}</span>
+                        </h2>
                     </div>
                     <div className="col-xl-2 d-none d-md-block"><span className={`icon icon-white mdi mdi-${icon}`}></span></div>
                     <div className="offset-top-0 offset-md-top-10 col-xl-5 offset-xl-top-0 small text-xl-right">

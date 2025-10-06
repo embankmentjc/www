@@ -51238,3 +51238,22 @@ html:not(.ie-11):not(.ios) .parallax-disabled {
 section p > a, section li > a {
     text-decoration: underline;
 }
+
+/* Custom fixes for navbar and swiper */
+.rd-navbar-nav > li > a > span {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+.swiper-pagination-bullet {
+    background: white;
+    opacity: 0.5;
+    width: 12px;
+    height: 12px;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background: #63bd62;
+}

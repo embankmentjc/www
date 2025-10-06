@@ -92,8 +92,7 @@ export default function Body() {
                 blurb={"Jersey City and Hudson County Master Plans call for the development of an off-road route for the East Coast Greenway Maine-to-Florida trail.  Developing the Harsimus Branch will significantly advance that route through Hudson County, linking historic sites, parks, and other open spaces.  The Greenway will serve as a spine for a trail system."}>
                 <div className="col-sm-12">
                     <div className="offset-top-50 offset-xl-top-66">
-                        {/* owl carousel; TODO: doesn't work? */}
-                        <div className="owl-carousel owl-carousel-default owl-carousel-class-light veil-owl-nav" data-loop="false" data-items="1" data-sm-items="2" data-dots="true" data-mouse-drag="false" data-lg-items="4" data-nav="false">
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center' }}>
                             <CarouselButton href="https://www.essexhudsongreenway.org/" text="Essex-Hudson Greenway" />
                             <CarouselButton href="https://www.bergenarches.com" text="Bergen Arches" />
                             <CarouselButton href="https://www.jcreservoir.com/" text="Resevoir #3" />
@@ -185,8 +184,7 @@ export default function Body() {
             <section>
                 <div className="container">
                     <div className="row justify-content-center">
-                        {/* owl carousel */}
-                        <div className="col-lg-6 col-md-6 owl-carousel owl-carousel-default owl-carousel-class-light veil-owl-nav" data-loop="false" data-items="3" data-sm-items="3" data-dots="false" data-mouse-drag="false" data-lg-items="3" data-nav="false">
+                        <div className="col-lg-6 col-md-8" style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center' }}>
                             <a href={`/involved#${donateId}`}>
                                 <button className="btn btn-primary" type="button">Donate</button>
                             </a>

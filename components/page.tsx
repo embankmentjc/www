@@ -39,7 +39,6 @@ export default function Page({ path, children, headerChildren, scripts, navStuck
         <div className="snackbars" id="form-output-global" />
         <Script src="/js/core.min.js" strategy="beforeInteractive" />
         <Script src="/js/script.js" />
-        <Script src="/js/revolution.min.js" />
         {scripts?.map(src => <Script key={src} src={src} />)}
     </>)
 }

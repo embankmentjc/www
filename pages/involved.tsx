@@ -269,7 +269,7 @@ function Supporters() {
 function MembershipOption({ name, price, src, value }: { name: string, price: number, src: string, value: string, }) {
     const duration = name == "Life" ? "one-time" : "annual"
     return (
-        <div key={name} className="col-12 col-md-6 isotope-item" data-filter="Gallery 1">
+        <div key={name} style={{ position: 'relative', marginBottom: '30px' }}>
             <div className="product-image">
                 <img className="img-fluid product-image-area" src={src} alt={`${name} membership: ${price} ${duration}`} />
             </div>
@@ -292,15 +292,19 @@ function MembershipOptions() {
             <p>Select a membership level below or if you prefer to mail your membership paperwork <a href="/images/membership2025.pdf" target="_blank"><span className="font-weight-bold">Click Here</span></a>.</p>
             <div className="row">
                 <div className="col-xl-12 offset-top-34">
-                    <div className="isotope" data-isotope-layout="fitRows" data-isotope-group="gallery">
-                        <div className="row grid-group-sm" data-lightgallery="group">
-                            <MembershipOption name={"Student / Senior"} price={10} src={"/images/bees2.jpg"} value={"TD673N8N5Q4HA"} />
-                            <MembershipOption name={"Individual"} price={25} src={"/images/individual2.jpg"} value={"RYLN4DQ2N5HAS"} />
-                            <MembershipOption name={"Family"} price={40} src={"/images/family2.jpg"} value={"7492YV58QXSZW"} />
-                            <MembershipOption name={"Friend"} price={100} src={"/images/friend2.jpg"} value={"GSJLC7A9PVUF4"} />
-                            <MembershipOption name={"Benefactor"} price={250} src={"/images/benefactor2.jpg"} value={"YZ5XMHDA75V2L"} />
-                            <MembershipOption name={"Life"} price={1000} src={"/images/life2.jpg"} value={"HW6BR6ER4RXTA"} />
-                        </div>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                        gap: '30px',
+                        maxWidth: '1200px',
+                        margin: '0 auto'
+                    }}>
+                        <MembershipOption name={"Student / Senior"} price={10} src={"/images/bees2.jpg"} value={"TD673N8N5Q4HA"} />
+                        <MembershipOption name={"Individual"} price={25} src={"/images/individual2.jpg"} value={"RYLN4DQ2N5HAS"} />
+                        <MembershipOption name={"Family"} price={40} src={"/images/family2.jpg"} value={"7492YV58QXSZW"} />
+                        <MembershipOption name={"Friend"} price={100} src={"/images/friend2.jpg"} value={"GSJLC7A9PVUF4"} />
+                        <MembershipOption name={"Benefactor"} price={250} src={"/images/benefactor2.jpg"} value={"YZ5XMHDA75V2L"} />
+                        <MembershipOption name={"Life"} price={1000} src={"/images/life2.jpg"} value={"HW6BR6ER4RXTA"} />
                     </div>
                 </div>
             </div>

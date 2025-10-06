@@ -8,6 +8,7 @@ import {
 } from "../components/theme";
 import { becomeMemberId, donateId, visionId } from "../components/ids";
 import css from "./index.module.scss"
+import BannerSlider from "../components/banner-slider";
 
 export async function getStaticProps(context: any) {
     return {
@@ -15,165 +16,44 @@ export async function getStaticProps(context: any) {
     }
 }
 
-function Btn({ href, text, primary, }: {
-    href: string
-    text: string
-    primary: boolean
-}) {
-    const cls = primary ? "btn-primary" : "btn-default"
-    return (
-        <a
-            className={`btn ${cls} btn-lg btn-anis-effect`}
-            data-caption-animate="fadeInUp"
-            data-caption-delay="1200"
-            href={href}
-        >
-            <span className="btn-text">
-                {text}
-            </span>
-        </a>
-    )
-}
-
-export type Btn = { href: string, text: string }
-
-function BannerSlide({ img, alt, title, subtitle, btns, }: {
-    img: string
-    alt: string
-    title: string
-    subtitle: string
-    btns: Btn[]
-}) {
-    return (
-        <li data-transition="crossfade">
-            <img
-                className="rev-slidebg"
-                data-bgposition="center center"
-                data-bgfit="cover"
-                data-bgrepeat="no-repeat"
-                data-bgparallax="15"
-                src={img}
-                alt={alt}
-            />
-            <div
-                className="tp-caption"
-                data-y="['center','center','center','center']"
-                data-x="['center','center','center','center']"
-                data-height="100%"
-                data-type="row"
-                data-columnbreak="2"
-                data-basealign="slide"
-                data-responsive_offset="on"
-                data-responsive="off"
-                data-frames={`[{"delay":10,"speed":400,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":400,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]`}
-                data-margintop="[0,0,0,0]"
-                data-marginright="[0,0,0,0]"
-                data-marginbottom="[0,0,0,0]"
-                data-marginleft="[0,0,0,0]"
-                data-textalign="['inherit','inherit','inherit','inherit']"
-                style= {{ zIndex: 9, whiteSpace: 'nowrap', fontSize: '20px', lineHeight: '22px', fontWeight: 400, color: 'rgba(255, 255, 255, 1.00)' }}
-            >
-                <div
-                    className="tp-caption"
-                    data-y="['center','center','center','center']"
-                    data-x="['center','center','center','center']"
-                    data-type="column"
-                    data-frames={`[{"delay":"+0","speed":400,"frame":"0","from":"opacity:0;","to":"opacity:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":400,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]`}
-                >
-                    <div className="container">
-                        <div className="row justify-content-sm-center align-items-sm-center">
-                            <div className="col-xl-10">
-                                <div
-                                    className="tp-caption"
-                                    data-fontsize="['62', '48', '36', '28']"
-                                    data-type="text"
-                                    data-lineheight="['68', '44', '42', '34']"
-                                    data-y="['center','center','center','center']"
-                                    data-x="['center','center','center','center']"
-                                    data-frames={`[{"delay":"+400","speed":1700,"frame":"0","from":"y:250px;opacity:0;fb:50px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":400,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]`}
-                                >
-                                    <h1><span className="big text-uppercase">{title}</span></h1>
-                                </div>
-                                <div
-                                    className="d-none d-md-block offset-top-30 tp-caption"
-                                    data-visibility="['on', 'on', 'off', 'off']"
-                                    data-type="text"
-                                    data-y="['center','center','center','center']"
-                                    data-x="['center','center','center','center']"
-                                    data-frames={`[{"delay":"+490","speed":2000,"frame":"0","from":"y:250px;opacity:0;fb:50px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":400,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]`}
-                                >
-                                    <h4 className="text-bold">{subtitle}</h4>
-                                </div>
-                                <div
-                                    className="tp-caption"
-                                    data-whitespace="['normal', 'normal', 'nowrap', 'normal']"
-                                    data-type="text"
-                                    data-fontsize="['inherit', 'inherit', 'inherit', 'inherit']"
-                                    data-lineheight="['inherit', 'inherit', 'inherit', 'inherit']"
-                                    data-y="['center','center','center','center']"
-                                    data-x="['center','center','center','center']"
-                                    data-frames={`[{"delay":"+550","speed":2000,"frame":"0","from":"y:250px;opacity:0;fb:50px;","to":"o:1;fb:0;","ease":"Power4.easeOut"},{"delay":"wait","speed":400,"frame":"999","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]`}
-                                >
-                                    <div className="group group-xl offset-top-20 offset-sm-top-50">{
-                                        btns.map((btn, key) => <Btn key={key} {...btn} primary={true} />)
-                                    }</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </li>
-    )
-}
-
-
 function BannerSlides() {
-    return (
-        <div className="rev_slider_wrapper--holder">
-            <div className="rev_slider_wrapper fullscreen-container context-dark">
-                {/* the ID here will be used in the JavaScript below to initialize the slider */}
-                <div className="rev_slider fullscreenbanner" id="rev_slider_1" style={{ display: 'none', }}>
-                    {/* BEGIN MAIN SLIDE LIST */}
-                    <ul>
-                        <BannerSlide
-                            img="/images/HOME-SLIDER1.jpg"
-                            alt="View of Embankment walls and greenery"
-                            title="Welcome to the Harsimus Branch and Embankment"
-                            subtitle="The Future of Green Infrastructure in Jersey City"
-                            btns={[
-                                { href: "/now", text: "Embankment NOW", },
-                                { href: "/vision", text: "Explore Our Vision", },
-                                { href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", },
-                            ]}
-                        />
-                        <BannerSlide
-                            img="/images/homepage-slides/50p/city-view.jpeg"
-                            alt="Rendering - people walking on a bridge between two Embankment blocks"
-                            title="Historic Structure and a Natural Forest"
-                            subtitle="A Green Corridor Unique to Jersey City"
-                            btns={[
-                                { href: "/now", text: "Embankment NOW", },
-                                { href: "#home-section-what", text: "Learn More", },
-                                { href: `/involved#${donateId}`, text: "Donate", },
-                            ]}
-                        />
-                        <BannerSlide
-                            img="/images/homepage-slides/50p/forest-view.jpeg"
-                            alt="Rendering - people walking on the Embankment"
-                            title="Our Vision"
-                            subtitle="Preserve, Restore, Activate"
-                            btns={[
-                                { href: "/now", text: "Embankment NOW", },
-                                { href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", },
-                                { href: `/involved#${becomeMemberId}`, text: "Become a Member", },
-                            ]}
-                        />
-                    </ul>
-                </div>
-            </div>
-        </div>
-    )
+    const slides = [
+        {
+            img: "/images/HOME-SLIDER1.jpg",
+            alt: "View of Embankment walls and greenery",
+            title: "Welcome to the Harsimus Branch and Embankment",
+            subtitle: "The Future of Green Infrastructure in Jersey City",
+            btns: [
+                { href: "/now", text: "Embankment NOW", },
+                { href: "/vision", text: "Explore Our Vision", },
+                { href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", },
+            ]
+        },
+        {
+            img: "/images/homepage-slides/50p/city-view.jpeg",
+            alt: "Rendering - people walking on a bridge between two Embankment blocks",
+            title: "Historic Structure and a Natural Forest",
+            subtitle: "A Green Corridor Unique to Jersey City",
+            btns: [
+                { href: "/now", text: "Embankment NOW", },
+                { href: "#home-section-what", text: "Learn More", },
+                { href: `/involved#${donateId}`, text: "Donate", },
+            ]
+        },
+        {
+            img: "/images/homepage-slides/50p/forest-view.jpeg",
+            alt: "Rendering - people walking on the Embankment",
+            title: "Our Vision",
+            subtitle: "Preserve, Restore, Activate",
+            btns: [
+                { href: "/now", text: "Embankment NOW", },
+                { href: "https://youtu.be/qxAHqzLqnoo", text: "Watch Video", },
+                { href: `/involved#${becomeMemberId}`, text: "Become a Member", },
+            ]
+        }
+    ]
+
+    return <BannerSlider slides={slides} />
 }
 
 function IntroSectionWhat() {

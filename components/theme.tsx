@@ -1,6 +1,8 @@
-import React, {CSSProperties, ReactNode} from "react";
-import { H1, H2 } from "@rdub/next-base/heading";
+import React, {CSSProperties, ReactNode, useState} from "react";
+import { H1, H2, H3 } from "@rdub/next-base/heading";
 import A from "@rdub/next-base/a";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 export function Brand({ className }: { className: string }) {
     return (
@@ -25,6 +27,7 @@ export type Figure = {
     border?: string
 }
 export function Figure({ src, alt, caption, border, }: Figure) {
+    const [open, setOpen] = useState(false)
     const { thumbnail, img, figcaption }: any = caption ? {
         img: { className: "figure-img img-fluid" },
         figcaption: <figcaption className="figure-caption">{caption}</figcaption>,
@@ -32,14 +35,21 @@ export function Figure({ src, alt, caption, border, }: Figure) {
         thumbnail: { className: "thumbnail-classic" },
     }
     return (
-        <div data-lightgallery="group">
-            <a {...thumbnail} data-lightgallery="item" href={src}>
-                <figure className="figure">
-                    <img {...img} width="570" height="321" src={src} alt={alt} style={{ border }} />
-                    {figcaption}
-                </figure>
-            </a>
-        </div>
+        <>
+            <div onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
+                <div {...thumbnail}>
+                    <figure className="figure">
+                        <img {...img} width="570" height="321" src={src} alt={alt} style={{ border }} />
+                        {figcaption}
+                    </figure>
+                </div>
+            </div>
+            <Lightbox
+                open={open}
+                close={() => setOpen(false)}
+                slides={[{ src, alt: alt || caption }]}
+            />
+        </>
     )
 }
 
@@ -98,19 +108,25 @@ export type ConceptSectionBody = {
     figCols?: number
     figure?: boolean
     children: ReactNode
-} & Figure
-export function ConceptSectionBody({ figCols = 8, figure, children, ...figProps }: ConceptSectionBody) {
+    images?: Figure[]
+} & Partial<Figure>
+export function ConceptSectionBody({ figCols = 8, figure, children, images, ...figProps }: ConceptSectionBody) {
+    const imagesToRender = images || (figProps.src ? [figProps as Figure] : [])
     return (
         <>
             <div className="row justify-content-md-center offset-top-20">
                 <div className={`col-md-${figCols} col-lg-${figCols} inset-lg-right-80`}>
-                    {
-                        (figure === false)
-                            ? <img className={"img-fluid element-fullwidth"} src={figProps.src} alt={figProps.alt} width="716" height="404" />
-                            : <header className="post-media">
-                                <Figure {...figProps} />
-                            </header>
-                    }
+                    {imagesToRender.map((img, idx) => (
+                        <div key={idx} style={{ marginBottom: idx < imagesToRender.length - 1 ? '20px' : '0' }}>
+                            {
+                                (figure === false)
+                                    ? <img className={"img-fluid element-fullwidth"} src={img.src} alt={img.alt} width="716" height="404" />
+                                    : <header className="post-media">
+                                        <Figure {...img} />
+                                    </header>
+                            }
+                        </div>
+                    ))}
                 </div>
                 <div className={`col-md-${12 - figCols} col-lg-${12 - figCols} text-md-left offset-top-34 offset-lg-top-0`}>
                     {children}
@@ -127,12 +143,13 @@ export type ConceptSection = {
 } & ConceptSectionBody
 
 export function ConceptSection({ id, title, pre, children, ...rest }: ConceptSection) {
+    const headingId = id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
     return (
-        <section id={id} className="section section-50 section-sm-top-5">
+        <section className="section section-50 section-sm-top-5">
             <div className="container">
                 {pre}
                 <ConceptSectionBody {...rest}>
-                    <h3>{title}</h3>
+                    <H3 id={headingId}>{title}</H3>
                     {children}
                 </ConceptSectionBody>
             </div>

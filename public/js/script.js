@@ -70,10 +70,7 @@ var
 		campaignMonitor: $('.campaign-mailform'),
 		canvasbg: $('#demo-canvas'),
 		particlesContainer: $('#particles-container'),
-		maps: $(".google-map-container"),
-		lightGallery: $("[data-lightgallery='group']"),
-		lightGalleryItem: $("[data-lightgallery='item']"),
-		lightDynamicGalleryItem: $("[data-lightgallery='dynamic']")
+		maps: $(".google-map-container")
 	};
 
 /**
@@ -2047,68 +2044,6 @@ $document.ready( function () {
 		}
 	}
 
-	/**
-	 * lightGallery
-	 * @description Enables lightGallery plugin
-	 */
-	function initLightGallery(itemsToInit, addClass) {
-		$(itemsToInit).lightGallery({
-			thumbnail: $(itemsToInit).attr("data-lg-thumbnail") !== "false",
-			selector: "[data-lightgallery='item']",
-			autoplay: $(itemsToInit).attr("data-lg-autoplay") === "true",
-			pause: parseInt($(itemsToInit).attr("data-lg-autoplay-delay")) || 5000,
-			addClass: addClass,
-			mode: $(itemsToInit).attr("data-lg-animation") || "lg-slide",
-			loop: $(itemsToInit).attr("data-lg-loop") !== "false"
-		});
-	}
-
-	function initDynamicLightGallery(itemsToInit, addClass) {
-		$(itemsToInit).on("click", function() {
-			$(itemsToInit).lightGallery({
-				thumbnail: $(itemsToInit).attr("data-lg-thumbnail") !== "false",
-				selector: "[data-lightgallery='item']",
-				autoplay: $(itemsToInit).attr("data-lg-autoplay") === "true",
-				pause: parseInt($(itemsToInit).attr("data-lg-autoplay-delay")) || 5000,
-				addClass: addClass,
-				mode: $(itemsToInit).attr("data-lg-animation") || "lg-slide",
-				loop: $(itemsToInit).attr("data-lg-loop") !== "false",
-				dynamic: true,
-				dynamicEl:
-				JSON.parse($(itemsToInit).attr("data-lg-dynamic-elements")) || []
-			});
-		});
-	}
-
-	function initLightGalleryItem(itemToInit, addClass) {
-		$(itemToInit).lightGallery({
-			selector: "this",
-			addClass: addClass,
-			counter: false,
-			youtubePlayerParams: {
-				modestbranding: 1,
-				showinfo: 0,
-				rel: 0,
-				controls: 0
-			},
-			vimeoPlayerParams: {
-				byline: 0,
-				portrait: 0
-			}
-		});
-	}
-
-	if ( !isNoviBuilder && plugins.lightGallery.length ) {
-		for ( var i = 0; i < plugins.lightGallery.length; i++ ) initLightGallery( plugins.lightGallery[i] );
-	}
-
-	if ( !isNoviBuilder && plugins.lightGalleryItem.length ) {
-		for ( var i = 0; i < plugins.lightGalleryItem.length; i++ ) initLightGalleryItem( plugins.lightGalleryItem[i] );
-	}
-
-	if ( !isNoviBuilder && plugins.lightDynamicGalleryItem.length ) {
-		for ( var i = 0; i < plugins.lightDynamicGalleryItem.length; i++ ) initDynamicLightGallery( plugins.lightDynamicGalleryItem[i] );
-	}
 
 	/**
 	 * Particles canvas bg

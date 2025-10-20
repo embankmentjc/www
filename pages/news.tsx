@@ -1,6 +1,6 @@
 
 import Page from "../components/page"
-import React, {ReactNode} from "react";
+import React, {ReactNode, useState} from "react";
 
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import moment from "moment/moment";
@@ -9,6 +9,8 @@ import css from "./2024-events.module.scss";
 import A from "@rdub/next-base/a";
 import { Author, newsItems, Pretitle, NewsItem, } from "../components/news";
 import { Events2025 } from "./2025-events";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 
 function NewsletterSubscribe() {
     return (
@@ -60,19 +62,23 @@ function ConnectItem({ title, href, id, subtitle, img, footer, children, }: {
     footer?: ReactNode
     children: ReactNode
 }) {
+    const [lightboxOpen, setLightboxOpen] = useState(false)
     return <>
         <hr />
         <article className="post post-event">
             {
                 img &&
                 <header className="post-media">
-                    <div data-lightgallery="group">
-                        <a className="thumbnail-classic" data-lightgallery="item" href={img.src}>
-                            <figure>
-                                <img width="570" height="321" src={img.src} alt={img.alt} />
-                            </figure>
-                        </a>
+                    <div className="thumbnail-classic" onClick={() => setLightboxOpen(true)} style={{ cursor: 'pointer' }}>
+                        <figure>
+                            <img width="570" height="321" src={img.src} alt={img.alt} />
+                        </figure>
                     </div>
+                    <Lightbox
+                        open={lightboxOpen}
+                        close={() => setLightboxOpen(false)}
+                        slides={[{ src: img.src, alt: img.alt }]}
+                    />
                 </header>
             }
             <section className="post-content text-left offset-top-41">

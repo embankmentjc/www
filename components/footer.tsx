@@ -129,7 +129,7 @@ export default function Footer() {
             </div>
             <div className="container offset-top-50">
                 <p className="small text-darker">
-                    Embankment Preservation Coalition © <span className="copyright-year" />
+                    Embankment Preservation Coalition © {new Date().getFullYear()}
                 </p>
             </div>
         </footer>

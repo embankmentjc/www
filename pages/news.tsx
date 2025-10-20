@@ -14,7 +14,7 @@ import "yet-another-react-lightbox/styles.css";
 
 function NewsletterSubscribe() {
     return (
-        <section id="news-section-subscribe" className="section parallax-container context-light" data-parallax-img="/images/NEWS-SUBSCRIBE.jpg">
+        <section id="news-section-subscribe" className="section parallax-container context-light" style={{ backgroundImage: 'url(/images/NEWS-SUBSCRIBE.jpg)', backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="parallax-content section-98 section-md-110 bg-overlay-white">
                 <div className="container">
                     <h1>Subscribe to Our Newsletter</h1>

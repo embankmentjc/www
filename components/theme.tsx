@@ -3,6 +3,7 @@ import { H1, H2, H3 } from "@rdub/next-base/heading";
 import A from "@rdub/next-base/a";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { Parallax } from 'react-scroll-parallax';
 
 export function Brand({ className }: { className: string }) {
     return (
@@ -39,7 +40,7 @@ export function Figure({ src, alt, caption, border, }: Figure) {
             <div onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
                 <div {...thumbnail}>
                     <figure className="figure">
-                        <img {...img} width="570" height="321" src={src} alt={alt} style={{ border }} />
+                        <img {...img} src={src} alt={alt} style={{ border, width: '100%', height: 'auto' }} />
                         {figcaption}
                     </figure>
                 </div>
@@ -115,12 +116,12 @@ export function ConceptSectionBody({ figCols = 8, figure, children, images, ...f
     return (
         <>
             <div className="row justify-content-md-center offset-top-20">
-                <div className={`col-md-${figCols} col-lg-${figCols} inset-lg-right-80`}>
+                <div className={`col-md-${figCols} col-lg-${figCols} inset-lg-right-50`}>
                     {imagesToRender.map((img, idx) => (
                         <div key={idx} style={{ marginBottom: idx < imagesToRender.length - 1 ? '20px' : '0' }}>
                             {
                                 (figure === false)
-                                    ? <img className={"img-fluid element-fullwidth"} src={img.src} alt={img.alt} width="716" height="404" />
+                                    ? <img className={"img-fluid element-fullwidth"} src={img.src} alt={img.alt} style={{ width: '100%', height: 'auto' }} />
                                     : <header className="post-media">
                                         <Figure {...img} />
                                     </header>
@@ -198,7 +199,7 @@ export function ParallaxHeader({ title, embed, subtitle, subtitleChildren, img, 
         title = <h1 className="text-capitalize"><span className="big">{title}</span></h1>
     }
     return (
-        <section className={`section parallax-container bg-black ${className || ""}`} data-parallax-img={img}>
+        <section className={`section parallax-container bg-black ${className || ""}`} style={{ backgroundImage: `url(${img})`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="parallax-content context-dark">
                 <div className="container">
                     <div className="row align-items-sm-center justify-content-sm-center section-cover section-98 section-sm-110 text-lg-left context-dark">
@@ -225,7 +226,7 @@ export function ParallaxHeader({ title, embed, subtitle, subtitleChildren, img, 
 
 export function ParallaxSection1({ id, top = "-5em", title, img, children }: { id?: string, top?: string, title?: ReactNode, img: string, children?: ReactNode, }) {
     return (
-        <section className="section parallax-container" data-parallax-img={img}>
+        <section className="section parallax-container" style={{ backgroundImage: `url(${img})`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="parallax-content section-98 section-sm-124 bg-overlay-white">
                 <div className="container">
                     <div className="row justify-content-md-center">
@@ -251,7 +252,7 @@ export function ParallaxSection2({ title, id, top = "-5em", blurb, img, children
         blurb = <p>{blurb}</p>
     }
     return (
-        <section className="section parallax-container bg-black" data-parallax-img={img}>
+        <section className="section parallax-container bg-black" style={{ backgroundImage: `url(${img})`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="parallax-content section-98 section-sm-110 context-light">
                 <div className="container">
                     <h2 style={{ position: "relative" }}>

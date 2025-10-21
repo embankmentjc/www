@@ -10,12 +10,15 @@ import css from './banner-slider.module.css'
 
 export type Btn = { href: string, text: string }
 
-interface BannerSlideProps {
+export interface BannerSlideData {
     img: string
     alt: string
     title: string
     subtitle: string
     btns: Btn[]
+}
+
+interface BannerSlideProps extends BannerSlideData {
     onSlideClick: () => void
 }
 
@@ -41,7 +44,7 @@ function BannerSlide({ img, alt, title, subtitle, btns, onSlideClick }: BannerSl
 }
 
 interface BannerSliderProps {
-    slides: BannerSlideProps[]
+    slides: BannerSlideData[]
 }
 
 export default function BannerSlider({ slides }: BannerSliderProps) {
@@ -76,7 +79,7 @@ export default function BannerSlider({ slides }: BannerSliderProps) {
                 navigation={true}
                 loop={true}
                 className={css.swiper}
-                onSwiper={(swiper) => {
+                onSwiper={(swiper: SwiperType) => {
                     swiperRef.current = swiper
                 }}
             >

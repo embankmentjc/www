@@ -44,7 +44,6 @@ export function Modal() {
             className={`${css.modal} ${showModal ? "" : css.hidden}`}
             tabIndex={-1}
             role="dialog"
-            style={{top: "56px",}}
         >
             <div className={`modal-dialog modal-dialog-centered`} role="document" style={{zIndex: 1060}}>
                 <div

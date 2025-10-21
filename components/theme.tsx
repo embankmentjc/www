@@ -30,18 +30,28 @@ export type Figure = {
 }
 export function Figure({ src, alt, caption, border, lightboxSrc }: Figure) {
     const [open, setOpen] = useState(false)
-    const { thumbnail, img, figcaption }: any = caption ? {
-        img: { className: "figure-img img-fluid" },
-        figcaption: <figcaption className="figure-caption">{caption}</figcaption>,
-    } : {
-        thumbnail: { className: "thumbnail-classic" },
-    }
+    const imgClassName = caption ? "figure-img img-fluid" : undefined
+    const figcaption = caption ? (
+        <figcaption
+            className="figure-caption"
+            style={{
+                position: 'static',
+                transform: 'none',
+                padding: '0.5rem 0 0 0',
+                fontSize: '0.875rem',
+                color: '#6c757d'
+            }}
+        >
+            {caption}
+        </figcaption>
+    ) : null
+
     return (
         <>
             <div onClick={() => setOpen(true)} style={{ cursor: 'pointer' }}>
-                <div {...thumbnail}>
-                    <figure className="figure">
-                        <img {...img} src={src} alt={alt} style={{ border, width: '100%', height: 'auto' }} />
+                <div className="thumbnail-classic">
+                    <figure className="figure" style={{ marginBottom: '1rem' }}>
+                        <img className={imgClassName} src={src} alt={alt} style={{ border, width: '100%', height: 'auto' }} />
                         {figcaption}
                     </figure>
                 </div>

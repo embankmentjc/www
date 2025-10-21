@@ -45259,6 +45259,18 @@ html:not(.ie-11):not(.ios) .parallax-disabled {
 	top: 0 !important;
 }
 
+/* Safari navbar fixes */
+.rd-navbar-default.rd-navbar-static {
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+.rd-navbar-default.rd-navbar-static.rd-navbar--is-stuck {
+	background-color: #191919 !important;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
 /* Bridge the gap between menu item and dropdown for hover (desktop only) */
 .rd-navbar-static .rd-navbar--has-dropdown {
 	position: relative;

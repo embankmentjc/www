@@ -60,6 +60,7 @@ export function Figure({ src, alt, caption, border, lightboxSrc }: Figure) {
                 open={open}
                 close={() => setOpen(false)}
                 slides={[{ src: lightboxSrc || src, alt: alt || caption }]}
+                controller={{ closeOnBackdropClick: true }}
             />
         </>
     )

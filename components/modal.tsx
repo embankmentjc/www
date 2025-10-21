@@ -19,26 +19,34 @@ export function Modal() {
     }
 
     const [ showModal, setShowModal ] = useState(false)
-    useEffect(
-        () => {
-            if (!localStorage.getItem(modalSuppressedKey)) {
-                setShowModal(true)
+
+    useEffect(() => {
+        if (!localStorage.getItem(modalSuppressedKey)) {
+            setShowModal(true)
+        }
+    }, [])
+
+    useEffect(() => {
+        if (showModal) {
+            const listener = (e: MouseEvent) => {
+                const target = e.target as HTMLElement
+                if (!target.closest('.modal-dialog')) {
+                    setShowModal(false)
+                }
             }
-            const listener = () => { setShowModal(false) }
             document.addEventListener('click', listener)
             return () => document.removeEventListener('click', listener)
-        },
-        []
-    )
+        }
+    }, [showModal])
     return (
         <div
             id={id}
-            className={`modal ${css.modal} ${showModal ? "" : css.hidden}`}
+            className={`${css.modal} ${showModal ? "" : css.hidden}`}
             tabIndex={-1}
             role="dialog"
             style={{top: "56px",}}
         >
-            <div className={`modal-dialog modal-dialog-centered`} role="document">
+            <div className={`modal-dialog modal-dialog-centered`} role="document" style={{zIndex: 1060}}>
                 <div
                     className={`modal-content ${css.content}`}
                     onClick={e => { e.stopPropagation()}}

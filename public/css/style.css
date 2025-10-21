@@ -34964,18 +34964,6 @@ html.ios .rd-parallax.rd-parallax-disabled .rd-parallax-layer[data-type='custom'
 	position: relative;
 }
 
-.swiper-slide:after {
-	content: "";
-	position: absolute;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	top: 0;
-	background: rgba(25, 25, 25, 0.2);
-	transition: 1.2s;
-	transition-delay: 0.6s;
-	z-index: 1;
-}
 
 .swiper-slide .rd-video.rd-video-bg {
 	height: 100%;
@@ -45269,4 +45257,53 @@ html:not(.ie-11):not(.ios) .parallax-disabled {
 /* Ensure navbar starts at top when not stuck */
 .rd-navbar-default.rd-navbar-static:not(.rd-navbar--is-stuck) {
 	top: 0 !important;
+}
+
+/* Bridge the gap between menu item and dropdown for hover (desktop only) */
+.rd-navbar-static .rd-navbar--has-dropdown {
+	position: relative;
+}
+
+.rd-navbar-static .rd-navbar--has-dropdown::before {
+	content: '';
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	height: 30px;
+	z-index: 10;
+}
+
+/* Mobile submenu toggle button */
+.rd-navbar-submenu-toggle {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 56px;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	z-index: 20;
+	-webkit-tap-highlight-color: transparent;
+}
+
+.rd-navbar-submenu-toggle span {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 0;
+	height: 0;
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid white;
+	transition: transform 0.3s;
+	pointer-events: none;
+}
+
+.rd-navbar--has-dropdown.opened .rd-navbar-submenu-toggle span {
+	transform: translate(-50%, -50%) rotate(180deg);
 }

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination, EffectFade, Navigation } from 'swiper/modules'
+import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/effect-fade'
@@ -15,11 +16,12 @@ interface BannerSlideProps {
     title: string
     subtitle: string
     btns: Btn[]
+    onSlideClick: () => void
 }
 
-function BannerSlide({ img, alt, title, subtitle, btns }: BannerSlideProps) {
+function BannerSlide({ img, alt, title, subtitle, btns, onSlideClick }: BannerSlideProps) {
     return (
-        <div className={css.slide} style={{ backgroundImage: `url(${img})` }}>
+        <div className={css.slide} style={{ backgroundImage: `url(${img})` }} onClick={onSlideClick}>
             <div className={css.overlay} />
             <div className={css.content}>
                 <div className={css.container}>
@@ -27,7 +29,7 @@ function BannerSlide({ img, alt, title, subtitle, btns }: BannerSlideProps) {
                     <h4 className={css.subtitle}>{subtitle}</h4>
                     <div className={css.buttons}>
                         {btns.map((btn, key) => (
-                            <a key={key} href={btn.href} className={`btn btn-primary btn-lg btn-anis-effect ${css.btn}`}>
+                            <a key={key} href={btn.href} className={`btn btn-primary btn-lg btn-anis-effect ${css.btn}`} onClick={(e) => e.stopPropagation()}>
                                 <span className="btn-text">{btn.text}</span>
                             </a>
                         ))}
@@ -43,6 +45,22 @@ interface BannerSliderProps {
 }
 
 export default function BannerSlider({ slides }: BannerSliderProps) {
+    const [isPaused, setIsPaused] = useState(false)
+    const swiperRef = useRef<SwiperType | null>(null)
+
+    const toggleAutoplay = () => {
+        if (swiperRef.current?.autoplay) {
+            if (isPaused) {
+                console.log('Carousel: resuming autoplay')
+                swiperRef.current.autoplay.start()
+            } else {
+                console.log('Carousel: pausing autoplay')
+                swiperRef.current.autoplay.stop()
+            }
+            setIsPaused(!isPaused)
+        }
+    }
+
     return (
         <div className={css.sliderWrapper}>
             <Swiper
@@ -58,10 +76,13 @@ export default function BannerSlider({ slides }: BannerSliderProps) {
                 navigation={true}
                 loop={true}
                 className={css.swiper}
+                onSwiper={(swiper) => {
+                    swiperRef.current = swiper
+                }}
             >
                 {slides.map((slide, index) => (
                     <SwiperSlide key={index}>
-                        <BannerSlide {...slide} />
+                        <BannerSlide {...slide} onSlideClick={toggleAutoplay} />
                     </SwiperSlide>
                 ))}
             </Swiper>

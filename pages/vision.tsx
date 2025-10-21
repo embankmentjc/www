@@ -76,24 +76,24 @@ export default function Body() {
             </ConceptSection>
 
             <ConceptSection title={"Blocks 2+6: Meadows"} images={[
-                { src: "/images/2025-renders/30p/2025.10.18_Block_2_Active_Landscape_Aerial_30p.jpeg", alt: "Block 2 active landscape aerial view", caption: "Credit: Jake Lefeber and Aaron Teves" },
-                { src: "/images/2025-renders/30p/2025.10.18_Block_2_Active_Landscape_Interior_30p.jpeg", alt: "Block 2 active landscape interior view", caption: "Credit: Jake Lefeber and Aaron Teves" },
+                { src: "/images/2025-renders/30p/2025.10.18_Block_2_Active_Landscape_Aerial_30p.jpeg", lightboxSrc: "/images/2025-renders/50p/2025.10.18_Block_2_Active_Landscape_Aerial_50p.jpeg", alt: "Block 2 active landscape aerial view", caption: "Credit: Jake Lefeber and Aaron Teves" },
+                { src: "/images/2025-renders/30p/2025.10.18_Block_2_Active_Landscape_Interior_30p.jpeg", lightboxSrc: "/images/2025-renders/50p/2025.10.18_Block_2_Active_Landscape_Interior_50p.jpeg", alt: "Block 2 active landscape interior view", caption: "Credit: Jake Lefeber and Aaron Teves" },
             ]}>
                 <p>The Coalition envisions Blocks 2 and 6 as "active landscapes" for community recreation. Because preliminary soil testing indicated some contaminants, we anticipate that Block 2 will be remediated and capped with residential soil. Our goal is to see a new landscape compatible with a conserved landscape on other blocks. On the eastern side of Block 2, for example, we see meadows that "fade" into a forest at the west end of the Block.</p>
                 <p>This constructed landscape and any amenities like playgrounds should be in the spirit of national park design, "harmonious with park resources, compatible with natural processes, aesthetically pleasing, functional, energy- and water-efficient, cost-effective, universally designed, and as welcoming as possible to all segments of the population."</p>
             </ConceptSection>
 
             <ConceptSection title={"Blocks 3,4+5: Forest"} images={[
-                { src: "/images/2025-renders/30p/2025.10.18_Block_5_Passive_Landscape_Aerial_30p.jpeg", alt: "Block 5 passive landscape aerial view", caption: "Credit: Jake Lefeber and Aaron Teves" },
-                { src: "/images/2025-renders/30p/2025.10.18_Block_5_Passive_Landscape_30p.jpeg", alt: "Block 5 passive landscape view", caption: "Credit: Jake Lefeber and Aaron Teves" },
+                { src: "/images/2025-renders/30p/2025.10.18_Block_5_Passive_Landscape_Aerial_30p.jpeg", lightboxSrc: "/images/2025-renders/50p/2025.10.18_Block_5_Passive_Landscape_Aerial_50p.jpeg", alt: "Block 5 passive landscape aerial view", caption: "Credit: Jake Lefeber and Aaron Teves" },
+                { src: "/images/2025-renders/30p/2025.10.18_Block_5_Passive_Landscape_30p.jpeg", lightboxSrc: "/images/2025-renders/50p/2025.10.18_Block_5_Passive_Landscape_50p.jpeg", alt: "Block 5 passive landscape view", caption: "Credit: Jake Lefeber and Aaron Teves" },
             ]}>
                 <p>As envisioned by the Coalition, Harsimus Embankment Blocks 3, 4, and 5 are largely "passive landscapes" that conserve the forest. A trail located on the north side of the blocks will branch into narrower paths that venture into the woods.</p>
                 <p>These meandering paths will contain places of interest ("moments") along them. The intention is to provide a diversity of experiences - educational, inspiring, or peaceful - for those who amble along them. Soil remediation mapping will guide the routing design.</p>
             </ConceptSection>
 
             <ConceptSection title={"All Blocks: Land Bridges"} images={[
-                { src: "/images/2025-renders/30p/2025.10.19_Bridge_Aerial_30p.jpeg", alt: "Bridge aerial view", caption: "Credit: Jake Lefeber and Aaron Teves" },
-                { src: "/images/2025-renders/30p/2025.10.19_Bridge_Ramp_30p.jpeg", alt: "Bridge ramp access", caption: "Credit: Jake Lefeber and Aaron Teves" },
+                { src: "/images/2025-renders/30p/2025.10.19_Bridge_Aerial_30p.jpeg", lightboxSrc: "/images/2025-renders/50p/2025.10.19_Bridge_Aerial_50p.jpeg", alt: "Bridge aerial view", caption: "Credit: Jake Lefeber and Aaron Teves" },
+                { src: "/images/2025-renders/30p/2025.10.19_Bridge_Ramp_30p.jpeg", lightboxSrc: "/images/2025-renders/50p/2025.10.19_Bridge_Ramp_50p.jpeg", alt: "Bridge ramp access", caption: "Credit: Jake Lefeber and Aaron Teves" },
             ]}>
                 <p>The Coalition envisions broad welcoming access to the eastern Embankment block. A grand staircase set back from the corner of Marin Boulevard and 6th Street would bring the public up into a 30-foot-wide public right-of-way. An ADA-compliant elevator would provide alternative access.</p>
                 <p>The ROW would combine permeable hardscape and landscape areas that could act as habitat stepping stones.  This "land bridge" would introduce visitors to the lusher meadows they will encounter when they cross a bridge into the public park on Block 2, Manila Avenue to Erie Street.</p>

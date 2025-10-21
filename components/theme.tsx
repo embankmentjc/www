@@ -26,8 +26,9 @@ export type Figure = {
     alt?: string
     caption?: string
     border?: string
+    lightboxSrc?: string
 }
-export function Figure({ src, alt, caption, border, }: Figure) {
+export function Figure({ src, alt, caption, border, lightboxSrc }: Figure) {
     const [open, setOpen] = useState(false)
     const { thumbnail, img, figcaption }: any = caption ? {
         img: { className: "figure-img img-fluid" },
@@ -48,7 +49,7 @@ export function Figure({ src, alt, caption, border, }: Figure) {
             <Lightbox
                 open={open}
                 close={() => setOpen(false)}
-                slides={[{ src, alt: alt || caption }]}
+                slides={[{ src: lightboxSrc || src, alt: alt || caption }]}
             />
         </>
     )

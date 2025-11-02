@@ -229,6 +229,7 @@ function Supporters() {
                             supporters={[
                                 { name: "Bergen Arches Preservation Alliance", href: "https://www.bergenarches.com/", },
                                 { name: "Enos Jones Park Association", href: "https://www.jonespark.org/", },
+                                { name: "Jersey City Birds", href: "https://www.jerseycitybirds.com/", },
                                 { name: "Jersey City Landmarks Conservancy", href: "http://jclandmarks.org", },
                                 { name: "Jersey City Parks Coalition", href: "http://jcparks.org", },
                                 { name: "Jersey City Reservoir Preservation Alliance", href: "https://www.jcreservoir.org", },

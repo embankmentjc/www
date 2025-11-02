@@ -62,7 +62,7 @@ function base64url_encode($data) {
 }
 
 // Exchange JWT for access token
-function getAccessToken($credentials) {
+function getGoogleAccessToken($credentials) {
     $jwt = generateJWT($credentials);
     if (!$jwt) {
         return null;
@@ -96,7 +96,7 @@ function appendToSheet($spreadsheetId, $sheetName, $values) {
         return false;
     }
 
-    $accessToken = getAccessToken($credentials);
+    $accessToken = getGoogleAccessToken($credentials);
     if (!$accessToken) {
         return false;
     }

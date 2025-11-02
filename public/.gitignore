@@ -2,4 +2,5 @@
 bat/.cc-config.json
 bat/.cc-tokens.json
 bat/.rd-mailform.config.json
+bat/.google-service-account.json
 bat/signups.log

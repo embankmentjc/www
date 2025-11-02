@@ -172,6 +172,25 @@ function logSignupToFile($email, $firstName, $lastName, $phone, $message) {
     return true;
 }
 
+// Append signup to Google Sheet
+function appendToGoogleSheet($email, $firstName, $lastName, $phone, $message) {
+    // Load the Google Sheets append helper
+    require_once __DIR__ . '/google-sheets-append.php';
+
+    $spreadsheetId = '1IO6K_JXvo4eTGu5bmIeV38XpQUjVZfGgbEYSRPd1WME';
+    $sheetName = 'Website Signups'; // Tab name in your spreadsheet
+
+    $row = array(
+        date('Y-m-d H:i:s'),                    // Timestamp
+        trim($firstName . ' ' . $lastName),     // Full name
+        $email,                                  // Email
+        $phone ? $phone : '',                    // Phone (optional)
+        $message ? $message : ''                 // Message (optional)
+    );
+
+    return appendToSheet($spreadsheetId, $sheetName, $row);
+}
+
 // Send email notification using PHPMailer
 function sendEmailNotification($emailConfig, $email, $firstName, $lastName, $phone, $message) {
     if (!$emailConfig || !$emailConfig['useSmtp']) {
@@ -252,6 +271,9 @@ try {
 
     // Always log signup to file
     logSignupToFile($email, $firstName, $lastName, $phone, $message);
+
+    // Try to append to Google Sheet
+    appendToGoogleSheet($email, $firstName, $lastName, $phone, $message);
 
     // Try to send email notification (will fail if SMTP blocked, but that's OK)
     if ($emailConfig) {

@@ -7,8 +7,9 @@ type Field = {
     label: string
     id?: string
     cols?: number
+    required?: boolean
 }
-function Field({ label, id, cols = 6 }: Field) {
+function Field({ label, id, cols = 6, required = true }: Field) {
     id = id || label.replace(" ", "-").toLowerCase()
     const name = id.replace('-', '')
     const Elem = cols == 12 ? "textarea" : "input"
@@ -16,7 +17,7 @@ function Field({ label, id, cols = 6 }: Field) {
         <div className={`col-md-${cols}`}>
             <div className="form-group offset-md-top-30">
                 <label className="form-label" htmlFor={`git-3-mailform-${id}`}>{label}</label>
-                <Elem className="form-control bg-default" id={`git-3-mailform-${id}`} type="text" name={name} data-constraints="@Required" />
+                <Elem className="form-control bg-default" id={`git-3-mailform-${id}`} type="text" name={name} data-constraints={required ? "@Required" : ""} />
             </div>
         </div>
     )
@@ -29,15 +30,15 @@ function SignupForm() {
                 <div className="row justify-content-sm-center">
                     <div className="col-sm-10 col-lg-8">
                         {/* RD Mailform */}
-                        <form className="rd-mailform text-left" data-form-output="form-output-global" data-form-type="contact" method="post" action="/bat/cc-signup.php">
+                        <form className="rd-mailform text-left" data-form-output="form-output-global" data-form-type="contact" method="post" action="/bat/cc-signup-with-email.php">
                             <div className="row justify-content-sm-center">
                                 {
                                     [
                                         { label: "First name", },
                                         { label: "Last name", },
-                                        { label: "Phone", },
+                                        { label: "Phone", required: false, },
                                         { label: "Email", },
-                                        { label: "Background", id: "message", cols: 12, },
+                                        { label: "Background", id: "message", cols: 12, required: false, },
                                     ].map(field => <Field key={field.label} {...field} />)
                                 }
                             </div>

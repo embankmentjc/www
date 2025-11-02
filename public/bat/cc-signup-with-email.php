@@ -148,6 +148,30 @@ function addContactToList($config, $email, $firstName = '', $lastName = '', $pho
     return array('success' => false, 'error' => 'API_FAILED', 'http_code' => $httpCode);
 }
 
+// Log signup to file
+function logSignupToFile($email, $firstName, $lastName, $phone, $message) {
+    $logFile = __DIR__ . '/signups.log';
+    $timestamp = date('Y-m-d H:i:s');
+
+    $entry = "\n=== Signup: $timestamp ===\n";
+    if ($firstName || $lastName) {
+        $entry .= "Name: $firstName $lastName\n";
+    }
+    $entry .= "Email: $email\n";
+    if ($phone) {
+        $entry .= "Phone: $phone\n";
+    }
+    if ($message) {
+        $entry .= "Background/Message:\n$message\n";
+    }
+    $entry .= "=========================\n";
+
+    file_put_contents($logFile, $entry, FILE_APPEND | LOCK_EX);
+    chmod($logFile, 0600); // Read/write for owner only
+
+    return true;
+}
+
 // Send email notification using PHPMailer
 function sendEmailNotification($emailConfig, $email, $firstName, $lastName, $phone, $message) {
     if (!$emailConfig || !$emailConfig['useSmtp']) {
@@ -159,7 +183,10 @@ function sendEmailNotification($emailConfig, $email, $firstName, $lastName, $pho
 
     $mail = new PHPMailer();
     $mail->isSMTP();
-    $mail->SMTPDebug = 0;
+    $mail->SMTPDebug = 2; // Enable verbose debug output
+    $mail->Debugoutput = function($str, $level) {
+        error_log("SMTP Debug [$level]: $str");
+    };
     $mail->Host = $emailConfig['host'];
     $mail->Port = $emailConfig['port'];
     $mail->SMTPAuth = true;
@@ -169,25 +196,36 @@ function sendEmailNotification($emailConfig, $email, $firstName, $lastName, $pho
 
     $mail->setFrom($emailConfig['username'], 'Embankment Website');
     $mail->addAddress($emailConfig['recipientEmail']);
-    $mail->Subject = 'New Volunteer Signup';
 
-    $body = "New volunteer signup from the website:\n\n";
-    $body .= "Name: $firstName $lastName\n";
+    // Different subject based on whether it's a volunteer or newsletter signup
+    if ($message) {
+        $mail->Subject = 'New Volunteer Signup';
+    } else {
+        $mail->Subject = 'New Email Signup';
+    }
+
+    $body = "New signup from the website:\n\n";
+    if ($firstName || $lastName) {
+        $body .= "Name: $firstName $lastName\n";
+    }
     $body .= "Email: $email\n";
     if ($phone) {
         $body .= "Phone: $phone\n";
     }
     if ($message) {
-        $body .= "\nBackground:\n$message\n";
+        $body .= "\nBackground/Message:\n$message\n";
     }
 
     $mail->Body = $body;
+
+    error_log("Attempting to send email to {$emailConfig['recipientEmail']} for signup: $email");
 
     if (!$mail->send()) {
         error_log("Email send failed: " . $mail->ErrorInfo);
         return false;
     }
 
+    error_log("Email sent successfully for signup: $email");
     return true;
 }
 
@@ -212,8 +250,11 @@ try {
     $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
     $message = isset($_POST['message']) ? $_POST['message'] : '';
 
-    // If there's a message (volunteer signup), send email notification
-    if ($message && $emailConfig) {
+    // Always log signup to file
+    logSignupToFile($email, $firstName, $lastName, $phone, $message);
+
+    // Try to send email notification (will fail if SMTP blocked, but that's OK)
+    if ($emailConfig) {
         sendEmailNotification($emailConfig, $email, $firstName, $lastName, $phone, $message);
     }
 

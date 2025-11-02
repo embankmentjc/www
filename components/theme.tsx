@@ -413,16 +413,16 @@ export function IconBoxesSection(
 export function Banner({ id, top = "-5em", title, icon, children, }: { id?: string, top?: string, title: string, icon: string, children?: ReactNode, }) {
     return (
         <section className="section breadcrumb-classic">
+            {id && <span id={id} style={{ position: "absolute", top }} />}
             <div className="container section-34 section-sm-50">
                 <div className="row align-items-xl-center">
-                    <div className="col-xl-5 d-none d-xl-block text-xl-left">
-                        <h2 style={{ position: "relative" }}>
-                            {id && <span id={id} style={{ position: "absolute", top }} />}
+                    <div className="col-12 col-xl-5 text-center text-xl-left">
+                        <h2>
                             <span className="big">{title}</span>
                         </h2>
                     </div>
-                    <div className="col-xl-2 d-none d-md-block"><span className={`icon icon-white mdi mdi-${icon}`}></span></div>
-                    <div className="offset-top-0 offset-md-top-10 col-xl-5 offset-xl-top-0 small text-xl-right">
+                    <div className="col-xl-2 d-none d-xl-block text-center"><span className={`icon icon-white mdi mdi-${icon}`}></span></div>
+                    <div className="col-12 offset-top-10 col-xl-5 offset-xl-top-0 small text-center text-xl-right">
                         {children}
                     </div>
                 </div>

@@ -1,1 +1,4 @@
-bat
+# Ignore sensitive config and token files
+bat/.cc-config.json
+bat/.cc-tokens.json
+bat/.rd-mailform.config.json

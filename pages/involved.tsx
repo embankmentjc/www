@@ -13,11 +13,20 @@ function Field({ label, id, cols = 6, required = true }: Field) {
     id = id || label.replace(" ", "-").toLowerCase()
     const name = id.replace('-', '')
     const Elem = cols == 12 ? "textarea" : "input"
+    const props: any = {
+        className: "form-control bg-default",
+        id: `git-3-mailform-${id}`,
+        type: "text",
+        name: name
+    }
+    if (required) {
+        props['data-constraints'] = "@Required"
+    }
     return (
         <div className={`col-md-${cols}`}>
             <div className="form-group offset-md-top-30">
                 <label className="form-label" htmlFor={`git-3-mailform-${id}`}>{label}</label>
-                <Elem className="form-control bg-default" id={`git-3-mailform-${id}`} type="text" name={name} data-constraints={required ? "@Required" : ""} />
+                <Elem {...props} />
             </div>
         </div>
     )

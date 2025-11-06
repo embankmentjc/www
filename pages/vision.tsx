@@ -69,7 +69,7 @@ export default function Body() {
 
             <ConceptSection title={"Ecological Path"} images={[
                 { src: "/images/2025-renders/50p/2025.10.19_Embankment_Plan_Blocks_50p.jpeg", alt: "Embankment plan showing blocks", caption: "Credit: Jake Lefeber and Aaron Teves" },
-                { src: "/images/2025-renders/50p/2025.10.19_Embankment_Plan_Zones_50p.jpeg", alt: "Embankment plan showing ecological zones", caption: "Credit: Jake Lefeber and Aaron Teves" },
+                { src: "/images/2025-renders/50p/2025.11.05_Updated_Site Axon_Vignettes_50p.jpg", alt: "Embankment plan showing ecological zones", caption: "Credit: Jake Lefeber and Aaron Teves" },
             ]}>
                 <p>The Coalition vision for Harsimus Embankment design is to slowly draw pedestrians and bicyclists in from city streets through narrow passages of green that widen into lush green meadows and then build up into woods where urban sights and sounds drop away. The forest will  transport its visitors to a world removed from typical city stressors.</p>
                 <p>Meadows at each end of the forest will be "active" landscapes that serve as community gathering spaces and incorporate areas for recreation and children's play. The forest is a "passive landscape" where wanderers can explore a path through woods, pause at spots of interest, and contemplate light, birdsong, and the movement of rustling trees - respite from busy urban life.</p>
@@ -93,7 +93,8 @@ export default function Body() {
 
             <ConceptSection title={"All Blocks: Land Bridges"} images={[
                 { src: "/images/2025-renders/30p/2025.10.19_Bridge_Aerial_30p.jpeg", lightboxSrc: "/images/2025-renders/50p/2025.10.19_Bridge_Aerial_50p.jpeg", alt: "Bridge aerial view", caption: "Credit: Jake Lefeber and Aaron Teves" },
-                { src: "/images/2025-renders/30p/2025.10.19_Bridge_Ramp_30p.jpeg", lightboxSrc: "/images/2025-renders/50p/2025.10.19_Bridge_Ramp_50p.jpeg", alt: "Bridge ramp access", caption: "Credit: Jake Lefeber and Aaron Teves" },
+                { src: "/images/2025-renders/30p/EPC_BRIDGE_STREETVIEW_JLAT_30p.JPG", lightboxSrc: "/images/2025-renders/50p/EPC_BRIDGE_STREETVIEW_JLAT_50p.JPG", alt: "Bridge street view", caption: "Credit: Jake Lefeber and Aaron Teves" },
+                { src: "/images/2025-renders/30p/2025.11.05_Bridge_Perspective_30p.jpg", lightboxSrc: "/images/2025-renders/50p/2025.11.05_Bridge_Perspective_50p.jpg", alt: "Bridge ramp access", caption: "Credit: Jake Lefeber and Aaron Teves" },
             ]}>
                 <p>The Coalition envisions broad welcoming access to the eastern Embankment block. A grand staircase set back from the corner of Marin Boulevard and 6th Street would bring the public up into a 30-foot-wide public right-of-way. An ADA-compliant elevator would provide alternative access.</p>
                 <p>The ROW would combine permeable hardscape and landscape areas that could act as habitat stepping stones.  This "land bridge" would introduce visitors to the lusher meadows they will encounter when they cross a bridge into the public park on Block 2, Manila Avenue to Erie Street.</p>

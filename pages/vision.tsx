@@ -49,7 +49,7 @@ export default function Body() {
                 <p>The Embankment Coalition vision for the Harsimus Branch and its Embankment preserves much of this forest and opens it to Jersey City residents for sensitive reuse. While part of the corridor is reserved for possible future light rail, residents can enjoy, on foot and by bike, a naturally occurring wilderness in their own backyards.</p>
             </ParallaxSection1>
 
-            <ConceptSection id={"vision-section-concept"} title={"Light Touch"} src={"/images/homepage-slides/50p/forest-view.jpeg"} pre={<>
+            <ConceptSection id={"vision-section-concept"} title={"Light Touch"} src={"/images/homepage-slides/50p/forest-view.jpeg"} caption={"Credit: Sean A. Gallagher"} pre={<>
                 <h1>Design Concept</h1>
                 <hr className="divider bg-mantis" />
             </>}>
@@ -57,12 +57,12 @@ export default function Body() {
                 <p>All elements proposed for the Harsimus Branch should be consistent with a design language that speaks to the identity of the Branch’s various segments. Design must consider potential future light rail use and not preclude that addition.</p>
             </ConceptSection>
 
-            <ConceptSection title={"Continuous Corridor"} src={"/images/VISION-MASTERPLAN.jpg"}>
+            <ConceptSection title={"Continuous Corridor"} src={"/images/VISION-MASTERPLAN.jpg"} caption={"Credit: Sean A. Gallagher"}>
                 <p>The Harsimus Branch is a rail right-of-way  (ROW) from Marin Boulevard in Downtown Jersey City to Waldo Avenue in the Hilltop area.  Loosely parallel to it is the old Erie Railroad ROW through the Bergen Arches.  A third ROW, the River Line trestle over Newark Avenue, could be used to join the two in a continuous corridor. The Coalition vision relies on the preservation of this – now green – infrastructure for future economic and environmental resilience for Jersey City.</p>
                 <p>Together, these segments create a continuous corridor for the East Coast Greenway to run off-road through our densely built-out city. The Greenway will run from Marin Boulevard to Brunswick Street over the Embankment, continue across Newark Avenue and along Mary Benson Park on existing stanchions, and turn north on the River Line Connector, to bring pedestrians and bicyclists to the Bergen Arches. Additional trails will connect to this spine.</p>
             </ConceptSection>
 
-            <ConceptSection title={"Stepping Stone Landscapes"} src={"/images/VISION-LIGHT-TOUCH.jpg"}>
+            <ConceptSection title={"Stepping Stone Landscapes"} src={"/images/VISION-LIGHT-TOUCH.jpg"} caption={"Credit: Sean A. Gallagher"}>
                 <p>Ill-considered land use policies and practices, exacerbated by climate change, are fragmenting natural habitats around the world, resulting in species extinction and an exponential decrease in biodiversity. Stepping stone landscapes, or patches of habitat close enough together to lessen the impact of fragmentation, can connect larger habitat areas in a region, allowing species to move between them for food and refuge. </p>
                 <p>Former rail rights-of-way provide excellent opportunities for  wildlife corridors. The challenge for the Harsimus Branch is that it will serve multiple purposes, including some development, recreation, and habitat.  The Coalition believes that landscaping of development on the easternmost Embankment block should be integrated with passive recreation on the next block, forest on the next three blocks, and passive recreation on the last elevated segment.  Pocket landscapes, or stepping stones, would mitigate active uses. Creatures as large as red tail hawks and as small as the monarch butterfly, which relies on habitat along its migratory route from Canada to Mexico, will benefit, as will their stewards. </p>
             </ConceptSection>
@@ -182,7 +182,7 @@ export default function Body() {
                 ]}
                 fig={{
                     src: "/images/IMG_2466.jpg",
-                    caption: "Drawing by Sean Gallagher",
+                    caption: "Drawing by Sean A. Gallagher",
                     border: "0.5em solid #86bf67",
                 }}
             >

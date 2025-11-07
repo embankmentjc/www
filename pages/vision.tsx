@@ -9,6 +9,7 @@ import {
 } from "../components/theme";
 import React from "react";
 import { becomeMemberId, donateId, sponsorsId, visionId, volunteerId } from "../components/ids";
+import { H1 } from "@rdub/next-base/heading";
 
 export default function Body() {
   return (
@@ -50,7 +51,7 @@ export default function Body() {
       </ParallaxSection1>
 
       <ConceptSection id={"vision-section-concept"} title={"Light Touch"} src={"/images/homepage-slides/50p/forest-view.jpeg"} caption={"Credit: Sean A. Gallagher"} pre={<>
-        <h1>Design Concept</h1>
+        <H1 id="design-concept">Design Concept</H1>
         <hr className="divider bg-mantis" />
       </>}>
         <p>A “light touch” should guide the design of the Harsimus Branch from beginning to end. Design decisions, informed by Secretary of the Interior standards, should preserve the historic integrity of the Embankment while minimizing disturbance to thriving ecosystems. By carefully routing trails and amenities, a light-touch approach reduces damage to existing habitat, limits long-term maintenance needs, and contains development costs—allowing nature and human use to coexist harmoniously.</p>

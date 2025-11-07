@@ -237,13 +237,20 @@ export function ParallaxHeader({ title, embed, subtitle, subtitleChildren, img, 
 }
 
 export function ParallaxSection1({ id, top = "-5em", title, img, children }: { id?: string, top?: string, title?: ReactNode, img: string, children?: ReactNode, }) {
+    const headingId = id || (typeof title === 'string' ? title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') : undefined)
+    const isStringTitle = typeof title === 'string'
     return (
         <section className="section parallax-container" style={{ backgroundImage: `url(${img})`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="parallax-content section-98 section-sm-124 bg-overlay-white">
                 <div className="container">
                     <div className="row justify-content-md-center">
                         <div className="col-md-10">
-                            {title && (
+                            {title && isStringTitle && (
+                                <H1 id={headingId} style={{ position: "relative" }}>
+                                    {title}
+                                </H1>
+                            )}
+                            {title && !isStringTitle && (
                                 <h1 style={{ position: "relative" }}>
                                     {id && <span id={id} style={{ position: "absolute", top }} />}
                                     {title}
@@ -259,18 +266,18 @@ export function ParallaxSection1({ id, top = "-5em", title, img, children }: { i
     )
 }
 
-export function ParallaxSection2({ title, id, top = "-5em", blurb, img, children, }: { title: string, id: string, top?: string, blurb: ReactNode, img: string, children?: ReactNode, }) {
+export function ParallaxSection2({ title, id, top = "-5em", blurb, img, children, }: { title: string, id?: string, top?: string, blurb: ReactNode, img: string, children?: ReactNode, }) {
     if (typeof blurb === 'string') {
         blurb = <p>{blurb}</p>
     }
+    const headingId = id || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
     return (
         <section className="section parallax-container bg-black" style={{ backgroundImage: `url(${img})`, backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className="parallax-content section-98 section-sm-110 context-light">
                 <div className="container">
-                    <h2 style={{ position: "relative" }}>
-                        {id && <span id={id} style={{ position: "absolute", top }} />}
+                    <H2 id={headingId} style={{ position: "relative" }}>
                         <span className="big">{title}</span>
-                    </h2>
+                    </H2>
                     <hr className="divider divider-lg bg-mantis" />
                     <div className="row justify-content-center offset-top-24">
                         <div className="col-sm-10 col-xl-8">{blurb}</div>

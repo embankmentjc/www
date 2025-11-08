@@ -3,4 +3,5 @@ out-dev
 out-prod
 .next
 .next-dev
+.next-prod
 .vercel

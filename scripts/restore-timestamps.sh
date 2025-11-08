@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
-# Restore timestamps on out/ files to match their source files in public/
+# Restore timestamps on build output files to match their source files in public/
 # This prevents rsync from re-copying unchanged static files
 
 set -e
 
-if [ ! -d "out" ]; then
-    echo "Error: out/ directory not found" >&2
+# Accept directory as first argument, default to "out"
+outdir="${1:-out}"
+
+if [ ! -d "$outdir" ]; then
+    echo "Error: $outdir/ directory not found" >&2
     exit 1
 fi
 
@@ -18,19 +21,19 @@ fi
 tmpfile=$(mktemp)
 echo 0 > "$tmpfile"
 
-# Handle files directly copied from public/ to out/
+# Handle files directly copied from public/ to output dir
 while IFS= read -r -d '' outfile; do
-    # Convert out/foo/bar to public/foo/bar
-    pubfile="public/${outfile#out/}"
+    # Convert .next-prod/foo/bar to public/foo/bar
+    pubfile="public/${outfile#$outdir/}"
     if [ -f "$pubfile" ]; then
         touch -r "$pubfile" "$outfile"
         echo $(($(cat "$tmpfile") + 1)) > "$tmpfile"
     fi
-done < <(find out -type f -not -path "out/_next/*" -print0)
+done < <(find "$outdir" -type f -not -path "$outdir/_next/*" -print0)
 
-# Handle files bundled into out/_next/static/media/
+# Handle files bundled into _next/static/media/
 # These are named like: originalname.hash.ext
-if [ -d "out/_next/static/media" ]; then
+if [ -d "$outdir/_next/static/media" ]; then
     while IFS= read -r -d '' outfile; do
         basename=$(basename "$outfile")
         # Extract original filename by removing hash: "633328.2968b834.png" -> "633328.png"
@@ -44,10 +47,10 @@ if [ -d "out/_next/static/media" ]; then
                 echo $(($(cat "$tmpfile") + 1)) > "$tmpfile"
             fi
         fi
-    done < <(find out/_next/static/media -type f -print0)
+    done < <(find "$outdir/_next/static/media" -type f -print0)
 fi
 
 count=$(cat "$tmpfile")
 rm "$tmpfile"
 
-echo "Restored timestamps for $count files from public/ to out/"
+echo "Restored timestamps for $count files from public/ to $outdir/"

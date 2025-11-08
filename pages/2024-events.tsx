@@ -1,7 +1,7 @@
 import Page from "../components/page"
 import css from "./2024-events.module.scss"
 import React from "react";
-import { H4, H5 } from "@rdub/next-base/heading";
+import { H4, H5 } from "@rdub/base/heading";
 import { MailTo } from "../components/mailto";
 
 export function Events2024() {

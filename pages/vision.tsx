@@ -9,7 +9,7 @@ import {
 } from "../components/theme";
 import React from "react";
 import { becomeMemberId, donateId, sponsorsId, visionId, volunteerId } from "../components/ids";
-import { H1 } from "@rdub/next-base/heading";
+import { H1 } from "@rdub/base/heading";
 
 export const ogMetadata = {
   title: "Our Vision - The Embankment",

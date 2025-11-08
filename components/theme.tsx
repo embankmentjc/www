@@ -1,5 +1,5 @@
 import React, {CSSProperties, ReactNode, useState} from "react";
-import { H1, H2, H3 } from "@rdub/next-base/heading";
+import { H1, H2, H3 } from "@rdub/base/heading";
 import A from "@rdub/next-base/a";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";

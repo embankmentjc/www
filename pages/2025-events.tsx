@@ -1,7 +1,7 @@
 import Page from "../components/page"
 import css from "./2025-events.module.scss"
 import React from "react";
-import { H4, H5 } from "@rdub/next-base/heading";
+import { H4, H5 } from "@rdub/base/heading";
 import A from "@rdub/next-base/a";
 import { mayoral2025Eventbrite, mayoral2025Form } from "./mayoral-2025";
 

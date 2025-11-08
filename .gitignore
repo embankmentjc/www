@@ -1,3 +1,6 @@
 out
+out-dev
+out-prod
 .next
+.next-dev
 .vercel

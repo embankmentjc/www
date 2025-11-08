@@ -10,6 +10,12 @@ import { becomeMemberId, donateId, visionId } from "../components/ids";
 import css from "./index.module.scss"
 import BannerSlider from "../components/banner-slider";
 
+export const ogMetadata = {
+    title: "The Embankment - Preserving Jersey City's Green Corridor",
+    description: "Join the Embankment Preservation Coalition in transforming Jersey City's historic Harsimus Branch into a vibrant green corridor connecting neighborhoods with nature, history, and the East Coast Greenway.",
+    image: "/images/og/home.jpg",
+}
+
 export async function getStaticProps(context: any) {
     return {
         props: {}, // will be passed to the page component as props
@@ -173,9 +179,9 @@ export default function Body() {
             path="/"
             headerChildren={<BannerSlides/>}
             modal={true}
-            title="The Embankment - Preserving Jersey City's Green Corridor"
-            description="Join the Embankment Preservation Coalition in transforming Jersey City's historic Harsimus Branch into a vibrant green corridor connecting neighborhoods with nature, history, and the East Coast Greenway."
-            ogImage="/images/og/home.jpg"
+            title={ogMetadata.title}
+            description={ogMetadata.description}
+            ogImage={ogMetadata.image}
         >
             <IntroSectionWhat/>
             <GradientHeader

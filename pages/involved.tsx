@@ -3,6 +3,12 @@ import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/t
 import React, {CSSProperties} from "react";
 import { becomeMemberId, donateId, endorsementsId, partnersId, signupId, sponsorsId, volunteerId } from "../components/ids";
 
+export const ogMetadata = {
+    title: "Get Involved - The Embankment",
+    description: "Join the Embankment Preservation Coalition! Become a member, volunteer, donate, or sponsor our efforts to preserve and restore Jersey City's Harsimus Branch green corridor.",
+    image: "/images/og/involved.jpg",
+}
+
 type Field = {
     label: string
     id?: string
@@ -327,9 +333,9 @@ export default function Body() {
     return (
         <Page
             path="involved"
-            title="Get Involved - The Embankment"
-            description="Join the Embankment Preservation Coalition! Become a member, volunteer, donate, or sponsor our efforts to preserve and restore Jersey City's Harsimus Branch green corridor."
-            ogImage="/images/og/involved.jpg"
+            title={ogMetadata.title}
+            description={ogMetadata.description}
+            ogImage={ogMetadata.image}
             headerChildren={
                 <ParallaxHeader
                     title={"GET INVOLVED"}

@@ -10,13 +10,19 @@ import {
 import {ParallaxHeader} from "../components/theme";
 import {becomeMemberId} from "../components/ids";
 
+export const ogMetadata = {
+    title: "About Us - The Embankment",
+    description: "Learn the history of Jersey City's Harsimus Branch Embankment, from its construction in the 1880s through industrial decline to today's grassroots preservation movement and vision for a green future.",
+    image: "/images/og/about.jpg",
+}
+
 export default function Body() {
     return (
         <Page
             path="about"
-            title="About Us - The Embankment"
-            description="Learn the history of Jersey City's Harsimus Branch Embankment, from its construction in the 1880s through industrial decline to today's grassroots preservation movement and vision for a green future."
-            ogImage="/images/og/about.jpg"
+            title={ogMetadata.title}
+            description={ogMetadata.description}
+            ogImage={ogMetadata.image}
             headerChildren={
                 <ParallaxHeader
                     title={"ABOUT"}

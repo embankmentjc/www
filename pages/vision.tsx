@@ -11,13 +11,19 @@ import React from "react";
 import { becomeMemberId, donateId, sponsorsId, visionId, volunteerId } from "../components/ids";
 import { H1 } from "@rdub/next-base/heading";
 
+export const ogMetadata = {
+  title: "Our Vision - The Embankment",
+  description: "Discover our vision for Jersey City's Harsimus Branch: a light-touch design preserving forest and meadows, creating stepping-stone landscapes, and connecting the East Coast Greenway through a continuous green corridor.",
+  image: "/images/2025-renders/50p/2025.11.05_Updated_Site Axon_Vignettes_50p.jpg",
+}
+
 export default function Body() {
   return (
     <Page
       path="vision"
-      title="Our Vision - The Embankment"
-      description="Discover our vision for Jersey City's Harsimus Branch: a light-touch design preserving forest and meadows, creating stepping-stone landscapes, and connecting the East Coast Greenway through a continuous green corridor."
-      ogImage="/images/og/vision.jpg"
+      title={ogMetadata.title}
+      description={ogMetadata.description}
+      ogImage={ogMetadata.image}
       headerChildren={
         <ParallaxHeader
           title={"Our Vision"}

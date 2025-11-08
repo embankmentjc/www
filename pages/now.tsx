@@ -4,14 +4,20 @@ import React from "react";
 import { becomeMemberId, donateId, events2024, signupId } from "../components/ids";
 import A from "@rdub/next-base/a";
 
+export const ogMetadata = {
+    title: "Embankment NOW - The Embankment",
+    description: "Take action now to protect and restore the Sixth Street Embankment! Become a member, write your representative, spread the word, get involved, and donate to preserve this urban forest for Jersey City.",
+    image: "/images/og/now.jpg",
+}
+
 export default function Body() {
     return (
         <Page
             path="now"
             navStuck={true}
-            title="Embankment NOW - The Embankment"
-            description="Take action now to protect and restore the Sixth Street Embankment! Become a member, write your representative, spread the word, get involved, and donate to preserve this urban forest for Jersey City."
-            ogImage="/images/og/now.jpg"
+            title={ogMetadata.title}
+            description={ogMetadata.description}
+            ogImage={ogMetadata.image}
         >
             <section className={`section novi-background section-50 section-sm-top-5 ${css.page}`}>
                 <div className={css.logo}>

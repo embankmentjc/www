@@ -12,6 +12,12 @@ import { Events2025 } from "./2025-events";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
+export const ogMetadata = {
+    title: "News & Events - The Embankment",
+    description: "Stay updated on Embankment Preservation Coalition news, upcoming events, community meetings, and the latest developments in preserving and restoring Jersey City's Harsimus Branch green corridor.",
+    image: "/images/og/news.jpg",
+}
+
 function NewsletterSubscribe() {
     return (
         <section id="news-section-subscribe" className="section parallax-container context-light" style={{ backgroundImage: 'url(/images/NEWS-SUBSCRIBE.jpg)', backgroundAttachment: 'fixed', backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -198,9 +204,9 @@ export default function Body() {
     return (
         <Page
             path="news"
-            title="News & Events - The Embankment"
-            description="Stay updated on Embankment Preservation Coalition news, upcoming events, community meetings, and the latest developments in preserving and restoring Jersey City's Harsimus Branch green corridor."
-            ogImage="/images/og/news.jpg"
+            title={ogMetadata.title}
+            description={ogMetadata.description}
+            ogImage={ogMetadata.image}
             headerChildren={
                 <ParallaxHeader
                     title={"News + Events"}

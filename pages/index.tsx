@@ -173,6 +173,9 @@ export default function Body() {
             path="/"
             headerChildren={<BannerSlides/>}
             modal={true}
+            title="The Embankment - Preserving Jersey City's Green Corridor"
+            description="Join the Embankment Preservation Coalition in transforming Jersey City's historic Harsimus Branch into a vibrant green corridor connecting neighborhoods with nature, history, and the East Coast Greenway."
+            ogImage="/images/og/home.jpg"
         >
             <IntroSectionWhat/>
             <GradientHeader

@@ -327,6 +327,9 @@ export default function Body() {
     return (
         <Page
             path="involved"
+            title="Get Involved - The Embankment"
+            description="Join the Embankment Preservation Coalition! Become a member, volunteer, donate, or sponsor our efforts to preserve and restore Jersey City's Harsimus Branch green corridor."
+            ogImage="/images/og/involved.jpg"
             headerChildren={
                 <ParallaxHeader
                     title={"GET INVOLVED"}

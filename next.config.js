@@ -6,6 +6,9 @@ const config = {
         // when the _next directory path changes on every build
         return 'stable'
     },
+    env: {
+        NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://embankment.org',
+    },
 }
 
 export default config;

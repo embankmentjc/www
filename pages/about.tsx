@@ -14,6 +14,9 @@ export default function Body() {
     return (
         <Page
             path="about"
+            title="About Us - The Embankment"
+            description="Learn the history of Jersey City's Harsimus Branch Embankment, from its construction in the 1880s through industrial decline to today's grassroots preservation movement and vision for a green future."
+            ogImage="/images/og/about.jpg"
             headerChildren={
                 <ParallaxHeader
                     title={"ABOUT"}

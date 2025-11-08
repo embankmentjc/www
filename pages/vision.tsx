@@ -15,6 +15,9 @@ export default function Body() {
   return (
     <Page
       path="vision"
+      title="Our Vision - The Embankment"
+      description="Discover our vision for Jersey City's Harsimus Branch: a light-touch design preserving forest and meadows, creating stepping-stone landscapes, and connecting the East Coast Greenway through a continuous green corridor."
+      ogImage="/images/og/vision.jpg"
       headerChildren={
         <ParallaxHeader
           title={"Our Vision"}

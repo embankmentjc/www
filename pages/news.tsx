@@ -198,6 +198,9 @@ export default function Body() {
     return (
         <Page
             path="news"
+            title="News & Events - The Embankment"
+            description="Stay updated on Embankment Preservation Coalition news, upcoming events, community meetings, and the latest developments in preserving and restoring Jersey City's Harsimus Branch green corridor."
+            ogImage="/images/og/news.jpg"
             headerChildren={
                 <ParallaxHeader
                     title={"News + Events"}

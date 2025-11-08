@@ -6,10 +6,16 @@ import A from "@rdub/next-base/a";
 
 export default function Body() {
     return (
-        <Page path="now" navStuck={true}>
+        <Page
+            path="now"
+            navStuck={true}
+            title="Embankment NOW - The Embankment"
+            description="Take action now to protect and restore the Sixth Street Embankment! Become a member, write your representative, spread the word, get involved, and donate to preserve this urban forest for Jersey City."
+            ogImage="/images/og/now.jpg"
+        >
             <section className={`section novi-background section-50 section-sm-top-5 ${css.page}`}>
                 <div className={css.logo}>
-                    <img src={'/images/now/poster.png'} alt={"Aerial view of the Embankment"} />
+                    <img src={'/images/now/poster.jpg'} alt={"Aerial view of the Embankment"} />
                 </div>
                 <div className={css.text}>
                 <div className={css.container}>

@@ -47,8 +47,20 @@ function getTokens($config) {
 
 // Save tokens to storage
 function saveTokens($config, $tokens) {
-    file_put_contents($config['token_file'], json_encode($tokens, JSON_PRETTY_PRINT));
+    // Validate tokens before saving (don't corrupt file with empty data)
+    if (!$tokens || !isset($tokens['access_token']) || !isset($tokens['refresh_token'])) {
+        error_log('CC: Refusing to save invalid/empty tokens');
+        return false;
+    }
+    // Use integer 128 instead of JSON_PRETTY_PRINT for old PHP compatibility
+    $json = json_encode($tokens, 128);
+    if (!$json || strlen($json) < 50) {
+        error_log('CC: JSON encoding failed or produced invalid output');
+        return false;
+    }
+    file_put_contents($config['token_file'], $json);
     chmod($config['token_file'], 0600); // Read/write for owner only
+    return true;
 }
 
 // Refresh access token using refresh token
@@ -105,7 +117,7 @@ function getAccessToken($config) {
 }
 
 // Add contact to Constant Contact
-function addContactToList($config, $email, $firstName = '', $lastName = '', $phone = '') {
+function addContactToList($config, $email, $firstName = '', $lastName = '', $phone = '', $message = '') {
     $accessToken = getAccessToken($config);
     if (!$accessToken) {
         return array('success' => false, 'error' => 'AUTH_FAILED');
@@ -124,6 +136,15 @@ function addContactToList($config, $email, $firstName = '', $lastName = '', $pho
     }
     if ($phone) {
         $contactData['phone_number'] = $phone;
+    }
+    // Add message to "Signup Message" custom field if provided
+    if ($message) {
+        $contactData['custom_fields'] = array(
+            array(
+                'custom_field_id' => '97d15de2-d520-11f0-9e67-0242db9dec1e',
+                'value' => substr($message, 0, 500) // CC custom fields have length limits
+            )
+        );
     }
 
     $ch = curl_init('https://api.cc.email/v3/contacts/sign_up_form');
@@ -280,8 +301,8 @@ try {
         sendEmailNotification($emailConfig, $email, $firstName, $lastName, $phone, $message);
     }
 
-    // Always add to Constant Contact
-    $result = addContactToList($config, $email, $firstName, $lastName, $phone);
+    // Always add to Constant Contact (including message in "Signup Message" custom field)
+    $result = addContactToList($config, $email, $firstName, $lastName, $phone, $message);
 
     if ($result['success']) {
         die('MF000'); // Success

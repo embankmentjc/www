@@ -178,7 +178,6 @@ export default function Body() {
         <Page
             path="/"
             headerChildren={<BannerSlides/>}
-            modal={true}
             title={ogMetadata.title}
             description={ogMetadata.description}
             ogImage={ogMetadata.image}

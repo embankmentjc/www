@@ -141,8 +141,8 @@ function addContactToList($config, $email, $firstName = '', $lastName = '', $pho
     if ($message) {
         $contactData['custom_fields'] = array(
             array(
-                'custom_field_id' => '97d15de2-d520-11f0-9e67-0242db9dec1e',
-                'value' => substr($message, 0, 500) // CC custom fields have length limits
+                'custom_field_id' => '4090fe26-d628-11f0-9e0c-02421f46342b',  // "Signup Notes" (text_area type)
+                'value' => $message
             )
         );
     }

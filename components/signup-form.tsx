@@ -123,7 +123,7 @@ function Field({ label, id, cols = 6, required = true }: {
     return (
         <div className={`col-md-${cols}`}>
             <div className="form-group">
-                <label className="form-label" htmlFor={fieldId}>{label}{required && ' *'}</label>
+                <label htmlFor={fieldId}>{label}{required && ' *'}</label>
                 {isTextarea ? (
                     <textarea
                         className="form-control"

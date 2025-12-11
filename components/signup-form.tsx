@@ -121,9 +121,9 @@ function Field({ label, id, cols = 6, required = true }: {
     const isTextarea = fieldId === 'message' || fieldId === 'background'
 
     return (
-        <div className={`col-md-${cols}`}>
+        <div className={`col-md-${cols}`} style={{ marginBottom: '1rem' }}>
             <div className="form-group">
-                <label htmlFor={fieldId}>{label}{required && ' *'}</label>
+                <label htmlFor={fieldId} style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 500 }}>{label}{required && ' *'}</label>
                 {isTextarea ? (
                     <textarea
                         className="form-control"

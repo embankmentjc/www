@@ -35,15 +35,15 @@ export default function Body() {
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen={true}
+                allowFullScreen
                 referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
           }
           subtitle={"\"When we see land as a community to which we belong, we may begin to use it with love and respect.\" - Aldo Leopold"}
           img={"/images/NEWS-BANNER.jpg"}
-          btn1={{ text: "Concept", href: "#vision-section-concept", }}
-          btn2={{ text: "Become a Member!", href: `/involved#${becomeMemberId}`, }}
+          btn1={{text: "Concept", href: "#vision-section-concept",}}
+          btn2={{text: "Become a Member!", href: `/involved#${becomeMemberId}`, }}
         />
       }
     >

@@ -4,6 +4,7 @@ import {Brand} from "./theme"
 import { newsItems } from "./news"
 import A from "@rdub/next-base/a";
 import { donateId, newsId } from "../components/ids";
+import { SubscribeForm } from "./signup-form";
 
 function PostWidget({ date, dateStr, href, children, }: {
     date: string
@@ -54,22 +55,7 @@ function NewsletterSignup() {
             <h6 className="text-uppercase text-spacing-60">Newsletter</h6>
             <p>Enter your e-mail and subscribe to our newsletter.</p>
             <div className="offset-top-30">
-                <form className="rd-mailform" data-form-output="form-subscribe-footer" data-form-type="subscribe" method="post" action="/bat/cc-signup-with-email.php">
-                    <div className="form-group">
-                        <div className="input-group input-group-sm">
-                            <span className="input-group-prepend">
-                                <span className="input-group-text input-group-icon">
-                                    <span className="mdi mdi-email" />
-                                </span>
-                            </span>
-                            <input className="form-control" placeholder="Type your E-Mail" type="email" name="email" data-constraints="@Required @Email" />
-                            <span className="input-group-append">
-                                <button className="btn btn-sm btn-primary" type="submit">Subscribe</button>
-                            </span>
-                        </div>
-                    </div>
-                    <div className="form-output" id="form-subscribe-footer" />
-                </form>
+                <SubscribeForm />
             </div>
         </div>
     )

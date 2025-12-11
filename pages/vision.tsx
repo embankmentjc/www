@@ -30,11 +30,13 @@ export default function Body() {
           embed={
             <div className="offset-top-4 offset-xl-top-0" style={{ padding: "20px 0" }}>
               <iframe
-                id="vision-video-embed" style={{ margin: "auto", width: "100%" }}
-                src="https://www.youtube.com/embed/qxAHqzLqnoo" title="YouTube video player"
+                style={{ margin: "auto", width: "100%", aspectRatio: "16/9" }}
+                src="https://www.youtube.com/embed/qxAHqzLqnoo"
+                title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen={true}
+                referrerPolicy="strict-origin-when-cross-origin"
               />
             </div>
           }
@@ -44,7 +46,6 @@ export default function Body() {
           btn2={{ text: "Become a Member!", href: `/involved#${becomeMemberId}`, }}
         />
       }
-      scripts={["/js/vision.js"]}
     >
       <BigPicture title={"Our Philosophy"} id={"vision-section-bigpicture"}>
         <p>Conservationist Aldo Leopold coined the term “land ethic” to describe the valuing of soil, water, plants, and animals – “the land” – as members of a community of living organisms, with humans, the thinking members, fostering the community’s evolving relationships.</p>
@@ -202,20 +203,12 @@ export default function Body() {
       </ArtistSection>
 
       {/* Donate / Volunteer / Sponsor buttons  */}
-      <section>
+      <section className="section section-66 section-sm-98">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-lg-6 col-md-8" style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center' }}>
-              <a href={`/involved#${donateId}`}>
-                <button className="btn btn-primary" type="button">Donate</button>
-              </a>
-              <a href={`/involved#${volunteerId}`}>
-                <button className="btn btn-primary" type="button">Volunteer</button>
-              </a>
-              <a href={`/involved#${sponsorsId}`}>
-                <button className="btn btn-primary" type="button">Sponsor</button>
-              </a>
-            </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '15px', justifyContent: 'center' }}>
+            <a className="btn btn-primary btn-lg" href={`/involved#${donateId}`}>Donate</a>
+            <a className="btn btn-primary btn-lg" href={`/involved#${volunteerId}`}>Volunteer</a>
+            <a className="btn btn-primary btn-lg" href={`/involved#${sponsorsId}`}>Sponsor</a>
           </div>
         </div>
       </section>

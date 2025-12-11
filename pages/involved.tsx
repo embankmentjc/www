@@ -2,40 +2,12 @@ import Page from "../components/page"
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
 import React, {CSSProperties} from "react";
 import { becomeMemberId, donateId, endorsementsId, partnersId, signupId, sponsorsId, volunteerId } from "../components/ids";
+import { VolunteerForm } from "../components/signup-form";
 
 export const ogMetadata = {
     title: "Get Involved - The Embankment",
     description: "Join the Embankment Preservation Coalition! Become a member, volunteer, donate, or sponsor our efforts to preserve and restore Jersey City's Harsimus Branch green corridor.",
     image: "/images/og/involved.jpg",
-}
-
-type Field = {
-    label: string
-    id?: string
-    cols?: number
-    required?: boolean
-}
-function Field({ label, id, cols = 6, required = true }: Field) {
-    id = id || label.replace(" ", "-").toLowerCase()
-    const name = id.replace('-', '')
-    const Elem = cols == 12 ? "textarea" : "input"
-    const props: any = {
-        className: "form-control bg-default",
-        id: `git-3-mailform-${id}`,
-        type: "text",
-        name: name
-    }
-    if (required) {
-        props['data-constraints'] = "@Required"
-    }
-    return (
-        <div className={`col-md-${cols}`}>
-            <div className="form-group offset-md-top-30">
-                <label className="form-label" htmlFor={`git-3-mailform-${id}`}>{label}</label>
-                <Elem {...props} />
-            </div>
-        </div>
-    )
 }
 
 function SignupForm() {
@@ -44,23 +16,7 @@ function SignupForm() {
             <div className="offset-md-top-36">
                 <div className="row justify-content-sm-center">
                     <div className="col-sm-10 col-lg-8">
-                        {/* RD Mailform */}
-                        <form className="rd-mailform text-left" data-form-output="form-output-global" data-form-type="contact" method="post" action="/bat/cc-signup-with-email.php">
-                            <div className="row justify-content-sm-center">
-                                {
-                                    [
-                                        { label: "First name", },
-                                        { label: "Last name", },
-                                        { label: "Phone", required: false, },
-                                        { label: "Email", },
-                                        { label: "Background", id: "message", cols: 12, required: false, },
-                                    ].map(field => <Field key={field.label} {...field} />)
-                                }
-                            </div>
-                            <div className="offset-top-24 text-center">
-                                <button className="btn btn-primary" type="submit">Submit</button>
-                            </div>
-                        </form>
+                        <VolunteerForm />
                     </div>
                 </div>
             </div>

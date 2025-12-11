@@ -11,6 +11,7 @@ import { Author, newsItems, Pretitle, NewsItem, } from "../components/news";
 import { Events2025 } from "./2025-events";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { SubscribeForm } from "../components/signup-form";
 
 export const ogMetadata = {
     title: "News & Events - The Embankment",
@@ -29,23 +30,7 @@ function NewsletterSubscribe() {
                         <div className="col-sm-10 col-xl-6">
                             <p>Stay informed about the Harsimus Branch and events sponsored by the Embankment Preservation Coalition and other preservation and conservation allies by subscribing to our newsletter. You will receive the Coalition online newsletter
                                 and occasional alerts and notices. We do not share your contact information with others, and we promise not to inundate you with email. You can also unsubscribe at any time.</p>
-                            {/* Call to action type 1 */}
-                            <form className="rd-mailform" data-form-output="form-subscribe-footer" data-form-type="subscribe" method="post" action="/bat/cc-signup-with-email.php">
-                                <div className="form-group">
-                                    <div className="input-group input-group-sm">
-                                        <span className="input-group-prepend">
-                                            <span className="input-group-text input-group-icon">
-                                                <span className="mdi mdi-email" />
-                                            </span>
-                                        </span>
-                                        <input className="form-control" placeholder="Type your E-Mail" type="email" name="email" data-constraints="@Required @Email" />
-                                        <span className="input-group-append">
-                                            <button className="btn btn-sm btn-primary" type="submit">Subscribe</button>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div className="form-output" id="form-subscribe-footer" />
-                            </form>
+                            <SubscribeForm />
                             <div className="offset-top-20 text-center">
                                 <a href="/newsletter" className="btn btn-default btn-sm">View Newsletter Archive</a>
                             </div>

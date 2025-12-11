@@ -1,16 +1,14 @@
 import { ReactNode } from "react";
 
 import Head from 'next/head'
-import Script from 'next/script'
 import Footer from "./footer";
 import Nav from "./nav";
 import {Modal} from "./modal";
 
-export default function Page({ path, children, headerChildren, scripts, navStuck, modal, title, description, ogImage, }: {
+export default function Page({ path, children, headerChildren, navStuck, modal, title, description, ogImage, }: {
     path: string
     children: ReactNode
     headerChildren?: ReactNode
-    scripts?: string[]
     navStuck?: boolean
     modal?: boolean
     title?: string
@@ -63,8 +61,5 @@ export default function Page({ path, children, headerChildren, scripts, navStuck
             <Footer />
         </div>
         <div className="snackbars" id="form-output-global" />
-        <Script src="/js/core.min.js" strategy="beforeInteractive" />
-        <Script src="/js/script.js" />
-        {scripts?.map(src => <Script key={src} src={src} />)}
     </>)
 }

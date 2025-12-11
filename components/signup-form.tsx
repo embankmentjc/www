@@ -111,6 +111,15 @@ export function SubscribeForm({ className = '' }: { className?: string }) {
 }
 
 // Form field component
+const placeholders: Record<string, string> = {
+    firstname: 'John',
+    lastname: 'Doe',
+    phone: '(555) 123-4567',
+    email: 'you@example.com',
+    message: 'Tell us about yourself...',
+    background: 'Tell us about yourself...',
+}
+
 function Field({ label, id, cols = 6, required = true }: {
     label: string
     id?: string
@@ -119,6 +128,7 @@ function Field({ label, id, cols = 6, required = true }: {
 }) {
     const fieldId = id || label.toLowerCase().replace(/\s+/g, '')
     const isTextarea = fieldId === 'message' || fieldId === 'background'
+    const placeholder = placeholders[fieldId] || ''
 
     return (
         <div className={`col-md-${cols}`} style={{ marginBottom: '1rem' }}>
@@ -129,6 +139,7 @@ function Field({ label, id, cols = 6, required = true }: {
                         className="form-control"
                         id={fieldId}
                         name={fieldId}
+                        placeholder={placeholder}
                         required={required}
                     />
                 ) : (
@@ -137,6 +148,7 @@ function Field({ label, id, cols = 6, required = true }: {
                         id={fieldId}
                         name={fieldId}
                         type={fieldId === 'email' ? 'email' : fieldId === 'phone' ? 'tel' : 'text'}
+                        placeholder={placeholder}
                         required={required}
                     />
                 )}

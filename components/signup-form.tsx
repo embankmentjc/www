@@ -12,17 +12,11 @@ const messages: Record<string, string> = {
     'MF255': 'Aw, snap! Something went wrong.',
 }
 
-export function useFormSubmit(action?: string) {
+export function useFormSubmit(action: string = '/bat/cc-signup-with-email.php') {
     const [status, setStatus] = useState<FormStatus>('idle')
     const [message, setMessage] = useState('')
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        // Use dev server for PHP when running locally
-        const endpoint = action ?? (
-            typeof window !== 'undefined' && window.location.hostname === 'localhost'
-                ? 'https://dev.embankment.org/bat/cc-signup-with-email.php'
-                : '/bat/cc-signup-with-email.php'
-        )
         e.preventDefault()
         const form = e.currentTarget
         const formData = new FormData(form)
@@ -31,7 +25,7 @@ export function useFormSubmit(action?: string) {
         setMessage('')
 
         try {
-            const response = await fetch(endpoint, {
+            const response = await fetch(action, {
                 method: 'POST',
                 body: formData,
             })

@@ -30,8 +30,15 @@ export function useFormSubmit(action: string = '/bat/cc-signup-with-email.php') 
                 body: formData,
             })
 
-            const result = await response.json()
-            const code = result.code || 'MF255'
+            const text = await response.text()
+            // PHP returns plain text code like "MF000" or JSON like {"code": "MF000"}
+            let code: string
+            try {
+                const json = JSON.parse(text)
+                code = json.code || 'MF255'
+            } catch {
+                code = text.trim()
+            }
 
             if (code === 'MF000') {
                 setStatus('success')

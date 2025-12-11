@@ -1,0 +1,18 @@
+#!/usr/bin/env -S uv run --with click --with requests --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["click", "requests"]
+# ///
+"""EPC CLI entry point."""
+
+import sys
+from pathlib import Path
+
+# Resolve symlinks to find actual script location
+script_path = Path(__file__).resolve()
+sys.path.insert(0, str(script_path.parent.parent))
+
+from epc.cli import cli
+
+if __name__ == "__main__":
+    cli()

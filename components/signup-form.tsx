@@ -88,7 +88,7 @@ export function SubscribeForm({ className = '' }: { className?: string }) {
                     </span>
                     <input
                         className="form-control"
-                        placeholder="Type your E-Mail"
+                        placeholder="your@email.com"
                         type="email"
                         name="email"
                         required

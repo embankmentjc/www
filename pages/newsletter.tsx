@@ -1,14 +1,19 @@
+import { useEffect } from "react"
 import Page from "../components/page"
-import Script from 'next/script'
 import { Section } from "../components/theme";
 
-export async function getStaticProps(context: any) {
-    return {
-        props: {},
-    }
-}
-
 export default function Newsletter() {
+    useEffect(() => {
+        // Load Constant Contact archive script
+        const script = document.createElement('script')
+        script.src = "https://static.ctctcdn.com/js/archive-static/current/archive-static.min.js"
+        script.async = true
+        document.body.appendChild(script)
+        return () => {
+            document.body.removeChild(script)
+        }
+    }, [])
+
     return (
         <Page path="/newsletter" navStuck={true}>
             <Section id="newsletter-archive" title="Newsletter Archive" h1={true}>
@@ -19,11 +24,6 @@ export default function Newsletter() {
                     </div>
                 </div>
             </Section>
-            <Script
-                id="archiveScript"
-                src="https://static.ctctcdn.com/js/archive-static/current/archive-static.min.js"
-                strategy="afterInteractive"
-            />
         </Page>
     )
 }

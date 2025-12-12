@@ -16,11 +16,6 @@ export const ogMetadata = {
     image: "/images/og/home.jpg",
 }
 
-export async function getStaticProps(context: any) {
-    return {
-        props: {}, // will be passed to the page component as props
-    }
-}
 
 function BannerSlides() {
     const slides = [

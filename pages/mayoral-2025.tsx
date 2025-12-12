@@ -2,7 +2,7 @@ import Page from "../components/page";
 import css from "./mayoral-2025.module.scss";
 import React from "react";
 import { ParallaxHeader } from "../components/theme";
-import A from "@rdub/next-base/a";
+import A from "../src/components/A";
 
 export const mayoral2025Eventbrite = `https://www.eventbrite.com/e/jersey-city-mayoral-candidates-forum-on-historic-preservation-environment-tickets-1274084112879`
 export const mayoral2025Form = "https://docs.google.com/forms/d/1s-0nYBkfwFlXvZHuFsGflFp1wpP7JJBid3RFnGa22qw/edit"

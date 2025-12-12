@@ -3,11 +3,11 @@ import Page from "../components/page"
 import React, {ReactNode, useState} from "react";
 
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
-import moment from "moment/moment";
+import moment from "moment";
 import { becomeMemberId, events2024, events2025, newsId } from "../components/ids";
 import css from "./2024-events.module.scss";
-import A from "@rdub/next-base/a";
-import { Author, newsItems, Pretitle, NewsItem, } from "../components/news";
+import A from "../src/components/A";
+import { Author, newsItems, Pretitle, NewsItem as NewsItemProps, } from "../components/news";
 import { Events2025 } from "./2025-events";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -101,7 +101,7 @@ function UpcomingEvents() {
     </>
 }
 
-function NewsItem({ id, title, pretitle, date, dateStr, center, href, src, alt, author = epc, children }: NewsItem) {
+function NewsItem({ id, title, pretitle, date, dateStr, center, href, src, alt, author = epc, children }: NewsItemProps) {
     const m = moment(date)
     dateStr = dateStr || m.format('D MMM Y')
     return (<>

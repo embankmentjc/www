@@ -1,8 +1,8 @@
 import {ReactNode} from "react"
-import moment from "moment/moment"
+import moment from "moment"
 import {Brand} from "./theme"
 import { newsItems } from "./news"
-import A from "@rdub/next-base/a";
+import A from "../src/components/A";
 import { donateId, newsId } from "../components/ids";
 import { SubscribeForm } from "./signup-form";
 

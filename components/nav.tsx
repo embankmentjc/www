@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import navStyles from "./navbar.module.css";
 import {Brand} from "./theme";
 import { becomeMemberId, donateId, newsId, partnersId, sponsorsId, volunteerId } from "./ids";
+import A from "../src/components/A";
 
 export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean }) {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const [isSticky, setIsSticky] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isSticky, setIsSticky] = useState(() => typeof window !== 'undefined' && window.scrollY > 1);
+    const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 992);
 
     useEffect(() => {
         const checkMobile = () => {
@@ -16,9 +17,6 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
         const handleScroll = () => {
             setIsSticky(window.scrollY > 1);
         };
-
-        checkMobile();
-        handleScroll();
 
         window.addEventListener('resize', checkMobile);
         window.addEventListener('scroll', handleScroll);
@@ -52,9 +50,9 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
         }
         return (
             <li key={href}>
-                <a href={href}>
+                <A href={href}>
                     <span className="text-middle">{text}</span>
-                </a>
+                </A>
             </li>
         );
     }
@@ -89,7 +87,7 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
             >
-                <a href={href} style={isMobile && items ? { position: 'relative' } : undefined}>
+                <A href={href} style={isMobile && items ? { position: 'relative' } : undefined}>
                     <span>{text}</span>
                     {isMobile && items && (
                         <button
@@ -105,7 +103,7 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
                             <span></span>
                         </button>
                     )}
-                </a>
+                </A>
                 {
                     items &&
                     <ul className="rd-navbar-dropdown" style={{ display: isOpen ? 'block' : 'none' }}>{

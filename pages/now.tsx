@@ -2,7 +2,7 @@ import Page from "../components/page";
 import css from "./now.module.scss";
 import React from "react";
 import { becomeMemberId, donateId, events2024, signupId } from "../components/ids";
-import A from "@rdub/next-base/a";
+import A from "../src/components/A";
 
 export const ogMetadata = {
     title: "Embankment NOW - The Embankment",

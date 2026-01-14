@@ -137,12 +137,18 @@ function addContactToList($config, $email, $firstName = '', $lastName = '', $pho
     if ($phone) {
         $contactData['phone_number'] = $phone;
     }
-    // Add message to "Signup Message" custom field if provided
+    // Add message to custom fields if provided
     if ($message) {
+        // Truncate for "Notes" field (string type, 255 char limit)
+        $truncated = strlen($message) > 254 ? substr($message, 0, 254) . '…' : $message;
         $contactData['custom_fields'] = array(
             array(
-                'custom_field_id' => '4090fe26-d628-11f0-9e0c-02421f46342b',  // "Signup Notes" (text_area type)
+                'custom_field_id' => '4090fe26-d628-11f0-9e0c-02421f46342b',  // "Signup Notes" (text_area, full message)
                 'value' => $message
+            ),
+            array(
+                'custom_field_id' => '30054708-f950-11e9-9290-d4ae52a2c97b',  // "Notes" (string, visible in UI)
+                'value' => $truncated
             )
         );
     }

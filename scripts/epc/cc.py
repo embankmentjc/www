@@ -151,7 +151,7 @@ def lookup(email):
 
     resp = requests.get(
         f"{BASE_URL}/v3/contacts",
-        params={"email": email},
+        params={"email": email, "include": "custom_fields"},
         headers=headers,
     )
     if resp.status_code != 200:

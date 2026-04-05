@@ -34,7 +34,7 @@ function Donate() {
                         <h2><span className="big">Donate Today</span></h2>
                         <p>Your generous contribution is vital to Embankment Coalition operations. <span className="font-weight-bold bold">Please donate!</span> </p>
                         <p>The Embankment Preservation Coalition is a nonprofit, tax-exempt charitable organization under Section 501(c)(3) of the Internal Revenue Code.</p>
-                        <p>Your contribution is 100% tax-deductible to the fullest extent of the law.</p>
+                        <p>Your contribution is 100% tax-deductible to the full extent of the law.</p>
                         <br />
                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                             <input type="hidden" name="cmd" value="_s-xclick" />

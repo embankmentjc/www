@@ -45,12 +45,10 @@ $fade: 20vh;
     margin: auto;
     ul {
       text-align: left;
-      padding: 1em 0 1em 50%;
-      list-style: none inside none;
-      & > li {
-        transform: translateX(-40%);
-        min-width: 20em;
-      }
+      width: fit-content;
+      margin: 0 auto;
+      padding: 1em 0;
+      list-style: none;
     }
   }
   .steps {

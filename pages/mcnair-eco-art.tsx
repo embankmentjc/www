@@ -9,7 +9,7 @@ const mcnairWebsite = "https://sites.google.com/view/mcnairembankmentyac/home"
 
 export const ogMetadata = {
     title: "McNair x Embankment Youth Eco-Art Competition",
-    description: "Jersey City youth eco-art competition by McNair Environmental Club and the Embankment Preservation Coalition. Digital submissions open through April 30, 2025.",
+    description: "Jersey City youth eco-art competition by McNair Environmental Club and the Embankment Preservation Coalition. Digital submissions open through April 30, 2026.",
     image: "/images/og/mcnair-eco-art.jpg",
 }
 
@@ -25,7 +25,7 @@ export default function McNairEcoArt() {
                     title={"McNair x Embankment Youth Eco-Art Competition"}
                     subtitleChildren={<div className={css.subtitle}>
                         <p>Create an original work based on the environment of Jersey City or the Embankment</p>
-                        <p className={css.bold}>Digital Submissions Open Through April 30, 2025</p>
+                        <p className={css.bold}>Digital Submissions Open Through April 30, 2026</p>
                     </div>}
                     className={css.header}
                     btnsCls={css.btns}
@@ -69,7 +69,7 @@ export default function McNairEcoArt() {
                 <p className={css.contact}><A href={faqDoc}>Detailed FAQ here</A></p>
                 <h2>Key Dates</h2>
                 <ul className={css.prizes}>
-                    <li><strong>Digital Submission Deadline:</strong> April 30, 2025, 11:59 PM EST</li>
+                    <li><strong>Digital Submission Deadline:</strong> April 30, 2026, 11:59 PM EST</li>
                     <li><strong>Physical Drop-Off Deadline:</strong> TBA</li>
                 </ul>
                 <h2>Showcase</h2>

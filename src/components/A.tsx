@@ -23,7 +23,9 @@ export default function A({ href, children, ...props }: AProps) {
     )
   }
 
-  if (isAnchor || isMailto) {
+  const isFile = /\.\w+$/.test(href)
+
+  if (isAnchor || isMailto || isFile) {
     return <a href={href} {...props}>{children}</a>
   }
 

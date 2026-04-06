@@ -27,7 +27,18 @@
   }
   h2 {
     text-align: center;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
+  }
+  ol, ul {
+    li {
+      margin-bottom: 0.5rem;
+    }
+    ul {
+      margin-top: 0.4rem;
+    }
+  }
+  p {
+    margin-top: 0.8rem;
   }
   .flyerWrap {
     text-align: center;
@@ -41,8 +52,14 @@
   }
   .prizes {
     list-style: none;
-    text-align: center;
+    text-align: left;
+    width: fit-content;
+    margin: 0 auto;
     padding: 0;
+  }
+  .downloads {
+    width: fit-content;
+    margin: 0 auto;
   }
   .contact {
     text-align: center;

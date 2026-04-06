@@ -17,6 +17,7 @@ ROUTES=(
   2025-events
   mayoral-2025
   embankment-on-my-mind
+  mcnair-eco-art
   bot-drawing
   og-test
 )

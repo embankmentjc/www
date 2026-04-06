@@ -13,6 +13,7 @@ import Events2024 from '../pages/2024-events'
 import Events2025 from '../pages/2025-events'
 import Mayoral2025 from '../pages/mayoral-2025'
 import EmbankmentOnMyMind from '../pages/embankment-on-my-mind'
+import McNairEcoArt from '../pages/mcnair-eco-art'
 import BotDrawing from '../pages/bot-drawing'
 import OgTest from '../pages/og-test'
 
@@ -32,6 +33,7 @@ export default function App() {
       <Route path="/2025-events" element={<Events2025 />} />
       <Route path="/mayoral-2025" element={<Mayoral2025 />} />
       <Route path="/embankment-on-my-mind" element={<EmbankmentOnMyMind />} />
+      <Route path="/mcnair-eco-art" element={<McNairEcoArt />} />
       <Route path="/bot-drawing" element={<BotDrawing />} />
       <Route path="/og-test" element={<OgTest />} />
     </Routes>

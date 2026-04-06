@@ -1,0 +1,50 @@
+.header {
+  h1 {
+    text-align: center;
+  }
+  .subtitle {
+    text-align: center;
+    font-weight: 300;
+    padding-top: 0.7rem;
+    p {
+      font-size: 1.5rem;
+    }
+    .bold {
+      font-weight: 500;
+    }
+  }
+  .btns {
+    text-align: center;
+  }
+}
+.body {
+  margin: 1rem auto;
+  padding: 0 2rem;
+  text-align: left;
+  max-width: 45rem;
+  a {
+    text-decoration: underline;
+  }
+  h2 {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  .flyerWrap {
+    text-align: center;
+    margin: 2rem 0;
+    .flyer {
+      max-width: 100%;
+      width: 36rem;
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    }
+  }
+  .prizes {
+    list-style: none;
+    text-align: center;
+    padding: 0;
+  }
+  .contact {
+    text-align: center;
+  }
+}

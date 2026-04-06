@@ -10,7 +10,7 @@ const mcnairWebsite = "https://sites.google.com/view/mcnairembankmentyac/home"
 export const ogMetadata = {
     title: "McNair x Embankment Youth Eco-Art Competition",
     description: "Jersey City youth eco-art competition by McNair Environmental Club and the Embankment Preservation Coalition. Digital submissions open through April 30, 2025.",
-    image: "/images/og/now.jpg",
+    image: "/images/og/mcnair-eco-art.jpg",
 }
 
 export default function McNairEcoArt() {

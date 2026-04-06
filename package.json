@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --outDir out-prod && scripts/generate-static-pages.sh out-prod",
-    "build-dev": "VITE_SITE_URL=https://dev.embankment.org vite build --outDir out-dev && scripts/generate-static-pages.sh out-dev",
+    "build": "vite build --outDir out-prod && scripts/generate-static-pages.sh out-prod && node scripts/inject-og-tags.cjs out-prod",
+    "build-dev": "VITE_SITE_URL=https://dev.embankment.org vite build --outDir out-dev && scripts/generate-static-pages.sh out-dev && VITE_SITE_URL=https://dev.embankment.org node scripts/inject-og-tags.cjs out-dev",
     "preview": "vite preview",
     "b": "npm run build",
     "bd": "npm run build-dev",

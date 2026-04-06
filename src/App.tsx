@@ -11,6 +11,7 @@ import Involved from '../pages/involved'
 import Newsletter from '../pages/newsletter'
 import Events2024 from '../pages/2024-events'
 import Events2025 from '../pages/2025-events'
+import Events2026 from '../pages/2026-events'
 import Mayoral2025 from '../pages/mayoral-2025'
 import EmbankmentOnMyMind from '../pages/embankment-on-my-mind'
 import McNairEcoArt from '../pages/mcnair-eco-art'
@@ -31,6 +32,7 @@ export default function App() {
       <Route path="/newsletter" element={<Newsletter />} />
       <Route path="/2024-events" element={<Events2024 />} />
       <Route path="/2025-events" element={<Events2025 />} />
+      <Route path="/2026-events" element={<Events2026 />} />
       <Route path="/mayoral-2025" element={<Mayoral2025 />} />
       <Route path="/embankment-on-my-mind" element={<EmbankmentOnMyMind />} />
       <Route path="/mcnair-eco-art" element={<McNairEcoArt />} />

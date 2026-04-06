@@ -9,6 +9,7 @@ export const endorsementsId = "supporters"
 export const visionId = "vision"
 export const newsId = "news"
 
+export const events2026 = "2026-events"
 export const events2025 = "2025-events"
 export const events2024 = "2024-events"
 

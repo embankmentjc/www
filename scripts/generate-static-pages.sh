@@ -15,6 +15,7 @@ ROUTES=(
   newsletter
   2024-events
   2025-events
+  2026-events
   mayoral-2025
   embankment-on-my-mind
   mcnair-eco-art

@@ -1,11 +1,14 @@
 import { useEffect, useRef } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { legacyIds } from '../../components/ids'
 
 /**
  * Scrolls to hash fragment on navigation and initial load.
+ * Redirects legacy hash IDs to their new short equivalents.
  */
 export default function ScrollToHash() {
   const { pathname, hash } = useLocation()
+  const navigate = useNavigate()
   const prevPathname = useRef(pathname)
 
   useEffect(() => {
@@ -13,10 +16,15 @@ export default function ScrollToHash() {
     prevPathname.current = pathname
 
     if (hash) {
+      const id = hash.replace('#', '')
+      // Redirect legacy IDs to new short ones
+      if (id in legacyIds) {
+        navigate(`${pathname}#${legacyIds[id]}`, { replace: true })
+        return
+      }
       // Scroll to hash - use delay only on new page loads
       const delay = isNewPage ? 50 : 0
       setTimeout(() => {
-        const id = hash.replace('#', '')
         const element = document.getElementById(id)
         if (element) {
           element.scrollIntoView({ behavior: 'auto' })

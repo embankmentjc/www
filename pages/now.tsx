@@ -39,7 +39,7 @@ export default function Body() {
                         <div className={css.steps}>
                             <p><span className={css.bold}>BECOME A MEMBER:</span> Support the cause by becoming a member of the Embankment Preservation Coalition (click <a href={`/involved#${becomeMemberId}`}>here</a> to become a member)</p>
                             <p><span className={css.bold}>SPREAD THE WORD:</span> Tell your friends, family and networks about the rail corridor's history and its potential as a community green space (follow us on <A href={"https://www.instagram.com/jerseycityembankment/"}>Instagram</A>, #EmbankmentNow)</p>
-                            <p><span className={css.bold}>DONATE:</span> Sustain our efforts by making a tax-deductible contribution or by donating your time and talents (click <a href={donateId}>here</a> to make a donation)</p>
+                            <p><span className={css.bold}>DONATE:</span> Sustain our efforts by making a tax-deductible contribution or by donating your time and talents (click <a href={`/involved#${donateId}`}>here</a> to make a donation)</p>
                         </div>
                     </div>
                 </div>

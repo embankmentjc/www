@@ -202,8 +202,8 @@ export function ParallaxHeader({ title, embed, subtitle, subtitleChildren, img, 
     subtitle?: ReactNode
     subtitleChildren?: ReactNode
     img: string
-    btn1: HeaderButton
-    btn2: HeaderButton
+    btn1?: HeaderButton
+    btn2?: HeaderButton
     className?: string
     btnsCls?: string
 }) {
@@ -224,10 +224,12 @@ export function ParallaxHeader({ title, embed, subtitle, subtitleChildren, img, 
                                 {subtitle ? <h2 className="font-default font-italic text-regular">{subtitle}</h2> : null}
                                 {subtitleChildren}
                             </div>
-                            <div className={`group group-xl offset-top-30 ${btnsCls || ""}`}>
-                                <A href={btn1.href} className="btn btn-primary btn-lg btn-anis-effect">{btn1.text}</A>
-                                <A href={btn2.href} className="btn btn-default btn-lg btn-anis-effect"><span className="btn-text">{btn2.text}</span></A>
-                            </div>
+                            {(btn1 || btn2) &&
+                                <div className={`group group-xl offset-top-30 ${btnsCls || ""}`}>
+                                    {btn1 && <A href={btn1.href} className="btn btn-primary btn-lg btn-anis-effect">{btn1.text}</A>}
+                                    {btn2 && <A href={btn2.href} className="btn btn-default btn-lg btn-anis-effect"><span className="btn-text">{btn2.text}</span></A>}
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

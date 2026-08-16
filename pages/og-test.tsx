@@ -23,7 +23,7 @@ function OGPreview({ path, name, title, description, image }: {
     description: string
     image: string
 }) {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://embankment.org';
+    const siteUrl = import.meta.env.VITE_SITE_URL || 'https://embankment.org';
     const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
     const fullPageUrl = `${siteUrl}${path === '/' ? '' : path}`;
 
@@ -93,7 +93,7 @@ function OGPreview({ path, name, title, description, image }: {
 }
 
 export default function OGTestPage() {
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://embankment.org';
+    const siteUrl = import.meta.env.VITE_SITE_URL || 'https://embankment.org';
 
     return (
         <Page path="og-test" title="OG Metadata Test" navStuck={true}>

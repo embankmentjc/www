@@ -6,7 +6,7 @@ import { legacyIds } from '../../components/ids'
  * Scrolls to hash fragment on navigation and initial load.
  * Redirects legacy hash IDs to their new short equivalents.
  */
-export default function ScrollToHash() {
+export default function ScrollToHash(): null {
   const { pathname, hash } = useLocation()
   const navigate = useNavigate()
   const prevPathname = useRef(pathname)

@@ -27,8 +27,10 @@ function extractOgMetadata(pageFile) {
 
     const block = match[1]
     const get = (key) => {
-        const m = block.match(new RegExp(`${key}:\\s*["'\`]([^"'\`]+)["'\`]`))
-        return m ? m[1] : null
+        // Match the opening quote, then everything up to the matching closing quote, so
+        // that apostrophes inside double-quoted values (e.g. "the city's parks") survive.
+        const m = block.match(new RegExp(`${key}:\\s*(["'\`])((?:\\\\.|(?!\\1)[\\s\\S])*)\\1`))
+        return m ? m[2] : null
     }
     return {
         title: get('title'),

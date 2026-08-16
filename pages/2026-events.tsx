@@ -27,12 +27,12 @@ export function Events2026() {
         </div>
       </div>
       <div className={css.event}>
-        <H4 id={"eco-art"}>McNair x Embankment Youth Eco-Art Competition</H4>
-        <div className={css.date}>Submissions open now through April 30, 2026</div>
+        <H4 id={"eco-art"}>McNair x Embankment Jersey City Eco-Youth Art Exhibition</H4>
+        <div className={css.date}>June 1&ndash;6, 2026 | Reception June 6</div>
+        <div className={css.location}>New Jersey City University Visual Arts Gallery</div>
         <div className={css.description}>
-          <p>The McNair Environmental Club and the Embankment Preservation Coalition present an eco-art competition for Jersey City youth (1st&ndash;12th grade). Create an original work based on the environment of Jersey City or the Embankment.</p>
-          <p><strong>Prizes:</strong> $50 Grand Prize, $50 Best Representation of Embankment, $30 Age Group Top Prize</p>
-          <p><A href="/mcnair-eco-art">Full details and submission info</A></p>
+          <p>The McNair Academic High School Environmental Club and the Embankment Preservation Coalition ran an eco-art competition for Jersey City youth (1st&ndash;12th grade). More than 80 students submitted work, 60 pieces were exhibited at NJCU, and fourteen young artists were recognized at the reception.</p>
+          <p><A href="/mcnair-eco-art">See the artwork, award winners, and photos from the reception</A></p>
         </div>
       </div>
     </div>

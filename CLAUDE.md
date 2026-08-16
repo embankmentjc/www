@@ -4,7 +4,7 @@ This is the website for the Embankment Preservation Coalition, a Jersey City org
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with static export (`output: 'export'`)
+- **Framework**: Vite + React Router (SPA, statically exported per-route)
 - **Language**: TypeScript + React
 - **Styling**: SCSS modules + global styles in `public/css/`
 - **Deployment**: rsync to shared hosting server
@@ -25,7 +25,7 @@ npm run dm          # Deploy to production (rsync to public_html/)
 npm run dmn         # Dry-run deploy to production
 
 # Dev
-npm run nbd         # Build for dev (with NEXT_PUBLIC_SITE_URL=https://dev.embankment.org)
+npm run nbd         # Build for dev (with VITE_SITE_URL=https://dev.embankment.org)
 npm run dd          # Deploy to dev (rsync to dev_html/)
 npm run dbd         # Build for dev + deploy
 npm run ddn         # Dry-run deploy to dev
@@ -34,13 +34,12 @@ npm run ddn         # Dry-run deploy to dev
 **Important**: Always ask before building or deploying.
 
 ### Build Configuration
-- Separate build directories prevent conflicts:
-  - `next dev` uses `.next` (default)
-  - Dev builds use `.next-dev` (via `npm run nbd`)
-  - Prod builds use `.next-prod` (via `npm run nb`)
-- Stable build ID (`'stable'`) to prevent rsync from re-uploading unchanged files when `_next/` directory names change
-- `NEXT_PUBLIC_SITE_URL` env var controls domain in OG meta tags and other absolute URLs
-- `scripts/restore-timestamps.sh` runs after build to preserve file timestamps for rsync optimization
+- Separate output directories prevent conflicts:
+  - Dev builds go to `out-dev/` (via `npm run bd`, aliased `nbd`)
+  - Prod builds go to `out-prod/` (via `npm run b`, aliased `nb`)
+- Each build runs `scripts/generate-static-pages.sh` (per-route `index.html` shells) then `scripts/inject-og-tags.cjs` (reads each page's `ogMetadata` export and injects OG/Twitter/description tags into the static HTML)
+- `VITE_SITE_URL` env var controls the domain in OG meta tags and other absolute URLs; it defaults to `https://embankment.org`, and `npm run bd` sets it to the dev domain
+- Deploy rsyncs exclude server-managed paths (`.well-known/`, `bat/` logs and credentials) so `--delete` doesn't remove them
 
 ## Email & Form Submission Issues
 
@@ -98,7 +97,7 @@ The `cc-signup-with-email.php` attempts to send email notifications but graceful
 ### OG (Open Graph) Metadata
 - Each page exports `ogMetadata` with `title`, `description`, `image`
 - Images use relative paths (`/images/og/home.jpg`)
-- `Page` component constructs absolute URLs using `NEXT_PUBLIC_SITE_URL`
+- `Page` component constructs absolute URLs using `VITE_SITE_URL`
 - Test page at `/og-test` shows mock social media previews
 
 ### Image Optimization Guidelines
@@ -124,14 +123,14 @@ The `cc-signup-with-email.php` attempts to send email notifications but graceful
 
 ### Component Patterns
 - Export page metadata as `ogMetadata` from page files
-- Use `@rdub/next-base` for common components (`H1`, `H2`, `A`)
+- Use `@rdub/base/heading` for `H1`/`H2`/`H3`; `src/components/A.tsx` for links
 - Fragment links: `H1`/`H2` auto-generate IDs from string titles and create clickable links
-- Avoid nested `<a>` tags (causes hydration errors)
+- Avoid nested `<a>` tags (invalid HTML; React will warn)
 
 ## Key Files & Directories
 
 ### Configuration
-- `next.config.js` - Next.js config with stable build ID and env vars
+- `vite.config.ts` - Vite config; dev server port (8559) and `VITE_ALLOWED_HOSTS` for tailnet access
 - `package.json` - npm scripts for build/deploy
 - `.env` - local env vars (CC credentials, not committed)
 
@@ -192,7 +191,7 @@ Python CLI at `scripts/epc/` with symlink `./epc` at repo root. Uses `uv` for de
 ## Known Issues & Gotchas
 
 1. **SMTP is completely blocked** - don't try to fix email sending, it won't work
-2. **Hydration errors** - avoid wrapping `<a>` tags in `H1`/`H2` components
+2. **Nested anchors** - avoid wrapping `<a>` tags in `H1`/`H2` components (they already render a link)
 3. **PHP version** - server runs old PHP, use compatible syntax (no `??`, use `array()` not `[]`)
 4. **Function name collisions** - both CC and Google Sheets code define `getAccessToken()` - keep them named differently (`getGoogleAccessToken()`)
 5. **CC token expiration** - tokens expire after ~60 days; if signups stop working, check `public/bat/.cc-tokens.json` (0 bytes = corrupted). Re-run `scripts/cc-authorize.js` to refresh.
@@ -201,8 +200,8 @@ Python CLI at `scripts/epc/` with symlink `./epc` at repo root. Uses `uv` for de
 
 ### Local Development
 ```bash
-npm run dev  # Start Next.js dev server
-# Visit http://localhost:3000
+npm run dev  # Start Vite dev server
+# Visit http://localhost:8559
 ```
 
 ### OG Metadata Testing

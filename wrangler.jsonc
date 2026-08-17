@@ -8,7 +8,7 @@
     {
       "binding": "DB",
       "database_name": "epc",
-      "database_id": "PLACEHOLDER_SET_BY_WRANGLER_D1_CREATE",
+      "database_id": "9aafc5fb-243c-45cb-9e1a-197aed12640e",
       "migrations_dir": "migrations"
     }
   ]

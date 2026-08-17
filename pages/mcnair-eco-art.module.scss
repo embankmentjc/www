@@ -41,12 +41,17 @@
   }
 }
 .wide {
-  margin: 1rem auto;
-  padding: 0 2rem;
+  // The galleries sit in a sibling block to .body, so these margins collapse against
+  // whatever the adjacent block contributes (an award group's 3rem, a heading's 2.5rem)
+  // rather than adding to it — 6rem is therefore the resulting gap, not an increment.
+  // Keep it comfortably above the 3rem between award categories, so a section reads as a
+  // bigger break than a category.
+  margin: 6rem auto;
   max-width: 70rem;
+  padding: 0 2rem;
   h2 {
     text-align: center;
-    margin-top: 2.5rem;
+    margin-top: 6rem;
   }
 }
 .awardGroup {

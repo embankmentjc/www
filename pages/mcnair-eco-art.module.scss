@@ -3,6 +3,9 @@
     text-align: center;
     text-transform: none !important;
   }
+  .title span {
+    display: block;
+  }
   .subtitle {
     text-align: center;
     font-weight: 300;
@@ -31,7 +34,7 @@
     text-align: center;
     font-size: 1.15rem;
     font-weight: 500;
-    margin-top: 1.8rem;
+    margin: 0 0 0.75rem;
   }
   p {
     margin-top: 0.8rem;
@@ -47,7 +50,7 @@
   }
 }
 .awardGroup {
-  margin-bottom: 0.5rem;
+  margin-bottom: 3rem;
 }
 .awardRow {
   display: flex;
@@ -57,7 +60,7 @@
   gap: 1.5rem;
 }
 .award {
-  margin: 0.5rem 0;
+  margin: 0;
   max-width: 20rem;
   text-align: center;
   figcaption {
@@ -75,18 +78,16 @@
   }
 }
 .awardImg {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 18rem;
-  width: 100%;
+  display: block;
   padding: 0;
   border: none;
   background: none;
   cursor: pointer;
   img {
+    display: block;
+    margin: 0 auto;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 18rem;
     border-radius: 4px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }

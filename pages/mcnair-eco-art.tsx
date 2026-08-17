@@ -204,7 +204,12 @@ export default function McNairEcoArt() {
             ogImage={ogMetadata.image}
             headerChildren={
                 <ParallaxHeader
-                    title={"McNair x Embankment Jersey City Eco-Youth Art Exhibition"}
+                    title={
+                        <h1 className={css.title}>
+                            <span className="big">McNair x Embankment</span>
+                            <span className="big">Jersey City Eco-Youth Art Exhibition</span>
+                        </h1>
+                    }
                     subtitleChildren={<div className={css.subtitle}>
                         <p className={css.bold}>New Jersey City University Visual Arts Gallery</p>
                         <p>June 1–6, 2026</p>

@@ -8,6 +8,11 @@
     "build": "vite build --outDir out-prod && scripts/generate-static-pages.sh out-prod && node scripts/inject-og-tags.cjs out-prod",
     "build-dev": "VITE_SITE_URL=https://dev.embankment.org vite build --outDir out-dev && scripts/generate-static-pages.sh out-dev && VITE_SITE_URL=https://dev.embankment.org node scripts/inject-og-tags.cjs out-dev",
     "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "cf:dev": "wrangler pages dev out-cf --port 8560",
+    "cf:deploy": "npm run build:cf && wrangler pages deploy out-cf --project-name epc-www",
+    "cf:deploy-preview": "npm run build:cf && wrangler pages deploy out-cf --project-name epc-www --branch preview",
     "b": "npm run build",
     "bd": "npm run build-dev",
     "nb": "npm run build",
@@ -18,11 +23,13 @@
     "dbd": "npm run bd && npm run dd",
     "deploy-main": "rsync -avzh --delete --update --exclude='.well-known' --exclude='bat/signups.log' --exclude='bat/error_log' --exclude='bat/.cc-tokens.json' --exclude='bat/.google-service-account.json' out-prod/ epc:public_html/",
     "dm": "rsync -avzh --delete --update --exclude='.well-known' --exclude='bat/signups.log' --exclude='bat/error_log' --exclude='bat/.cc-tokens.json' --exclude='bat/.google-service-account.json' out-prod/ epc:public_html/",
-    "dmn": "rsync -avzhn --delete --update --exclude='.well-known' --exclude='bat/signups.log' --exclude='bat/error_log' --exclude='bat/.cc-tokens.json' --exclude='bat/.google-service-account.json' out-prod/ epc:public_html/"
+    "dmn": "rsync -avzhn --delete --update --exclude='.well-known' --exclude='bat/signups.log' --exclude='bat/error_log' --exclude='bat/.cc-tokens.json' --exclude='bat/.google-service-account.json' out-prod/ epc:public_html/",
+    "build:cf": "VITE_SIGNUP_ENDPOINT=/api/signup vite build --outDir out-cf && scripts/generate-static-pages.sh out-cf && node scripts/inject-og-tags.cjs out-cf"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260816.1",
     "@types/escape-html": "^1.0.1",
     "@types/luxon": "^3.0.0",
     "@types/node": "^26.2.0",
@@ -30,7 +37,9 @@
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^4.3.4",
     "typescript": "^5.7.2",
-    "vite": "^6.0.5"
+    "vite": "^6.0.5",
+    "vitest": "^4.1.10",
+    "wrangler": "^4.123.0"
   },
   "dependencies": {
     "@rdub/base": "^0.8.1",

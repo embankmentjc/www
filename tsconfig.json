@@ -26,9 +26,11 @@
   },
   "exclude": [
     "dist",
+    "functions",
+    "node_modules",
+    "out-cf",
     "out-dev",
-    "out-prod",
-    "node_modules"
+    "out-prod"
   ],
   "include": [
     "**/*.ts",

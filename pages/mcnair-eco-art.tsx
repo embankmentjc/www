@@ -221,7 +221,7 @@ export default function McNairEcoArt() {
         >
             <div className={css.body}>
                 <p>
-                    The <strong>McNair Academic High School Environmental Club</strong> and the <strong>Embankment Preservation Coalition</strong> collaborated to organize an environmental art competition. More than 80 students submitted their work. These students ranged from grade 1 to grade 12 and represented perspectives from across Jersey City. Their creations showcased an impressive breadth of mediums &mdash; from paintings to sculptures to drawings.
+                    The <strong>McNair Academic High School Environmental Club</strong> and the <strong>Embankment Preservation Coalition</strong> collaborated to organize an environmental art competition. More than 80 students submitted their work. These students ranged from grade 1 to grade 12 and represented perspectives from across Jersey City. Their creations showcased an impressive breadth of mediums &mdash; from paintings to sculptures to drawings to even a poem.
                 </p>
                 <p>
                     With imagination and skill, these young artists highlighted the beauty of our natural world. Their work drew inspiration from Jersey City&rsquo;s many unique ecosystems&mdash;from the Embankment, the massive rail structure on Sixth Street that now supports a &ldquo;floating forest,&rdquo; to the waterfront that surrounds most of Jersey City, to the City&rsquo;s numerous parks&mdash;and underscores the importance of protecting these spaces for the next generation.

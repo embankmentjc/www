@@ -1,8 +1,9 @@
 import Page from "../components/page"
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
-import React, {CSSProperties} from "react";
+import React from "react";
 import { becomeMemberId, donateId, endorsementsId, partnersId, signupId, sponsorsId, volunteerId } from "../components/ids";
 import { VolunteerForm } from "../components/signup-form";
+import css from "./involved.module.scss";
 
 export const ogMetadata = {
     title: "Get Involved - The Embankment",
@@ -50,112 +51,98 @@ function Donate() {
 }
 
 type Sponsor = {
-    alt: string
+    name: string
     src: string
-    href: string
-    width?: number | string
-    height?: number | string
-    className?: string
+    href?: string
 }
-type SponsorRow = {
-    colClass?: string
+type SponsorTier = {
+    id: string
+    title: string
+    note: string
+    className: string
     sponsors: Sponsor[]
-    colStyle?: CSSProperties
 }
 
-function SponsorsList(
-    { title, colsClass, colsStyle, sponsorRows }: {
-        title: string,
-        colsClass?: string
-        colsStyle?: CSSProperties
-        sponsorRows: SponsorRow[]
-    }
-) {
-    return (<>
-        <h3 className="font-weight-bold">{title}</h3>
-        <hr className="divider bg-mantis" />
-        <div className="row justify-content-sm-center align-items-xl-center offset-top-66" style={{ marginTop: 0, }}>
-            <div className="col-md-10 col-lg-9 col-xl-12">{
-                sponsorRows.map(({ colClass, sponsors, colStyle, }, idx) =>
-                    <div className="row justify-content-center align-items-center" style={{ marginTop: "0", }} key={`row-${idx}`}>{
-                        sponsors.map(
-                            ({alt, src, href, width, height, className, }) =>
-                                <div key={alt} className={className || colClass || colsClass} style={{ marginTop: "1em", marginBottom: "1em", ...(colStyle || {}), ...(colsStyle || {}) }}>
-                                    <a href={href} target="_blank">
-                                        <img style={{maxWidth: "100%", /*maxHeight: "100%",*/ verticalAlign: "middle",}}
-                                             alt={alt}
-                                             src={src}
-                                             width={width || "100%"}
-                                             height={height}
-                                        />
-                                    </a>
-                                </div>
-                        )
-                    }</div>
-                )
-            }</div>
-        </div>
-    </>)
+const sponsorTiers: SponsorTier[] = [
+    {
+        id: "platinum",
+        title: "Platinum (10+ Years)",
+        note: "Our longest-standing supporters, with us for over a decade.",
+        className: css.platinum,
+        sponsors: [
+            { name: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
+            { name: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", },
+            { name: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "http://www.newportpharmacy.com", },
+            { name: "Skinner's Loft", src: "/images/sponsors/skinner_logo.png", href: "https://www.skinnersloft.com/", },
+        ],
+    },
+    {
+        id: "gold",
+        title: "Gold Level",
+        note: "Key supporters of the Coalition's work.",
+        className: css.gold,
+        sponsors: [
+            { name: "Grove Street Bicycles", src: "/images/sponsors/GroveStreetBikes.png", href: "https://www.grovestreetbicycles.com/", },
+            { name: "JCFamilies", src: "/images/sponsors/JCFamilieswhiteback.jpeg", href: "https://jcfamilies.com/", },
+            { name: "Base", src: "/images/sponsors/Base Gym.png", href: "https://basenj.com/", },
+            { name: "Two Boots", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
+            { name: "The Power Plant by Boycemode", src: "/images/sponsors/power-plant.png", href: "https://www.thepowerplantcafe.com/", },
+            { name: "Key Food Fresh & Natural", src: "/images/sponsors/KEYFOOD_LOGO.png", href: "https://www.keyfood.com/stores/1666", },
+            { name: "Hair is Happiness", src: "/images/sponsors/HairHappinessLogo2024.png", href: "https://hairishappiness.com/", },
+            { name: "The Scandinavian School of Jersey City", src: "/images/sponsors/scandischool.png", href: "https://www.scandischool.com/", },
+            { name: "Darke Pines", src: "/images/sponsors/darkepines_logovertical.jpg", href: "https://www.darkepines.com/", },
+        ],
+    },
+    {
+        id: "silver",
+        title: "Silver Level",
+        note: "The neighborhood businesses that make the Embankment a community effort.",
+        className: css.silver,
+        sponsors: [
+            { name: "PetShop", src: "/images/sponsors/PetShop.png", href: "https://www.petshopjc.com/", },
+            { name: "Metropolis Music", src: "/images/sponsors/MetropolisMusic.png", href: "http://www.metropolisnj.com/", },
+            { name: "ed&mary's", src: "/images/sponsors/EdandMarys.png", href: "https://www.edandmarys.com/", },
+            { name: "The Brightside Tavern", src: "/images/sponsors/BrightSide.jpg", href: "https://thebrightsidetavern.com/", },
+            { name: "Jersey City Bicycle Company", src: "/images/sponsors/jcbicyclecompany.png", href: "https://www.jcbicycleco.com/", },
+            { name: "Salon X", src: "/images/sponsors/SalonX.jpg", href: "https://colormodels.wixsite.com/salonx", },
+            { name: "Irene Barnaby Group", src: "/images/sponsors/IBG_SecondaryLogo_Black.png", href: "https://www.compass.com/concierge/irene-barnaby/", },
+            { name: "The Thirsty Quaker", src: "/images/sponsors/Thirsty%20Quaker%20Color.png", href: "https://thirstyquaker.com/", },
+        ],
+    },
+]
+
+function SponsorCard({ name, src, href }: Sponsor) {
+    const contents = <>
+        <span className={css.logo}><img src={src} alt={`${name} logo`} loading="lazy" /></span>
+        <span className={css.name}>{name}</span>
+    </>
+    return href
+        ? <a className={css.card} href={href} target="_blank" rel="noopener">{contents}</a>
+        : <div className={css.card}>{contents}</div>
 }
 
 function Sponsors() {
     return (
-        <Section
-            id={sponsorsId}
-            title={"Sponsors"}
-            pretitle={<p>Local, regional, and national organizations and businesses support the Embankment Preservation Coalition in numerous ways. </p>}
-        >
-            <p>Sponsors are businesses and organizations that provide financial support to the Embankment Coalition. Please support those that make our work possible!</p>
-            <p>To become a sponsor of the Harsimus Branch and Embankment, please <a href="mailto:embankmentJC@gmail.com" target="_blank"><span className="font-weight-bold">Click Here (embankmentJC@gmail.com)</span></a>.</p>
-            <SponsorsList
-                title={"Platinum (10+ Years)"}
-                colsClass={"col-sm-6 col-md-4"}
-                sponsorRows={[
-                    { sponsors: [
-                        { width: "70%", alt: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
-                        { width: "100%", alt: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", href: "https://www.mycarminespizza.com/", },
-                    ]}, { sponsors: [
-                        { width: "100%", alt: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "http://www.newportpharmacy.com", },
-                        { width: "65%", alt: "Skinner's Loft", src: "/images/sponsors/skinner_logo.png", href: "https://www.skinnersloft.com/", },
-                    ]}
-                ]}
-            />
-            <SponsorsList
-                title={"Gold Level"}
-                colsClass={"col-sm-6 col-md-4"}
-                sponsorRows={[
-                    { sponsors: [
-                        { width: "100%", alt: "Grove Street Bicycles", src: "/images/sponsors/GroveStreetBikes.png", href: "https://www.grovestreetbicycles.com/", },
-                        { width: "100%", alt: "JC Families", src: "/images/sponsors/JCFamilieswhiteback.jpeg", href: "https://jcfamilies.com/", },
-                        { width: "100%", alt: "Base Gym", src: "/images/sponsors/Base Gym.png", href: "https://www.basenj.com/", },
-                        { width: "100%", alt: "Two Boots Pizza", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
-                        { width: "70%", alt: "The Power Plant by Boyce Mode", src: "/images/sponsors/power-plant.png", href: "https://www.thepowerplantcafe.com/", },
-                        { width: "95%", alt: "Key Foods", src: "/images/sponsors/KEYFOOD_LOGO.png", href: "https://keyfoodstores.keyfood.com/store/keyFood/en/store/1666?distance=0.00%20mile&query=574%20Jersey%20Ave%20Jersey%20City,%20NJ%2007302%20United%20States&radius=5&services=&all=", },
-                        { width: "75%", alt: "Hair is Happiness", src: "/images/sponsors/HairHappinessLogo2024.png", href: "https://hairishappiness.com/", },
-                        { width: "70%", alt: "Scandinavian School of Jersey City", src: "/images/sponsors/scandischool.png", href: "https://www.scandischool.com/", },
-                        { width: "70%", alt: "Darke Pines", src: "/images/sponsors/darkepines_logovertical.jpg", href: "https://www.darkepines.com/", },
-                    ]}
-                ]}
-            />
-            <SponsorsList
-                title={"Silver Level"}
-                colsStyle={{ marginTop: 0, marginBottom: "1em" }}
-                colsClass={"col-sm-4 col-md-3"}
-                sponsorRows={[
-                    { sponsors: [
-                        { width: "100%", alt: "Pet Shop Bar", src: "/images/sponsors/PetShop.png", href: "https://www.petshopjc.com/", },
-                        { width: "100%", alt: "Metropolis Music Inc", src: "/images/sponsors/MetropolisMusic.png", href: "http://www.metropolisnj.com/", },
-                        { width: "100%", alt: "Ed & Mary's Bar", src: "/images/sponsors/EdandMarys.png", href: "https://www.edandmarys.com/", },
-                    ]}, { sponsors: [
-                        { width: "100%", alt: "Brightside Tavern", src: "/images/sponsors/BrightSide.jpg", href: "https://thebrightsidetavern.com/", },
-                        { width: "100%", alt: "Jersey City Bicycle Company", src: "/images/sponsors/jcbicyclecompany.png", href: "https://www.jcbicycleco.com/", },
-                        { width: "100%", alt: "Salon X", src: "/images/sponsors/SalonX.jpg", href: "https://colormodels.wixsite.com/salonx", },
-                    ]}, { sponsors: [
-                        { width: "100%", alt: "Irene Barnaby Group", src: "/images/sponsors/IBG_SecondaryLogo_Black.png", href: "https://www.compass.com/concierge/irene-barnaby/", },
-                        { width: "100%", alt: "Thirsty Quaker", src: "/images/sponsors/Thirsty Quaker Color.png", href: "https://thirstyquaker.com/", },
-                    ]},
-                ]}
-            />
+        <Section id={sponsorsId} title={"Thank You to Our Sponsors"}>
+            <p>Sponsors are local businesses and organizations that provide financial support to the Embankment Coalition. Please support those that make our work possible!</p>
+            {sponsorTiers.map(({ id, title, note, className, sponsors }) => (
+                <div key={id} id={id} className={`${css.tier} ${className}`}>
+                    <h3 className="font-weight-bold">{title}</h3>
+                    <hr className="divider bg-mantis" />
+                    <p className={css.note}>{note}</p>
+                    <div className={css.grid}>
+                        {sponsors.map(sponsor => <SponsorCard key={sponsor.name} {...sponsor} />)}
+                    </div>
+                </div>
+            ))}
+            <div className={css.become}>
+                <h3>Become a Sponsor</h3>
+                <p>Your business can be part of turning the half-mile, six-block stone Embankment into permanent public open space. Sponsorship is $100 for a listing on this page, linked from each of our newsletters, or $200 for more prominent placement, with recognition at our Annual Members Meeting.</p>
+                <p className={css.becomeLinks}>
+                    <a href="/images/sponsor-form-2026.pdf" target="_blank">Sponsorship form (PDF)</a>
+                    <a href="mailto:embankmentJC@gmail.com">embankmentJC@gmail.com</a>
+                </p>
+            </div>
         </Section>
     )
 }

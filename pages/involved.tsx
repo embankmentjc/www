@@ -4,6 +4,7 @@ import React from "react";
 import { becomeMemberId, donateId, endorsementsId, partnersId, signupId, sponsorsId, volunteerId } from "../components/ids";
 import { VolunteerForm } from "../components/signup-form";
 import css from "./involved.module.scss";
+import sponsorRoster from "./sponsors-2026.json";
 
 export const ogMetadata = {
     title: "Get Involved - The Embankment",
@@ -55,70 +56,32 @@ type Sponsor = {
     src: string
     href?: string
 }
-type SponsorTier = {
-    id: string
-    title: string
-    note: string
-    className: string
-    sponsors: Sponsor[]
-}
 
-const sponsorTiers: SponsorTier[] = [
-    {
-        id: "platinum",
-        title: "Platinum (10+ Years)",
-        note: "Our longest-standing supporters, with us for over a decade.",
-        className: css.platinum,
-        sponsors: [
-            { name: "Bouquets & Baskets", src: "/images/sponsors/BOUQUETS_LOGO.png", href: "https://bouquetsbaskets.net/", },
-            { name: "Carmine's Pizza", src: "/images/sponsors/CARMINE_LOGO.png", },
-            { name: "Newport Pharmacy", src: "/images/sponsors/NEWPORT_LOGO.png", href: "http://www.newportpharmacy.com", },
-            { name: "Skinner's Loft", src: "/images/sponsors/skinner_logo.png", href: "https://www.skinnersloft.com/", },
-        ],
-    },
+const sponsorTiers = [
     {
         id: "gold",
         title: "Gold Level",
-        note: "Key supporters of the Coalition's work.",
+        note: "Please support the businesses that support the Embankment.",
         className: css.gold,
-        sponsors: [
-            { name: "Grove Street Bicycles", src: "/images/sponsors/GroveStreetBikes.png", href: "https://www.grovestreetbicycles.com/", },
-            { name: "JCFamilies", src: "/images/sponsors/JCFamilieswhiteback.jpeg", href: "https://jcfamilies.com/", },
-            { name: "Base", src: "/images/sponsors/Base Gym.png", href: "https://basenj.com/", },
-            { name: "Two Boots", src: "/images/sponsors/two%20boots.png", href: "https://twoboots.com/locations/jersey-city", },
-            { name: "The Power Plant by Boycemode", src: "/images/sponsors/power-plant.png", href: "https://www.thepowerplantcafe.com/", },
-            { name: "Key Food Fresh & Natural", src: "/images/sponsors/KEYFOOD_LOGO.png", href: "https://www.keyfood.com/stores/1666", },
-            { name: "Hair is Happiness", src: "/images/sponsors/HairHappinessLogo2024.png", href: "https://hairishappiness.com/", },
-            { name: "The Scandinavian School of Jersey City", src: "/images/sponsors/scandischool.png", href: "https://www.scandischool.com/", },
-            { name: "Darke Pines", src: "/images/sponsors/darkepines_logovertical.jpg", href: "https://www.darkepines.com/", },
-        ],
+        sponsors: sponsorRoster.filter(sponsor => sponsor.tier === "gold"),
     },
     {
         id: "silver",
         title: "Silver Level",
-        note: "The neighborhood businesses that make the Embankment a community effort.",
+        note: "Our neighborhood businesses and community supporters.",
         className: css.silver,
-        sponsors: [
-            { name: "PetShop", src: "/images/sponsors/PetShop.png", href: "https://www.petshopjc.com/", },
-            { name: "Metropolis Music", src: "/images/sponsors/MetropolisMusic.png", href: "http://www.metropolisnj.com/", },
-            { name: "ed&mary's", src: "/images/sponsors/EdandMarys.png", href: "https://www.edandmarys.com/", },
-            { name: "The Brightside Tavern", src: "/images/sponsors/BrightSide.jpg", href: "https://thebrightsidetavern.com/", },
-            { name: "Jersey City Bicycle Company", src: "/images/sponsors/jcbicyclecompany.png", href: "https://www.jcbicycleco.com/", },
-            { name: "Salon X", src: "/images/sponsors/SalonX.jpg", href: "https://colormodels.wixsite.com/salonx", },
-            { name: "Irene Barnaby Group", src: "/images/sponsors/IBG_SecondaryLogo_Black.png", href: "https://www.compass.com/concierge/irene-barnaby/", },
-            { name: "The Thirsty Quaker", src: "/images/sponsors/Thirsty%20Quaker%20Color.png", href: "https://thirstyquaker.com/", },
-        ],
+        sponsors: sponsorRoster.filter(sponsor => sponsor.tier === "silver"),
     },
 ]
 
 function SponsorCard({ name, src, href }: Sponsor) {
     const contents = <>
-        <span className={css.logo}><img src={src} alt={`${name} logo`} loading="lazy" /></span>
+        <span className={css.logo}><img src={src} alt={name === "Leda Duif" ? "Leda Duif draft sponsor artwork" : `${name} logo`} loading="lazy" /></span>
         <span className={css.name}>{name}</span>
     </>
     return href
-        ? <a className={css.card} href={href} target="_blank" rel="noopener">{contents}</a>
-        : <div className={css.card}>{contents}</div>
+        ? <a className={css.card} data-sponsor={name} href={href} target="_blank" rel="noopener">{contents}</a>
+        : <div className={css.card} data-sponsor={name}>{contents}</div>
 }
 
 function Sponsors() {
@@ -131,17 +94,23 @@ function Sponsors() {
                     <hr className="divider bg-mantis" />
                     <p className={css.note}>{note}</p>
                     <div className={css.grid}>
-                        {sponsors.map(sponsor => <SponsorCard key={sponsor.name} {...sponsor} />)}
+                        {sponsors.map(sponsor => <SponsorCard key={sponsor.src} {...sponsor} />)}
                     </div>
                 </div>
             ))}
             <div className={css.become}>
-                <h3>Become a Sponsor</h3>
-                <p>Your business can be part of turning the half-mile, six-block stone Embankment into permanent public open space. Sponsorship is $100 for a listing on this page, linked from each of our newsletters, or $200 for more prominent placement, with recognition at our Annual Members Meeting.</p>
-                <p className={css.becomeLinks}>
-                    <a href="/images/sponsor-form-2026.pdf" target="_blank">Sponsorship form (PDF)</a>
-                    <a href="mailto:embankmentJC@gmail.com">embankmentJC@gmail.com</a>
-                </p>
+                <div>
+                    <h3>Become a Sponsor</h3>
+                    <p>Your business can be part of turning the half-mile, six-block stone Embankment into permanent public open space. Sponsorship is $100 for a listing on this page, linked from each of our newsletters, or $200 for more prominent placement, with recognition at our Annual Members Meeting.</p>
+                    <p className={css.becomeLinks}>
+                        <a href="/images/sponsor-form-2026.pdf" target="_blank" rel="noopener">Sponsorship form (PDF)</a>
+                        <a href="/images/sponsor-form-2026.pdf" download>Download sponsorship form</a>
+                        <a href="mailto:embankmentJC@gmail.com">embankmentJC@gmail.com</a>
+                    </p>
+                </div>
+                <a className={css.formPreview} href="/images/sponsor-form-2026.pdf" target="_blank" rel="noopener">
+                    <img src="/images/sponsors-2026/sponsorship-form.png" alt="2026 Embankment sponsorship form — open PDF" loading="lazy" width="430" height="560" />
+                </a>
             </div>
         </Section>
     )

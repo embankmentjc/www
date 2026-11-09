@@ -2,10 +2,7 @@
   --card-width: 190px;
   --logo-height: 88px;
   margin-top: 3rem;
-  &.platinum {
-    --card-width: 230px;
-    --logo-height: 108px;
-  }
+  &.gold { --logo-height: 120px; }
   &.silver {
     --card-width: 165px;
     --logo-height: 70px;
@@ -55,6 +52,38 @@
   }
 }
 
+.card[data-sponsor="Dagda"] .logo {
+  background: #181816;
+  padding: 8px;
+  border-radius: 2px;
+}
+
+.card[data-sponsor="The Power Plant by Boycemode"] .logo img {
+  max-height: 104px;
+  transform: translateY(-6px);
+}
+
+.card[data-sponsor="The Scandinavian School of Jersey City"] .logo img {
+  transform: translateY(-6px);
+}
+
+.gold .logo img { max-height: 88px; }
+.gold .card[data-sponsor="Dagda"] .logo img { max-height: 104px; }
+.gold .card[data-sponsor="ShopRite"] .logo img { max-height: 100px; }
+.gold .card[data-sponsor="Just Friends Café"] .logo img { max-height: 96px; }
+
+.silver .logo {
+  height: 96px;
+  padding-top: 8px;
+  img { max-height: 70px; }
+}
+.silver .card[data-sponsor="Leda Duif"] .logo { height: 138px; }
+.silver .card[data-sponsor="Leda Duif"] .logo img { max-height: 130px; }
+.silver .card[data-sponsor="Skinner's Loft"] .logo img { max-height: 88px; }
+.silver .card:is([data-sponsor="Betty's Ceramics Club"], [data-sponsor="The Brightside Tavern"], [data-sponsor="The Brunswick School"]) .logo img {
+  max-height: 76px;
+}
+
 .name {
   color: #6b6b6e;
   font-size: 0.875rem;
@@ -64,6 +93,10 @@
 }
 
 .become {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 220px);
+  align-items: center;
+  gap: 2rem;
   margin-top: 3.5rem;
   padding: 2rem 2.5rem;
   border-radius: 3px;
@@ -76,6 +109,18 @@
   p {
     margin-top: 0.75rem;
   }
+}
+
+.formPreview {
+  display: block;
+  width: 100%;
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  }
+  &:focus-visible { outline: 3px solid #fff; outline-offset: 5px; }
 }
 
 .becomeLinks {
@@ -94,6 +139,8 @@
     flex-basis: calc(50% - 0.5rem);
   }
   .become {
+    grid-template-columns: minmax(0, 1fr);
     padding: 1.5rem;
   }
+  .formPreview { max-width: 220px; justify-self: center; }
 }

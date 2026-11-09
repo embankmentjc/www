@@ -19,7 +19,7 @@
   color: #fff;
   .noticeInner {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.75rem 2rem;
@@ -46,7 +46,7 @@
     color: #2e7d4f;
     font-weight: bold;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0;
     &:hover {
       background: #e6f3ea;
       color: #246b43;

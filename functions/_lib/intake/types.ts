@@ -56,7 +56,7 @@ export type Request = {
 
 /** Why an inbound message was dropped without becoming a proposal. */
 export type DropReason =
-    | "unverified"       // signature or SPF/DKIM/DMARC failed
+    | "unverified"       // webhook signature or DMARC failed
     | "not_allowed"      // sender absent from the allowlist, or revoked
     | "no_scope"         // on the allowlist, but without `propose`
     | "automated"        // auto-reply, mailing list, or no-reply sender

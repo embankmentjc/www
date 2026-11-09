@@ -1,5 +1,6 @@
-import { describe, expect, it, vi } from "vitest"
+import { afterEach, describe, expect, it, vi } from "vitest"
 import { branchFor, intake, proposalId } from "./core"
+import { githubDispatch } from "./adapters/github"
 import { parseAddress, screen, stripQuoted, verifySignature, type InboundEmail } from "./adapters/email"
 import type { Store } from "./store"
 import type { Proposal, Scope } from "./types"
@@ -139,9 +140,28 @@ describe("intake proposal lifecycle", () => {
 
         expect(followUp.ok && followUp.followUp).toBe(true)
         expect(followUp.ok && followUp.proposal.branch).toBe("intake/abc1234567")
-        expect(followUp.ok && followUp.proposal.prompt).toBe("actually, more space above it")
         expect(store.proposals.size).toBe(1)
         expect(dispatch).toHaveBeenCalledTimes(2)
+    })
+
+    it("keeps the whole request history across follow-ups, in the record and the run", async () => {
+        const store = memStore(katy)
+        const dispatch = vi.fn(async (_: Proposal) => {})
+        const reply = (messageId: string, prompt: string) =>
+            intake(request({ threadKey: "<root@mail>", messageId, prompt }), deps(store, dispatch))
+        await intake(request({ threadKey: "<root@mail>" }), deps(store, dispatch))
+        await reply("<m2@mail>", "actually, more space above it")
+        await reply("<m3@mail>", "and make it italic")
+
+        const expected = [
+            "Add the poem to the list of mediums",
+            "--- Follow-up ---",
+            "actually, more space above it",
+            "--- Follow-up ---",
+            "and make it italic",
+        ].join("\n\n")
+        expect(store.proposals.get("abc1234567")?.prompt).toBe(expected)
+        expect(dispatch.mock.calls.at(-1)?.[0].prompt).toBe(expected)
     })
 
     it("opens a new proposal when the thread's proposal already merged", async () => {
@@ -183,12 +203,21 @@ describe("email screening", () => {
         })
     })
 
-    it.each([
-        ["spf", { spf: false, dkim: true, dmarc: true }],
-        ["dkim", { spf: true, dkim: false, dmarc: true }],
-        ["dmarc", { spf: true, dkim: true, dmarc: false }],
-    ])("drops a message failing %s", (_name, auth) => {
-        expect(screen(email({ auth }))).toEqual({ ok: false, reason: "unverified" })
+    it("drops a message failing DMARC, even when SPF and DKIM pass unaligned", () => {
+        expect(screen(email({ auth: { spf: true, dkim: true, dmarc: false } })))
+            .toEqual({ ok: false, reason: "unverified" })
+    })
+
+    it("accepts a forwarded message: SPF breaks in transit, aligned DKIM carries DMARC", () => {
+        const { request } = screen(email({ auth: { spf: false, dkim: true, dmarc: true } })) as { request: unknown }
+        expect(request).toEqual({
+            transport: "email",
+            sender: "katy@example.org",
+            prompt: "Could you add a poem to the list of mediums?",
+            subject: "Eco-Art website page",
+            threadKey: "<m1@mail>",
+            messageId: "<m1@mail>",
+        })
     })
 
     it("drops auto-replies and mailing lists", () => {
@@ -265,10 +294,27 @@ describe("ids", () => {
         expect(branchFor("abc1234567")).toBe("intake/abc1234567")
     })
 
-    it("generates lowercase alphanumeric ids of fixed length", () => {
-        let seed = 0
-        const id = proposalId(() => ((seed = (seed * 9301 + 49297) % 233280) / 233280))
-        expect(id).toMatch(/^[a-z0-9]{10}$/)
+    it("maps random bytes onto the alphabet", () => {
+        const id = proposalId(bytes => {
+            bytes.forEach((_, i) => { bytes[i] = i })
+        })
+        expect(id).toBe("abcdefghij")
+    })
+
+    it("discards bytes that would bias the alphabet", () => {
+        const stream = [255, 252, 0, 35, 251, 36, 1, 2, 3, 4, 5, 6, 7]
+        const id = proposalId(bytes => {
+            bytes.forEach((_, i) => { bytes[i] = stream.shift() ?? 0 })
+        })
+        // 251 % 36 = 35 and 36 % 36 = 0; 252 and 255 are the discarded overflow.
+        expect(id).toBe("a99abcdefg")
+    })
+
+    it("draws from the platform CSPRNG by default", () => {
+        const spy = vi.spyOn(crypto, "getRandomValues")
+        expect(proposalId()).toMatch(/^[a-z0-9]{10}$/)
+        expect(spy).toHaveBeenCalled()
+        spy.mockRestore()
     })
 })
 
@@ -291,5 +337,37 @@ describe("dispatch failure", () => {
         const stranded = store.proposals.get("abc1234567")!
         expect(stranded.status).toBe("failed")
         expect(stranded.detail).toContain("401")
+    })
+})
+
+describe("github dispatch", () => {
+    afterEach(() => { vi.unstubAllGlobals() })
+
+    it("sends no requester identity: the run's logs are public on a public repo", async () => {
+        const fetchMock = vi.fn(async (_url: string, _init: RequestInit) => new Response(null, { status: 204 }))
+        vi.stubGlobal("fetch", fetchMock)
+        await githubDispatch({ repo: "o/r", token: "t" })({
+            id: "abc1234567",
+            transport: "web",
+            sender: "katy@example.org",
+            threadKey: null,
+            subject: "Eco-Art page",
+            prompt: "Add the poem",
+            status: "queued",
+            branch: "intake/abc1234567",
+            prNumber: null,
+            previewUrl: null,
+        })
+
+        const [url, init] = fetchMock.mock.calls[0]
+        expect(url).toBe("https://api.github.com/repos/o/r/dispatches")
+        expect(JSON.parse(init.body as string)).toEqual({
+            event_type: "agent-intake",
+            client_payload: {
+                proposal_id: "abc1234567",
+                branch: "intake/abc1234567",
+                prompt: "Add the poem",
+            },
+        })
     })
 })

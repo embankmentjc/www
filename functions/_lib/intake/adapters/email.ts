@@ -53,8 +53,12 @@ export function stripQuoted(body: string): string {
  * Decide whether an inbound message may become a change request.
  *
  * `From:` is not identity — a message is only considered authenticated when
- * the provider reports SPF, DKIM, *and* DMARC passing. Authorization (is this
- * address on the allowlist?) is the core's job, not this function's.
+ * the provider reports DMARC passing, which is the check that ties SPF or DKIM
+ * to the `From:` domain. SPF alone is deliberately not required: it breaks on
+ * forwarding, while aligned DKIM survives. A receiver's DMARC *policy* is no
+ * help either (gmail.com publishes `p=none`, so forgeries are delivered), so
+ * the verdict has to be checked here. Authorization (is this address on the
+ * allowlist?) is the core's job, not this function's.
  */
 export function screen(email: InboundEmail): { ok: true; request: Request } | { ok: false; reason: DropReason } {
     if (email.autoSubmitted || email.listId) return { ok: false, reason: "automated" }
@@ -62,8 +66,7 @@ export function screen(email: InboundEmail): { ok: true; request: Request } | { 
     const from = parseAddress(email.from)
     if (ROBOT_LOCALPARTS.test(from)) return { ok: false, reason: "automated" }
 
-    const { spf, dkim, dmarc } = email.auth
-    if (!spf || !dkim || !dmarc) return { ok: false, reason: "unverified" }
+    if (!email.auth.dmarc) return { ok: false, reason: "unverified" }
 
     const prompt = stripQuoted(email.body)
     if (!prompt) return { ok: false, reason: "empty" }

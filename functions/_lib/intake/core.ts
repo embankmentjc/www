@@ -19,15 +19,32 @@ export const DEFAULT_LIMITS: Limits = { perSenderPerDay: 10 }
 
 const DAY_SECS = 86_400
 
-/** Short, URL-safe, and unguessable enough that a branch name leaks nothing. */
-export function proposalId(random: () => number = Math.random): string {
-    const alphabet = "abcdefghijklmnopqrstuvwxyz0123456789"
+const ID_ALPHABET = "abcdefghijklmnopqrstuvwxyz0123456789"
+const ID_LENGTH = 10
+/** Largest multiple of the alphabet size in a byte; bytes at or above it would bias the id. */
+const ID_BYTE_LIMIT = 256 - (256 % ID_ALPHABET.length)
+
+/** Short, URL-safe, and unguessable: branch names are public on a public repo. */
+export function proposalId(fill: (bytes: Uint8Array) => void = bytes => crypto.getRandomValues(bytes)): string {
+    const bytes = new Uint8Array(ID_LENGTH)
     let out = ""
-    for (let i = 0; i < 10; i++) out += alphabet[Math.floor(random() * alphabet.length)]
+    while (out.length < ID_LENGTH) {
+        fill(bytes)
+        for (const byte of bytes) {
+            if (byte < ID_BYTE_LIMIT && out.length < ID_LENGTH) out += ID_ALPHABET[byte % ID_ALPHABET.length]
+        }
+    }
     return out
 }
 
 export const branchFor = (id: string) => `intake/${id}`
+
+/**
+ * The request so far: a rerun has to see what was originally asked, not just
+ * "actually, make it blue".
+ */
+export const appendFollowUp = (history: string, followUp: string) =>
+    `${history}\n\n--- Follow-up ---\n\n${followUp}`
 
 /**
  * Start the run, or record why it could not start.
@@ -69,7 +86,7 @@ export type IntakeDeps = {
 /**
  * Admit a request, or drop it.
  *
- * Verification of the transport itself (webhook signature, SPF/DKIM/DMARC)
+ * Verification of the transport itself (webhook signature, DMARC)
  * happens in the adapter, before this is called — by the time a Request
  * exists, the sender address is considered authenticated. What remains here
  * is authorization and abuse control.
@@ -102,8 +119,9 @@ export async function intake(req: Request, deps: IntakeDeps): Promise<Intake> {
     // a second one — which is how these requests actually arrive.
     const existing = req.threadKey ? await store.findProposalByThread(req.threadKey) : null
     if (existing && existing.status !== "merged") {
-        const updated: Proposal = { ...existing, prompt, status: "queued" }
-        await store.updateProposal(existing.id, { prompt, status: "queued" })
+        const history = appendFollowUp(existing.prompt, prompt)
+        const updated: Proposal = { ...existing, prompt: history, status: "queued" }
+        await store.updateProposal(existing.id, { prompt: history, status: "queued" })
         await store.appendEvent(existing.id, "received", "follow-up")
         if (!(await tryDispatch(updated, deps))) return { ok: false, reason: "dispatch_failed" }
         return { ok: true, proposal: updated, followUp: true }

@@ -3,14 +3,17 @@
  *
  * Deliberately the *only* thing that talks to a code-hosting API, and
  * deliberately not a Cloudflare deploy token — Pages builds the PR with its
- * own credentials, so nothing reachable from an email endpoint can deploy.
+ * own credentials, so nothing reachable from an intake endpoint can deploy.
+ *
+ * The payload carries no requester identity, and no subject: workflow logs on
+ * a public repo are public. Who asked stays in D1.
  */
 
 import type { Dispatch, Proposal } from "../types"
 
 export type GithubConfig = {
     repo: string   // "owner/name"
-    token: string  // repo-scoped; needs no more than contents + PR write
+    token: string  // repo-scoped; `repository_dispatch` needs only contents write
 }
 
 export function githubDispatch(cfg: GithubConfig): Dispatch {
@@ -29,8 +32,6 @@ export function githubDispatch(cfg: GithubConfig): Dispatch {
                     proposal_id: proposal.id,
                     branch: proposal.branch,
                     prompt: proposal.prompt,
-                    subject: proposal.subject,
-                    sender: proposal.sender,
                 },
             }),
         })

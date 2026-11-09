@@ -5,9 +5,10 @@ import Footer from "./footer";
 import Nav from "./nav";
 import {Modal} from "./modal";
 
-export default function Page({ path, children, headerChildren, navStuck, modal, title, description, ogImage, }: {
+export default function Page({ path, children, banner, headerChildren, navStuck, modal, title, description, ogImage, }: {
     path: string
     children: ReactNode
+    banner?: ReactNode
     headerChildren?: ReactNode
     navStuck?: boolean
     modal?: boolean
@@ -53,6 +54,7 @@ export default function Page({ path, children, headerChildren, navStuck, modal, 
         {/*</div>*/}
         <div className="page text-center">
             {modal && <Modal />}
+            {banner}
             <header className="page-head slider-menu-position">
                 <Nav cur={path} navStuck={navStuck} />
                 {headerChildren}

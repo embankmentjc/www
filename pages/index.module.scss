@@ -11,3 +11,49 @@
     //margin-bottom: 1rem;
   }
 }
+
+.notice {
+  position: relative;
+  padding: 1rem 0;
+  background: linear-gradient(135deg, #2e7d4f, #43923a);
+  color: #fff;
+  .noticeInner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem 2rem;
+  }
+  p, h2 {
+    margin: 0;
+    color: #fff;
+  }
+  .noticeTitle {
+    margin: 0.15em 0;
+    font-size: 1.75rem;
+    font-weight: bold;
+    line-height: 1.2;
+  }
+  .noticeDetails a {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .noticeButton {
+    flex: none;
+    padding: 0.6em 1.5em;
+    border-radius: 3px;
+    background: #fff;
+    color: #2e7d4f;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    &:hover {
+      background: #e6f3ea;
+      color: #246b43;
+    }
+  }
+  // The mobile nav bar (below 992px; see `isMobile` in components/nav.tsx) is fixed over the top of the page.
+  @media (max-width: 991.98px) {
+    padding-top: calc(56px + 1rem);
+  }
+}

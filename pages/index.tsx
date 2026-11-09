@@ -6,7 +6,7 @@ import {
     IconBoxesSection,
     ParallaxSection1, Section
 } from "../components/theme";
-import { becomeMemberId, donateId, visionId } from "../components/ids";
+import { becomeMemberId, donateId, signupId, visionId } from "../components/ids";
 import css from "./index.module.scss"
 import BannerSlider from "../components/banner-slider";
 
@@ -16,6 +16,29 @@ export const ogMetadata = {
     image: "/images/og/home.jpg",
 }
 
+
+// Hides itself once the meeting is over, so a stale notice can't linger on the home page.
+const annualMeetingEnd = new Date("2026-11-15T18:00:00-05:00")
+
+function AnnualMeetingNotice() {
+    if (new Date() >= annualMeetingEnd) return null
+    return (
+        <section className={css.notice}>
+            <div className={`container ${css.noticeInner}`}>
+                <div className={css.noticeText}>
+                    <p className={css.noticeLead}>Help us celebrate the community work that got us to this place!</p>
+                    <h2 className={css.noticeTitle}>Embankment Preservation Coalition Annual Meeting</h2>
+                    <p className={css.noticeDetails}>
+                        <strong>Sunday, November 15, 2026, 4–6 pm</strong>
+                        {" · "}Grace Church Van Vorst{" · "}
+                        <a href="https://www.google.com/maps/search/?api=1&query=Grace+Church+Van+Vorst+39+Erie+Street+Jersey+City" target="_blank" rel="noopener">39 Erie Street (entrance on 2nd Street), Jersey City</a>
+                    </p>
+                </div>
+                <a className={css.noticeButton} href={`/involved#${signupId}`}>Get our updates!</a>
+            </div>
+        </section>
+    )
+}
 
 function BannerSlides() {
     const slides = [
@@ -172,6 +195,7 @@ export default function Body() {
     return (
         <Page
             path="/"
+            banner={<AnnualMeetingNotice/>}
             headerChildren={<BannerSlides/>}
             title={ogMetadata.title}
             description={ogMetadata.description}

@@ -76,7 +76,7 @@ const sponsorTiers = [
 
 function SponsorCard({ name, src, href }: Sponsor) {
     const contents = <>
-        <span className={css.logo}><img src={src} alt={name === "Leda Duif" ? "Leda Duif draft sponsor artwork" : `${name} logo`} loading="lazy" /></span>
+        <span className={css.logo}><img src={src} alt={`${name} logo`} loading="lazy" /></span>
         <span className={css.name}>{name}</span>
     </>
     return href

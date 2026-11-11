@@ -52,12 +52,6 @@
   }
 }
 
-.card[data-sponsor="Dagda"] .logo {
-  background: #181816;
-  padding: 8px;
-  border-radius: 2px;
-}
-
 .card[data-sponsor="The Power Plant by Boycemode"] .logo img {
   max-height: 104px;
   transform: translateY(-6px);
@@ -67,8 +61,13 @@
   transform: translateY(-6px);
 }
 
+.card:is([data-sponsor="Everton"], [data-sponsor="Hair Is Happiness"], [data-sponsor="Newport Pharmacy"]) .logo img {
+  transform: translateY(5px);
+}
+
 .gold .logo img { max-height: 88px; }
-.gold .card[data-sponsor="Dagda"] .logo img { max-height: 104px; }
+.gold .card[data-sponsor="Darke Pines"] .logo img { max-height: 114px; }
+.gold .card[data-sponsor="Dwellings with Leda"] .logo img { max-height: 82px; }
 .gold .card[data-sponsor="ShopRite"] .logo img { max-height: 100px; }
 .gold .card[data-sponsor="Just Friends Café"] .logo img { max-height: 96px; }
 
@@ -77,9 +76,9 @@
   padding-top: 8px;
   img { max-height: 70px; }
 }
-.silver .card[data-sponsor="Leda Duif"] .logo { height: 138px; }
-.silver .card[data-sponsor="Leda Duif"] .logo img { max-height: 130px; }
-.silver .card[data-sponsor="Skinner's Loft"] .logo img { max-height: 88px; }
+.silver .card[data-sponsor="Two Boots"] .logo { height: 104px; }
+.silver .card[data-sponsor="Healy's Tavern"] .logo img { max-height: 80px; }
+.silver .card[data-sponsor="The Thirsty Quaker"] .logo img { max-height: 78px; }
 .silver .card:is([data-sponsor="Betty's Ceramics Club"], [data-sponsor="The Brightside Tavern"], [data-sponsor="The Brunswick School"]) .logo img {
   max-height: 76px;
 }

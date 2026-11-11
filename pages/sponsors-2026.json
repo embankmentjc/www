@@ -7,15 +7,21 @@
   },
   {
     "tier": "gold",
-    "name": "Dagda",
-    "href": "https://dagdabar.com/",
-    "src": "/images/sponsors-2026/Dagda.webp"
+    "name": "CHOC·O·PAIN",
+    "href": "https://www.chocopainbakery.com/",
+    "src": "/images/sponsors-2026/CHOC O PAIN.webp"
   },
   {
     "tier": "gold",
     "name": "Darke Pines",
     "href": "https://www.darkepines.com/",
     "src": "/images/sponsors-2026/Darke Pines.webp"
+  },
+  {
+    "tier": "gold",
+    "name": "Dwellings with Leda",
+    "href": "https://dwellingswithleda.com/",
+    "src": "/images/sponsors-2026/Dwellings with Leda.webp"
   },
   {
     "tier": "gold",
@@ -31,6 +37,12 @@
   },
   {
     "tier": "gold",
+    "name": "Hamilton Park Montessori School",
+    "href": "https://hamiltonparkmontessori.com/",
+    "src": "/images/sponsors-2026/Hamilton Park Montessori School.webp"
+  },
+  {
+    "tier": "gold",
     "name": "Irene Barnaby Group",
     "href": "https://www.compass.com/agents/irene-barnaby/",
     "src": "/images/sponsors-2026/Irene Barnaby Group.webp"
@@ -43,9 +55,21 @@
   },
   {
     "tier": "gold",
+    "name": "Key Food",
+    "href": "https://www.keyfood.com/stores/1666",
+    "src": "/images/sponsors-2026/Key Food Fresh & Natural.webp"
+  },
+  {
+    "tier": "gold",
     "name": "Lighthorse Tavern",
     "href": "https://www.lighthorsetavern.com/",
     "src": "/images/sponsors-2026/Lighthorse Tavern.webp"
+  },
+  {
+    "tier": "gold",
+    "name": "Newport Pharmacy",
+    "href": "http://www.newportpharmacy.com/",
+    "src": "/images/sponsors-2026/Newport Pharmacy.webp"
   },
   {
     "tier": "gold",
@@ -58,6 +82,12 @@
     "name": "ShopRite",
     "href": "https://www.storeopeninghours.com/shoprite-metro-plaza-jersey-city-nj",
     "src": "/images/sponsors-2026/ShopRite.webp"
+  },
+  {
+    "tier": "gold",
+    "name": "Skinner's Loft",
+    "href": "https://www.skinnersloft.com/",
+    "src": "/images/sponsors-2026/Skinner's Loft.webp"
   },
   {
     "tier": "gold",
@@ -79,9 +109,9 @@
   },
   {
     "tier": "gold",
-    "name": "Two Boots",
-    "href": "https://twoboots.com/jersey-city/",
-    "src": "/images/sponsors-2026/Two Boots.webp"
+    "name": "Torico Ice Cream",
+    "href": "https://www.toricoicecream.com/",
+    "src": "/images/sponsors-2026/Torico Ice Cream.webp"
   },
   {
     "tier": "silver",
@@ -109,12 +139,6 @@
   },
   {
     "tier": "silver",
-    "name": "Cangiano's Marketplace",
-    "href": "https://www.cangianosfinefoods.com/",
-    "src": "/images/sponsors-2026/Cangiano's Marketplace new logo.webp"
-  },
-  {
-    "tier": "silver",
     "name": "Carmine's Pizza Factory",
     "href": "https://carminespizzajc.com/",
     "src": "/images/sponsors-2026/Carmine's Pizza Factory.webp"
@@ -133,12 +157,6 @@
   },
   {
     "tier": "silver",
-    "name": "Hamilton Park Montessori School",
-    "href": "https://hamiltonparkmontessori.com/",
-    "src": "/images/sponsors-2026/Hamilton Park Montessori School.webp"
-  },
-  {
-    "tier": "silver",
     "name": "Healy's Tavern",
     "href": "https://www.healystavernjc.com/",
     "src": "/images/sponsors-2026/Healy's Tavern.webp"
@@ -151,27 +169,9 @@
   },
   {
     "tier": "silver",
-    "name": "Key Food",
-    "href": "https://www.keyfood.com/stores/1666",
-    "src": "/images/sponsors-2026/Key Food Fresh & Natural.webp"
-  },
-  {
-    "tier": "silver",
-    "name": "Leda Duif",
-    "href": "https://dwellingswithleda.com/",
-    "src": "/images/sponsors-2026/Leda Duif.webp"
-  },
-  {
-    "tier": "silver",
     "name": "Mastrolia Pharmacy",
     "href": "https://www.mastroliapharmacy.com/",
     "src": "/images/sponsors-2026/Mastrolia Pharmacy.webp"
-  },
-  {
-    "tier": "silver",
-    "name": "Newport Pharmacy",
-    "href": "http://www.newportpharmacy.com/",
-    "src": "/images/sponsors-2026/Newport Pharmacy.webp"
   },
   {
     "tier": "silver",
@@ -193,15 +193,15 @@
   },
   {
     "tier": "silver",
-    "name": "Skinner's Loft",
-    "href": "https://www.skinnersloft.com/",
-    "src": "/images/sponsors-2026/Skinner's Loft.webp"
-  },
-  {
-    "tier": "silver",
     "name": "The Thirsty Quaker",
     "href": "https://thirstyquaker.com/",
     "src": "/images/sponsors-2026/The Thirsty Quaker.webp"
+  },
+  {
+    "tier": "silver",
+    "name": "Two Boots",
+    "href": "https://twoboots.com/jersey-city/",
+    "src": "/images/sponsors-2026/Two Boots.webp"
   },
   {
     "tier": "silver",

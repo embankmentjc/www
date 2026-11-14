@@ -76,10 +76,9 @@
   padding-top: 8px;
   img { max-height: 70px; }
 }
-.silver .card[data-sponsor="Two Boots"] .logo { height: 104px; }
 .silver .card[data-sponsor="Healy's Tavern"] .logo img { max-height: 80px; }
 .silver .card[data-sponsor="The Thirsty Quaker"] .logo img { max-height: 78px; }
-.silver .card:is([data-sponsor="Betty's Ceramics Club"], [data-sponsor="The Brightside Tavern"], [data-sponsor="The Brunswick School"]) .logo img {
+.silver .card:is([data-sponsor="Betty's Ceramics Club"], [data-sponsor="The Brightside Tavern"]) .logo img {
   max-height: 76px;
 }
 
@@ -89,6 +88,10 @@
   font-weight: 700;
   line-height: 1.35;
   text-align: center;
+}
+
+.nameSmall {
+  font-size: 0.75rem;
 }
 
 .become {

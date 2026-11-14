@@ -45,7 +45,11 @@
     "tier": "gold",
     "name": "Irene Barnaby Group",
     "href": "https://www.compass.com/agents/irene-barnaby/",
-    "src": "/images/sponsors-2026/Irene Barnaby Group.webp"
+    "src": "/images/sponsors-2026/Irene Barnaby Group.webp",
+    "caption": [
+      "Irene Barnaby Group",
+      "at Compass"
+    ]
   },
   {
     "tier": "gold",
@@ -127,33 +131,15 @@
   },
   {
     "tier": "silver",
-    "name": "The Brunswick School",
-    "href": "https://www.thebrunswickschool.com/",
-    "src": "/images/sponsors-2026/The Brunswick School.webp"
-  },
-  {
-    "tier": "silver",
     "name": "Cangiano's Marketplace",
     "href": "https://www.cangianosfinefoods.com/",
     "src": "/images/sponsors-2026/Cangiano's.webp"
   },
   {
     "tier": "silver",
-    "name": "Carmine's Pizza Factory",
-    "href": "https://carminespizzajc.com/",
-    "src": "/images/sponsors-2026/Carmine's Pizza Factory.webp"
-  },
-  {
-    "tier": "silver",
     "name": "Chariot Auto Repair",
     "href": "https://www.autorepairjerseycity.com/",
     "src": "/images/sponsors-2026/Chariot Auto Repair.webp"
-  },
-  {
-    "tier": "silver",
-    "name": "Ed & Mary's",
-    "href": "https://www.edandmarys.com/",
-    "src": "/images/sponsors-2026/ed&mary's.webp"
   },
   {
     "tier": "silver",
@@ -169,27 +155,9 @@
   },
   {
     "tier": "silver",
-    "name": "Mastrolia Pharmacy",
-    "href": "https://www.mastroliapharmacy.com/",
-    "src": "/images/sponsors-2026/Mastrolia Pharmacy.webp"
-  },
-  {
-    "tier": "silver",
-    "name": "Pet Shop",
-    "href": "https://www.petshopjc.com/",
-    "src": "/images/sponsors-2026/PetShop.webp"
-  },
-  {
-    "tier": "silver",
     "name": "Salon X",
     "href": "https://colormodels.wixsite.com/salonx",
     "src": "/images/sponsors-2026/Salon X.webp"
-  },
-  {
-    "tier": "silver",
-    "name": "Sirena",
-    "href": "https://www.shopsirena.com/",
-    "src": "/images/sponsors-2026/Sirena.webp"
   },
   {
     "tier": "silver",
@@ -199,20 +167,8 @@
   },
   {
     "tier": "silver",
-    "name": "Two Boots",
-    "href": "https://twoboots.com/jersey-city/",
-    "src": "/images/sponsors-2026/Two Boots.webp"
-  },
-  {
-    "tier": "silver",
     "name": "Vicoletto Pizza & Cucina",
     "href": "https://vicolettojc.com/",
     "src": "/images/sponsors-2026/Vicoletto Pizza & Cucina.webp"
-  },
-  {
-    "tier": "silver",
-    "name": "WORD Bookstores",
-    "href": "https://wordbookstores.com/",
-    "src": "/images/sponsors-2026/WORD Bookstores.webp"
   }
 ]

@@ -1,6 +1,6 @@
 import Page from "../components/page"
 import {Banner, ParallaxHeader, ParallaxSection1, Section} from "../components/theme";
-import React from "react";
+import React, { Fragment } from "react";
 import { becomeMemberId, donateId, endorsementsId, partnersId, signupId, sponsorsId, volunteerId } from "../components/ids";
 import { VolunteerForm } from "../components/signup-form";
 import css from "./involved.module.scss";
@@ -55,6 +55,7 @@ type Sponsor = {
     name: string
     src: string
     href?: string
+    caption?: string[]
 }
 
 const sponsorTiers = [
@@ -74,10 +75,12 @@ const sponsorTiers = [
     },
 ]
 
-function SponsorCard({ name, src, href }: Sponsor) {
+function SponsorCard({ name, src, href, caption }: Sponsor) {
     const contents = <>
         <span className={css.logo}><img src={src} alt={`${name} logo`} loading="lazy" /></span>
-        <span className={css.name}>{name}</span>
+        {caption
+            ? <span className={`${css.name} ${css.nameSmall}`}>{caption.map((line, i) => <Fragment key={i}>{i > 0 && <br />}{line}</Fragment>)}</span>
+            : <span className={css.name}>{name}</span>}
     </>
     return href
         ? <a className={css.card} data-sponsor={name} href={href} target="_blank" rel="noopener">{contents}</a>

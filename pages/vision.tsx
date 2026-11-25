@@ -92,7 +92,7 @@ export default function Body() {
       </>} images={[
         { src: "/images/2026-renders/sm/Phase_1_Site_Plan.jpg", lightboxSrc: "/images/2026-renders/Phase_1_Site_Plan.jpg", alt: "Phase 1 site plan: Block 1 (Marin Blvd to Grove St) and Block 2 (Grove St to Erie St)", caption: "Phase 1 site plan: Block 1 (Marin Blvd to Grove St) and Block 2 (Grove St to Erie St). Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
       ]}>
-        <p>Phase 1 will bring the first two blocks of the Embankment Vision to life, establishing a critical connection for the East Coast Greenway through Jersey City. The project is a public-private partnership funded by the Albanese Organization and will serve as a catalyst for the future development of the Embankment.</p>
+        <p>Phase 1 will bring the first two blocks of the Embankment Vision to life, establishing a critical connection for the East Coast Greenway through Jersey City. The project is a public-private partnership funded by the Albanese Organization. Its design will serve as the catalyst for the future development of the Embankment.</p>
       </ConceptSection>
 
       <ConceptSection title={"Block 1: Public Plaza, Promenade, and Pedestrian Bridge"} images={[
@@ -100,8 +100,8 @@ export default function Body() {
         { src: "/images/2026-renders/sm/Block_1_Promenade.jpg", lightboxSrc: "/images/2026-renders/Block_1_Promenade.jpg", alt: "Block 1’s 30-foot-wide public promenade", caption: "Block 1’s 30-foot-wide public promenade. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
         { src: "/images/2026-renders/sm/Block_1_Pedestrian_Bridge.jpg", lightboxSrc: "/images/2026-renders/Block_1_Pedestrian_Bridge.jpg", alt: "Mass timber pedestrian bridge over Grove Street, connecting Blocks 1 and 2", caption: "Mass timber pedestrian bridge over Grove Street, connecting Blocks 1 and 2. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
       ]}>
-        <p>Block 1 will establish the primary public entrance to the Embankment Forest. An entrance plaza with public stairs and an elevator will lead up to the Block 1 promenade, which in turn leads to the elevated forest on Block 2.</p>
-        <p>A 30-foot-wide public promenade will connect the entrance plaza to Block 2, with native trees, grasses, and shrubs reflecting the Embankment’s existing forest ecosystem. Public restrooms will be located near the pedestrian bridge connecting the two blocks.</p>
+        <p>Block 1 will establish the primary public entrance to the Embankment forest. A public entrance plaza with stairs and an elevator will provide access to a 30-foot-wide public promenade.</p>
+        <p>The promenade will connect the entrance plaza to the naturalized forest on Block 2. The promenade’s native trees, grasses, and shrubs will reflect the Embankment’s existing forest ecosystem. Public restrooms will be located near the pedestrian bridge connecting the two blocks.</p>
         <p>The bridge will be constructed from sustainably harvested timber, creating Jersey City’s first mass timber pedestrian bridge.</p>
       </ConceptSection>
 
@@ -112,23 +112,23 @@ export default function Body() {
       </ConceptSection>
 
       <ConceptSection title={"Discovery Play"} images={[
-        { src: "/images/2026-renders/sm/Block_2_Discovery_Play.jpg", lightboxSrc: "/images/2026-renders/Block_2_Discovery_Play.jpg", alt: "Discovery Play: timber play elements among the trees", caption: "Discovery Play: timber play elements among the trees" },
+        { src: "/images/2026-renders/sm/Block_2_Discovery_Play.jpg", lightboxSrc: "/images/2026-renders/Block_2_Discovery_Play.jpg", alt: "Timber play elements among the trees", caption: "Timber play elements among the trees" },
       ]}>
-        <p>The first destination along the boardwalk will be Discovery Play, a nature-based play area nestled among the trees. Constructed primarily from timber, the play elements will be integrated into the existing forest and connected by natural mulch trails.</p>
+        <p>The first destination along the boardwalk will be a nature-based play area nestled among the trees. Constructed primarily from timber, the play elements will be integrated into the existing forest and connected by natural mulch trails.</p>
       </ConceptSection>
 
       <ConceptSection title={"Rest and Research Area"} images={[
         { src: "/images/2026-renders/sm/Block_2_Rest_and_Research.jpg", lightboxSrc: "/images/2026-renders/Block_2_Rest_and_Research.jpg", alt: "Rest and Research Area, with seating made from salvaged Embankment stones", caption: "Rest and Research Area, with seating made from salvaged Embankment stones. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
       ]}>
-        <p>Further along the boardwalk, a quiet rest area will provide a place for reflection alongside a dedicated ecological research zone. Rutgers University will continue its ongoing research into the Embankment’s unique forest ecosystem. Historic stones salvaged from the Embankment walls will be reused as seating, connecting visitors to the site’s industrial past.</p>
+        <p>Further along the boardwalk, a quiet rest area will provide a place for reflection alongside a dedicated ecological research zone. Rutgers University will continue research into the Embankment ecosystem. Historic stones salvaged from the Embankment walls will be reused as seating, connecting visitors to the site’s industrial past.</p>
       </ConceptSection>
 
       <ConceptSection title={"Field Station"} images={[
-        { src: "/images/2026-renders/sm/Block_2_Field_Station.jpg", lightboxSrc: "/images/2026-renders/Block_2_Field_Station.jpg", alt: "Field Station at the edge of the Block 2 meadow", caption: "Field Station at the edge of the Block 2 meadow. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
-        { src: "/images/2026-renders/sm/Block_2_Field_Station_Interior.jpg", lightboxSrc: "/images/2026-renders/Block_2_Field_Station_Interior.jpg", alt: "Covered seating inside the Field Station", caption: "Covered seating inside the Field Station. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
-        { src: "/images/2026-renders/sm/Block_2_Field_Station_Planting.jpg", lightboxSrc: "/images/2026-renders/Block_2_Field_Station_Planting.jpg", alt: "Field Station planting shelves, for propagating native plants", caption: "Field Station planting shelves, for propagating native plants. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
+        { src: "/images/2026-renders/sm/Block_2_Field_Station.jpg", lightboxSrc: "/images/2026-renders/Block_2_Field_Station.jpg", alt: "The field station at the edge of the Block 2 meadow", caption: "The field station at the edge of the Block 2 meadow. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
+        { src: "/images/2026-renders/sm/Block_2_Field_Station_Interior.jpg", lightboxSrc: "/images/2026-renders/Block_2_Field_Station_Interior.jpg", alt: "Covered seating inside the field station", caption: "Covered seating inside the field station. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
+        { src: "/images/2026-renders/sm/Block_2_Field_Station_Planting.jpg", lightboxSrc: "/images/2026-renders/Block_2_Field_Station_Planting.jpg", alt: "The field station’s planting shelves, for propagating native plants", caption: "The field station’s planting shelves, for propagating native plants. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
       ]}>
-        <p>The final destination along the boardwalk will be the Field Station, located at the edge of a meadow. Designed for environmental observation and education, the station will include a covered seating area for small groups of children and adults.</p>
+        <p>The final destination along the boardwalk will be the field station, located at the edge of a meadow. Designed for environmental observation and education, the station will include a covered seating area for small groups of children and adults.</p>
         <p>Planting shelves at the rear of the station will allow local science classes to propagate native plants from the surrounding forest and meadow. These plants can then be used to maintain and expand the Embankment’s native habitats.</p>
       </ConceptSection>
 
@@ -140,7 +140,7 @@ export default function Body() {
       ]}>
         <p>The Coalition envisions Blocks 3 through 6 as protected forest landscapes focused on habitat conservation and passive public recreation.</p>
         <p>A winding trail will allow visitors to experience the forest while minimizing disturbance to its natural ecology. Along the way, visitors will encounter places to pause, observe wildlife, and experience the changing light, birdsong, and forest canopy, offering a quiet refuge from the surrounding city.</p>
-        <p>Soil remediation mapping and ecological research will guide the trail’s alignment through areas of lower ecological productivity, protecting the most sensitive forest habitats. Smaller trails will extend toward selected areas within the forest, leading visitors to carefully designed moments for environmental education, observation, and quiet reflection.</p>
+        <p>Soil remediation mapping and ecological research will guide the trail’s alignment through areas of lower ecological productivity, protecting the most sensitive forest habitats. Smaller trails will lead visitors to selected areas for environmental education, observation, and quiet reflection.</p>
       </ConceptSection>
 
       <ConceptSection title={"All Blocks: Land Bridges"} images={[

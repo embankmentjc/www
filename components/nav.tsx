@@ -127,10 +127,10 @@ export default function Nav({ cur, navStuck }: { cur: string, navStuck?: boolean
                     { hash: "about-section-coalition", text: "The Coalition", },
                 ]} />
                 <SubMenu key="vision" path="/vision" text="OUR VISION" items={[
-                    { hash: "vision-section-bigpicture", text: "Our Philosophy", },
-                    { hash: "vision-section-vision", text: "Harsimus Branch Vision", },
-                    { hash: "vision-section-crossroads", text: "Jersey City Greenways", },
-                    { hash: "vision-section-art", text: "Art for a Sustainable Future", },
+                    { hash: "philosophy", text: "Our Philosophy", },
+                    { hash: "vision", text: "Harsimus Branch Vision", },
+                    { hash: "greenways", text: "Jersey City Greenways", },
+                    { hash: "art", text: "Art for a Sustainable Future", },
                 ]} />
                 <SubMenu key="involved" path="/involved" text="GET INVOLVED" items={[
                     { hash: becomeMemberId, text: "Become a Member!", },

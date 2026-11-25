@@ -10,6 +10,9 @@ import {
 import React from "react";
 import { becomeMemberId, donateId, sponsorsId, visionId, volunteerId } from "../components/ids";
 import { H1 } from "@rdub/base/heading";
+import { useLocation, useNavigationType } from "react-router-dom";
+import { useSectionSpy } from "use-prms/sections";
+import { VISION_ALIASES, VISION_SECTION_IDS, VISION_SECTION_KEY } from "./vision-sections";
 
 export const ogMetadata = {
   title: "Our Vision - The Embankment",
@@ -18,6 +21,16 @@ export const ogMetadata = {
 }
 
 export default function Body() {
+  const location = useLocation()
+  const navType = useNavigationType()
+  // The section in view lives in `?s=`, where a link unfurler sees it (`functions/vision.ts`). An incoming `#id`, or a
+  // retired / long id, is adopted into it. Section ids sit on heading anchors already offset for the sticky nav.
+  useSectionSpy({
+    sections: VISION_SECTION_IDS,
+    mode: { kind: "param", key: VISION_SECTION_KEY },
+    aliases: VISION_ALIASES,
+    nav: { location, navType },
+  })
   return (
     <Page
       path="vision"
@@ -42,12 +55,12 @@ export default function Body() {
           }
           subtitle={"\"When we see land as a community to which we belong, we may begin to use it with love and respect.\" - Aldo Leopold"}
           img={"/images/NEWS-BANNER.jpg"}
-          btn1={{text: "Concept", href: "#vision-section-concept",}}
+          btn1={{text: "Concept", href: "#light-touch",}}
           btn2={{text: "Become a Member!", href: `/involved#${becomeMemberId}`, }}
         />
       }
     >
-      <BigPicture title={"Our Philosophy"} id={"vision-section-bigpicture"}>
+      <BigPicture title={"Our Philosophy"} id={"philosophy"}>
         <p>Conservationist Aldo Leopold coined the term “land ethic” to describe the valuing of soil, water, plants, and animals – “the land” – as members of a community of living organisms, with humans, the thinking members, fostering the community’s evolving relationships.</p>
         <p>When the land atop Jersey City’s Harsimus Embankment opens to people for the first time in more than a century, Leopold’s land ethic is a way to look at the Harsimus Branch and connecting corridors. The public, whose preservation efforts have been sustained now for two decades, are its stewards.</p>
         <p>With study, consideration of many ideas, and thoughtful decisions, Jersey City can restore degraded soil, support organisms that have found niches in a hardscape, re-introduce native species extinguished by industrial uses, sequester carbon, control stormwater, and provide transportation and recreation options easy on fellow life forms. Following Leopold’s belief that direct experience is necessary for people to develop a land ethic, we can reconnect our children with nature.</p>
@@ -60,7 +73,7 @@ export default function Body() {
         <p>The Embankment Coalition vision for the Harsimus Branch and its Embankment preserves much of this forest and opens it to Jersey City residents for sensitive reuse. While part of the corridor is reserved for possible future light rail, residents can enjoy, on foot and by bike, a naturally occurring wilderness in their own backyards.</p>
       </ParallaxSection1>
 
-      <ConceptSection id={"vision-section-concept"} title={"Light Touch"} src={"/images/homepage-slides/50p/forest-view.jpeg"} caption={"Credit: Sean A. Gallagher"} pre={<>
+      <ConceptSection id={"light-touch"} title={"Light Touch"} src={"/images/homepage-slides/50p/forest-view.jpeg"} caption={"Credit: Sean A. Gallagher"} pre={<>
         <H1 id="design-concept">Design Concept</H1>
         <hr className="divider bg-mantis" />
       </>}>
@@ -73,7 +86,7 @@ export default function Body() {
         <p>The Coalition’s vision depends on preserving this green infrastructure as a foundation for long-term resilience. Together, these connected segments would enable the East Coast Greenway to pass entirely off-road through Jersey City—traveling from Marin Boulevard across the Embankment to Brunswick Street, continuing over Newark Avenue and along Mary Benson Park via existing stanchions, and turning north on the River Line Connector toward the Bergen Arches. Additional trails would branch from this spine, expanding access across the city.</p>
       </ConceptSection>
 
-      <ConceptSection title={"Stepping Stone Landscapes"} src={"/images/VISION-LIGHT-TOUCH.jpg"} caption={"Credit: Sean A. Gallagher"}>
+      <ConceptSection id={"stepping-stones"} title={"Stepping Stone Landscapes"} src={"/images/VISION-LIGHT-TOUCH.jpg"} caption={"Credit: Sean A. Gallagher"}>
         <p>Ill-considered land use policies, intensified by climate change, are fragmenting natural habitats worldwide—driving species extinction and accelerating biodiversity loss. Stepping-stone landscapes—small habitat patches positioned close enough to bridge larger ecosystems—help counter this fragmentation by enabling species to move between areas for food, shelter, and migration.</p>
         <p>Former rail corridors offer exceptional opportunities for such wildlife connections. The Harsimus Branch presents a unique challenge and opportunity: it must accommodate development, recreation, and habitat restoration. The Coalition envisions the landscape as a continuous ecological gradient—from development on the easternmost block, to passive recreation, to forest across the central blocks, and again to passive recreation on the western end. Pocket landscapes, acting as ecological stepping stones, will soften the transitions between these uses. This connected network will support species ranging from red-tailed hawks to monarch butterflies—along with the people who care for them.</p>
       </ConceptSection>
@@ -95,7 +108,7 @@ export default function Body() {
         <p>Phase 1 will bring the first two blocks of the Embankment Vision to life, establishing a critical connection for the East Coast Greenway through Jersey City. The project is a public-private partnership funded by the Albanese Organization. Its design will serve as the catalyst for the future development of the Embankment.</p>
       </ConceptSection>
 
-      <ConceptSection title={"Block 1: Public Plaza, Promenade, and Pedestrian Bridge"} images={[
+      <ConceptSection id={"block-1"} title={"Block 1: Public Plaza, Promenade, and Pedestrian Bridge"} images={[
         { src: "/images/2026-renders/sm/Block_1_Entrance_Plaza.jpg", lightboxSrc: "/images/2026-renders/Block_1_Entrance_Plaza.jpg", alt: "Block 1 entrance plaza, with public stairs up to the promenade", caption: "Block 1 entrance plaza, with public stairs up to the promenade. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
         { src: "/images/2026-renders/sm/Block_1_Promenade.jpg", lightboxSrc: "/images/2026-renders/Block_1_Promenade.jpg", alt: "Block 1’s 30-foot-wide public promenade", caption: "Block 1’s 30-foot-wide public promenade. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
         { src: "/images/2026-renders/sm/Block_1_Pedestrian_Bridge.jpg", lightboxSrc: "/images/2026-renders/Block_1_Pedestrian_Bridge.jpg", alt: "Mass timber pedestrian bridge over Grove Street, connecting Blocks 1 and 2", caption: "Mass timber pedestrian bridge over Grove Street, connecting Blocks 1 and 2. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
@@ -105,7 +118,7 @@ export default function Body() {
         <p>The bridge will be constructed from sustainably harvested timber, creating Jersey City’s first mass timber pedestrian bridge.</p>
       </ConceptSection>
 
-      <ConceptSection title={"Block 2: Discovery Play, Rest and Research Area, and Field Station"} images={[
+      <ConceptSection id={"block-2"} title={"Block 2: Discovery Play, Rest and Research Area, and Field Station"} images={[
         { src: "/images/2026-renders/sm/Block_2_Boardwalk.jpg", lightboxSrc: "/images/2026-renders/Block_2_Boardwalk.jpg", alt: "Timber boardwalk entering the Block 2 forest", caption: "Timber boardwalk entering the Block 2 forest. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
       ]}>
         <p>Block 2 will offer visitors opportunities to explore and experience the Embankment’s unique forest and meadow habitats. A continuous timber boardwalk will wind through the landscape, elevated above the forest floor to allow natural vegetation and ecological processes to continue undisturbed.</p>
@@ -117,7 +130,7 @@ export default function Body() {
         <p>The first destination along the boardwalk will be a nature-based play area nestled among the trees. Constructed primarily from timber, the play elements will be integrated into the existing forest and connected by natural mulch trails.</p>
       </ConceptSection>
 
-      <ConceptSection title={"Rest and Research Area"} images={[
+      <ConceptSection id={"rest-and-research"} title={"Rest and Research Area"} images={[
         { src: "/images/2026-renders/sm/Block_2_Rest_and_Research.jpg", lightboxSrc: "/images/2026-renders/Block_2_Rest_and_Research.jpg", alt: "Rest and Research Area, with seating made from salvaged Embankment stones", caption: "Rest and Research Area, with seating made from salvaged Embankment stones. Credit: Jake Lefeber, Aaron Teves and Sean A. Gallagher" },
       ]}>
         <p>Further along the boardwalk, a quiet rest area will provide a place for reflection alongside a dedicated ecological research zone. Rutgers University will continue research into the Embankment ecosystem. Historic stones salvaged from the Embankment walls will be reused as seating, connecting visitors to the site’s industrial past.</p>
@@ -132,7 +145,7 @@ export default function Body() {
         <p>Planting shelves at the rear of the station will allow local science classes to propagate native plants from the surrounding forest and meadow. These plants can then be used to maintain and expand the Embankment’s native habitats.</p>
       </ConceptSection>
 
-      <ConceptSection title={"Forest Conservation Trail"} pre={<>
+      <ConceptSection id={"forest-trail"} title={"Forest Conservation Trail"} pre={<>
         <H1 id="future-phases">Future Phases: Blocks 3–6</H1>
         <hr className="divider bg-mantis" />
       </>} images={[
@@ -143,7 +156,7 @@ export default function Body() {
         <p>Soil remediation mapping and ecological research will guide the trail’s alignment through areas of lower ecological productivity, protecting the most sensitive forest habitats. Smaller trails will lead visitors to selected areas for environmental education, observation, and quiet reflection.</p>
       </ConceptSection>
 
-      <ConceptSection title={"All Blocks: Land Bridges"} images={[
+      <ConceptSection id={"land-bridges"} title={"All Blocks: Land Bridges"} images={[
         { src: "/images/2025-renders/30p/2025.10.19_Bridge_Aerial_30p.jpeg", lightboxSrc: "/images/2025-renders/50p/2025.10.19_Bridge_Aerial_50p.jpeg", alt: "Bridge aerial view", caption: "Credit: Jake Lefeber and Aaron Teves" },
         { src: "/images/2025-renders/30p/EPC_BRIDGE_STREETVIEW_JLAT_30p.JPG", lightboxSrc: "/images/2025-renders/50p/EPC_BRIDGE_STREETVIEW_JLAT_50p.JPG", alt: "Bridge street view", caption: "Credit: Jake Lefeber and Aaron Teves" },
         { src: "/images/2025-renders/30p/2025.11.05_Bridge_Perspective_30p.jpg", lightboxSrc: "/images/2025-renders/50p/2025.11.05_Bridge_Perspective_50p.jpg", alt: "Bridge ramp access", caption: "Credit: Jake Lefeber and Aaron Teves" },
@@ -153,7 +166,7 @@ export default function Body() {
       </ConceptSection>
 
       <ParallaxSection2
-        title={"A Green Network"} id="vision-section-crossroads" img="/images/VISION-JERSEYCITY.jpg"
+        title={"A Green Network"} id="greenways" img="/images/VISION-JERSEYCITY.jpg"
         blurb={"Jersey City and Hudson County Master Plans call for the development of an off-road route for the East Coast Greenway Maine-to-Florida trail.  Developing the Harsimus Branch will significantly advance that route through Hudson County, linking historic sites, parks, and other open spaces.  The Greenway will serve as a spine for a trail system."}>
         <div className="col-sm-12">
           <div className="offset-top-50 offset-xl-top-66">
@@ -171,7 +184,7 @@ export default function Body() {
         </div>
       </ParallaxSection2>
 
-      <ConceptSection title={"East Coast Greenway Route in Jersey City"} src={"/images/VISION-JC-EASTCOAST.jpg"}>
+      <ConceptSection id={"east-coast-greenway"} title={"East Coast Greenway Route in Jersey City"} src={"/images/VISION-JC-EASTCOAST.jpg"}>
         <p>The East Coast Greenway (ECG) connects 15 states and 450 cities and towns from Maine to Florida via 3,000 miles of people-powered trails. It is the country's longest biking and walking route. Hudson County, the most densely populated county along the way, has an interim ECG route but its use is not recommended, for safety reasons.</p>
         <p>From the west, the largely off-road ECG route will enter Jersey City from Secaucus, use the Bergen Arches/Erie Cut through the Palisades, turn south on the River Line Connector, and continue east through Downtown on the Harsimus Branch and its Embankment on Sixth Street to the Hudson River Waterfront Walkway. The main route continues to Exchange Place and then to Battery Park in Manhattan by ferry.  An alternate ECG route uses the Hudson River Waterfront Walkway to the George Washington Bridge and upper Manhattan.</p>
       </ConceptSection>
@@ -181,13 +194,13 @@ export default function Body() {
         <p>This network is referred to as Crossroads, a local initiative with the goal of connecting existing industrial rights of way as new walking and biking corridors.  This trail system will allow Jersey City residents and visitors to walk or bike safely around the entire city from every neighborhood along public greenways.  Longer trips will be possible through New Jersey or even to Maine and Florida without the necessity for planes, trains, or automobiles.</p>
       </ConceptSection>
 
-      <ConceptSection title={"Harsimus Branch and Embankment Public Access"} src={"/images/VISION-ACCESS.jpg"}>
+      <ConceptSection id={"public-access"} title={"Harsimus Branch and Embankment Public Access"} src={"/images/VISION-ACCESS.jpg"}>
         <p>The Coalition is currently in a conceptual design phase for the Harsimus Branch, and many options for public access points will be proposed for public consideration.</p>
         <p>The goal is to provide, at a minimum, an ADA access point to this public greenway at each neighborhood it borders. There will be a more grand ramp entrance for bikes at each end of the Harsimus Branch and Embankment to continue the East Coast Greeway route to the Hudson River Waterfront Walkway and Bergen Arches. </p>
       </ConceptSection>
 
       <ParallaxSection2
-        title={"Creating Our Sustainable Future with the Harsimus Branch"} id="vision-section-art" img="/images/VISION-JERSEYCITY.jpg"
+        title={"Creating Our Sustainable Future with the Harsimus Branch"} id="art" img="/images/VISION-JERSEYCITY.jpg"
         blurb={"Artists have long been integral to the Jersey City community. Our Embankment vision embraces their creativity and weaves their vision and voices into the project, helping each of us to see and learn in new ways."}>
       </ParallaxSection2>
 

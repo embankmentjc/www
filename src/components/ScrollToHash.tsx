@@ -5,7 +5,10 @@ import { legacyIds } from '../../components/ids'
 /**
  * Scrolls to hash fragment on navigation and initial load.
  * Redirects legacy hash IDs to their new short equivalents.
+ * Pages with a section spy (`useSectionSpy`) handle their own fragments, `?s=` deep links, and scroll restore.
  */
+const SPY_PATHS = new Set(['/vision', '/vision/'])
+
 export default function ScrollToHash(): null {
   const { pathname, hash } = useLocation()
   const navigate = useNavigate()
@@ -14,6 +17,7 @@ export default function ScrollToHash(): null {
   useEffect(() => {
     const isNewPage = pathname !== prevPathname.current
     prevPathname.current = pathname
+    if (SPY_PATHS.has(pathname)) return
 
     if (hash) {
       const id = hash.replace('#', '')

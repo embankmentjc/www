@@ -24,7 +24,8 @@
     "deploy-main": "rsync -avzh --delete --update --exclude='.well-known' --exclude='bat/signups.log' --exclude='bat/error_log' --exclude='bat/.cc-tokens.json' --exclude='bat/.google-service-account.json' out-prod/ epc:public_html/",
     "dm": "rsync -avzh --delete --update --exclude='.well-known' --exclude='bat/signups.log' --exclude='bat/error_log' --exclude='bat/.cc-tokens.json' --exclude='bat/.google-service-account.json' out-prod/ epc:public_html/",
     "dmn": "rsync -avzhn --delete --update --exclude='.well-known' --exclude='bat/signups.log' --exclude='bat/error_log' --exclude='bat/.cc-tokens.json' --exclude='bat/.google-service-account.json' out-prod/ epc:public_html/",
-    "build:cf": "VITE_SIGNUP_ENDPOINT=/api/signup vite build --outDir out-cf && scripts/generate-static-pages.sh out-cf && node scripts/inject-og-tags.cjs out-cf"
+    "build:cf": "VITE_SIGNUP_ENDPOINT=/api/signup vite build --outDir out-cf && scripts/generate-static-pages.sh out-cf && node scripts/inject-og-tags.cjs out-cf",
+    "og:vision": "scripts/vision-og.py"
   },
   "author": "",
   "license": "ISC",
@@ -53,6 +54,7 @@
     "react-scroll-parallax": "^3.5.0",
     "sass": "^1.66.1",
     "swiper": "^12.0.2",
+    "use-prms": "github:runsascoded/use-prms#bb731063bf4202c0501e9c3d6fdada0817f699a4",
     "yet-another-react-lightbox": "^3.25.0"
   }
 }

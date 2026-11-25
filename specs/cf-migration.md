@@ -1,6 +1,8 @@
 # Cloudflare port
 
-Move the site off shared hosting: static build to Cloudflare Pages, the PHP backend to a Pages Function backed by D1.
+Move the site off shared hosting: static build to Cloudflare, the PHP backend to a Worker backed by D1.
+
+**Status (2026-11-25):** ported and deployed as a Worker with static assets at `epc-www.ryan-b49.workers.dev`, in the EPC Cloudflare account. Both signup paths exercised end to end (D1 row + Constant Contact contact). Cutover steps 2–6 remain.
 
 **Out of scope, deliberately:** the DNS cutover. This spec ends with the site fully working on a `*.pages.dev` URL while `embankment.org` still points at the shared host. Cutover is a separate, reversible step ([Cutover](#cutover), below) taken once the Pages deployment has been exercised.
 
@@ -46,9 +48,11 @@ Preserve these exactly. The client is unchanged by this port apart from which UR
 
 ### Hosting
 
-A Pages project (`epc-www`), deployed by direct upload from the existing build output — `wrangler pages deploy out-prod`. Direct upload, not the Git integration, because it slots into the current build-then-deploy scripts without wiring Cloudflare to the GitHub repo yet. Per-branch preview deployments (which the agent-preview work will want) come with the Git integration; that swap is a follow-up, not a prerequisite.
+A Worker (`epc-www`) with static assets: `functions/worker.ts` handles `/api/*`, the `/bat/` alias and `/vision` (per-section OG tags); everything else is served straight from assets (`run_worker_first` in `wrangler.jsonc`). Deployed with `pnpm cf:deploy` (`wrangler deploy`). This started as a Pages project, and moved to Workers so dynamic OG stamping and the API share one entry point; Workers Builds (the Git integration) gives per-branch preview URLs.
 
-The Pages build gets its own output directory, `out-cf/`, rather than reusing `out-prod/`. The two builds are not interchangeable — the client's form endpoint is baked in at build time (`VITE_SIGNUP_ENDPOINT`, defaulting to the PHP path) — so sharing a directory means a stray `npm run dm` can push a `/api/signup` build to the shared host and silently break both forms. Separate directories make that impossible rather than merely unlikely.
+`build:cf` deletes `out-cf/bat`, `.htaccess` and `.gitignore` after the Vite build. Vite copies `public/` wholesale, and `public/bat/` holds the PHP host's untracked credentials; the first Pages deploy served them publicly for ~45 minutes before this was caught.
+
+The Cloudflare build gets its own output directory, `out-cf/`, rather than reusing `out-prod/`. The two builds are not interchangeable — the client's form endpoint is baked in at build time (`VITE_SIGNUP_ENDPOINT`, defaulting to the PHP path) — so sharing a directory means a stray `npm run dm` can push a `/api/signup` build to the shared host and silently break both forms. Separate directories make that impossible rather than merely unlikely.
 
 `out-dev/` keeps its role for the shared host's dev site until cutover.
 
@@ -68,7 +72,7 @@ One D1 database (`epc`), two tables:
 
 ### Secrets
 
-Set with `wrangler pages secret put`, sourced from the shared host's `bat/.cc-config.json` and `bat/.cc-tokens.json`:
+Set with `wrangler secret put`, sourced from the shared host's `bat/.cc-config.json` and `bat/.cc-tokens.json`:
 
 - `CC_CLIENT_ID`, `CC_CLIENT_SECRET`, `CC_LIST_ID` — also present in the local `.envrc`.
 - The initial `cc_tokens` row is seeded from `.cc-tokens.json` via `wrangler d1 execute` rather than being a secret.
@@ -83,24 +87,22 @@ No Google service-account key: the Sheets path is dropped rather than fixed.
 
 ## Testing
 
-`vitest`, against the handler's pure parts with `fetch` stubbed: field parsing and validation, the exact `MFxxx` returned per input, the Constant Contact request body (custom-field IDs are easy to typo and impossible to notice), and token-refresh behaviour including the rotation race. The D1 layer is exercised through `wrangler pages dev`, not mocked.
+`vitest`, against the handler's pure parts with `fetch` stubbed: field parsing and validation, the exact `MFxxx` returned per input, the Constant Contact request body (custom-field IDs are easy to typo and impossible to notice), and token-refresh behaviour including the rotation race. The D1 layer is exercised through `wrangler dev` (`pnpm cf:dev`), not mocked.
 
-Local-dev gotcha, since it cost time once: `wrangler pages dev --d1 DB=epc` binds a *different* local database than `wrangler d1 execute epc --local` writes to, so migrations appear to apply and then the handler reports `no such table`. Omit the flag and let `wrangler.jsonc` supply the binding.
+Local-dev gotcha, since it cost time once (under Pages): `wrangler pages dev --d1 DB=epc` binds a *different* local database than `wrangler d1 execute epc --local` writes to, so migrations appear to apply and then the handler reports `no such table`. Omit the flag and let `wrangler.jsonc` supply the binding.
 
 ## Cutover
 
-Deferred; listed here so the sequence is written down before it's needed.
-
-1. Exercise both forms against the `*.pages.dev` deployment; confirm the contact appears in Constant Contact and a row lands in `signups`.
+1. ~~Exercise both forms against the `*.workers.dev` deployment; confirm the contact appears in Constant Contact and a row lands in `signups`.~~ Done 2026-11-25.
 2. Backfill `signups` from `bat/signups.log` so the D1 table is the complete record.
 3. Re-seed `cc_tokens` immediately before the switch — the shared host keeps rotating the refresh token until it stops serving, so the row must be written from the *final* `.cc-tokens.json`.
-4. Point `embankment.org` and `dev.embankment.org` at Pages.
+4. Move `embankment.org` DNS from Turbify to a Cloudflare zone (replicating MX, SPF/DMARC, `_atproto` and verification TXT records), then add `embankment.org`, `www.` and `dev.` as custom domains on the Worker.
 5. Leave the shared host running, untouched, until the new deployment has taken real signups. Rollback is a DNS change back.
 6. Retire `public/bat/` and the `.well-known` rsync exclusion that exists only for the old host's certbot.
 
 ## Follow-ups
 
-- Pages Git integration, for per-branch preview URLs.
+- Workers Builds (Git integration), for deploy-on-push and per-branch preview URLs.
 - [`@open-athena/auth`] on `/admin`, with EPC as its second Tier-2 consumer.
 - Agent-driven edits: admin prompt → branch → preview deployment → human approves → merge.
 - `./epc signups` reading D1 instead of `ssh epc tail`.

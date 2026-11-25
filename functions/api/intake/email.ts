@@ -11,7 +11,7 @@ import { d1Store } from "../../_lib/intake/store"
 import { githubDispatch } from "../../_lib/intake/adapters/github"
 import { screen, verifySignature, type InboundEmail } from "../../_lib/intake/adapters/email"
 
-type Env = {
+export type IntakeEnv = {
     DB: D1Database
     INTAKE_WEBHOOK_SECRET: string
     GITHUB_REPO: string
@@ -24,7 +24,7 @@ const ok = (body: Record<string, unknown>) =>
         headers: { "Content-Type": "application/json" },
     })
 
-export const onRequest: PagesFunction<Env> = async ({ request, env }) => {
+export async function handleIntakeEmail(request: Request, env: Partial<IntakeEnv>): Promise<Response> {
     if (request.method !== "POST") return ok({ dropped: "method" })
     if (!env.DB || !env.INTAKE_WEBHOOK_SECRET || !env.GITHUB_REPO || !env.GITHUB_TOKEN) {
         console.error("intake: missing D1 binding or INTAKE_* / GITHUB_* secrets")

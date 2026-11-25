@@ -7,7 +7,7 @@ This is the website for the Embankment Preservation Coalition, a Jersey City org
 - **Framework**: Vite + React Router (SPA, statically exported per-route)
 - **Language**: TypeScript + React
 - **Styling**: SCSS modules + global styles in `public/css/`
-- **Deployment**: rsync to shared hosting server
+- **Deployment**: rsync to shared hosting server (live `embankment.org`); a Cloudflare Worker + static assets (`epc-www`) is staged to replace it
 
 ## Server & Deployment
 
@@ -32,6 +32,14 @@ npm run ddn         # Dry-run deploy to dev
 ```
 
 **Important**: Always ask before building or deploying.
+
+### Cloudflare (staged replacement for the shared host)
+- Worker `epc-www` in the EPC Cloudflare account, live at https://epc-www.ryan-b49.workers.dev; config in `wrangler.jsonc`, entry `functions/worker.ts`
+- Static assets from `out-cf/` (`pnpm build:cf`); the Worker runs first only for `/api/*`, `/bat/*` (legacy signup alias) and `/vision` (per-section OG stamping)
+- `pnpm cf:deploy` (build + `wrangler deploy`), `pnpm cf:deploy-preview` (preview alias), `pnpm cf:dev` (local, port 8560)
+- D1 `epc` holds `cc_tokens` and `signups`; secrets via `wrangler secret put`
+- `build:cf` strips `out-cf/bat`, `.htaccess` and `.gitignore`: anything left in `out-cf/` is publicly served, including dotfiles copied from `public/bat/`
+- Cutover plan and status: `specs/cf-migration.md`
 
 ### Build Configuration
 - Separate output directories prevent conflicts:
@@ -99,6 +107,7 @@ The `cc-signup-with-email.php` attempts to send email notifications but graceful
 - Images use relative paths (`/images/og/home.jpg`)
 - `Page` component constructs absolute URLs using `VITE_SITE_URL`
 - Test page at `/og-test` shows mock social media previews
+- `/vision` sections: a `use-prms/sections` scroll spy names the in-view section in `?s=<id>` (`#<id>` and retired/long ids in `pages/vision-sections.json` `aliases` are adopted into it). On Cloudflare, the Worker (`functions/worker.ts`) rewrites the page's title / description / `og:image` per section; cards come from `pnpm og:vision` (`scripts/vision-og.py` → `public/images/og/vision/<id>.jpg`, re-renders only stale cards). The shared host serves static HTML, so per-section unfurls only work on CF.
 
 ### Image Optimization Guidelines
 - **Hero banners**: 1920px width max, 80-85% quality, 300-800KB target

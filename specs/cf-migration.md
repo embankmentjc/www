@@ -2,7 +2,7 @@
 
 Move the site off shared hosting: static build to Cloudflare, the PHP backend to a Worker backed by D1.
 
-**Status (2026-11-25):** ported and deployed as a Worker with static assets at `epc-www.ryan-b49.workers.dev`, in the EPC Cloudflare account. Both signup paths exercised end to end (D1 row + Constant Contact contact). Cutover steps 2–6 remain.
+**Status (2026-11-25):** ported and deployed as a Worker with static assets at `epc-www.ryan-b49.workers.dev`, in the EPC Cloudflare account. Both signup paths exercised end to end (D1 row + Constant Contact contact). DNS moved to a Cloudflare zone (active 2026-11-25; records still point at the shared host), Workers Builds deploys `main` on push, and the Worker has its own Constant Contact token chain in D1. Cutover steps 2–6 remain.
 
 **Out of scope, deliberately:** the DNS cutover. This spec ends with the site fully working on a `*.pages.dev` URL while `embankment.org` still points at the shared host. Cutover is a separate, reversible step ([Cutover](#cutover), below) taken once the Pages deployment has been exercised.
 

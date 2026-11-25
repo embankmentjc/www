@@ -232,3 +232,35 @@ def delete(emails, test, dry_run, yes):
             click.echo(f"Deleted: {email}")
         else:
             err(f"Failed to delete {email}: {resp.status_code}")
+
+
+@cc.command("seed-d1")
+@click.option("-d", "--database", default="epc", help="D1 database name")
+@click.option("-l", "--local", is_flag=True, help="Seed the local D1 instead of the remote one")
+@click.argument("token_file", type=click.Path(exists=True, dir_okay=False, path_type=Path))
+def seed_d1(database, local, token_file):
+    """Write a token file's access/refresh tokens into D1 `cc_tokens`, for the Worker.
+
+    Give the Worker its own authorization chain (`CC_TOKEN_FILE=… node scripts/cc-authorize.js`) rather than a copy of
+    another holder's tokens: CC rotates the refresh token on every use, so two holders of one chain break each other.
+    """
+    import subprocess
+    tokens = json.loads(token_file.read_text())
+    q = lambda s: "'" + s.replace("'", "''") + "'"
+    sql = (
+        "INSERT INTO cc_tokens (id, access_token, refresh_token, expires_at, updated_at) "
+        f"VALUES (1, {q(tokens['access_token'])}, {q(tokens['refresh_token'])}, {int(tokens['expires_at'])}, {int(time.time())}) "
+        "ON CONFLICT(id) DO UPDATE SET access_token = excluded.access_token, refresh_token = excluded.refresh_token, "
+        "expires_at = excluded.expires_at, updated_at = excluded.updated_at;\n"
+    )
+    sql_file = TOKEN_FILE.parent / ".cc-seed-d1.sql"
+    sql_file.parent.mkdir(parents=True, exist_ok=True)
+    sql_file.write_text(sql)
+    sql_file.chmod(0o600)
+    try:
+        cmd = ["npx", "wrangler", "d1", "execute", database, "--local" if local else "--remote", "--file", str(sql_file), "-y"]
+        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL)
+    finally:
+        sql_file.unlink()
+    expires = time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime(tokens["expires_at"]))
+    click.echo(f"Seeded {database} cc_tokens ({'local' if local else 'remote'}); access token expires {expires}")

@@ -26,7 +26,8 @@ const config = {
     client_id: process.env.CC_CLIENT_ID,
     client_secret: process.env.CC_CLIENT_SECRET,
     redirect_uri: 'http://localhost:3030/callback',
-    token_file: path.join(__dirname, '../public/bat/.cc-tokens.json'),
+    // `CC_TOKEN_FILE` starts a separate authorization chain (e.g. for the Worker, then `./epc cc seed-d1 <file>`).
+    token_file: process.env.CC_TOKEN_FILE || path.join(__dirname, '../public/bat/.cc-tokens.json'),
 };
 
 // Validate credentials
@@ -140,5 +141,5 @@ server.listen(3030, () => {
 
     // Open browser (works on macOS, Linux, Windows)
     const command = process.platform === 'darwin' ? 'open' : process.platform === 'win32' ? 'start' : 'xdg-open';
-    exec(`${command} "${authUrl}"`);
+    if (!process.env.CC_NO_OPEN) exec(`${command} "${authUrl}"`);
 });

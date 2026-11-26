@@ -7,7 +7,7 @@ This is the website for the Embankment Preservation Coalition, a Jersey City org
 - **Framework**: Vite + React Router (SPA, statically exported per-route)
 - **Language**: TypeScript + React
 - **Styling**: SCSS modules + global styles in `public/css/`
-- **Deployment**: rsync to shared hosting server (live `embankment.org`); a Cloudflare Worker + static assets (`epc-www`) is staged to replace it
+- **Deployment**: Cloudflare Worker + static assets (`epc-www`), deployed by Workers Builds on every push to `main`. The shared-host rsync scripts below are legacy (pending removal): that host no longer serves `embankment.org`
 
 ## Server & Deployment
 
@@ -33,8 +33,10 @@ npm run ddn         # Dry-run deploy to dev
 
 **Important**: Always ask before building or deploying.
 
-### Cloudflare (staged replacement for the shared host)
-- Worker `epc-www` in the EPC Cloudflare account, live at https://epc-www.ryan-b49.workers.dev; config in `wrangler.jsonc`, entry `functions/worker.ts`
+### Cloudflare (live since 2026-11-25)
+- Worker `epc-www` in the EPC Cloudflare account serves `embankment.org`, `www.` and `dev.` (custom domains in `wrangler.jsonc` `routes`) and https://epc-www.ryan-b49.workers.dev; entry `functions/worker.ts`
+- Workers Builds (GitHub `embankmentjc/www`): pushes to `main` build (`pnpm run build:cf`) and deploy; other branches get preview URLs
+- DNS: Cloudflare zone `embankment.org` (moved from Turbify; mail is still Turbify/Yahoo MX). SSH alias `epc` now targets the Holistic IP directly
 - Static assets from `out-cf/` (`pnpm build:cf`); the Worker runs first only for `/api/*`, `/bat/*` (legacy signup alias) and `/vision` (per-section OG stamping)
 - `pnpm cf:deploy` (build + `wrangler deploy`), `pnpm cf:deploy-preview` (preview alias), `pnpm cf:dev` (local, port 8560)
 - D1 `epc` holds `cc_tokens` and `signups`; secrets via `wrangler secret put`

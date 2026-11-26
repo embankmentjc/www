@@ -2,7 +2,7 @@
 
 Move the site off shared hosting: static build to Cloudflare, the PHP backend to a Worker backed by D1.
 
-**Status (2026-11-25):** ported and deployed as a Worker with static assets at `epc-www.ryan-b49.workers.dev`, in the EPC Cloudflare account. Both signup paths exercised end to end (D1 row + Constant Contact contact). DNS moved to a Cloudflare zone (active 2026-11-25; records still point at the shared host), Workers Builds deploys `main` on push, and the Worker has its own Constant Contact token chain in D1. Cutover steps 2–6 remain.
+**Status (2026-11-25):** ported and deployed as a Worker with static assets at `epc-www.ryan-b49.workers.dev`, in the EPC Cloudflare account. Both signup paths exercised end to end (D1 row + Constant Contact contact). DNS moved to a Cloudflare zone, Workers Builds deploys `main` on push, the Worker has its own Constant Contact token chain in D1, and `embankment.org`, `www.` and `dev.` are custom domains on the Worker (live 2026-11-26 00:2x UTC). Remaining: step 5's wait, then step 6.
 
 **Out of scope, deliberately:** the DNS cutover. This spec ends with the site fully working on a `*.pages.dev` URL while `embankment.org` still points at the shared host. Cutover is a separate, reversible step ([Cutover](#cutover), below) taken once the Pages deployment has been exercised.
 
@@ -94,11 +94,11 @@ Local-dev gotcha, since it cost time once (under Pages): `wrangler pages dev --d
 ## Cutover
 
 1. ~~Exercise both forms against the `*.workers.dev` deployment; confirm the contact appears in Constant Contact and a row lands in `signups`.~~ Done 2026-11-25.
-2. Backfill `signups` from `bat/signups.log` so the D1 table is the complete record.
-3. Re-seed `cc_tokens` immediately before the switch — the shared host keeps rotating the refresh token until it stops serving, so the row must be written from the *final* `.cc-tokens.json`.
-4. Move `embankment.org` DNS from Turbify to a Cloudflare zone (replicating MX, SPF/DMARC, `_atproto` and verification TXT records), then add `embankment.org`, `www.` and `dev.` as custom domains on the Worker.
+2. ~~Backfill `signups` from `bat/signups.log` so the D1 table is the complete record.~~ `./epc logs backfill-d1` (idempotent); 66 rows, re-run after the switch.
+3. ~~Re-seed `cc_tokens` immediately before the switch.~~ Superseded: the Worker has its own authorization chain (`CC_TOKEN_FILE=… node scripts/cc-authorize.js` + `./epc cc seed-d1`), so the shared host's rotation no longer matters.
+4. ~~Move `embankment.org` DNS from Turbify to a Cloudflare zone, then add `embankment.org`, `www.` and `dev.` as custom domains on the Worker.~~ Done 2026-11-25/26. Rollback: remove the custom domains and re-add the three A records (192.195.68.148; `tmp/cf-zone.py` has the full record set).
 5. Leave the shared host running, untouched, until the new deployment has taken real signups. Rollback is a DNS change back.
-6. Retire `public/bat/` and the `.well-known` rsync exclusion that exists only for the old host's certbot.
+6. Retire the shared host, about a week after the switch: delete `public/bat/` (PHP + untracked credentials), the Worker's `/bat/cc-signup-with-email.php` alias, the rsync deploy scripts (`dm`/`dd`/`deploy-main`/…, `./epc deploy`, `scripts/restore-timestamps.sh`) and their `CLAUDE.md` docs, `out-dev`/`out-prod` build targets, `./epc logs` (server logs), and the credential files on the host itself.
 
 ## Follow-ups
 

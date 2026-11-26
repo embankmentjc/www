@@ -11,6 +11,11 @@
     "not_found_handling": "single-page-application",
     "run_worker_first": ["/api/*", "/bat/*", "/vision", "/vision/"]
   },
+  "routes": [
+    { "pattern": "embankment.org", "custom_domain": true },
+    { "pattern": "www.embankment.org", "custom_domain": true },
+    { "pattern": "dev.embankment.org", "custom_domain": true }
+  ],
   "d1_databases": [
     {
       "binding": "DB",

@@ -2,7 +2,7 @@
 
 Move the site off shared hosting: static build to Cloudflare, the PHP backend to a Worker backed by D1.
 
-**Status (2026-11-25):** ported and deployed as a Worker with static assets at `epc-www.ryan-b49.workers.dev`, in the EPC Cloudflare account. Both signup paths exercised end to end (D1 row + Constant Contact contact). DNS moved to a Cloudflare zone, Workers Builds deploys `main` on push, the Worker has its own Constant Contact token chain in D1, and `embankment.org`, `www.` and `dev.` are custom domains on the Worker (live 2026-11-26 00:2x UTC). Remaining: step 5's wait, then step 6.
+**Status (2026-11-25):** ported and deployed as a Worker with static assets at `epc-www.ryan-b49.workers.dev`, in the EPC Cloudflare account. Both signup paths exercised end to end (D1 row + Constant Contact contact). DNS moved to a Cloudflare zone, Workers Builds deploys `main` on push, the Worker has its own Constant Contact token chain in D1, and `embankment.org`, `www.` and `dev.` are custom domains on the Worker (live 2026-11-26 00:2x UTC). Repo-side retirement (step 6) done 2026-11-26; remaining: shutting down the shared host itself.
 
 **Out of scope, deliberately:** the DNS cutover. This spec ends with the site fully working on a `*.pages.dev` URL while `embankment.org` still points at the shared host. Cutover is a separate, reversible step ([Cutover](#cutover), below) taken once the Pages deployment has been exercised.
 
@@ -48,13 +48,11 @@ Preserve these exactly. The client is unchanged by this port apart from which UR
 
 ### Hosting
 
-A Worker (`epc-www`) with static assets: `functions/worker.ts` handles `/api/*`, the `/bat/` alias and `/vision` (per-section OG tags); everything else is served straight from assets (`run_worker_first` in `wrangler.jsonc`). Deployed with `pnpm cf:deploy` (`wrangler deploy`). This started as a Pages project, and moved to Workers so dynamic OG stamping and the API share one entry point; Workers Builds (the Git integration) gives per-branch preview URLs.
+A Worker (`epc-www`) with static assets: `functions/worker.ts` handles `/api/*` and `/vision` (per-section OG tags); everything else is served straight from assets (`run_worker_first` in `wrangler.jsonc`). Deployed with `pnpm cf:deploy` (`wrangler deploy`). This started as a Pages project, and moved to Workers so dynamic OG stamping and the API share one entry point; Workers Builds (the Git integration) gives per-branch preview URLs.
 
-`build:cf` deletes `out-cf/bat`, `.htaccess` and `.gitignore` after the Vite build. Vite copies `public/` wholesale, and `public/bat/` holds the PHP host's untracked credentials; the first Pages deploy served them publicly for ~45 minutes before this was caught.
+Vite copies `public/` wholesale into `out-cf/`, dotfiles included. While `public/bat/` held the PHP host's untracked credentials, the first Pages deploy served them publicly for ~45 minutes before this was caught; `build:cf` then stripped `out-cf/bat` until `public/bat/` was deleted in step 6.
 
-The Cloudflare build gets its own output directory, `out-cf/`, rather than reusing `out-prod/`. The two builds are not interchangeable — the client's form endpoint is baked in at build time (`VITE_SIGNUP_ENDPOINT`, defaulting to the PHP path) — so sharing a directory means a stray `npm run dm` can push a `/api/signup` build to the shared host and silently break both forms. Separate directories make that impossible rather than merely unlikely.
-
-`out-dev/` keeps its role for the shared host's dev site until cutover.
+During the transition the Cloudflare build got its own output directory, `out-cf/`, separate from the shared host's `out-prod/`/`out-dev/`, because the form endpoint was baked in at build time. Since step 6 there is one build (`out-cf/`) and the endpoint is always `/api/signup`.
 
 ### Routes
 
@@ -97,8 +95,9 @@ Local-dev gotcha, since it cost time once (under Pages): `wrangler pages dev --d
 2. ~~Backfill `signups` from `bat/signups.log` so the D1 table is the complete record.~~ `./epc logs backfill-d1` (idempotent); 66 rows, re-run after the switch.
 3. ~~Re-seed `cc_tokens` immediately before the switch.~~ Superseded: the Worker has its own authorization chain (`CC_TOKEN_FILE=… node scripts/cc-authorize.js` + `./epc cc seed-d1`), so the shared host's rotation no longer matters.
 4. ~~Move `embankment.org` DNS from Turbify to a Cloudflare zone, then add `embankment.org`, `www.` and `dev.` as custom domains on the Worker.~~ Done 2026-11-25/26. Rollback: remove the custom domains and re-add the three A records (192.195.68.148; `tmp/cf-zone.py` has the full record set).
-5. Leave the shared host running, untouched, until the new deployment has taken real signups. Rollback is a DNS change back.
-6. Retire the shared host, about a week after the switch: delete `public/bat/` (PHP + untracked credentials), the Worker's `/bat/cc-signup-with-email.php` alias, the rsync deploy scripts (`dm`/`dd`/`deploy-main`/…, `./epc deploy`, `scripts/restore-timestamps.sh`) and their `CLAUDE.md` docs, `out-dev`/`out-prod` build targets, `./epc logs` (server logs), and the credential files on the host itself.
+5. ~~Leave the shared host running, untouched.~~ Its traffic after the switch was scanners and crawlers with stale DNS; no form posts.
+6. ~~Repo-side retirement~~ (2026-11-26, the morning after the switch, since everything removed is in Git history and the shared host keeps its deployed copy for rollback): deleted `public/bat/` (PHP + local untracked credential copies), `public/.htaccess`/`.gitignore`, `EMAIL-SETUP.md`, `GOOGLE-SHEETS-SETUP.md`, the Worker's `/bat/cc-signup-with-email.php` alias (the old host cached HTML for 60s, so only a tab left open across the switch could still post there), the rsync deploy scripts and `out-dev`/`out-prod` builds, `./epc deploy`, `scripts/restore-timestamps.sh`, and their `CLAUDE.md` docs. `VITE_SIGNUP_ENDPOINT` is gone; the form always posts to `/api/signup`.
+7. Shut down the shared host: a last `./epc logs backfill-d1`, wipe the credential files there (`bat/.cc-*.json`, `.google-service-account.json`, `.rd-mailform.config.json`), cancel the hosting, then drop `./epc logs`, the `epc` SSH alias and the rollback note in step 4.
 
 ## Follow-ups
 

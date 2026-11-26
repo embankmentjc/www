@@ -141,14 +141,14 @@ describe("handleSignup", () => {
         expect(updates.map(u => u.args)).toEqual([["created", null, 42]])
     })
 
-    it("records the path a legacy submission arrived on", async () => {
+    it("records the path the submission arrived on", async () => {
         okCc()
         const e = env()
         e.DB.setFirst([{ access_token: "tok", refresh_token: "r", expires_at: 4_000_000_000 }])
-        await handleSignup(post({ email: "a@b.co" }, "https://embankment.org/bat/cc-signup-with-email.php"), e)
+        await handleSignup(post({ email: "a@b.co" }), e)
 
         const insert = e.DB.calls.find(c => c.sql.startsWith("INSERT INTO signups"))!
-        expect(insert.args[6]).toBe("/bat/cc-signup-with-email.php")
+        expect(insert.args[6]).toBe("/api/signup")
     })
 
     it("returns MF254 and marks the row failed when CC rejects the contact", async () => {

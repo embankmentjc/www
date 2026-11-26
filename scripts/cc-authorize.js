@@ -9,7 +9,7 @@
  * 1. Start a local server on http://localhost:3030
  * 2. Open your browser to authorize
  * 3. Receive the callback and exchange code for tokens
- * 4. Save tokens to public/bat/.cc-tokens.json
+ * 4. Save tokens to tmp/.cc-tokens.json (where `./epc cc` reads them; override with CC_TOKEN_FILE)
  */
 
 import http from 'http';
@@ -27,7 +27,7 @@ const config = {
     client_secret: process.env.CC_CLIENT_SECRET,
     redirect_uri: 'http://localhost:3030/callback',
     // `CC_TOKEN_FILE` starts a separate authorization chain (e.g. for the Worker, then `./epc cc seed-d1 <file>`).
-    token_file: process.env.CC_TOKEN_FILE || path.join(__dirname, '../public/bat/.cc-tokens.json'),
+    token_file: process.env.CC_TOKEN_FILE || path.join(__dirname, '../tmp/.cc-tokens.json'),
 };
 
 // Validate credentials

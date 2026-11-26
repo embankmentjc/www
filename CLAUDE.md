@@ -7,91 +7,40 @@ This is the website for the Embankment Preservation Coalition, a Jersey City org
 - **Framework**: Vite + React Router (SPA, statically exported per-route)
 - **Language**: TypeScript + React
 - **Styling**: SCSS modules + global styles in `public/css/`
-- **Deployment**: Cloudflare Worker + static assets (`epc-www`), deployed by Workers Builds on every push to `main`. The shared-host rsync scripts below are legacy (pending removal): that host no longer serves `embankment.org`
+- **Deployment**: Cloudflare Worker + static assets (`epc-www`), deployed by Workers Builds on every push to `main`
 
-## Server & Deployment
+## Deployment
 
-### SSH Access
-- **Server alias**: `epc` (configured in `~/.ssh/config`)
-- **Dev directory**: `~/dev_html/` → https://dev.embankment.org
-- **Production directory**: `~/public_html/` → https://embankment.org
+Worker `epc-www` in the EPC Cloudflare account serves `embankment.org`, `www.` and `dev.` (custom domains in `wrangler.jsonc` `routes`; `dev.` is just another name for prod) and https://epc-www.ryan-b49.workers.dev. Entry `functions/worker.ts`. Cutover history: `specs/cf-migration.md`.
 
-### Build & Deploy Scripts
+**Important**: Always ask before building or deploying. Pushing to `main` deploys.
+
+- **Workers Builds** (GitHub `embankmentjc/www`): pushes to `main` run `pnpm run build:cf` and deploy; other branches get preview URLs (use these for testing changes before merging)
+- **Static assets** from `out-cf/`; the Worker runs first only for `/api/*` (signup, intake) and `/vision` (per-section OG stamping). Everything in `public/` is copied into `out-cf/` and publicly served, dotfiles included: never put credentials there
+- **D1** `epc`: `signups` (every form submission) and `cc_tokens` (the Worker's Constant Contact token chain). Secrets `CC_CLIENT_ID`/`CC_CLIENT_SECRET`/`CC_LIST_ID` via `wrangler secret put`
+- **DNS**: Cloudflare zone `embankment.org` (moved from Turbify 2026-11-25); mail is still Turbify/Yahoo MX
 
 ```bash
-# Production
-npm run nb          # Build for production
-npm run dm          # Deploy to production (rsync to public_html/)
-npm run dmn         # Dry-run deploy to production
-
-# Dev
-npm run nbd         # Build for dev (with VITE_SITE_URL=https://dev.embankment.org)
-npm run dd          # Deploy to dev (rsync to dev_html/)
-npm run dbd         # Build for dev + deploy
-npm run ddn         # Dry-run deploy to dev
+pnpm build               # = pnpm build:cf: Vite build to out-cf/, then per-route HTML shells + OG tags
+pnpm cf:dev              # wrangler dev, port 8560 (Worker + local D1)
+pnpm cf:deploy-preview   # build + upload a version under the `preview` alias
+pnpm cf:deploy           # build + wrangler deploy (prod; normally Workers Builds does this)
 ```
 
-**Important**: Always ask before building or deploying.
-
-### Cloudflare (live since 2026-11-25)
-- Worker `epc-www` in the EPC Cloudflare account serves `embankment.org`, `www.` and `dev.` (custom domains in `wrangler.jsonc` `routes`) and https://epc-www.ryan-b49.workers.dev; entry `functions/worker.ts`
-- Workers Builds (GitHub `embankmentjc/www`): pushes to `main` build (`pnpm run build:cf`) and deploy; other branches get preview URLs
-- DNS: Cloudflare zone `embankment.org` (moved from Turbify; mail is still Turbify/Yahoo MX). SSH alias `epc` now targets the Holistic IP directly
-- Static assets from `out-cf/` (`pnpm build:cf`); the Worker runs first only for `/api/*`, `/bat/*` (legacy signup alias) and `/vision` (per-section OG stamping)
-- `pnpm cf:deploy` (build + `wrangler deploy`), `pnpm cf:deploy-preview` (preview alias), `pnpm cf:dev` (local, port 8560)
-- D1 `epc` holds `cc_tokens` and `signups`; secrets via `wrangler secret put`
-- `build:cf` strips `out-cf/bat`, `.htaccess` and `.gitignore`: anything left in `out-cf/` is publicly served, including dotfiles copied from `public/bat/`
-- Cutover plan and status: `specs/cf-migration.md`
-
 ### Build Configuration
-- Separate output directories prevent conflicts:
-  - Dev builds go to `out-dev/` (via `npm run bd`, aliased `nbd`)
-  - Prod builds go to `out-prod/` (via `npm run b`, aliased `nb`)
-- Each build runs `scripts/generate-static-pages.sh` (per-route `index.html` shells) then `scripts/inject-og-tags.cjs` (reads each page's `ogMetadata` export and injects OG/Twitter/description tags into the static HTML)
-- `VITE_SITE_URL` env var controls the domain in OG meta tags and other absolute URLs; it defaults to `https://embankment.org`, and `npm run bd` sets it to the dev domain
-- Deploy rsyncs exclude server-managed paths (`.well-known/`, `bat/` logs and credentials) so `--delete` doesn't remove them
+- `build:cf` runs `scripts/generate-static-pages.sh` (per-route `index.html` shells) then `scripts/inject-og-tags.cjs` (reads each page's `ogMetadata` export and injects OG/Twitter/description tags into the static HTML)
+- `VITE_SITE_URL` controls the domain in OG meta tags and other absolute URLs; it defaults to `https://embankment.org`
 
-## Email & Form Submission Issues
+### Old shared host (Holistic)
+The site used to be rsynced to a Holistic shared host (SSH alias `epc`, pinned to 192.195.68.148 since `embankment.org` now resolves to Cloudflare). It still serves its last deploy, including the PHP signup handler, to anything with stale DNS, until it's shut down. `./epc logs` reads its logs.
 
-### The Problem
-The hosting provider **blocks outbound SMTP connections** at the network level:
-- Ports 465 and 587 are blocked
-- This is network-level blocking (TCP connection fails with "Network is unreachable")
-- No amount of authentication, DKIM, or DMARC configuration will fix this
-- Tested with: `timeout 3 bash -c '</dev/tcp/smtp.gmail.com/465'`
+## Forms
 
-### Solutions Implemented
+Both forms (`components/signup-form.tsx`) POST to `/api/signup` (`functions/_lib/signup.ts`), which writes a `signups` row in D1 then adds the contact to Constant Contact (`functions/_lib/cc.ts`). Responses are `MFxxx` codes, inherited from the original PHP template.
 
-#### 1. Constant Contact API Integration
-- **Scripts**: `scripts/cc-authorize.js`, `public/bat/cc-*.php`
-- **Purpose**: Newsletter signups and volunteer form submissions
-- **Auth**: OAuth2 flow with refresh tokens stored in `public/bat/.cc-tokens.json`
-- **Credentials**: `CC_CLIENT_ID` and `CC_CLIENT_SECRET` in `.env` (not committed)
-- **Handler**: `public/bat/cc-signup-with-email.php` - tries CC API, falls back gracefully
-- **Custom Field**: "Signup Notes" (`text_area` type, ID: `4090fe26-d628-11f0-9e0c-02421f46342b`) stores volunteer background/messages
-- **Backfill Scripts**: `scripts/cc/` contains Python scripts for backfilling notes from logs/CSVs
-
-#### 2. Google Sheets Logging
-- **Script**: `public/bat/google-sheets-append.php`
-- **Purpose**: Backup logging of all form submissions
-- **Auth**: Service account with JWT (RS256)
-- **Setup**: See `GOOGLE-SHEETS-SETUP.md` for configuration
-- **Credentials**: `public/bat/.google-service-account.json` (not committed)
-- **PHP Compatibility**: Written for PHP 5.3+ (old-style array syntax, no null coalescing)
-
-#### 3. File Logging
-- **Location**: `/home/embankme/public_html/bat/signups.log`
-- **Format**: Timestamped plain text entries
-- **Purpose**: Always-available fallback when APIs fail
-
-### Form Handlers
-- `/involved` page has two forms:
-  - **Volunteer form** (`#involved-section-volunteer`): has "Background" textarea, currently doesn't send to CC
-  - **Signup form** (`#involved-section-signup`): basic name/email, sends to CC
-- Both forms should use `cc-signup-with-email.php` which handles CC API + Google Sheets + file logging
-
-### Email Sending (Currently Disabled)
-The `cc-signup-with-email.php` attempts to send email notifications but gracefully fails due to SMTP blocking. The notifications would go to `embankment@embankment.org`. This is fine - the primary mechanisms (CC API, Google Sheets, file log) all work.
+- **CC custom field** "Signup Notes" (`text_area`, ID `4090fe26-d628-11f0-9e0c-02421f46342b`) holds the volunteer form's background/message
+- **CC OAuth**: refresh tokens rotate on every use, so each holder needs its own chain: the Worker's lives in D1 `cc_tokens`, `./epc cc`'s in `tmp/.cc-tokens.json`. To re-authorize the Worker: `CC_TOKEN_FILE=tmp/.cc-worker-tokens.json node scripts/cc-authorize.js`, then `./epc cc seed-d1 tmp/.cc-worker-tokens.json`
+- No email notifications (never worked on the old host either)
 
 ## Images & Optimization
 
@@ -109,7 +58,7 @@ The `cc-signup-with-email.php` attempts to send email notifications but graceful
 - Images use relative paths (`/images/og/home.jpg`)
 - `Page` component constructs absolute URLs using `VITE_SITE_URL`
 - Test page at `/og-test` shows mock social media previews
-- `/vision` sections: a `use-prms/sections` scroll spy names the in-view section in `?s=<id>` (`#<id>` and retired/long ids in `pages/vision-sections.json` `aliases` are adopted into it). On Cloudflare, the Worker (`functions/worker.ts`) rewrites the page's title / description / `og:image` per section; cards come from `pnpm og:vision` (`scripts/vision-og.py` → `public/images/og/vision/<id>.jpg`, re-renders only stale cards). The shared host serves static HTML, so per-section unfurls only work on CF.
+- `/vision` sections: a `use-prms/sections` scroll spy names the in-view section in `?s=<id>` (`#<id>` and retired/long ids in `pages/vision-sections.json` `aliases` are adopted into it). On Cloudflare, the Worker (`functions/worker.ts`) rewrites the page's title / description / `og:image` per section; cards come from `pnpm og:vision` (`scripts/vision-og.py` → `public/images/og/vision/<id>.jpg`, re-renders only stale cards).
 
 ### Image Optimization Guidelines
 - **Hero banners**: 1920px width max, 80-85% quality, 300-800KB target
@@ -143,7 +92,8 @@ The `cc-signup-with-email.php` attempts to send email notifications but graceful
 ### Configuration
 - `vite.config.ts` - Vite config; dev server port (8559) and `VITE_ALLOWED_HOSTS` for tailnet access
 - `package.json` - npm scripts for build/deploy
-- `.env` - local env vars (CC credentials, not committed)
+- `wrangler.jsonc` - Worker, custom domains, assets, D1 binding
+- `.envrc` - local env vars (CC credentials, Cloudflare API token; not committed)
 
 ### Pages
 - `pages/*.tsx` - main pages, each exports `ogMetadata`
@@ -154,17 +104,15 @@ The `cc-signup-with-email.php` attempts to send email notifications but graceful
 - `components/theme.tsx` - reusable sections (ParallaxSection, ConceptSection, etc.)
 - `components/nav.tsx` - navigation bar
 
-### Backend/Forms
-- `public/bat/` - PHP scripts for form handling
-  - `cc-*.php` - Constant Contact integration
-  - `google-sheets-append.php` - Google Sheets logging
-  - `.cc-tokens.json` - OAuth tokens (not committed)
-  - `.google-service-account.json` - Service account credentials (not committed)
+### Backend
+- `functions/worker.ts` - Worker entry (routing)
+- `functions/_lib/` - signup handler, CC client, `/vision` OG stamping
+- `migrations/` - D1 schema
 
 ### Scripts
-- `scripts/cc-authorize.js` - OAuth authorization flow for Constant Contact
-- `scripts/restore-timestamps.sh` - Preserves file mtimes for rsync
+- `scripts/cc-authorize.js` - OAuth authorization flow for Constant Contact (writes `tmp/.cc-tokens.json`, or `$CC_TOKEN_FILE`)
 - `scripts/cc/` - Python scripts for CC backfill operations (see `scripts/cc/README.md`)
+- `scripts/vision-og.py` - `/vision` per-section OG cards
 
 ### EPC CLI Tool
 Python CLI at `scripts/epc/` with symlink `./epc` at repo root. Uses `uv` for dependency management.
@@ -182,30 +130,25 @@ Python CLI at `scripts/epc/` with symlink `./epc` at repo root. Uses `uv` for de
 ./epc cc delete -t        # Delete all test contacts
 ./epc cc refresh          # Refresh OAuth tokens
 
-# Deployment
-./epc deploy dev          # Build and deploy to dev
-./epc deploy prod         # Build and deploy to prod
-./epc deploy dev -n       # Dry-run deploy to dev
-./epc deploy build dev    # Build only (no deploy)
+./epc cc seed-d1 FILE     # Copy a token file's chain into D1 cc_tokens (for the Worker)
 
-# Server Logs
+# Old shared host's logs (until it's shut down)
 ./epc logs list           # List available logs
 ./epc logs tail access    # Tail access log
 ./epc logs tail signups -f  # Follow signups log
 ./epc logs grep access "pattern"  # Search log
 ./epc logs errors         # Show recent 4xx/5xx errors
 ./epc logs signups        # Show recent signups
+./epc logs backfill-d1    # Copy its signups.log into D1 signups (idempotent)
 ```
 
 **Requirements**: `CC_CLIENT_ID` and `CC_CLIENT_SECRET` env vars for CC commands (set in `.envrc`).
 
 ## Known Issues & Gotchas
 
-1. **SMTP is completely blocked** - don't try to fix email sending, it won't work
-2. **Nested anchors** - avoid wrapping `<a>` tags in `H1`/`H2` components (they already render a link)
-3. **PHP version** - server runs old PHP, use compatible syntax (no `??`, use `array()` not `[]`)
-4. **Function name collisions** - both CC and Google Sheets code define `getAccessToken()` - keep them named differently (`getGoogleAccessToken()`)
-5. **CC token expiration** - tokens expire after ~60 days; if signups stop working, check `public/bat/.cc-tokens.json` (0 bytes = corrupted). Re-run `scripts/cc-authorize.js` to refresh.
+1. **Nested anchors** - avoid wrapping `<a>` tags in `H1`/`H2` components (they already render a link)
+2. **CC token expiration** - an unused refresh token eventually expires; if signups start landing with `cc_status = 'failed'` in D1, re-authorize the Worker (see [Forms](#forms))
+3. **Stale wrangler account cache** - if wrangler hits the wrong Cloudflare account (auth error 10000), delete `node_modules/.cache/wrangler/`
 
 ## Testing
 
@@ -216,20 +159,15 @@ npm run dev  # Start Vite dev server
 ```
 
 ### OG Metadata Testing
-```bash
-npm run dbd  # Build for dev and deploy
-# Visit https://dev.embankment.org/og-test
-```
+Push a branch and open `/og-test` on its Workers Builds preview URL, or run `pnpm cf:dev` and visit http://localhost:8560/og-test.
 
 ### Form Testing
-Test forms on dev site before deploying to production. Check:
-- Constant Contact contact list
-- Google Sheet (if configured)
-- Log file at `/home/embankme/public_html/bat/signups.log`
+`pnpm cf:dev` (local D1) or a branch preview. Check:
+- Constant Contact contact list (`./epc cc list -t` for test contacts; `./epc cc delete -t` to clean up)
+- D1 `signups`: `npx wrangler d1 execute epc --remote --command "select * from signups order by id desc limit 5"`
 
 ## Resources
 
 - **Main site**: https://embankment.org
-- **Dev site**: https://dev.embankment.org
 - **Constant Contact**: https://app.constantcontact.com
 - **East Coast Greenway**: https://www.greenway.org

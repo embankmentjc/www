@@ -15,9 +15,6 @@ export default {
         const url = new URL(request.url)
         switch (url.pathname) {
             case "/api/signup":
-            // Legacy alias: the shared host served this path, so a cached page or a bookmarked form can still post
-            // here after the cutover. Delete once the old host is retired (see specs/cf-migration.md).
-            case "/bat/cc-signup-with-email.php":
                 return handleSignup(request, env)
             case "/api/intake/email":
                 return handleIntakeEmail(request, env)

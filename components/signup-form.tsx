@@ -12,9 +12,7 @@ const messages: Record<string, string> = {
     'MF255': 'Aw, snap! Something went wrong.',
 }
 
-// Shared host serves the PHP handler; the Cloudflare build sets VITE_SIGNUP_ENDPOINT
-// to /api/signup. Both speak the same MFxxx contract.
-const defaultEndpoint = import.meta.env.VITE_SIGNUP_ENDPOINT || '/bat/cc-signup-with-email.php'
+const defaultEndpoint = '/api/signup'
 
 export function useFormSubmit(action: string = defaultEndpoint) {
     const [status, setStatus] = useState<FormStatus>('idle')

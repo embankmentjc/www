@@ -4,7 +4,6 @@
 import click
 
 from .cc import cc
-from .deploy import deploy
 from .logs import logs
 
 
@@ -15,7 +14,6 @@ def cli():
 
 
 cli.add_command(cc)
-cli.add_command(deploy)
 cli.add_command(logs)
 
 

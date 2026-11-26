@@ -1,6 +1,5 @@
 /**
- * The signup handler, shared by /api/signup and the legacy
- * /bat/cc-signup-with-email.php alias.
+ * The /api/signup handler.
  *
  * Response codes are the template's MFxxx strings, preserved verbatim so
  * components/signup-form.tsx needs no special case per backend.

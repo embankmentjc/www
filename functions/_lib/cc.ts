@@ -1,7 +1,7 @@
 /**
  * Constant Contact: token storage in D1, refresh, and contact creation.
  *
- * Ported from public/bat/cc-signup-with-email.php. The one behavioural change is
+ * Ported from the shared host's PHP handler (`public/bat/cc-signup-with-email.php`, removed after the move to Cloudflare). The one behavioural change is
  * where tokens live: a D1 row instead of a 0600 JSON file that a partial write
  * could (and did) truncate.
  */

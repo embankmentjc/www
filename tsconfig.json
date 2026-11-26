@@ -28,9 +28,7 @@
     "dist",
     "functions",
     "node_modules",
-    "out-cf",
-    "out-dev",
-    "out-prod"
+    "out-cf"
   ],
   "include": [
     "**/*.ts",
